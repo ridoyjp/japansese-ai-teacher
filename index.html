@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="bn"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Japanese AI Teacher | বাংলা Online Japanese Book</title><meta name="theme-color" content="#243b9b"/><meta name="description" content="বাংলায় জাপানি শেখার অনলাইন বই: Basic, Vocabulary, Grammar, Quiz এবং AI Teacher।"/><style>
+<html lang="bn"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><title>Japanese Ai Ebook 🌸 | বাংলা Japanese Learning eBook</title><meta name="theme-color" content="#172554"/><meta name="description" content="বাংলায় জাপানি শেখার অনলাইন বই: Basic, Vocabulary, Grammar, Quiz এবং AI Teacher।"/><style>
 :root{font-family:system-ui,'Noto Sans Bengali','Noto Sans JP',sans-serif;color:#16233c;background:#eef3ff}*{box-sizing:border-box}body{margin:0}header{background:linear-gradient(120deg,#243b9b,#6e4de2);color:white;padding:28px 16px;text-align:center}h1{margin:0;font-size:clamp(24px,5vw,38px)}header p{opacity:.9}.wrap{max-width:900px;margin:auto;padding:18px}.panel{background:white;border-radius:18px;padding:22px;margin:16px 0;box-shadow:0 8px 26px #23367513}.nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}button{cursor:pointer;border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#e7ebff;color:#243b9b}button.primary{background:#4257d9;color:white}button:disabled{opacity:.55;cursor:not-allowed}.nav button{background:#ffffff25;color:white;border:1px solid #ffffff55}.nav button.active{background:white;color:#27399d}.hidden{display:none!important}.grammar{border-left:5px solid #6d5af4}.grammar h3{color:#303eb0}.lesson-heading{padding:10px 6px;color:#303eb0}.ex{background:#f5f7ff;border-radius:12px;padding:12px 14px;margin:9px 0}.jp{font-size:1.22rem;font-weight:750}.rom{color:#56637c}.bn{color:#216248}.tip{background:#fff6dd;padding:12px;border-radius:10px}.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.word{padding:12px;border:1px solid #e1e7fa;border-radius:12px}.muted{color:#586581}.choices{display:grid;gap:10px;margin:20px 0}.choice{text-align:left;background:#f2f5ff;border:2px solid transparent;color:#1d2d57;font-weight:600}.choice.selected{border-color:#5364df;background:#e4e9ff}.choice.correct{background:#d7f7e4;border-color:#25955b}.choice.wrong{background:#ffe2e2;border-color:#df5252}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.progress{height:10px;background:#e5eaff;border-radius:99px;overflow:hidden}.bar{height:100%;background:#5969df;width:0}.stat{font-weight:700;color:#3146af}.score{font-size:2.1rem;color:#3449c1}.settings{display:flex;gap:14px;flex-wrap:wrap;align-items:center}select{font:inherit;border:1px solid #cdd5ed;border-radius:10px;padding:9px;background:white}footer{text-align:center;padding:24px;color:#65708a}@media(max-width:500px){.wrap{padding:10px}.panel{padding:16px}button{width:100%}.nav button{width:auto}.settings select{width:100%}}
 
 .quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}.quick{border:2px solid #cbd5ff;background:#f6f8ff;color:#233a94;padding:18px 10px;border-radius:16px;font-weight:800;font-size:1rem;line-height:1.7;cursor:pointer}.quick small{font-size:.78rem;color:#475569;font-weight:500}.quick:active{background:#dfe6ff}@media(max-width:360px){.quick-grid{gap:8px}.quick{font-size:.9rem;padding:12px 5px}}
@@ -143,14 +143,857 @@ footer{padding:24px 16px calc(24px + env(safe-area-inset-bottom))}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
-</style></head><body><header><h1>🇯🇵 Japanese Lessons 1 + 2</h1><p>আগে Vocabulary → তারপর Grammar → শেষে Exam | Lesson 1 ও Lesson 2 আলাদা</p><nav class="nav" aria-label="বইয়ের অধ্যায়"><button class="active" id="tabBasics" onclick="showTab('basics')">🌸 প্রথমে বেসিক শিখি</button><button class="" id="tabWords" onclick="showTab('words')">📖 Vocabulary আগে পড়ি</button><button class="" id="tabLearn" onclick="showTab('learn')">📚 Grammar পড়ি</button><button class="" id="tabExam" onclick="showTab('exam')">📝 Random Exam</button><button class="" id="tabAi" onclick="showTab('ai')">🤖 বাংলা AI Teacher</button></nav><div class="study-sound-settings" id="studySoundPanel" aria-label="Japanese study sound controls">
+
+/* eBook MENU UI — visual redesign only. Existing lesson data + quiz logic preserved. */
+:root{font-family:system-ui,'Noto Sans Bengali','Noto Sans JP',sans-serif;color:#1c2d4a;background:#f4f7fc;--book-blue:#2847a5;--book-purple:#6357db}
+body{background:linear-gradient(180deg,#edf3ff 0,#f9fbff 55%,#f1f5fc 100%);color:#1d2c49}
+header{padding:18px 18px 20px;background:linear-gradient(128deg,#243c91,#5853cf 60%,#7589ee);text-align:left}
+header>h1,header>p,header>.nav,header>.study-sound-settings,header>.book-brand{max-width:1160px;margin-left:auto;margin-right:auto}
+header h1{font-size:clamp(1.65rem,3.8vw,2.6rem);margin:14px auto 5px}
+header p{color:#e7ecff;margin-top:0;margin-bottom:12px}
+.book-brand{display:flex;align-items:center;justify-content:space-between;color:white;font-size:.9rem;font-weight:800;gap:12px}
+.book-home-link{width:auto!important;border:1px solid #ffffff66;background:#ffffff24;color:#fff;padding:8px 14px;font-size:.88rem}
+header .nav{justify-content:flex-start;flex-wrap:nowrap;overflow:auto;scrollbar-width:none;padding:4px 0 10px;margin-top:13px}.nav::-webkit-scrollbar{display:none}
+header .nav button{flex:0 0 auto;white-space:nowrap;background:#ffffff20;color:white;border:1px solid #ffffff48;border-radius:999px;padding:10px 16px}
+header .nav button.active{background:#fff;color:#30439c}
+.wrap{max-width:1180px;padding:24px 18px 40px}
+.panel{border:1px solid #e1e8f6;box-shadow:0 12px 32px #253d6a12;border-radius:23px;margin:16px 0;padding:22px}
+.panel h2{color:#273c86}
+.book-home-page{display:block}
+.book-cover{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(190px,.65fr);gap:14px;overflow:hidden;min-height:270px;border-radius:28px;background:linear-gradient(127deg,#182c72,#4854d4 62%,#7986f6);color:white;box-shadow:0 22px 52px #243d8b2b;position:relative}
+.book-cover-content{position:relative;z-index:1;padding:clamp(24px,4vw,48px)}.cover-overline{font-size:.77rem;font-weight:800;letter-spacing:.14em;color:#cbd7ff;margin-bottom:16px}
+.book-cover h2{color:white;font-size:clamp(1.8rem,4.5vw,3.3rem);line-height:1.2;margin:0 0 14px}.book-cover h2 span{font-size:clamp(1.3rem,3vw,2.25rem)}
+.book-cover p{font-size:1rem;color:#e3eaff;max-width:570px;line-height:1.8}
+.cover-chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.cover-chips span{padding:7px 12px;border:1px solid #ffffff3d;border-radius:999px;background:#ffffff19;font-size:.79rem}
+.cover-start{background:#fff!important;color:#24378c!important;padding:13px 21px;font-weight:900;box-shadow:0 8px 22px #15215b33;width:auto!important}.cover-start span{margin-left:14px}
+.cover-art{display:grid;place-items:center;padding:22px}.cover-art-inner{width:min(100%,250px);aspect-ratio:3/3.7;transform:rotate(8deg);background:linear-gradient(150deg,#fafcff,#dbe5ff);border-radius:8px 22px 22px 8px;color:#3f4dbc;border-left:13px solid #b7c6fb;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:7rem;font-weight:800;box-shadow:16px 18px 27px #0c194e5c}.cover-art-inner span{font-size:1.1rem;letter-spacing:4px;color:#6c76b9}
+.menu-intro{padding:27px 4px 10px}.menu-intro h2{font-size:clamp(1.35rem,2.7vw,2.1rem);margin:5px 0;color:#233b81}.menu-intro p{color:#61718f;line-height:1.8;margin:0}.menu-eyebrow{font-size:.75rem;font-weight:900;letter-spacing:.16em;color:#526ed1}
+.book-menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.chapter-card{display:flex;flex-direction:column;align-items:flex-start;min-height:235px;padding:22px;text-align:left;background:#fff;border:1px solid #dce5f8;border-radius:23px;box-shadow:0 12px 30px #263c8710;color:#172d58;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.chapter-card:hover{transform:translateY(-4px);box-shadow:0 20px 42px #263c8723;border-color:#9dabff}.chapter-card:focus-visible{outline:3px solid #6e84e9;outline-offset:3px}
+.chapter-index{color:#6b79a0;font-size:.72rem;font-weight:900;letter-spacing:.1em}.chapter-icon{font-size:2.2rem;margin:11px 0}.chapter-card strong{font-size:1.17rem;margin-bottom:7px}.chapter-card small{font-size:.89rem;color:#637390;line-height:1.7;font-weight:500}.chapter-action{margin-top:auto;padding-top:16px;color:#425dd1;font-weight:900;font-size:.88rem}.chapter-ai{background:linear-gradient(160deg,#f3f8ff,#eaf8f2)}
+.book-breadcrumb{display:flex;align-items:center;gap:9px;padding:5px 0 12px;font-size:.9rem;color:#70809c}.book-breadcrumb button{width:auto!important;border:1px solid #cfdaf4;background:#fff;color:#2f49a0;padding:9px 13px;font-size:.88rem}
+.vocab{grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}.word{background:#fcfdff;border:1px solid #e1e8f8;border-radius:16px;padding:15px}
+.basic-table td,.basic-table th{font-size:.9rem}.table-scroll{overflow:auto;-webkit-overflow-scrolling:touch}
+button{touch-action:manipulation}.ai-chat-composer textarea{min-width:0}.ai-chat-composer{max-width:100%}
+@media(min-width:1024px){.book-menu-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.book-menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.book-cover{grid-template-columns:1.6fr .7fr}.cover-art-inner{font-size:5rem}}
+@media(max-width:600px){header{padding:15px 12px 15px}header h1{font-size:1.55rem}header>p{font-size:.89rem}.wrap{padding:14px 10px 26px}.book-cover{grid-template-columns:1fr;min-height:0;border-radius:22px}.book-cover-content{padding:24px 20px}.cover-art{display:none}.cover-chips span{font-size:.72rem}.book-menu-grid{grid-template-columns:1fr;gap:11px}.chapter-card{min-height:0;padding:17px 18px;border-radius:19px}.chapter-icon{font-size:1.8rem;margin:7px 0}.chapter-card strong{font-size:1.08rem}.chapter-action{padding-top:10px}.menu-intro{padding:22px 4px 10px}.panel{padding:15px;border-radius:17px}.vocab{grid-template-columns:1fr}.nav{gap:7px}header .nav button{padding:9px 12px;font-size:.87rem}.book-breadcrumb{flex-wrap:wrap}.study-sound-settings{margin-left:auto!important;margin-right:auto!important}}
+@media(prefers-reduced-motion:reduce){.chapter-card{transition:none}.chapter-card:hover{transform:none}}
+
+/* Full-screen focus chat: no Home screen or eBook header while chatting. */
+body.ai-fullscreen{overflow:hidden}
+body.ai-fullscreen > header,body.ai-fullscreen > footer{display:none!important}
+body.ai-fullscreen > main.wrap{max-width:none!important;margin:0!important;padding:0!important;width:100%!important}
+body.ai-fullscreen #ai{position:fixed;inset:0;z-index:1000;display:flex!important;flex-direction:column;min-width:0;background:#f2f6ff;padding:0!important;overflow:hidden}
+body.ai-fullscreen #ai .book-breadcrumb{display:none!important}
+body.ai-fullscreen #ai > .panel{display:flex;flex:1;min-height:0;flex-direction:column;width:100%;max-width:1100px;margin:0 auto!important;padding:0!important;border:0!important;border-radius:0!important;background:#fff;box-shadow:0 0 45px #213b7814!important}
+body.ai-fullscreen #ai > .panel > h2,
+body.ai-fullscreen #ai > .panel > p:not(#micStatus):not(#aiStatus){display:none!important}
+.ai-fullscreen-header{display:none;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;background:#fff;border-bottom:1px solid #e2e8f7;box-shadow:0 3px 14px #1f368012;flex:0 0 auto}
+.ai-fullscreen-header strong{font-size:1.12rem;color:#253d91}
+.ai-fullscreen-header button{width:auto!important;background:#eef3ff;color:#24469f;border:1px solid #d5dff7;padding:10px 13px;white-space:nowrap}
+body.ai-fullscreen .ai-fullscreen-header{display:flex}
+body.ai-fullscreen #ai .ai-chat{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;padding:10px clamp(12px,3vw,24px) max(12px,env(safe-area-inset-bottom))}
+body.ai-fullscreen #ai .ai-messages{flex:1;height:auto!important;min-height:0!important;overflow-y:auto;overscroll-behavior:contain;border-radius:18px}
+body.ai-fullscreen #ai #aiContext{max-height:90px;overflow-y:auto;margin:0}
+body.ai-fullscreen #ai .ai-tools{flex:0 0 auto;overflow-x:auto;flex-wrap:nowrap;padding:3px 0;scrollbar-width:none}
+body.ai-fullscreen #ai .ai-tools button{flex:0 0 auto;width:auto!important}
+body.ai-fullscreen #ai #micStatus,body.ai-fullscreen #ai #aiStatus{flex:0 0 auto;margin:0!important;font-size:.84rem}
+body.ai-fullscreen #ai #aiForm{flex:0 0 auto;margin:0}
+@media(max-width:640px){.ai-fullscreen-header{padding:10px 12px}.ai-fullscreen-header strong{font-size:.95rem}.ai-fullscreen-header button{font-size:.85rem;padding:9px 10px}body.ai-fullscreen #ai .ai-chat{padding:8px 9px max(9px,env(safe-area-inset-bottom))}body.ai-fullscreen #ai .ai-msg{max-width:100%;margin-left:0;margin-right:0}body.ai-fullscreen #ai .ai-tools{gap:6px}body.ai-fullscreen #ai .ai-tools button{font-size:.82rem;padding:8px}}
+
+/* Reference-inspired immersive AI learning chat. No TTC festival content. */
+body.ai-fullscreen #ai{background:linear-gradient(135deg,#edf7fc 0%,#e4f5fb 60%,#f5faff 100%);}
+body.ai-fullscreen #ai>.panel{max-width:none!important;background:transparent!important;box-shadow:none!important;}
+body.ai-fullscreen .ai-fullscreen-header{background:linear-gradient(112deg,#0c2345 0%,#0e3d5d 55%,#107d9b 100%)!important;color:#fff;min-height:112px;padding:18px clamp(18px,3.5vw,56px);border:0;box-shadow:0 12px 22px #0d385016;}
+body.ai-fullscreen .ai-fullscreen-header strong{display:block;color:#fff;font-size:clamp(1.3rem,2.2vw,1.95rem);line-height:1.3;}
+body.ai-fullscreen .ai-fullscreen-header .chat-header-sub{display:block;color:#d7ecff;font-size:.85rem;font-weight:500;margin-top:5px;}
+body.ai-fullscreen .ai-fullscreen-header .chat-online{display:inline-flex;color:#dcfff1;font-size:.73rem;border:1px solid #24bca7;padding:3px 10px;border-radius:999px;margin-top:7px;}
+body.ai-fullscreen .ai-fullscreen-header button{background:#ffffff14;color:white;border:1px solid #ffffff61;border-radius:999px;padding:11px 19px;}
+body.ai-fullscreen #ai .ai-chat{width:100%;padding:0!important;gap:0;background:transparent;}
+body.ai-fullscreen #ai .ai-messages{width:100%;height:auto!important;flex:1;min-height:0;overflow-y:auto;max-width:none;margin:0;padding:clamp(20px,4vw,46px) clamp(12px,4vw,70px);background:transparent;border:0;border-radius:0;}
+body.ai-fullscreen #ai .ai-msg{max-width:min(900px,89%);border-radius:23px;padding:16px 20px;font-size:clamp(.95rem,1.4vw,1.1rem);box-shadow:0 10px 24px #16476713;}
+body.ai-fullscreen #ai .ai-msg.assistant{background:#fff;color:#23415d;margin-right:auto;margin-left:0;}
+body.ai-fullscreen #ai .ai-msg.user{background:#daf9eb;color:#174835;margin-left:auto;margin-right:0;}
+body.ai-fullscreen #ai .ai-tools{padding:9px clamp(12px,3vw,42px);margin:0;gap:8px;background:#ffffffb8;border-top:1px solid #d8ebf3;}
+body.ai-fullscreen #ai .ai-tools button{background:#ecfaff;border:1px solid #b9dfef;color:#075674;font-size:.87rem;border-radius:14px;}
+body.ai-fullscreen #ai #aiContext{background:#def7f0;border:1px solid #b9eadd;border-left:4px solid #0e977b;margin:6px clamp(12px,3vw,42px) 0;max-height:84px;padding:8px 12px;}
+body.ai-fullscreen #ai #micStatus{background:#f4fbff;color:#587187;padding:5px clamp(12px,3vw,42px);}
+body.ai-fullscreen #ai #aiForm{position:relative;max-width:none;width:calc(100% - clamp(16px,4vw,72px));align-self:center;margin:8px 0 max(10px, env(safe-area-inset-bottom))!important;border:4px solid #b9eaf8;border-radius:24px;padding:9px 12px;background:#fff;box-shadow:0 16px 30px #124c6a16;}
+body.ai-fullscreen #ai #aiForm textarea{min-height:49px;font-size:1rem;}
+body.ai-fullscreen #ai #aiForm .ai-circle-btn{background:linear-gradient(135deg,#087eaf,#0fb1c6);border-radius:15px;}
+body.ai-fullscreen #ai #aiStatus{padding:4px clamp(12px,3vw,42px);background:#f4fbff;color:#45647e;}
+@media(max-width:650px){body.ai-fullscreen .ai-fullscreen-header{min-height:88px;padding:12px 14px;}body.ai-fullscreen .ai-fullscreen-header strong{font-size:1.2rem;}body.ai-fullscreen .ai-fullscreen-header button{padding:8px 11px;font-size:.83rem;}body.ai-fullscreen #ai .ai-messages{padding:14px 11px;}body.ai-fullscreen #ai .ai-msg{max-width:97%;padding:13px 14px;border-radius:17px;}body.ai-fullscreen #ai #aiForm{width:calc(100% - 16px);padding:6px;border-width:2px;}body.ai-fullscreen #ai #aiForm textarea{font-size:.94rem;}body.ai-fullscreen #ai .ai-tools{padding:7px 9px;}}
+
+/* Step-by-step eBook menu & lesson picker; shared responsive layout */
+.lesson-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:22px 0}
+.lesson-choice{display:flex;flex-direction:column;text-align:left;gap:12px;min-height:205px;padding:22px;border-radius:22px;background:linear-gradient(135deg,#ffffff,#eef5ff);border:2px solid #d9e5ff;color:#173665;box-shadow:0 12px 30px #133b7812;transition:transform .15s,box-shadow .2s}
+.lesson-choice:hover{transform:translateY(-3px);box-shadow:0 20px 36px #133b7822}
+.lesson-choice-icon{font-size:2.3rem}.lesson-choice strong{font-size:1.4rem}.lesson-choice small{font-weight:500;color:#5a6c85}.lesson-choice>span:last-child{margin-top:auto;color:#244bb3;font-size:.93rem}
+.reading-panel{max-width:1000px;margin-left:auto;margin-right:auto}.reading-item{margin:16px 0;padding:18px;background:#f7faff;border:1px solid #dce8fd;border-radius:18px}.reading-item .jp{font-size:1.35rem;line-height:1.8}.reading-item .bn{margin:8px 0}
+.book-pager{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0 35px;padding:14px;background:#fff;border:1px solid #dce6f7;border-radius:20px;box-shadow:0 10px 20px #1532760d}.book-pager button{width:auto;min-height:48px}.book-prev{background:#eaf0ff;color:#26469a}.book-next{background:linear-gradient(120deg,#3558c6,#1595c1);color:white}
+@media(max-width:680px){.lesson-choice-grid{grid-template-columns:1fr;gap:12px}.lesson-choice{min-height:150px;padding:17px;gap:7px}.book-pager{padding:10px;gap:8px}.book-pager button{flex:1;padding:12px 7px;font-size:.89rem}}
+
+
+/* =============================================
+   JAPANESE AI EBOOK • PREMIUM DIGITAL BOOK DESIGN
+   Visual design only: lesson data / AI / quiz logic kept.
+============================================= */
+:root{
+  --ebook-navy:#152747;--ebook-indigo:#3b4fbd;--ebook-violet:#6c65ef;
+  --ebook-accent:#12a8a2;--ebook-milk:#f9fafc;--ebook-cream:#fffdf7;
+  --ebook-border:#e0e7f3;--ebook-muted:#6b7892;
+  --ebook-shadow:0 19px 50px rgba(22,41,79,.075);
+  --ebook-type-scale:1;
+  font-family:system-ui,-apple-system,'Noto Sans Bengali','Noto Sans JP',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:40px}
+body{min-width:0;max-width:100%;background:linear-gradient(180deg,#f7f9fe,#f2f5fc 68%,#eef3fb);color:var(--ebook-navy);font-feature-settings:'kern';-webkit-font-smoothing:antialiased}
+button{transition:background .16s ease,transform .16s ease,box-shadow .2s ease}
+button:focus-visible,a:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #7c8bfa;outline-offset:3px}
+button:active{transform:scale(.986)}
+.hidden{display:none!important}
+/* HEADER / top navigation */
+header.ebook-site-header{background:linear-gradient(120deg,#15284a 0%,#193962 58%,#17607a 100%);color:#fff;padding:19px clamp(15px,3vw,36px) 19px;text-align:left;border-bottom:1px solid #2a4a72;box-shadow:0 14px 34px rgba(18,41,78,.09)}
+header.ebook-site-header .book-brand{width:min(100%,1160px);margin:0 auto;font-size:.89rem;gap:12px;color:#dbeafe}
+header.ebook-site-header .book-brand span{display:inline-flex;align-items:center;gap:7px}
+header.ebook-site-header .book-home-link{background:#ffffff16;color:#fff;border:1px solid #ffffff42;border-radius:999px;padding:9px 15px}
+header.ebook-site-header .header-description{width:min(100%,1160px);margin:21px auto 16px}
+header .header-eyebrow{display:block;font-size:.69rem;letter-spacing:.19em;color:#a8f1ed;font-weight:800;margin-bottom:7px}
+header.ebook-site-header h1{font-size:clamp(1.55rem,3.5vw,2.6rem);line-height:1.29;letter-spacing:-.025em;font-weight:850;margin:0;color:#fff}
+header.ebook-site-header .header-description p{font-size:.95rem;color:#d3e3f7;opacity:1;margin:7px 0 0}
+header.ebook-site-header .nav{max-width:1160px;margin:0 auto;display:flex;gap:8px;justify-content:flex-start;flex-wrap:nowrap;padding:5px 0 11px;overflow-x:auto;scrollbar-width:none}
+header.ebook-site-header .nav button{background:#ffffff13;border:1px solid #ffffff30;color:#dff0ff;border-radius:11px;font-size:.91rem;font-weight:750;padding:10px 16px;white-space:nowrap}
+header.ebook-site-header .nav button.active,header.ebook-site-header .nav button:hover{background:#fff;color:#1f3a78;border-color:#fff}
+header.ebook-site-header .study-sound-settings{width:min(100%,1160px);max-width:1160px;margin:0 auto;box-shadow:none;border-radius:13px;padding:10px 14px;background:#ffffffed;border:1px solid #ffffff5d;color:#2e4365;gap:9px}
+header.ebook-site-header .study-sound-settings button{border-radius:9px;font-size:.8rem;padding:7px 11px}
+header.ebook-site-header .study-sound-status{font-size:.77rem;line-height:1.35;opacity:.85}
+/* READING CANVAS */
+.wrap{max-width:1210px;padding:24px clamp(12px,2.9vw,35px) 60px;margin:0 auto}
+.panel{border:1px solid #e1e7f0;border-radius:20px;box-shadow:var(--ebook-shadow);background:#fff;padding:clamp(17px,2.6vw,30px);margin:15px 0 18px}
+.panel h2{color:#243766;font-size:clamp(1.2rem,2.2vw,1.8rem);line-height:1.42;letter-spacing:-.015em}
+.panel p{line-height:1.77}
+/* FIRST PAGE: COVERS, ROADMAP, MENU */
+.book-home-page{display:block}
+.book-cover{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(270px,.78fr);min-height:395px;border-radius:27px;background:radial-gradient(ellipse at 85% 12%,#6f85e7 0%,transparent 37%),linear-gradient(115deg,#222f66 0%,#444fc5 62%,#5969dc 100%);color:#fff;box-shadow:0 30px 60px rgba(58,78,181,.23);border:1px solid rgba(255,255,255,.12);isolation:isolate;overflow:hidden;position:relative}
+.book-cover::after{content:'';position:absolute;inset:0;opacity:.22;background-image:radial-gradient(circle at 12px 12px,#fff 1px,transparent 1.6px);background-size:42px 42px;pointer-events:none}
+.book-cover-content{position:relative;z-index:2;padding:clamp(28px,4.1vw,57px);align-self:center}
+.cover-overline{font-size:.73rem;letter-spacing:.22em;color:#c5faff;font-weight:850}
+.book-cover h2{font-size:clamp(2.05rem,4.4vw,3.75rem);line-height:1.16;letter-spacing:-.03em;margin:17px 0}
+.book-cover h2 span{font-size:clamp(1.28rem,2.7vw,2.3rem);letter-spacing:-.01em;color:#fff}
+.book-cover p{font-size:clamp(.95rem,1.55vw,1.075rem);line-height:1.82;color:#e3eaff;max-width:640px}
+.cover-chips{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 23px}
+.cover-chips span{display:inline-flex;border-radius:999px;background:#ffffff19;border:1px solid #ffffff34;padding:7px 12px;color:#eef5ff;font-weight:750;font-size:.76rem}
+.cover-start{border-radius:12px;background:#fff!important;color:#283b87!important;border:1px solid #fff;padding:12px 19px!important;box-shadow:0 12px 25px #1c2a8e25!important;font-weight:850;min-height:48px;width:auto!important}
+.cover-start span{font-size:1.18rem;margin-left:8px}
+.cover-art{display:flex!important;align-items:center;justify-content:center;position:relative;z-index:1;min-height:330px;padding:15px 25px}
+.ebook-visual{width:290px;height:320px;position:relative;display:flex;align-items:center;justify-content:center}
+.ebook-shadow-book{position:absolute;transform:rotate(15deg) translate(32px,8px);width:205px;height:270px;border-radius:13px 22px 22px 13px;background:#8be0e7;border:7px solid #a9e9ef;box-shadow:16px 18px 0 rgba(12,29,107,.10)}
+.ebook-front-book{position:relative;transform:rotate(-7deg);width:203px;height:277px;border-radius:12px 20px 20px 12px;background:linear-gradient(135deg,#fffefd,#f0f5ff 100%);color:#2e4e9e;box-shadow:10px 20px 25px #14226755,4px 1px 0 #cad6f3,6px 1px 0 #7d98d3;border-left:11px solid #acd0ff;padding:19px 14px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;overflow:hidden}
+.ebook-front-book::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:#bfd2f4}
+.ebook-mini-label{font-size:.71rem;font-weight:850;letter-spacing:.18em;color:#607ac4}
+.ebook-giant-kana{font-size:7.15rem;font-weight:750;line-height:1;color:#3e55b3;text-shadow:2px 4px 0 #d8e4fb}
+.ebook-kana-bottom{font-size:.8rem;color:#6d83b7;letter-spacing:.13em}
+.ebook-mini-pill{background:#e2ebff;color:#3855af;padding:7px 11px;border-radius:999px;font-size:.59rem;font-weight:900;letter-spacing:.09em}
+.ebook-sparkle{position:absolute;color:#fef08a;font-size:2.2rem;font-weight:900;text-shadow:0 6px 25px #fef08a66}.ebook-star-one{right:-9px;top:50px}.ebook-star-two{left:10px;bottom:41px}
+.ebook-orbit{position:absolute;bottom:1px;right:3px;transform:rotate(10deg);font-size:.85rem;font-weight:850;color:#d3fffa;border:1px solid #ffffff63;border-radius:999px;padding:5px 12px;background:#a5d6fb22}
+.ebook-journey{display:flex;align-items:center;gap:18px;justify-content:space-between;background:#fff;border:1px solid #e2e8f4;box-shadow:0 12px 30px #18386f08;border-radius:20px;padding:20px 24px;margin:21px 0 9px}
+.ebook-journey-heading{max-width:280px;flex:0 0 27%}
+.ebook-journey-heading span{display:block;color:#5d6dd5;font-size:.63rem;font-weight:900;letter-spacing:.13em;margin-bottom:5px}
+.ebook-journey-heading strong{color:#243863;line-height:1.4;font-size:.95rem}
+.ebook-journey-items{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:7px}
+.ebook-journey-items span{font-size:.82rem;color:#536486;white-space:nowrap;font-weight:800}.ebook-journey-items b{display:inline-grid;place-items:center;width:26px;height:26px;background:#edf2ff;color:#3e55b0;border-radius:50%;font-size:.69rem;margin-right:4px}.ebook-journey-items i{display:block;height:1px;width:15px;background:#d4ddf0}
+.menu-intro{padding:28px 0 17px}.menu-intro .menu-eyebrow,.menu-eyebrow{font-size:.72rem;letter-spacing:.13em;color:#5c67c5;font-weight:900}.menu-intro h2{font-size:clamp(1.4rem,2.7vw,2.05rem);margin:5px 0 8px;color:#243863}.menu-intro p{color:#65738c}
+.book-menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.chapter-card{position:relative;display:flex;align-items:flex-start;flex-direction:column;min-height:246px;background:#fff;border:1px solid #dfe6f1;box-shadow:0 12px 32px #20396408;border-radius:21px;padding:24px;text-align:left;color:#26395d;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;overflow:hidden}
+.chapter-card::before{content:'';position:absolute;left:0;right:0;top:0;height:5px;background:#7b78f0}
+.chapter-card:nth-child(2)::before{background:#49c6ac}.chapter-card:nth-child(3)::before{background:#e5ad60}.chapter-card:nth-child(4)::before{background:#798be8}.chapter-card:nth-child(5)::before{background:#f18f9e}.chapter-card:nth-child(6)::before{background:#1aa4d2}
+.chapter-card:hover{transform:translateY(-5px);box-shadow:0 22px 42px #23396a18;border-color:#b6c5ec}
+.chapter-index{font-size:.66rem;font-weight:900;letter-spacing:.1em;color:#71819c}
+.chapter-icon{width:57px;height:57px;display:grid;place-items:center;border-radius:16px;background:#f0efff;font-size:1.8rem;margin:15px 0 14px}
+.chapter-card:nth-child(2) .chapter-icon{background:#e7f9f3}.chapter-card:nth-child(3) .chapter-icon{background:#fff4e5}.chapter-card:nth-child(4) .chapter-icon{background:#edf1ff}.chapter-card:nth-child(5) .chapter-icon{background:#ffecf1}.chapter-card:nth-child(6) .chapter-icon{background:#e3f8ff}
+.chapter-card strong{font-size:1.2rem;font-weight:850;color:#1d3155;line-height:1.25}.chapter-card small{color:#65738b;line-height:1.65;font-size:.88rem;font-weight:550;margin:9px 0}.chapter-action{display:block;margin-top:auto;padding-top:14px;color:#445dcc;font-weight:850;font-size:.87rem}
+.chapter-ai{background:linear-gradient(145deg,#f7fcff,#eef5ff);border-color:#d4e8ff}
+/* LESSON PICKER + READING */
+.lesson-picker{max-width:1050px;margin:18px auto 30px;padding:clamp(20px,3.1vw,40px)}
+.lesson-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+.lesson-choice{background:linear-gradient(160deg,#fff,#f7faff);border:1px solid #dfe7f6;border-radius:22px;padding:27px;min-height:220px;color:#243a66;box-shadow:0 12px 28px #142e6b0c}
+.lesson-choice:hover{border-color:#9eb4f5;transform:translateY(-3px);box-shadow:0 20px 40px #1d41971c}.lesson-choice-icon{font-size:2.3rem}.lesson-choice strong{font-size:1.45rem;color:#263d8d}.lesson-choice small{color:#65748d;line-height:1.6}
+.book-breadcrumb{margin:5px 0 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#71819b}.book-breadcrumb button{background:#e9efff;color:#3852a8;border:1px solid #d7e3ff;border-radius:12px;padding:9px 14px;width:auto!important}
+.book-pager{border:1px solid #e0e7f3;background:#fff;border-radius:18px;padding:14px;box-shadow:0 12px 28px #18366c0a}.book-pager button{min-height:48px;border-radius:12px;width:auto!important}.book-next{background:linear-gradient(125deg,#4a56be,#3689bd);color:#fff}
+.ebook-reader-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:52px;padding:11px 16px;background:#fff;border:1px solid #e0e8f6;border-radius:14px;margin:6px 0 16px;color:#5f7193;font-size:.82rem;font-weight:700}
+.ebook-reader-actions{display:flex;align-items:center;gap:6px}.ebook-reader-actions button{padding:6px 10px;min-width:45px;width:auto!important;border-radius:9px;background:#f0f3ff;color:#4055a4;font-weight:850}.ebook-reader-actions span{min-width:41px;text-align:center;color:#3c5076}
+#words .word,#learn .grammar,#reading .reading-item{border-radius:16px;background:#fff;border:1px solid #e1e9f6;box-shadow:0 6px 18px #233f8508}
+#words .vocab{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+#words .word{padding:16px}.jp{font-size:calc(1.22rem * var(--ebook-type-scale));line-height:1.72;overflow-wrap:anywhere}.word .jp{font-size:calc(1.24rem * var(--ebook-type-scale))}
+#learn .ex{background:#f6f9ff;border:1px solid #e6edf9;border-radius:14px;padding:16px}
+.reading-panel{background:#fffefd}.reading-item{padding:18px 22px;margin:13px 0}.reading-item .jp{font-size:calc(1.37rem * var(--ebook-type-scale))}.reading-item .bn{margin:8px 0}
+#basics .basic-table{width:100%;min-width:440px}.table-scroll{overflow:auto;border-radius:13px;border:1px solid #e2e9f6}.basic-table th{background:#eff3ff;color:#30447b}.basic-table td{background:#fff}.basic-table .kana{font-size:calc(1.36rem * var(--ebook-type-scale))}
+#ai .ai-msg{line-height:1.78}
+/* mobile dock */
+.ebook-mobile-dock{display:none}
+/* tablet */
+@media(max-width:1000px){.book-cover{grid-template-columns:minmax(0,1fr) minmax(220px,.6fr)}.book-cover-content{padding:32px}.book-menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ebook-journey{align-items:flex-start;flex-direction:column}.ebook-journey-heading{max-width:none}.ebook-journey-items{justify-content:flex-start}#words .vocab{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){
+  header.ebook-site-header{padding:13px 14px 14px}header.ebook-site-header .header-description{margin:14px auto 11px}header.ebook-site-header h1{font-size:1.42rem}header.ebook-site-header .header-description p{font-size:.8rem}
+  header.ebook-site-header .nav{gap:6px;padding-bottom:8px}header.ebook-site-header .nav button{padding:8px 11px;font-size:.78rem}
+  header.ebook-site-header .study-sound-settings{padding:9px;gap:7px}header.ebook-site-header .study-sound-settings label{font-size:.78rem}header.ebook-site-header .study-sound-settings input[type=range]{width:100px}header.ebook-site-header .study-sound-status{display:none}
+  .wrap{padding:14px 12px calc(108px + env(safe-area-inset-bottom))}
+  .book-cover{grid-template-columns:minmax(0,1fr);min-height:0;border-radius:24px}.book-cover-content{padding:30px 25px 26px}.book-cover h2{font-size:2rem;margin:14px 0}.book-cover h2 span{font-size:1.5rem}.book-cover p{font-size:.91rem}.cover-chips{gap:6px;margin:17px 0 18px}.cover-chips span{font-size:.7rem;padding:6px 10px}.cover-art{display:none!important}
+  .ebook-journey{padding:17px;margin:14px 0 0;border-radius:16px;gap:12px}.ebook-journey-items{gap:8px}.ebook-journey-items i{display:none}.ebook-journey-items span{font-size:.75rem}.ebook-journey-items b{width:24px;height:24px}
+  .menu-intro{padding:24px 1px 15px}.book-menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .chapter-card{padding:17px;min-height:213px;border-radius:17px}.chapter-icon{width:48px;height:48px;margin:11px 0 10px;font-size:1.5rem}.chapter-card strong{font-size:1.04rem}.chapter-card small{font-size:.8rem;margin:6px 0}.chapter-index{font-size:.59rem}.chapter-action{font-size:.77rem}
+  .lesson-choice-grid{grid-template-columns:1fr;gap:11px}.lesson-choice{min-height:145px;padding:20px}.lesson-choice strong{font-size:1.23rem}
+  .panel{padding:17px;margin:13px 0}.book-pager{gap:9px;padding:11px}.book-pager button{flex:1;font-size:.87rem;white-space:normal}#words .vocab{grid-template-columns:1fr}
+  .ebook-mobile-dock{position:fixed;display:flex;bottom:0;left:0;right:0;z-index:75;align-items:stretch;justify-content:space-around;gap:2px;background:#ffffffeb;border-top:1px solid #dae5f4;box-shadow:0 -12px 28px #1a33621b;backdrop-filter:blur(18px);padding:9px 8px calc(9px + env(safe-area-inset-bottom));}
+  .ebook-mobile-dock button{min-width:0;flex:1;display:flex;align-items:center;flex-direction:column;gap:0;background:none;border:none;color:#71819f;font-size:.8rem;font-weight:750;padding:5px 1px 3px;border-radius:10px}
+  .ebook-mobile-dock button span{font-family:system-ui,'Noto Sans JP',sans-serif;font-size:1.26rem;line-height:1.3}.ebook-mobile-dock button small{font-size:.67rem}.ebook-mobile-dock button.active{color:#4559c5;background:#eef2ff}
+  body.ai-fullscreen .ebook-mobile-dock{display:none!important}
+}
+@media(max-width:400px){.chapter-card{padding:14px;min-height:216px}.chapter-index{font-size:.54rem}.book-cover-content{padding:25px 20px}.book-cover h2{font-size:1.72rem}.book-cover h2 span{font-size:1.28rem}.ebook-reader-label{font-size:.68rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.chapter-card,.lesson-choice,button{transition:none!important}}
+
+
+/* HOME SCREEN: category menu only, one viewport. Lessons remain scrollable. */
+body.ebook-home-only{height:100dvh;overflow:hidden;display:flex;flex-direction:column}
+body.ebook-home-only header.ebook-site-header{flex:0 0 auto;padding:12px clamp(12px,3vw,32px)!important;background:linear-gradient(120deg,#122a53,#126888)!important}
+body.ebook-home-only header .header-description,
+body.ebook-home-only header .nav,
+body.ebook-home-only header #studySoundPanel{display:none!important}
+body.ebook-home-only header .book-brand{max-width:1100px;margin:auto;min-height:42px}
+body.ebook-home-only header .book-home-link{display:none!important}
+body.ebook-home-only .wrap{flex:1;min-height:0;width:min(100%,1100px);overflow:hidden;padding:clamp(10px,2vh,18px) clamp(12px,3vw,24px)!important;margin:0 auto!important;display:flex;flex-direction:column}
+body.ebook-home-only #home{display:flex!important;flex:1;min-height:0;flex-direction:column}
+body.ebook-home-only #home .book-cover,
+body.ebook-home-only #home .ebook-journey{display:none!important}
+body.ebook-home-only #home .menu-intro{flex:0 0 auto;padding:0 2px clamp(9px,1.5vh,18px)!important;text-align:center}
+body.ebook-home-only #home .menu-intro h2{font-size:clamp(1.18rem,2.4vw,1.9rem);margin:2px 0!important}
+body.ebook-home-only #home .menu-intro p{font-size:clamp(.8rem,1.5vw,1rem);line-height:1.35;margin:2px 0!important}
+body.ebook-home-only #home .book-menu-grid{flex:1;min-height:0;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(8px,1.3vw,15px)!important}
+body.ebook-home-only #home .chapter-card{height:100%;min-height:0!important;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(9px,1.5vw,20px)!important;gap:clamp(3px,.65vh,7px)}
+body.ebook-home-only #home .chapter-index,
+body.ebook-home-only #home .chapter-action{display:none!important}
+body.ebook-home-only #home .chapter-icon{margin:0!important;width:auto!important;height:auto!important;padding:0!important;background:none!important;font-size:clamp(1.8rem,3vw,2.6rem)!important}
+body.ebook-home-only #home .chapter-card strong{font-size:clamp(.98rem,1.8vw,1.34rem);line-height:1.2}
+body.ebook-home-only #home .chapter-card small{font-size:clamp(.7rem,1.2vw,.92rem);line-height:1.3;margin:0!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+body.ebook-home-only footer{display:none!important}
+@media(max-width:720px){
+ body.ebook-home-only .ebook-mobile-dock{display:none!important}
+ body.ebook-home-only #home .book-menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr))}
+ body.ebook-home-only #home .menu-intro .menu-eyebrow{font-size:.65rem}
+ body.ebook-home-only header.ebook-site-header .book-brand{font-size:1rem!important}
+ body.ebook-home-only #home .chapter-card{border-radius:18px!important}
+ body.ebook-home-only #home .chapter-icon{font-size:clamp(1.7rem,4.7vh,2.45rem)!important}
+}
+@media(max-height:670px){
+ body.ebook-home-only #home .menu-intro p{display:none!important}
+ body.ebook-home-only #home .chapter-card small{display:none!important}
+ body.ebook-home-only #home .chapter-icon{font-size:1.65rem!important}
+ body.ebook-home-only #home .menu-intro{padding-bottom:6px!important}
+}
+
+/* Home page: compact, tappable list, no oversized cards or page scroll. */
+body.ebook-home-only .wrap{width:min(100%,760px)!important;padding:clamp(10px,2vh,20px) 14px!important}
+body.ebook-home-only #home{justify-content:center!important;gap:clamp(10px,2vh,18px)!important}
+body.ebook-home-only .simple-book-heading{text-align:center;flex:0 0 auto}
+body.ebook-home-only .simple-book-kicker{font-size:.68rem;letter-spacing:.13em;color:#536db1;font-weight:900}
+body.ebook-home-only .simple-book-heading h2{font-size:clamp(1.35rem,3vw,1.9rem)!important;color:#172e58;margin:4px 0!important}
+body.ebook-home-only .simple-book-heading p{color:#60718e;font-size:clamp(.79rem,1.6vw,.96rem);margin:0}
+body.ebook-home-only .simple-menu-list{flex:0 1 auto;min-height:0;display:grid;grid-template-columns:1fr;gap:clamp(6px,1.25vh,10px)}
+body.ebook-home-only .simple-menu-list button{display:flex!important;flex-direction:row!important;align-items:center!important;text-align:left!important;gap:13px!important;min-height:0!important;padding:clamp(9px,1.5vh,14px) clamp(12px,2.5vw,18px)!important;border-radius:16px!important;background:#fff!important;color:#1b3154!important;border:1px solid #dbe5f5!important;box-shadow:0 4px 14px rgba(28,57,112,.055)!important;width:100%!important;position:relative}
+body.ebook-home-only .simple-menu-icon{display:flex;justify-content:center;align-items:center;flex-shrink:0;width:clamp(36px,5.6vh,46px);height:clamp(36px,5.6vh,46px);font-size:clamp(1.18rem,2.5vh,1.5rem);border-radius:12px;background:#eef3ff}
+body.ebook-home-only .simple-menu-text{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+body.ebook-home-only .simple-menu-text strong{font-size:clamp(.96rem,2.2vh,1.13rem)!important;color:#1a2e51;line-height:1.18}
+body.ebook-home-only .simple-menu-text small{font-size:clamp(.71rem,1.55vh,.84rem)!important;color:#667897;line-height:1.2}
+body.ebook-home-only .simple-menu-arrow{font-size:1.75rem;color:#5a6fe5;line-height:1;flex-shrink:0}
+body.ebook-home-only .simple-menu-list button:hover{border-color:#a8b9ef!important;background:#f9fbff!important}
+@media(max-height:570px){body.ebook-home-only .simple-book-heading p{display:none}body.ebook-home-only .simple-menu-list button{padding:6px 10px!important;gap:9px!important}body.ebook-home-only .simple-menu-icon{width:29px;height:29px;font-size:1rem}body.ebook-home-only .simple-menu-list{gap:4px}}
+
+/* Japanese Ai Ebook: book-matched full screen cover before the lesson index */
+body.ebook-cover-only{height:100dvh;overflow:hidden;background:#071736}
+body.ebook-cover-only header.ebook-site-header,body.ebook-cover-only footer,body.ebook-cover-only .ebook-mobile-dock{display:none!important}
+body.ebook-cover-only main.wrap{height:100dvh;max-width:none;width:100%;margin:0;padding:0!important;overflow:hidden}
+body.ebook-cover-only #cover{display:flex;align-items:center;justify-content:center;position:relative;width:100%;height:100dvh;overflow:hidden;padding:clamp(16px,4vw,32px);background:radial-gradient(circle at 80% 34%,#2052a4 0%,transparent 42%),linear-gradient(155deg,#05122e 0%,#082759 55%,#182b78 100%);color:#fff}
+.sakura-sky{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.sakura-sky span{position:absolute;color:#edb8db;opacity:.43;font-size:2.7rem}.sakura-sky span:nth-child(1){left:7%;top:14%}.sakura-sky span:nth-child(2){left:83%;top:14%;color:#d1f8ff}.sakura-sky span:nth-child(3){right:6%;bottom:18%}.sakura-sky span:nth-child(4){left:10%;bottom:15%;color:#d1f8ff}.sakura-sky span:nth-child(5){right:20%;top:48%}
+.sakura-hero-inner{position:relative;z-index:1;width:min(100%,560px);max-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(8px,1.8vh,18px)}
+.sakura-jp-greeting{color:#a5efff;font-weight:900;font-size:clamp(1.1rem,2.9vh,1.65rem)}.sakura-jp-greeting small{display:block;color:#e9e5ff;font-size:.65em;font-weight:600}
+.sakura-book-art{position:relative;flex:0 1 auto;display:grid;place-items:center;width:clamp(128px,27vh,240px);height:clamp(116px,24vh,210px);border-radius:48%;background:radial-gradient(circle,#3296ce69 0%,#2542ac22 60%,transparent 73%)}
+.sakura-robot{font-size:clamp(76px,15vh,138px);filter:drop-shadow(0 12px 22px #020c2d)}.sakura-open-book{position:absolute;bottom:-5%;right:16%;font-size:clamp(44px,9vh,86px);filter:drop-shadow(0 12px 10px #020c2d)}.sakura-floating{position:absolute;top:0;right:2%;font-size:clamp(30px,5vh,50px)}
+.sakura-brand-title{display:flex;flex-direction:column;line-height:1.02;text-shadow:0 6px 20px #030e3488}.sakura-brand-title span{font-size:clamp(1.3rem,4vw,2.1rem);font-weight:1000;letter-spacing:.14em;color:#c5ecff}.sakura-brand-title strong{font-size:clamp(2.45rem,8.5vw,4.8rem);font-weight:1000;letter-spacing:-.045em;background:linear-gradient(90deg,#fff,#a6ebff,#d5b4ff);-webkit-background-clip:text;background-clip:text;color:transparent}.sakura-brand-title small{font-size:clamp(.81rem,2vw,1.05rem);color:#e3eaff;margin-top:9px;font-weight:600;letter-spacing:.08em}
+.sakura-hero-inner h2{font-size:clamp(1.2rem,3.1vw,1.85rem);color:#fff;margin:4px 0 0;line-height:1.25}.sakura-hero-inner p{max-width:460px;margin:0;color:#c5d8f6;font-size:clamp(.84rem,2vw,1.02rem);line-height:1.65}
+.sakura-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}.sakura-pills span{padding:7px 11px;background:#ffffff18;border:1px solid #ffffff42;border-radius:99px;color:#e6f7ff;font-size:clamp(.75rem,1.6vw,.9rem);font-weight:750}
+body.ebook-cover-only .sakura-start{width:min(100%,400px)!important;min-height:clamp(52px,7vh,72px);border:1.5px solid #b5f5ff;background:linear-gradient(100deg,#0ec8dc,#1b63fb);color:#fff;border-radius:23px;font-size:clamp(1.22rem,2.8vw,1.65rem);font-weight:950;box-shadow:0 10px 30px #15aee866}
+.sakura-cover-foot{font-size:clamp(.74rem,1.7vw,.88rem);color:#a8c6eb;font-weight:650}
+@media(max-height:660px){.sakura-hero-inner{gap:5px}.sakura-book-art{height:93px;width:115px}.sakura-robot{font-size:68px}.sakura-open-book{font-size:40px}.sakura-hero-inner p{font-size:.79rem;line-height:1.4}.sakura-cover-foot{display:none}}
+@media(prefers-reduced-motion:reduce){.sakura-start{transition:none}}
+
+
+/* Interactive illustrated Japanese Ai Ebook cover + contents (no baked-in image text). */
+body.ebook-cover-only,body.ebook-home-only{background:#071638!important}
+body.ebook-cover-only header,body.ebook-home-only header,body.ebook-cover-only footer,body.ebook-home-only footer,body.ebook-cover-only .ebook-mobile-dock,body.ebook-home-only .ebook-mobile-dock{display:none!important}
+body.ebook-cover-only main.wrap{height:100dvh;overflow:hidden;padding:0!important;max-width:none!important;margin:0!important}
+body.ebook-home-only main.wrap{max-width:960px!important;width:100%!important;padding:0 14px 24px!important;margin:auto!important}
+body.ebook-cover-only #cover{min-height:100dvh;height:100dvh;padding:10px 18px calc(16px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 42%,#235ca8 0%,#0a2466 51%,#050b2e 100%)}
+#cover:before,#home:before{content:'✿ · ✦ · ✧ · ✿ · ✦ · ✧ · ✿';position:absolute;inset:4% 0 auto;text-align:center;color:#e2b2f9;opacity:.43;letter-spacing:1.7rem;pointer-events:none}
+.new-cover-inner{position:relative;z-index:2;width:min(100%,520px);height:100%;max-height:920px;min-height:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:clamp(8px,1.8vh,18px);text-align:center}
+.cover-welcome{color:#ccfaff;font-size:clamp(1.25rem,3vh,1.9rem);font-weight:900}.cover-welcome span{display:block;margin-top:5px;font-size:.64em;color:#d5e6ff}
+.cover-illustration{width:min(100%,425px);flex:1 1 auto;min-height:80px;max-height:47vh;border-radius:25px;background:linear-gradient(180deg,transparent 70%,#14245b 100%),url('assets/japanese-robot.webp') center 44%/cover no-repeat;box-shadow:0 20px 50px #030d3977;mask-image:linear-gradient(to bottom,transparent 0%,black 7%,black 87%,transparent 100%)}
+.cover-brand{font-weight:1000;color:#fff;font-size:clamp(2rem,5.5vh,4.2rem);line-height:1.03;text-shadow:0 3px 20px #061336}.cover-brand em{display:block;font-style:normal;background:linear-gradient(90deg,#fb98d8,#f6e7ff,#75deff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cover-description{color:#e6f2ff;font-size:clamp(.95rem,2vh,1.2rem);margin:0!important;max-width:100%}
+.cover-quick-topics{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}.cover-quick-topics span{padding:7px 10px;color:#eaf4ff;border:1px solid #9ccaff78;border-radius:99px;background:#ffffff19;font-size:clamp(.72rem,1.55vh,.9rem);font-weight:800}
+body.ebook-cover-only #cover .sakura-start{width:min(100%,410px)!important;padding:12px 18px;min-height:56px;flex:0 0 auto;border-radius:99px!important;background:linear-gradient(100deg,#07cce2,#2078ff)!important;color:#fff;border:2px solid #91eeff;box-shadow:0 0 30px #12bdff80;font-size:clamp(1.25rem,2.6vh,1.65rem)}
+.cover-benefits{color:#c7dbff;font-size:clamp(.75rem,1.4vh,.9rem)}
+body.ebook-home-only #home{display:block!important;min-height:100dvh;max-height:none!important;overflow:visible!important;height:auto!important;padding:12px 0 22px!important;background:transparent!important;color:#fff}
+#home:before{display:none}
+.new-menu-banner{height:clamp(180px,30vh,290px);border-radius:0 0 26px 26px;position:relative;background:linear-gradient(90deg,#071a41dd,#071a4140),url('assets/japanese-banner.webp') center 44%/cover no-repeat;border:1px solid #3b6eab7c;box-shadow:0 18px 32px #02092766;overflow:hidden}
+.new-menu-heading{position:absolute;bottom:0;left:0;right:0;padding:40px 20px 18px;background:linear-gradient(0deg,#09143df7,#07163300);text-align:left}.new-menu-name{font-size:clamp(1.3rem,4vw,2rem);font-weight:1000;letter-spacing:-.025em;color:#fff;text-shadow:0 4px 12px #07132d}.new-menu-heading p{color:#cdefff;margin:3px 0;font-size:.85rem}.new-menu-heading h2{font-size:clamp(1.15rem,3.8vw,1.7rem)!important;color:#fff!important;margin:7px 0 0!important}.new-menu-heading>span{font-size:.85rem;color:#cbdbff}
+.new-menu-cards{display:grid;grid-template-columns:1fr;gap:11px;margin:16px auto 0;max-width:820px}
+body.ebook-home-only .new-menu-card{display:flex;flex-direction:row;align-items:center;gap:13px;width:100%;min-width:0;min-height:87px;padding:13px!important;border-radius:19px!important;border:1.5px solid var(--menu-line,#a35fff)!important;background:linear-gradient(110deg,var(--menu-bg,#34185f),#071944f0)!important;box-shadow:0 7px 22px #0107287d;color:white!important;text-align:left!important}
+.new-menu-card .menu-main-hit{display:flex;align-items:center;flex-direction:row;gap:13px;text-align:left;background:none!important;border:0!important;box-shadow:none!important;padding:0!important;width:100%;color:#fff;min-width:0}
+.new-menu-icon{display:grid;place-items:center;width:57px;height:57px;flex:0 0 57px;border-radius:17px;background:#ffffffd9;font-size:1.9rem;color:#182447}
+.new-menu-info{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}.new-menu-info strong{font-size:clamp(1.09rem,2.5vw,1.45rem);line-height:1.2;color:#fff}.new-menu-info strong small{font-size:.67em;color:#e4f1ff}.new-menu-info>span{font-size:clamp(.78rem,1.9vw,.95rem);line-height:1.4;color:#eff5ff}.new-menu-card b{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;background:var(--menu-line,#a35fff);border-radius:50%;font-size:1.9rem;line-height:1}
+.new-menu-card.menu-words,.new-menu-card.menu-grammar{display:block!important;padding:12px!important}.menu-lesson-links{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 0 70px}.menu-lesson-links button{background:#092c67b8!important;border:1px solid #91c0ff91!important;color:#fff!important;padding:7px 13px!important;border-radius:99px;font-size:.83rem}
+.menu-basic{--menu-line:#e44cca;--menu-bg:#441058}.menu-words{--menu-line:#05c7c2;--menu-bg:#044854}.menu-grammar{--menu-line:#eb9f36;--menu-bg:#4a2b22}.menu-reading{--menu-line:#ab50fa;--menu-bg:#311259}.menu-quiz{--menu-line:#fc51b3;--menu-bg:#4f134e}.menu-ai{--menu-line:#17bffd;--menu-bg:#063f7f}
+.menu-back-cover{display:block;margin:15px auto 0;border:1px solid #a4c6ff7a;background:#ffffff1a;color:white;padding:10px 18px;border-radius:99px}
+@media(min-width:780px){.new-menu-cards{grid-template-columns:1fr 1fr}.new-menu-banner{height:300px}.new-menu-card{min-height:112px!important}.new-menu-icon{width:65px;height:65px;flex-basis:65px}}
+@media(max-width:450px){.new-menu-banner{height:200px}.new-menu-card{min-height:77px!important}.new-menu-icon{width:48px;height:48px;flex-basis:48px;font-size:1.55rem}.new-menu-card .menu-main-hit{gap:11px}.menu-lesson-links{margin-left:61px}.cover-illustration{max-height:39vh}.cover-brand{font-size:clamp(2.1rem,5.3vh,3.1rem)}}
+@media(max-height:650px){.cover-illustration{max-height:34vh}.new-cover-inner{gap:6px}.cover-benefits{display:none}}
+
+/* Matching illustrated cover and chapter menu - real HTML buttons, not image hotspots */
+body.ebook-cover-only,body.ebook-home-only{background:#06173e!important;color:#fff}
+body.ebook-cover-only .wrap,body.ebook-home-only .wrap{background:transparent}
+body.ebook-cover-only #cover{display:block!important;padding:0!important;overflow:hidden!important;background:#061536!important;height:100dvh!important;min-height:100dvh!important}
+.illustrated-cover{height:100%;max-width:950px;margin:0 auto;position:relative;display:flex;flex-direction:column;overflow:hidden;background:radial-gradient(circle at 50% 47%,#234fa5,#061338 79%);color:white}
+.cover-artscape{flex:1 1 47%;min-height:0;position:relative;background:linear-gradient(0deg,#06153b 0%,#06153b00 29%),url('assets/japanese-robot.webp') center 48% / cover no-repeat}
+.cover-hello,.cover-speak{position:absolute;text-shadow:0 3px 15px #061537d8;font-weight:900;color:#fff}
+.cover-hello{top:4%;left:5%;font-size:clamp(1.4rem,4vw,2.15rem);transform:rotate(-7deg);color:#b9eaff}
+.cover-speak{top:9%;right:4%;font-size:clamp(.8rem,2vw,1.15rem);padding:7px 12px;border-radius:22px;background:#ffffffec;color:#1c3a7a;text-shadow:none}
+.illustrated-cover-copy{flex:0 1 auto;min-height:0;display:flex;flex-direction:column;gap:clamp(7px,1.15vh,15px);align-items:center;padding:0 17px max(14px,env(safe-area-inset-bottom));text-align:center;justify-content:center;z-index:1}
+.illustrated-cover-copy h1{margin:0;font-weight:1000;font-size:clamp(2.1rem,6.5vh,5.2rem);line-height:.94;letter-spacing:-.05em;color:#fff;text-shadow:0 5px 20px #0007}
+.illustrated-cover-copy h1 span{display:block;letter-spacing:-.035em;background:linear-gradient(90deg,#f5c3ff,#fff,#7de8ff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.illustrated-cover-copy>p{font-weight:700;margin:0;color:#dfeeff;font-size:clamp(.86rem,1.9vh,1.18rem)}
+.cover-feature-grid{width:100%;max-width:575px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:5px 0}
+.cover-feature-grid>.cover-feature-button{min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px}
+.round-feature{width:clamp(42px,7.4vh,78px);height:clamp(42px,7.4vh,78px);border-radius:50%;display:grid;place-items:center;border:1.5px solid #ffffff80;font-size:clamp(1.35rem,3.5vh,2.35rem);box-shadow:0 0 22px #0dd0ff48,inset 0 0 15px #ffffff2a}
+.round-feature.pink{background:linear-gradient(150deg,#fa5cbd,#8d218b)}.round-feature.green{background:linear-gradient(150deg,#18d9a4,#067362)}.round-feature.amber{background:linear-gradient(150deg,#ffce50,#b96109)}.round-feature.violet{background:linear-gradient(150deg,#ac69ff,#5923c3)}
+.cover-feature-grid strong{font-size:clamp(.69rem,1.65vh,1rem)}.cover-feature-grid small{font-size:clamp(.58rem,1.33vh,.81rem);line-height:1.2;color:#cddcfb}
+body.ebook-cover-only .illustrated-start{width:min(100%,520px)!important;min-height:clamp(46px,6.3vh,70px)!important;border-radius:999px!important;background:linear-gradient(100deg,#1ae4f3,#2371ff)!important;border:2px solid #94fcff!important;color:#fff!important;font-size:clamp(1.18rem,3vh,2rem)!important;font-weight:950!important;box-shadow:0 0 22px #16c9ff88!important}
+.cover-support-line{width:100%;display:flex;justify-content:space-around;gap:8px;color:#d1e7ff;font-size:clamp(.57rem,1.35vh,.84rem);font-weight:700}
+body.ebook-home-only{height:auto!important;overflow-y:auto!important}
+body.ebook-home-only main.wrap{max-width:1060px!important;padding:0 12px 28px!important;overflow:visible!important;width:100%!important}
+body.ebook-home-only #home{display:block!important;height:auto!important;overflow:visible!important;min-height:100dvh!important;padding:0 0 30px!important}
+.illustrated-menu-hero{position:relative;height:clamp(215px,32vh,355px);border-radius:0 0 30px 30px;background:linear-gradient(0deg,#08163b 0%,transparent 46%),url('assets/japanese-banner.webp') center 50% / cover no-repeat;overflow:hidden;border:1px solid #687ceb68}
+.menu-home-btn{position:absolute;right:14px;top:18px;z-index:2;border:1px solid #b9e8ff9c;border-radius:999px;color:#fff;background:#0c255aaa;padding:9px 17px;font-size:.9rem}
+.menu-hero-copy{position:absolute;left:clamp(15px,4vw,38px);right:10px;bottom:15px;text-align:left;text-shadow:0 2px 12px #000d}
+.menu-hero-copy h1{font-size:clamp(2rem,5vw,3.5rem);line-height:.95;color:#fff;letter-spacing:-.045em;margin:0 0 9px}.menu-hero-copy h1 span{background:linear-gradient(90deg,#ffb7e5,#91edff);background-clip:text;-webkit-background-clip:text;color:transparent}.menu-hero-copy p{font-size:clamp(.75rem,2vw,1rem);color:#edf4ff;margin:0}
+.illustrated-menu-title{text-align:center;padding:15px 8px 12px}.illustrated-menu-title h2{color:#fff;font-size:clamp(1.25rem,3vw,2rem);margin:0 0 4px}.illustrated-menu-title p{margin:0;color:#d5e2ff;font-size:clamp(.77rem,1.75vw,1rem)}
+.illustrated-cards{display:grid;grid-template-columns:1fr;gap:10px;max-width:760px;margin:auto}
+body.ebook-home-only .illustrated-card{display:flex;align-items:center;gap:13px;min-width:0;width:100%;min-height:90px;padding:12px 14px!important;border:1.5px solid var(--tone)!important;border-radius:19px!important;box-shadow:0 6px 24px #0008,inset 0 0 22px #ffffff08!important;color:#fff!important;text-align:left!important;background:linear-gradient(110deg,var(--pane),#091c4ff0)!important}
+body.ebook-home-only .illustrated-card .illustrated-main-button{display:flex;align-items:center;gap:13px;width:100%;min-width:0;padding:0!important;text-align:left!important;border:0!important;box-shadow:none!important;background:none!important;color:#fff!important}
+.illustrated-card.word-card,.illustrated-card.grammar-card{display:block!important}
+.illustrated-icon{display:grid;place-items:center;flex:0 0 61px;width:61px;height:61px;border-radius:16px;background:#f6f5ff;color:#182a55;font-size:2rem;box-shadow:0 3px 13px #0002}
+.illustrated-info{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}.illustrated-info strong{font-size:clamp(1.05rem,2.6vw,1.5rem);font-weight:900;line-height:1.1}.illustrated-info strong small{font-size:.65em;color:#f3ecff}.illustrated-info>span{font-size:clamp(.8rem,1.8vw,1rem);line-height:1.34;color:#f0f4ff}
+.card-chevron{display:grid;place-items:center;width:39px;height:39px;flex:0 0 39px;border-radius:50%;font-size:2rem;line-height:1;border:1px solid #ffffffaa;background:var(--tone);box-shadow:0 0 16px var(--tone)}
+.illustrated-lessons{display:flex;gap:9px;flex-wrap:wrap;margin:8px 0 0 74px}
+body.ebook-home-only .illustrated-lessons button{width:auto!important;color:#fff!important;border:1px solid #87bfff7f;background:#174078b8!important;border-radius:999px;font-size:.81rem;padding:6px 12px!important;box-shadow:none}
+.basic-card{--tone:#f14fcb;--pane:#431051}.word-card{--tone:#00c7bd;--pane:#074c58}.grammar-card{--tone:#f6a034;--pane:#4e2b25}.reading-card{--tone:#b05afa;--pane:#391665}.quiz-card{--tone:#f13ca9;--pane:#4b104e}.ai-card{--tone:#0cc4fe;--pane:#0a4b90}
+body.ebook-home-only .illustrated-card:hover{filter:brightness(1.13)}
+@media(min-width:960px){.illustrated-cards{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}.illustrated-menu-hero{height:345px}.illustrated-card{min-height:128px!important}.illustrated-cover{max-width:1120px}.cover-artscape{flex-basis:50%}}
+@media(max-width:600px){.illustrated-menu-hero{height:clamp(190px,25vh,260px)}.illustrated-card{padding:10px!important}.illustrated-icon{width:53px;height:53px;flex-basis:53px;font-size:1.65rem}.illustrated-lessons{margin-left:66px}.illustrated-cover-copy{gap:clamp(6px,1.1vh,12px)}.cover-artscape{flex-basis:46%}}
+@media(max-height:670px){.cover-hello,.cover-speak{display:none}.cover-artscape{flex-basis:43%}.illustrated-cover-copy{gap:4px}.cover-support-line{display:none}.cover-feature-grid{margin:2px 0}}
+
+/* ============================================================
+   JAPANESE AI EBOOK - FINAL SAKURA NIGHT INTERFACE
+   Splash => Start Now => six interactive menu cards => lessons
+   This theme affects only the cover and menu, not lesson content.
+   ============================================================ */
+:root{--sakura-night:#070d3b;--sakura-blue:#071e64;--sakura-sky:#76e5ff}
+body.ebook-cover-only,body.ebook-home-only{background:#06123c!important;color:#fff}
+body.ebook-cover-only header.ebook-site-header,body.ebook-home-only header.ebook-site-header{display:none!important}
+body.ebook-cover-only footer,body.ebook-home-only footer{display:none!important}
+body.ebook-cover-only{height:100dvh!important;min-height:100dvh!important;overflow:hidden!important}
+body.ebook-cover-only main.wrap{width:100%!important;max-width:none!important;height:100dvh!important;min-height:0!important;padding:0!important;margin:0!important;overflow:hidden!important}
+body.ebook-cover-only #cover{display:block!important;width:100%;height:100dvh!important;min-height:0!important;padding:0!important;margin:0!important;overflow:hidden!important}
+body.ebook-cover-only .illustrated-cover{height:100%;max-width:1100px!important;width:100%;background:radial-gradient(ellipse at 58% 28%,#19398f 0%,#11165a 52%,#070c38 94%)!important;position:relative;isolation:isolate}
+body.ebook-cover-only .illustrated-cover:before{content:'🌸';position:absolute;top:-22px;left:-15px;font-size:clamp(64px,13vw,130px);opacity:.55;pointer-events:none;z-index:3;filter:drop-shadow(0 0 13px #ff5bb6)}
+body.ebook-cover-only .illustrated-cover:after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(2px 2px at 18% 8%,#b6faffbb 60%,transparent 100%),radial-gradient(2px 2px at 77% 15%,#ffcafa 60%,transparent 100%),radial-gradient(2px 2px at 33% 64%,#e2d1ff 60%,transparent 100%),radial-gradient(2px 2px at 88% 78%,#beeaff 60%,transparent 100%)}
+body.ebook-cover-only .cover-artscape{position:relative;z-index:1;flex:1 1 46%!important;min-height:0!important;background-image:linear-gradient(0deg,#0b1245 0%,#0b124500 32%),url('assets/japanese-robot.webp')!important;background-size:cover!important;background-position:center 42%!important}
+body.ebook-cover-only .cover-hello{font-size:clamp(1rem,3.4vh,2.4rem)!important;left:6%!important;top:8%!important;color:#c9eaff!important;transform:rotate(-8deg)!important}
+body.ebook-cover-only .cover-speak{top:13%!important;right:4%!important;padding:8px 12px!important;font-size:clamp(.78rem,1.6vh,1.25rem)!important;box-shadow:0 10px 28px #0005}
+body.ebook-cover-only .cover-speak small{display:block;font-size:.72em;color:#566c99}
+body.ebook-cover-only .illustrated-cover-copy{z-index:2!important;flex:0 1 54%!important;justify-content:space-evenly!important;gap:clamp(4px,.9vh,12px)!important;padding:clamp(5px,1.1vh,14px) 13px max(11px,env(safe-area-inset-bottom))!important;background:linear-gradient(180deg,#0b1245cc,#071341 84%,#120b42)!important}
+body.ebook-cover-only .illustrated-cover-copy h1{font-family:system-ui,'Noto Sans Bengali',sans-serif;font-size:clamp(2.2rem,6.8vh,5.5rem)!important;letter-spacing:-.055em!important;line-height:.95!important;font-weight:1000!important;text-shadow:0 8px 28px #0a0f35cc!important;filter:drop-shadow(0 5px 6px #06072a)}
+body.ebook-cover-only .illustrated-cover-copy h1 span{background:linear-gradient(100deg,#ff90eb,#fbd7ff 36%,#83ecff 78%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+body.ebook-cover-only .illustrated-cover-copy>p{font-size:clamp(.81rem,1.78vh,1.3rem)!important;color:#f8f5ff!important}
+body.ebook-cover-only .cover-feature-grid{max-width:620px!important;gap:clamp(3px,1.8vw,16px)!important;margin:0!important}
+body.ebook-cover-only .cover-feature-grid>.cover-feature-button{gap:clamp(2px,.55vh,8px)!important}
+body.ebook-cover-only .round-feature{width:clamp(45px,8.1vh,90px)!important;height:clamp(45px,8.1vh,90px)!important;font-size:clamp(1.5rem,3.4vh,2.6rem)!important;box-shadow:0 0 19px currentColor,inset 0 0 15px #ffffff29!important;border:2px solid #fff9!important}
+body.ebook-cover-only .cover-feature-grid strong{font-size:clamp(.66rem,1.7vh,1.1rem)!important;color:#fff!important;white-space:nowrap}
+body.ebook-cover-only .cover-feature-grid small{font-size:clamp(.58rem,1.35vh,.94rem)!important;color:#e9e9ff!important}
+body.ebook-cover-only .illustrated-start{width:min(88%,540px)!important;padding:8px!important;border:2px solid #bdffff!important;min-height:clamp(53px,7.3vh,82px)!important;font-size:clamp(1.25rem,3vh,2rem)!important;background:linear-gradient(110deg,#04dbf7,#178ffc,#554ff3)!important;box-shadow:0 0 16px #09cafe,0 0 31px #078cf97a,inset 0 0 15px #ffffff70!important;border-radius:999px!important;color:#fff!important}
+body.ebook-cover-only .cover-support-line{display:flex!important;justify-content:space-around!important;gap:7px!important;width:100%!important;max-width:720px!important;font-size:clamp(.56rem,1.3vh,.92rem)!important;line-height:1.32!important;color:#eaf2ff!important}
+body.ebook-home-only{height:auto!important;min-height:100dvh!important;overflow-y:auto!important;background:linear-gradient(180deg,#070b3c,#0e0d4c 55%,#070d33)!important}
+body.ebook-home-only main.wrap{max-width:1180px!important;padding:0 clamp(10px,3vw,24px) 35px!important;min-height:100dvh!important;width:100%!important;margin:0 auto!important;overflow:visible!important}
+body.ebook-home-only #home{display:block!important;width:100%!important;max-width:none!important;overflow:visible!important;min-height:100dvh!important;background:transparent!important;padding-bottom:30px!important}
+body.ebook-home-only .illustrated-menu-hero{height:clamp(220px,30vh,370px)!important;max-width:1060px!important;margin:auto!important;border:0!important;border-radius:0 0 28px 28px!important;background-image:linear-gradient(0deg,#090c40 0%,#09114600 51%),url('assets/japanese-banner.webp')!important;background-position:center 54%!important;background-size:cover!important;box-shadow:0 15px 28px #02062473!important}
+body.ebook-home-only .menu-home-btn{background:#071b4ca8!important;border:1px solid #c4e4ffbb!important;color:white!important;border-radius:999px!important;font-size:clamp(.8rem,1.7vw,1.07rem)!important;right:14px!important;top:14px!important;padding:9px 14px!important}
+body.ebook-home-only .menu-hero-copy{left:clamp(18px,35%,350px)!important;right:10px!important;bottom:clamp(12px,3vh,30px)!important;text-align:center!important;text-shadow:0 4px 17px #090425!important}
+body.ebook-home-only .menu-hero-copy h1{font-size:clamp(2.25rem,6.2vw,5.2rem)!important;line-height:.97!important;color:#fff!important;font-weight:1000!important}
+body.ebook-home-only .menu-hero-copy h1 span{background:linear-gradient(95deg,#ffacf0,#fff,#7deaff)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important}
+body.ebook-home-only .menu-hero-copy p{font-size:clamp(.72rem,1.85vw,1.1rem)!important}
+body.ebook-home-only .illustrated-menu-title{max-width:900px;margin:auto;padding:clamp(12px,2vh,24px) 7px!important}
+body.ebook-home-only .illustrated-menu-title h2{font-size:clamp(1.35rem,4vw,2.6rem)!important;color:white!important;text-shadow:0 2px 15px #db6cff66!important}
+body.ebook-home-only .illustrated-menu-title p{color:#d1dbff!important;font-size:clamp(.78rem,1.8vw,1.1rem)!important}
+body.ebook-home-only .illustrated-cards{max-width:820px!important;display:grid!important;grid-template-columns:1fr!important;gap:clamp(9px,1.5vh,16px)!important;margin:0 auto!important}
+body.ebook-home-only .illustrated-card{--pane:#17316d;display:flex!important;align-items:center!important;gap:clamp(10px,2vw,20px)!important;border:2px solid var(--tone)!important;border-radius:clamp(16px,3vw,26px)!important;padding:clamp(11px,2.1vw,20px)!important;min-height:clamp(98px,12vh,150px)!important;width:100%!important;background:linear-gradient(108deg,var(--pane) 0%,#0b1c59f0 88%)!important;box-shadow:0 0 12px color-mix(in srgb,var(--tone),transparent 60%),inset 0 0 19px #ffffff16!important;transform:none!important;transition:filter .2s,transform .2s!important;cursor:pointer!important;text-align:left!important;color:#fff!important}
+body.ebook-home-only .illustrated-card:hover{filter:brightness(1.16)!important;transform:translateY(-2px)!important}
+body.ebook-home-only .illustrated-icon{flex:0 0 clamp(66px,12vw,105px)!important;width:clamp(66px,12vw,105px)!important;height:clamp(66px,12vw,105px)!important;border-radius:20px!important;display:grid!important;place-items:center!important;background:linear-gradient(130deg,#ffffff,#c6ddff)!important;font-size:clamp(2.1rem,5vw,3.6rem)!important;box-shadow:0 6px 18px #0003!important}
+body.ebook-home-only .illustrated-info strong{font-size:clamp(1.08rem,3.4vw,1.95rem)!important;font-weight:900!important;line-height:1.2!important}
+body.ebook-home-only .illustrated-info>span{color:#f4f2ff!important;font-size:clamp(.8rem,2.3vw,1.1rem)!important;line-height:1.35!important}
+body.ebook-home-only .card-chevron{display:grid!important;place-items:center!important;flex:0 0 clamp(38px,7vw,60px)!important;width:clamp(38px,7vw,60px)!important;height:clamp(38px,7vw,60px)!important;border-radius:50%!important;background:var(--tone)!important;box-shadow:0 0 18px var(--tone)!important;font-size:clamp(1.7rem,4vw,2.6rem)!important;color:white!important;border:2px solid #ffffffb0!important}
+body.ebook-home-only .illustrated-main-button{display:flex!important;gap:clamp(10px,2vw,20px)!important;align-items:center!important;width:100%!important;padding:0!important;border:0!important;background:transparent!important;color:#fff!important;box-shadow:none!important;text-align:left!important}
+body.ebook-home-only .illustrated-card.word-card,body.ebook-home-only .illustrated-card.grammar-card{display:block!important}
+body.ebook-home-only .illustrated-lessons{display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin:8px 0 0 clamp(75px,14vw,123px)!important}
+body.ebook-home-only .illustrated-lessons button{border:1px solid #8acaffaa!important;border-radius:999px!important;background:#0e2f79aa!important;padding:7px 14px!important;font-size:clamp(.72rem,2.1vw,.96rem)!important;color:#fff!important;min-height:34px!important;width:auto!important}
+body.ebook-home-only .illustrated-lessons button:hover{background:#2268b9!important}
+body.ebook-home-only .basic-card{--tone:#f755cd;--pane:#61135c}
+body.ebook-home-only .word-card{--tone:#01d9c8;--pane:#086270}
+body.ebook-home-only .grammar-card{--tone:#ffad32;--pane:#694027}
+body.ebook-home-only .reading-card{--tone:#b65bff;--pane:#421775}
+body.ebook-home-only .quiz-card{--tone:#fd4ba9;--pane:#6c1c64}
+body.ebook-home-only .ai-card{--tone:#03cbfe;--pane:#08549c}
+@media(min-width:1000px){body.ebook-home-only .illustrated-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;max-width:1150px!important}body.ebook-home-only .illustrated-card{min-height:140px!important}}
+@media(max-width:480px){body.ebook-home-only .illustrated-cards{gap:10px!important}body.ebook-home-only .illustrated-card{padding:10px!important;border-radius:18px!important;min-height:92px!important}body.ebook-home-only .illustrated-icon{flex-basis:61px!important;width:61px!important;height:61px!important;font-size:2.05rem!important;border-radius:15px!important}body.ebook-home-only .illustrated-info strong{font-size:1.04rem!important}body.ebook-home-only .illustrated-info>span{font-size:.82rem!important}body.ebook-home-only .illustrated-lessons{margin-left:73px!important}body.ebook-home-only .illustrated-lessons button{padding:5px 10px!important}body.ebook-home-only .menu-hero-copy{left:38%!important}body.ebook-home-only .menu-hero-copy h1{font-size:clamp(1.95rem,8vw,3.5rem)!important}body.ebook-cover-only .cover-artscape{flex-basis:43%!important}body.ebook-cover-only .illustrated-cover-copy{flex-basis:57%!important}}
+@media(max-height:640px){body.ebook-cover-only .cover-support-line{display:none!important}body.ebook-cover-only .cover-artscape{flex-basis:38%!important}body.ebook-cover-only .illustrated-cover-copy{flex-basis:62%!important}body.ebook-cover-only .round-feature{width:42px!important;height:42px!important}body.ebook-cover-only .cover-feature-grid small{display:none!important}}
+@media(prefers-reduced-motion:reduce){body.ebook-home-only .illustrated-card{transition:none!important}}
+
+
+/* FINAL RESPONSIVE APP LAYOUT — iPhone, Android, iPad, desktop */
+:root{color-scheme:light;--reader-max:1120px}
+html,body{max-width:100%;overscroll-behavior-x:none}
+button,select,textarea{touch-action:manipulation}
+button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #40d8ff;outline-offset:3px}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .wrap{width:min(100%,var(--reader-max));max-width:var(--reader-max);padding:clamp(12px,2.2vw,32px);margin:0 auto}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .panel{border-radius:clamp(14px,2vw,24px);overflow-wrap:anywhere}
+body:not(.ebook-cover-only):not(.ebook-home-only) .table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+body:not(.ebook-cover-only):not(.ebook-home-only) .vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(10px,1.5vw,18px)}
+body:not(.ebook-cover-only):not(.ebook-home-only) .jp{overflow-wrap:anywhere}
+body:not(.ebook-cover-only):not(.ebook-home-only) .book-pager{display:flex;gap:10px;flex-wrap:wrap}
+body:not(.ebook-cover-only):not(.ebook-home-only) .book-pager button{min-height:46px;flex:1 1 180px}
+/* Sakura cover: real viewport, center composition, no horizontal swipe */
+body.ebook-cover-only,body.ebook-cover-only main.wrap,body.ebook-cover-only #cover{width:100%!important;max-width:100%!important;height:100dvh!important;overflow:hidden!important}
+body.ebook-cover-only .illustrated-cover{max-width:none!important;width:100%!important;min-height:0;overflow:hidden;box-sizing:border-box}
+body.ebook-cover-only .illustrated-cover-copy{min-width:0;box-sizing:border-box}
+body.ebook-cover-only .cover-feature-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;min-width:0}
+body.ebook-cover-only .cover-feature-grid>.cover-feature-button{min-width:0}
+body.ebook-cover-only .cover-feature-grid strong{white-space:normal!important;line-height:1.13;text-wrap:balance}
+body.ebook-cover-only .cover-feature-grid small{overflow-wrap:anywhere}
+/* Menu: cards remain in book order; 1 column on phone, 2 on desktop */
+body.ebook-home-only main.wrap{width:100%!important;box-sizing:border-box}
+body.ebook-home-only .illustrated-cards{grid-template-columns:minmax(0,1fr)!important}
+body.ebook-home-only .illustrated-main-button{min-width:0!important}
+body.ebook-home-only .illustrated-info{min-width:0!important;overflow-wrap:anywhere}
+body.ebook-home-only .illustrated-lessons{max-width:100%;box-sizing:border-box}
+body.ebook-home-only .illustrated-lessons button{min-height:39px!important;touch-action:manipulation}
+/* Mobile portrait and phones with browser address bars */
+@media(max-width:599px){
+ html{-webkit-text-size-adjust:100%}
+ body.ebook-cover-only .cover-artscape{background-position:center 48%!important;flex:1 1 44%!important}
+ body.ebook-cover-only .illustrated-cover-copy{flex:0 1 56%!important;gap:clamp(4px,1vh,12px)!important;padding:5px 9px max(12px,env(safe-area-inset-bottom))!important}
+ body.ebook-cover-only .illustrated-cover-copy h1{font-size:clamp(1.75rem,8.4vw,3.6rem)!important}
+ body.ebook-cover-only .illustrated-cover-copy>p{font-size:clamp(.75rem,3vw,1rem)!important}
+ body.ebook-cover-only .round-feature{width:clamp(38px,12vw,65px)!important;height:clamp(38px,12vw,65px)!important;font-size:clamp(1.25rem,5vw,1.9rem)!important}
+ body.ebook-cover-only .cover-feature-grid strong{font-size:clamp(.62rem,2.6vw,.83rem)!important}
+ body.ebook-cover-only .cover-feature-grid small{font-size:clamp(.55rem,2.2vw,.71rem)!important}
+ body.ebook-cover-only .cover-support-line{font-size:.65rem!important}
+ body.ebook-cover-only .illustrated-start{min-height:clamp(48px,6.3vh,66px)!important}
+ body.ebook-home-only .illustrated-menu-hero{height:clamp(170px,25vh,290px)!important}
+ body.ebook-home-only .menu-hero-copy{left:39%!important;right:8px!important;bottom:15px!important}
+ body.ebook-home-only .menu-hero-copy h1{font-size:clamp(1.6rem,7.4vw,2.6rem)!important}
+ body.ebook-home-only .illustrated-card{gap:8px!important;padding:10px!important}
+ body.ebook-home-only .illustrated-icon{flex:0 0 clamp(52px,15vw,70px)!important;width:clamp(52px,15vw,70px)!important;height:clamp(52px,15vw,70px)!important}
+ body.ebook-home-only .illustrated-info strong{font-size:clamp(.94rem,4.1vw,1.2rem)!important}
+ body.ebook-home-only .illustrated-info>span{font-size:clamp(.73rem,3.25vw,.91rem)!important}
+ body.ebook-home-only .card-chevron{flex:0 0 36px!important;width:36px!important;height:36px!important}
+ body.ebook-home-only .illustrated-lessons{margin-left:clamp(60px,17vw,78px)!important;gap:6px!important}
+ body.ebook-home-only .illustrated-lessons button{padding:6px 10px!important}
+ body:not(.ebook-cover-only):not(.ebook-home-only) .panel{padding:15px}
+ body.ai-fullscreen .ai-fullscreen-header{padding-top:max(12px,env(safe-area-inset-top))!important}
+ body.ai-fullscreen #ai #aiForm{width:calc(100% - 14px)!important;max-width:none!important}
+}
+/* Compact phones / landscape phone: show usable cover without losing Start button */
+@media(max-width:390px){
+ body.ebook-cover-only .cover-feature-grid small{display:none!important}
+ body.ebook-cover-only .cover-artscape{flex-basis:47%!important}
+ body.ebook-cover-only .illustrated-cover-copy{flex-basis:53%!important}
+ body.ebook-cover-only .cover-support-line{display:none!important}
+}
+@media(max-height:650px) and (max-width:799px){
+ body.ebook-cover-only .cover-artscape{flex-basis:36%!important}
+ body.ebook-cover-only .illustrated-cover-copy{flex-basis:64%!important}
+ body.ebook-cover-only .cover-support-line{display:none!important}
+ body.ebook-cover-only .cover-feature-grid small{display:none!important}
+}
+/* Tablets: comfortable 2-column menu only in landscape, 1 column portrait */
+@media(min-width:600px) and (max-width:1023px){
+ body.ebook-cover-only .illustrated-cover{max-width:760px!important}
+ body.ebook-home-only .illustrated-cards{max-width:800px!important}
+ body.ebook-home-only .illustrated-menu-hero{max-width:800px!important}
+ body.ebook-home-only .illustrated-card{min-height:118px!important}
+}
+/* Desktop/laptop: side-by-side cover hero + reading actions, wide lesson book */
+@media(min-width:1024px) and (min-height:600px){
+ body.ebook-cover-only .illustrated-cover{max-width:1440px!important;display:grid!important;grid-template-columns:minmax(0,1.03fr) minmax(410px,.97fr)!important;align-items:stretch}
+ body.ebook-cover-only .cover-artscape{min-height:0;flex:none!important;background-size:cover!important;background-position:50% 55%!important}
+ body.ebook-cover-only .illustrated-cover-copy{flex:none!important;align-self:center;justify-content:center!important;gap:clamp(14px,3vh,30px)!important;padding:36px clamp(20px,3vw,48px)!important}
+ body.ebook-cover-only .illustrated-cover-copy h1{font-size:clamp(3.1rem,5.2vw,6rem)!important}
+ body.ebook-cover-only .cover-feature-grid{gap:14px!important}
+ body.ebook-cover-only .round-feature{width:clamp(65px,7vw,84px)!important;height:clamp(65px,7vw,84px)!important}
+ body.ebook-home-only .illustrated-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;max-width:1160px!important;align-items:stretch}
+ body.ebook-home-only .illustrated-card{min-height:142px!important}
+ body.ebook-home-only .illustrated-menu-hero{max-width:1160px!important}
+}
+/* Larger screen AI conversation: comfortable readable line length */
+@media(min-width:1024px){
+ body.ai-fullscreen #ai .ai-messages{padding-left:max(6vw,calc((100vw - 1100px)/2))!important;padding-right:max(6vw,calc((100vw - 1100px)/2))!important}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+/* ===== JAPANESE AI EBOOK / EDITORIAL READER DESIGN ===== */
+:root{--paper:#fffefb;--ink:#172943;--ink-soft:#52627b;--line:#e5e5e0;--mist:#f5f6f5;--rose:#c85b81;--navy:#102b43;--mint:#319b86;--gold:#d99d58;--book-shadow:0 12px 40px rgba(25,41,61,.065)}
+body{background:#f4f5f2!important;color:var(--ink)!important;font-family:Inter,'Hiragino Kaku Gothic ProN','Yu Gothic','Noto Sans Bengali',system-ui,sans-serif!important;-webkit-font-smoothing:antialiased}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header{background:var(--paper)!important;color:var(--navy)!important;border-bottom:1px solid #e8e8e0;box-shadow:none!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .book-brand,body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header p{color:var(--navy)!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .wrap{max-width:1120px!important;padding:clamp(14px,2.6vw,36px)!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .panel{background:var(--paper)!important;color:var(--ink)!important;border:1px solid #e9e9e5!important;border-radius:20px!important;padding:clamp(18px,3.4vw,34px)!important;box-shadow:var(--book-shadow)!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .panel h2,body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .panel h3{color:var(--navy)!important;letter-spacing:-.018em}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .book-breadcrumb{color:#657087!important;margin-bottom:14px!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .book-breadcrumb button{background:#f0f3f2!important;color:#24506a!important;border-radius:999px!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .vocab{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr))!important;gap:13px!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .word{background:linear-gradient(145deg,#fff,#fcfbf8)!important;border:1px solid #e7e6e0!important;border-radius:16px!important;padding:17px!important;box-shadow:0 2px 10px #182b3f08!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .word .jp{color:#153b59!important;font-weight:800!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .grammar{background:var(--paper)!important;border-left:4px solid var(--rose)!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .ex,body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .intro-example{background:#f8f9f6!important;border:1px solid #e8e9e2!important;border-radius:14px!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .jp,body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .kana{color:#163c56!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .basic-table{background:#fff;border-radius:12px;overflow:hidden}body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .basic-table th{background:#eaf0ef!important;color:#24475a!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) button.primary,body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .book-next{background:#18455c!important;color:white!important;border:0!important;border-radius:12px!important;box-shadow:none!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .ebook-reader-toolbar{border:1px solid #e7e8e1!important;background:#fff!important;border-radius:14px!important;color:#556579!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .lesson-choice{background:#fff!important;border:1px solid #dfe6e1!important;border-radius:18px!important;box-shadow:0 9px 25px #0c28370b!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .lesson-choice:hover{border-color:#76aaa5!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) #readingCards .reading-card{background:#fff!important}
+/* Cover: luxurious textbook cover rather than a flashy poster */
+body.ebook-cover-only,body.ebook-home-only{background:#102c43!important;color:#fff!important}
+body.ebook-cover-only .illustrated-cover{max-width:none!important;width:100%!important;display:grid!important;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr)!important;background:#102c43!important;align-items:stretch!important}
+body.ebook-cover-only .cover-artscape{min-height:0!important;flex:auto!important;background:linear-gradient(0deg,rgba(16,44,67,.24),rgba(16,44,67,.05)),url('assets/japanese-robot.webp') 52% center/cover no-repeat!important}
+body.ebook-cover-only .cover-hello{font-size:clamp(1.5rem,3vw,2.65rem)!important;left:7%!important;top:8%!important;color:#fff!important;text-shadow:0 3px 18px #102b43a8}
+body.ebook-cover-only .cover-speak{background:#fffdf5!important;color:#284559!important;font-size:clamp(.76rem,1.4vw,1rem)!important;right:5%!important;top:9%!important;box-shadow:0 15px 40px #111b2666}
+body.ebook-cover-only .illustrated-cover-copy{min-height:0!important;overflow:visible!important;display:flex!important;align-items:flex-start!important;justify-content:center!important;padding:clamp(24px,5vw,72px)!important;text-align:left!important;gap:clamp(14px,2.5vh,24px)!important;background:radial-gradient(circle at 96% 8%,#284e64 0,transparent 48%),linear-gradient(160deg,#112f46,#0e263b)!important}
+body.ebook-cover-only .illustrated-cover-copy:before{content:'✿  THE JAPANESE LEARNING LIBRARY';font-weight:700;font-size:clamp(.6rem,1vw,.78rem);letter-spacing:.23em;color:#f4b7c0;display:block}
+body.ebook-cover-only .illustrated-cover-copy h1{font-weight:850!important;letter-spacing:-.045em!important;font-size:clamp(3rem,6vw,6.6rem)!important;line-height:1.04!important;text-shadow:none!important;color:#fff!important}
+body.ebook-cover-only .illustrated-cover-copy h1 span{background:none!important;color:#eaa7b4!important;letter-spacing:-.045em!important}
+body.ebook-cover-only .illustrated-cover-copy>p{font-size:clamp(1rem,1.5vw,1.22rem)!important;color:#e2eced!important;font-weight:500!important;line-height:1.7!important}
+body.ebook-cover-only .cover-feature-grid{max-width:430px!important;gap:10px!important;margin:0!important}
+body.ebook-cover-only .round-feature{background:#ffffff12!important;border:1px solid #ffffff30!important;box-shadow:none!important;width:clamp(42px,5vw,63px)!important;height:clamp(42px,5vw,63px)!important;font-size:clamp(1.25rem,2vw,1.8rem)!important}
+body.ebook-cover-only .cover-feature-grid small{color:#b7cad3!important}
+body.ebook-cover-only .illustrated-start{width:min(100%,440px)!important;min-height:62px!important;border-radius:12px!important;background:#f1c0ad!important;color:#142d41!important;border:0!important;box-shadow:0 12px 28px #080f1d36!important;font-size:clamp(1.15rem,1.8vw,1.38rem)!important;font-weight:850!important;transition:transform .2s}
+body.ebook-cover-only .illustrated-start:hover{transform:translateY(-2px);background:#f8ceb8!important}
+body.ebook-cover-only .cover-support-line{width:100%;justify-content:flex-start!important;gap:12px!important;flex-wrap:wrap!important;color:#c2d3dc!important;font-size:.78rem!important}
+/* Menu: refined chapter index + editorial hero */
+body.ebook-home-only{height:100dvh!important;overflow:hidden!important;background:#f4f6f3!important;color:#1e3448!important}
+body.ebook-home-only main.wrap{max-width:1100px!important;width:100%!important;height:100dvh!important;overflow:hidden!important;padding:clamp(12px,2.2vh,24px) clamp(14px,3vw,30px)!important}
+body.ebook-home-only #home{display:flex!important;flex-direction:column!important;gap:12px!important;height:100%!important;min-height:0!important;overflow:hidden!important;padding:0!important;background:transparent!important;color:var(--ink)!important;max-height:none!important}
+body.ebook-home-only .illustrated-menu-hero{position:relative!important;flex:0 1 26%!important;min-height:110px!important;max-height:230px!important;border-radius:22px!important;overflow:hidden!important;background:linear-gradient(90deg,#132e41e8 0%,#132e4188 36%,#102b4340 100%),url('assets/japanese-banner.webp') center 49%/cover no-repeat!important;box-shadow:0 8px 28px #182b3c1d!important;border:1px solid #d7dfde!important}
+body.ebook-home-only .menu-hero-copy{position:absolute!important;left:clamp(18px,4vw,45px)!important;bottom:clamp(14px,3vh,28px)!important;z-index:1!important;text-align:left!important}
+body.ebook-home-only .menu-hero-copy h1{color:#fff!important;letter-spacing:-.03em!important;font-size:clamp(1.35rem,3.5vw,2.9rem)!important;line-height:1.07!important;margin:0!important}
+body.ebook-home-only .menu-hero-copy h1 span{color:#f1b7bf!important;background:none!important}
+body.ebook-home-only .menu-hero-copy p{color:#fff9!important;font-size:clamp(.74rem,1.4vw,.92rem)!important;margin:6px 0 0!important}
+body.ebook-home-only .menu-home-btn{position:absolute!important;top:13px!important;right:13px!important;z-index:2!important;background:#fffcf0eb!important;color:#14384d!important;border:1px solid #ffffff88!important;border-radius:999px!important;padding:9px 15px!important;width:auto!important;font-size:.84rem!important}
+body.ebook-home-only .illustrated-menu-title{flex:0 0 auto!important;padding:0 3px!important;text-align:left!important;margin:0!important}
+body.ebook-home-only .illustrated-menu-title h2{color:#193448!important;font-size:clamp(1.3rem,3vw,1.85rem)!important;line-height:1.12!important;letter-spacing:-.03em!important;margin:0 0 3px!important;text-shadow:none!important}
+body.ebook-home-only .illustrated-menu-title p{color:#738093!important;font-size:clamp(.75rem,1.6vw,.95rem)!important;margin:0!important}
+body.ebook-home-only .illustrated-cards{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain;scrollbar-width:thin;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:clamp(8px,1.4vh,13px)!important;padding:2px 2px 7px!important;margin:0!important;align-content:start!important}
+body.ebook-home-only .illustrated-card{min-height:0!important;width:100%!important;display:flex!important;flex-direction:column!important;justify-content:center!important;gap:8px!important;align-items:stretch!important;text-align:left!important;background:#fff!important;border:1px solid #e4e8e7!important;border-left:4px solid var(--card-accent,#789eaf)!important;border-radius:16px!important;padding:clamp(12px,2vh,20px)!important;box-shadow:0 4px 14px #1c2d4010!important;color:var(--ink)!important;overflow:visible!important}
+body.ebook-home-only .basic-card{--card-accent:#ce7c99}body.ebook-home-only .word-card{--card-accent:#3f9c87}body.ebook-home-only .grammar-card{--card-accent:#dda15b}body.ebook-home-only .reading-card{--card-accent:#797dbc}body.ebook-home-only .quiz-card{--card-accent:#cb7c9f}body.ebook-home-only .ai-card{--card-accent:#54a2b9}
+body.ebook-home-only .illustrated-card .illustrated-main-button{display:flex!important;align-items:center!important;gap:12px!important;background:none!important;border:0!important;padding:0!important;width:100%!important;box-shadow:none!important;color:var(--ink)!important;text-align:left!important}
+body.ebook-home-only button.illustrated-card{flex-direction:row!important;align-items:center!important;gap:12px!important}
+body.ebook-home-only .illustrated-card .illustrated-icon{width:clamp(43px,5vw,58px)!important;height:clamp(43px,5vw,58px)!important;flex:0 0 clamp(43px,5vw,58px)!important;display:grid!important;place-items:center!important;border-radius:13px!important;background:#f5f1ee!important;color:#1d3a55!important;font-size:clamp(1.3rem,2.6vw,1.8rem)!important;border:0!important;box-shadow:none!important}
+body.ebook-home-only .illustrated-info{display:flex!important;flex-direction:column!important;gap:3px!important;flex:1!important;min-width:0!important;color:var(--ink)!important}
+body.ebook-home-only .illustrated-info strong{font-size:clamp(.95rem,1.8vw,1.17rem)!important;color:var(--navy)!important;line-height:1.23!important}
+body.ebook-home-only .illustrated-info strong small{font-size:.69em!important;color:#9d6f78!important}
+body.ebook-home-only .illustrated-info>span{color:#65788a!important;font-size:clamp(.72rem,1.45vw,.87rem)!important;line-height:1.35!important}
+body.ebook-home-only .card-chevron{width:30px!important;height:30px!important;flex:0 0 30px!important;display:grid!important;place-items:center!important;border-radius:50%!important;background:#eaf0ef!important;color:#365d68!important;font-size:1.3rem!important;box-shadow:none!important}
+body.ebook-home-only .illustrated-lessons{display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin:0 0 0 clamp(55px,6vw,70px)!important;padding:0!important}
+body.ebook-home-only .illustrated-lessons button{background:#f0f5f2!important;color:#21695b!important;border:1px solid #d8e8df!important;border-radius:999px!important;padding:5px 11px!important;width:auto!important;font-size:.76rem!important;font-weight:800!important;min-height:30px!important}
+body.ebook-home-only .illustrated-card:hover,body.ebook-home-only .illustrated-card:focus-within{border-color:#a4b8b4!important;box-shadow:0 8px 22px #163b4b18!important;transform:none!important}
+/* Reader is the main event: paper-like pages with generous text hierarchy */
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) #words .word .bn{color:#426658!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) #readingCards .jp{font-size:calc(1.25rem * var(--ebook-type-scale,1))!important;line-height:1.85!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .book-pager{background:#fff!important;border:1px solid #e5e9e4!important;border-radius:18px!important;padding:13px!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) footer{color:#7e8894!important}
+@media(max-width:720px){
+ body.ebook-cover-only .illustrated-cover{grid-template-columns:1fr!important;grid-template-rows:minmax(0,42%) minmax(0,58%)!important}
+ body.ebook-cover-only .cover-artscape{min-height:0!important;background-position:center 47%!important}
+ body.ebook-cover-only .illustrated-cover-copy{padding:clamp(14px,3vh,26px) clamp(19px,5vw,36px) max(14px,env(safe-area-inset-bottom))!important;align-items:center!important;text-align:center!important;gap:clamp(6px,1.5vh,15px)!important;justify-content:space-evenly!important}
+ body.ebook-cover-only .illustrated-cover-copy:before{font-size:.61rem;letter-spacing:.14em}
+ body.ebook-cover-only .illustrated-cover-copy h1{font-size:clamp(2.25rem,5.6vh,3.9rem)!important;line-height:.98!important}
+ body.ebook-cover-only .illustrated-cover-copy>p{font-size:clamp(.86rem,1.6vh,1rem)!important}
+ body.ebook-cover-only .cover-feature-grid{gap:4px!important}
+ body.ebook-cover-only .round-feature{width:clamp(38px,5.6vh,54px)!important;height:clamp(38px,5.6vh,54px)!important;font-size:1.5rem!important}
+ body.ebook-cover-only .cover-feature-grid strong{font-size:clamp(.68rem,1.3vh,.86rem)!important}
+ body.ebook-cover-only .cover-feature-grid small{font-size:clamp(.57rem,1.08vh,.74rem)!important}
+ body.ebook-cover-only .illustrated-start{min-height:clamp(47px,6.4vh,58px)!important;width:100%!important}
+ body.ebook-cover-only .cover-support-line{justify-content:center!important;font-size:.65rem!important}
+ body.ebook-home-only main.wrap{padding:10px 12px 13px!important}
+ body.ebook-home-only .illustrated-menu-hero{flex:0 0 20%!important;min-height:92px!important;border-radius:16px!important;background-position:center 50%!important}
+ body.ebook-home-only .illustrated-menu-title h2{font-size:1.25rem!important}
+ body.ebook-home-only .illustrated-cards{grid-template-columns:1fr!important;gap:7px!important}
+ body.ebook-home-only .illustrated-card{padding:clamp(9px,1.4vh,14px)!important;gap:5px!important;border-radius:13px!important}
+ body.ebook-home-only .illustrated-card .illustrated-icon{width:clamp(38px,5.4vh,50px)!important;height:clamp(38px,5.4vh,50px)!important;flex-basis:clamp(38px,5.4vh,50px)!important;font-size:1.3rem!important}
+ body.ebook-home-only .illustrated-info strong{font-size:1rem!important}body.ebook-home-only .illustrated-info>span{font-size:.74rem!important}
+ body.ebook-home-only .illustrated-lessons{margin-left:52px!important}
+ body.ebook-home-only .illustrated-lessons button{font-size:.72rem!important;padding:3px 9px!important;min-height:27px!important}
+}
+@media(max-width:385px){body.ebook-cover-only .cover-support-line{display:none!important}body.ebook-home-only .illustrated-info>span{font-size:.69rem!important}body.ebook-home-only .illustrated-menu-hero{flex-basis:17%!important}}
+@media(max-height:650px) and (max-width:720px){body.ebook-cover-only .illustrated-cover{grid-template-rows:minmax(0,35%) minmax(0,65%)!important}body.ebook-cover-only .illustrated-cover-copy{gap:5px!important}body.ebook-home-only .illustrated-menu-hero{flex-basis:14%!important}}
+@media(prefers-reduced-motion:reduce){body.ebook-cover-only .illustrated-start{transition:none}}
+
+
+/* === Autumn 2026 visual polish: contrast, colors, motion === */
+:root{--ui-navy:#0c2345;--ui-blue:#2259c5;--ui-rose:#ee82ab;--ui-aqua:#4edacb;--ui-paper:#fffefa;--ui-ink:#173251}
+/* Solve the screenshot's invisible white-on-white header text. */
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header{
+  background:radial-gradient(ellipse at 84% 8%,rgba(54,162,229,.24),transparent 48%),radial-gradient(ellipse at 5% 93%,rgba(234,108,174,.22),transparent 37%),linear-gradient(125deg,#071a3b 0%,#112f66 60%,#144e78 100%)!important;
+  color:#fff!important;border-bottom:1px solid #395c9a!important;
+  box-shadow:0 15px 45px rgba(8,29,74,.20)!important;position:relative!important;overflow:hidden!important;
+  padding:clamp(17px,2.3vw,32px) clamp(16px,4vw,64px)!important;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header:before{
+  content:'✦';position:absolute;pointer-events:none;right:7%;top:8%;font-size:clamp(60px,11vw,155px);color:rgba(255,255,255,.045);transform:rotate(15deg)
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .book-brand,
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .header-description,
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header nav.nav,
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .study-sound-settings{position:relative;z-index:1}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .book-brand span{
+  color:#fff!important;font-size:clamp(1.05rem,1.8vw,1.45rem)!important;font-weight:850!important;letter-spacing:.015em
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .book-home-link{
+  background:#ffffff22!important;border:1px solid #ffffff5e!important;color:#fff!important;border-radius:999px!important;padding:10px 17px!important;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .header-description{margin:clamp(12px,2.4vw,25px) auto!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .header-eyebrow{
+  color:#74f3ea!important;letter-spacing:.2em!important;font-weight:850!important;text-shadow:0 0 12px #38e3cf54;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .header-description h1{
+  color:#fff!important;font-size:clamp(1.6rem,3.6vw,3.05rem)!important;font-weight:900!important;line-height:1.27!important;
+  text-shadow:0 3px 22px #061934a0!important;margin:10px 0!important;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .header-description p{
+  color:#e3efff!important;font-size:clamp(.92rem,1.45vw,1.1rem)!important;font-weight:500!important;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header nav.nav{
+  display:flex!important;flex-wrap:wrap!important;justify-content:center!important;gap:9px!important;margin:14px auto!important;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header nav.nav button{
+  width:auto!important;flex:0 0 auto!important;border:1px solid rgba(255,255,255,.32)!important;
+  color:#f7fbff!important;background:rgba(255,255,255,.13)!important;backdrop-filter:blur(8px);
+  border-radius:999px!important;padding:11px 16px!important;font-size:clamp(.84rem,1.3vw,1rem)!important;
+  font-weight:800!important;text-shadow:none!important;box-shadow:none!important;
+  transition:background-color .23s ease,transform .23s ease,box-shadow .23s ease,border-color .23s ease!important;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header nav.nav button:hover,
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header nav.nav button:focus-visible{
+  color:#102b55!important;background:#fff!important;transform:translateY(-3px)!important;
+  box-shadow:0 8px 22px #0003!important;border-color:#fff!important;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header nav.nav button.active{
+  color:#102c59!important;background:linear-gradient(130deg,#fff,#ddf7ff)!important;border-color:#fff!important;
+  box-shadow:0 7px 25px rgba(34,222,240,.18)!important;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .study-sound-settings{
+  width:fit-content!important;max-width:100%!important;background:rgba(255,255,255,.95)!important;border:1px solid #e3eeff!important;
+  color:#163251!important;border-radius:19px!important;padding:12px 16px!important;box-shadow:0 14px 27px #041b4052!important;
+  margin:12px auto 0!important;gap:10px!important;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .study-sound-settings label,
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .study-sound-settings output{color:#173658!important;font-weight:800!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .study-sound-settings input{accent-color:#3562db!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .study-sound-settings button{
+  color:#173b7b!important;background:#e8eeff!important;border:1px solid #c9d6ff!important;border-radius:11px!important;
+  transition:transform .2s,background-color .2s!important
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .study-sound-settings button:hover{background:#d5e4ff!important;transform:translateY(-2px)}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .study-sound-status{color:#49627e!important}
+/* Bright yet tidy chapter colors. */
+body.ebook-home-only{background:linear-gradient(165deg,#edf2ff,#fff3fa 75%,#f8fbff)!important}
+body.ebook-home-only .illustrated-menu-hero{border:1px solid #3a5e95!important;box-shadow:0 18px 38px rgba(28,53,110,.25)!important}
+body.ebook-home-only .illustrated-card{background:linear-gradient(135deg,#fff,#f9fbff)!important;border-radius:18px!important;
+  border:1px solid color-mix(in srgb,var(--card-accent,#6887dd) 43%,white)!important;
+  border-left:5px solid var(--card-accent,#6887dd)!important;
+  box-shadow:0 6px 21px rgba(22,46,92,.09)!important;
+  transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease!important;
+}
+body.ebook-home-only .illustrated-card:hover,body.ebook-home-only .illustrated-card:focus-within{
+  transform:translateY(-4px)!important;box-shadow:0 15px 28px rgba(21,47,91,.17)!important;
+}
+body.ebook-home-only .basic-card{--card-accent:#f05caa!important}
+body.ebook-home-only .word-card{--card-accent:#03afaa!important}
+body.ebook-home-only .grammar-card{--card-accent:#f2a332!important}
+body.ebook-home-only .reading-card{--card-accent:#9271ed!important}
+body.ebook-home-only .quiz-card{--card-accent:#ea6384!important}
+body.ebook-home-only .ai-card{--card-accent:#228ee5!important}
+body.ebook-home-only .illustrated-card .illustrated-icon{
+  background:color-mix(in srgb,var(--card-accent,#5876cb) 13%,white)!important;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--card-accent,#5876cb) 22%,white)!important;
+}
+body.ebook-home-only .illustrated-card .card-chevron{
+  color:#fff!important;background:var(--card-accent,#5876cb)!important;
+  box-shadow:0 6px 14px color-mix(in srgb,var(--card-accent,#5876cb) 29%,transparent)!important;
+  transition:transform .22s!important;
+}
+body.ebook-home-only .illustrated-card:hover .card-chevron{transform:translateX(3px)!important}
+body.ebook-home-only .illustrated-lessons button{background:#eef5ff!important;color:#224d97!important;border-color:#c6d9ff!important}
+body.ebook-home-only .illustrated-lessons button:hover{background:#ddecff!important}
+/* Paper-like reader pages and links stay legible. */
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen){background:linear-gradient(160deg,#f2f7fc,#fff7f7)!important;color:#193553!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) main.wrap .panel{
+  background:var(--ui-paper)!important;border:1px solid #dfe7f1!important;box-shadow:0 12px 35px rgba(17,54,101,.065)!important;
+  border-radius:19px!important;
+}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) main.wrap .panel h2,
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) main.wrap .panel h3{color:#173b74!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .book-pager button,
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .book-next{transition:transform .2s ease,filter .2s ease!important}
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .book-pager button:hover,
+body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) .book-next:hover{transform:translateY(-2px);filter:brightness(1.07)}
+body.ebook-cover-only .illustrated-start{background:linear-gradient(120deg,#22d6ef,#2861e8,#9b63f5)!important;color:#fff!important;border:2px solid #a7f5ff!important;
+  box-shadow:0 14px 35px #1ac9e65c!important;animation:ebookCtaGlow 3.3s ease-in-out infinite!important}
+@keyframes ebookCtaGlow{0%,100%{box-shadow:0 10px 28px #19c9ee55}50%{box-shadow:0 14px 38px #ab7aff75}}
+/* Section transitions without reflow-heavy effects. */
+main.wrap > section:not(.hidden):not(#cover):not(#home){animation:ebookPageIn .27s ease-out both}
+@keyframes ebookPageIn{from{opacity:.4;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+button:focus-visible{outline:3px solid #44d7ec!important;outline-offset:3px!important}
+@media(max-width:700px){
+ body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header{padding:15px 12px 20px!important}
+ body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .header-description h1{font-size:clamp(1.45rem,5.5vw,2rem)!important}
+ body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header nav.nav{flex-wrap:nowrap!important;justify-content:flex-start!important;overflow-x:auto!important;padding-bottom:6px!important;scrollbar-width:none!important}
+ body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header nav.nav button{white-space:nowrap!important;padding:10px 13px!important}
+ body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .study-sound-settings{padding:10px!important;justify-content:center!important}
+ body:not(.ebook-cover-only):not(.ebook-home-only):not(.ai-fullscreen) header.ebook-site-header .study-sound-status{font-size:.78rem!important}
+}
+@media(prefers-reduced-motion:reduce){body.ebook-cover-only .illustrated-start,main.wrap > section:not(.hidden):not(#cover):not(#home){animation:none!important}body.ebook-home-only .illustrated-card,*{transition-duration:.01ms!important}}
+
+/* Functional cover shortcuts: semantic buttons with comfortable tap targets. */
+body.ebook-cover-only .cover-feature-grid>.cover-feature-button{
+ appearance:none;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ gap:4px;min-width:0;min-height:78px;padding:4px 2px;
+ margin:0;background:transparent!important;color:#fff;border:1px solid transparent;
+ border-radius:18px;cursor:pointer;text-align:center;font-family:inherit;
+ transition:background .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+body.ebook-cover-only .cover-feature-grid>.cover-feature-button:hover,
+body.ebook-cover-only .cover-feature-grid>.cover-feature-button:focus-visible{
+ background:rgba(255,255,255,.13)!important;transform:translateY(-3px);
+ box-shadow:0 6px 24px rgba(15,42,99,.22);outline:2px solid rgba(130,220,255,.7);outline-offset:1px;
+}
+body.ebook-cover-only .cover-feature-grid>.cover-feature-button:active{transform:scale(.96)}
+@media(prefers-reduced-motion:reduce){body.ebook-cover-only .cover-feature-grid>.cover-feature-button{transition:none}}
+
+/* Menu page space & navigation fix: no empty artwork banner. */
+body.ebook-home-only #home .compact-book-menu-header{
+ position:relative;display:flex;align-items:center;gap:clamp(12px,2vw,22px);
+ width:100%;min-height:clamp(74px,9vw,98px);height:auto!important;
+ padding:14px clamp(12px,2.5vw,24px);margin:10px 0 6px;
+ border-radius:21px;overflow:hidden;
+ background:linear-gradient(112deg,#132950 0%,#204e88 60%,#283c79 100%);
+ border:1px solid #7c9bdb65;box-shadow:0 12px 30px #172a5540;color:#fff;
+}
+body.ebook-home-only #home .menu-return-cover{
+ flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+ min-height:44px;white-space:nowrap;padding:10px 16px;border-radius:999px;
+ color:#fff!important;background:#ffffff20!important;border:1px solid #d6e9ff99!important;
+ font-size:clamp(.85rem,1.8vw,1rem);font-weight:800;cursor:pointer;
+}
+body.ebook-home-only #home .menu-return-cover:hover{background:#ffffff38!important;transform:translateX(-2px)}
+body.ebook-home-only #home .compact-book-brand{display:flex;flex-direction:column;gap:3px;min-width:0}
+body.ebook-home-only #home .compact-book-brand strong{color:#fff;font-size:clamp(1.12rem,2.6vw,1.65rem);line-height:1.18;white-space:normal}
+body.ebook-home-only #home .compact-book-brand strong span{color:#ffb3d4}
+body.ebook-home-only #home .compact-book-brand small{color:#d6e7ff;font-size:clamp(.74rem,1.4vw,.91rem)}
+body.ebook-home-only #home .compact-book-deco{margin-left:auto;color:#ffc6e9;font-size:clamp(1.5rem,4vw,2.6rem)}
+body.ebook-home-only #home .illustrated-menu-title{padding:12px 8px 16px!important}
+body.ebook-home-only #home .illustrated-menu-title h2{color:#173652!important;text-shadow:none!important}
+body.ebook-home-only #home .illustrated-menu-title p{color:#607493!important;text-shadow:none!important}
+body.ebook-home-only #home .illustrated-info strong,
+body.ebook-home-only #home .illustrated-card .illustrated-main-button .illustrated-info strong{color:#17334e!important}
+body.ebook-home-only #home .illustrated-info strong small{color:#9d5970!important}
+body.ebook-home-only #home .illustrated-info>span{color:#61728b!important}
+@media(max-width:480px){
+ body.ebook-home-only #home .compact-book-menu-header{padding:12px;gap:9px;margin:6px 0 4px;min-height:74px}
+ body.ebook-home-only #home .menu-return-cover{padding:9px 11px;min-height:42px;font-size:.82rem}
+ body.ebook-home-only #home .compact-book-brand strong{font-size:1.06rem}
+ body.ebook-home-only #home .compact-book-brand small{font-size:.7rem}
+ body.ebook-home-only #home .compact-book-deco{display:none}
+}
+
+
+/* Align cover/back control to the RIGHT on every device. */
+body.ebook-home-only #home .compact-book-menu-header{justify-content:space-between!important}
+body.ebook-home-only #home .compact-book-brand{flex:1 1 auto!important;min-width:0}
+body.ebook-home-only #home .menu-return-cover{margin-left:auto!important;flex:0 0 auto!important}
+</style></head><body><header class="ebook-site-header"><div class="book-brand"><span>🌸 Japanese Ai Ebook</span><button class="book-home-link" type="button" onclick="showTab('home')">⌂ Book Menu</button></div><div class="header-description"><span class="header-eyebrow">✦ JAPANESE LEARNING • DIGITAL EDITION</span><h1>জাপানি শেখা, এখন বইয়ের মতো সহজ।</h1><p>🇯🇵 Japanese শেখো • 🇧🇩 বাংলায় বুঝো • এক অধ্যায় থেকে পরের অধ্যায়ে এগিয়ে চলো</p></div><nav class="nav" aria-label="বইয়ের অধ্যায়"><button class="active" id="tabHome" onclick="showTab('home')">🏠 Book Menu</button><button class="active" id="tabBasics" onclick="showTab('basics')">🌸 প্রথমে বেসিক শিখি</button><button class="" id="tabWords" onclick="openBookMenu('words')">📖 Vocabulary আগে পড়ি</button><button class="" id="tabLearn" onclick="openBookMenu('learn')">📚 Grammar পড়ি</button><button class="" id="tabExam" onclick="openBookMenu('exam')">📝 Random Exam</button><button class="" id="tabAi" onclick="showTab('ai')">🤖 বাংলা AI Teacher</button></nav><div class="study-sound-settings" id="studySoundPanel" aria-label="Japanese study sound controls">
   <label for="studyVolume">🔊 শব্দের Volume</label>
   <input id="studyVolume" type="range" min="0" max="100" value="100" step="5" oninput="updateStudyVolume(this.value)" aria-label="শব্দের ভলিউম">
   <output id="studyVolumeLabel" for="studyVolume">100%</output>
   <button type="button" onclick="speakStudyJapanese('こんにちは。')">▶ Test Sound</button>
   <button type="button" onclick="stopStudySound()">⏹ Stop</button>
   <div class="study-sound-status" id="studySoundStatus" role="status" aria-live="polite">Basic, Word, Grammar ও Quiz-এর 🔊 বাটনে চাপলে Japanese উচ্চারণ শুনবে। AI Chat নীরব থাকবে।</div>
-</div></header><main class="wrap"><section id="basics"><div class="panel"><h2>🌸 প্রথমে Japanese Basic শিখি</h2><p>Hiragana → Katakana → Numbers → ১২ মাস → সপ্তাহের ৭ দিন → Self Introduction। তারপর Lesson 1 ও Lesson 2 Vocabulary, Grammar ও Exam পড়বে।</p></div><div class="panel"><details class="basics-group" open=""><summary>① ひらがな — Hiragana Chart (হিরাগানা)</summary><p class="subnote">হিরাগানা জাপানি ভাষার মৌলিক অক্ষর। প্রতিদিন ১০টি করে লিখে অনুশীলন করো।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr></thead><tbody><tr><th>—</th><td><span class="kana">あ</span><br/><small>a</small></td><td><span class="kana">い</span><br/><small>i</small></td><td><span class="kana">う</span><br/><small>u</small></td><td><span class="kana">え</span><br/><small>e</small></td><td><span class="kana">お</span><br/><small>o</small></td></tr><tr><th>k</th><td><span class="kana">か</span><br/><small>ka</small></td><td><span class="kana">き</span><br/><small>ki</small></td><td><span class="kana">く</span><br/><small>ku</small></td><td><span class="kana">け</span><br/><small>ke</small></td><td><span class="kana">こ</span><br/><small>ko</small></td></tr><tr><th>s</th><td><span class="kana">さ</span><br/><small>sa</small></td><td><span class="kana">し</span><br/><small>shi</small></td><td><span class="kana">す</span><br/><small>su</small></td><td><span class="kana">せ</span><br/><small>se</small></td><td><span class="kana">そ</span><br/><small>so</small></td></tr><tr><th>t</th><td><span class="kana">た</span><br/><small>ta</small></td><td><span class="kana">ち</span><br/><small>chi</small></td><td><span class="kana">つ</span><br/><small>tsu</small></td><td><span class="kana">て</span><br/><small>te</small></td><td><span class="kana">と</span><br/><small>to</small></td></tr><tr><th>n</th><td><span class="kana">な</span><br/><small>na</small></td><td><span class="kana">に</span><br/><small>ni</small></td><td><span class="kana">ぬ</span><br/><small>nu</small></td><td><span class="kana">ね</span><br/><small>ne</small></td><td><span class="kana">の</span><br/><small>no</small></td></tr><tr><th>h</th><td><span class="kana">は</span><br/><small>ha</small></td><td><span class="kana">ひ</span><br/><small>hi</small></td><td><span class="kana">ふ</span><br/><small>fu</small></td><td><span class="kana">へ</span><br/><small>he</small></td><td><span class="kana">ほ</span><br/><small>ho</small></td></tr><tr><th>m</th><td><span class="kana">ま</span><br/><small>ma</small></td><td><span class="kana">み</span><br/><small>mi</small></td><td><span class="kana">む</span><br/><small>mu</small></td><td><span class="kana">め</span><br/><small>me</small></td><td><span class="kana">も</span><br/><small>mo</small></td></tr><tr><th>y</th><td><span class="kana">や</span><br/><small>ya</small></td><td>—</td><td><span class="kana">ゆ</span><br/><small>yu</small></td><td>—</td><td><span class="kana">よ</span><br/><small>yo</small></td></tr><tr><th>r</th><td><span class="kana">ら</span><br/><small>ra</small></td><td><span class="kana">り</span><br/><small>ri</small></td><td><span class="kana">る</span><br/><small>ru</small></td><td><span class="kana">れ</span><br/><small>re</small></td><td><span class="kana">ろ</span><br/><small>ro</small></td></tr><tr><th>w</th><td><span class="kana">わ</span><br/><small>wa</small></td><td>—</td><td>—</td><td>—</td><td><span class="kana">を</span><br/><small>wo</small></td></tr><tr><th>n</th><td><span class="kana">ん</span><br/><small>n</small></td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th>g</th><td><span class="kana">が</span><br/><small>ga</small></td><td><span class="kana">ぎ</span><br/><small>gi</small></td><td><span class="kana">ぐ</span><br/><small>gu</small></td><td><span class="kana">げ</span><br/><small>ge</small></td><td><span class="kana">ご</span><br/><small>go</small></td></tr><tr><th>z</th><td><span class="kana">ざ</span><br/><small>za</small></td><td><span class="kana">じ</span><br/><small>ji</small></td><td><span class="kana">ず</span><br/><small>zu</small></td><td><span class="kana">ぜ</span><br/><small>ze</small></td><td><span class="kana">ぞ</span><br/><small>zo</small></td></tr><tr><th>d</th><td><span class="kana">だ</span><br/><small>da</small></td><td><span class="kana">ぢ</span><br/><small>ji</small></td><td><span class="kana">づ</span><br/><small>zu</small></td><td><span class="kana">で</span><br/><small>de</small></td><td><span class="kana">ど</span><br/><small>do</small></td></tr><tr><th>b</th><td><span class="kana">ば</span><br/><small>ba</small></td><td><span class="kana">び</span><br/><small>bi</small></td><td><span class="kana">ぶ</span><br/><small>bu</small></td><td><span class="kana">べ</span><br/><small>be</small></td><td><span class="kana">ぼ</span><br/><small>bo</small></td></tr><tr><th>p</th><td><span class="kana">ぱ</span><br/><small>pa</small></td><td><span class="kana">ぴ</span><br/><small>pi</small></td><td><span class="kana">ぷ</span><br/><small>pu</small></td><td><span class="kana">ぺ</span><br/><small>pe</small></td><td><span class="kana">ぽ</span><br/><small>po</small></td></tr></tbody></table></div><h3>যুক্ত অক্ষর (きゃ / キャ ইত্যাদি)</h3><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>ya</th><th>yu</th><th>yo</th></tr></thead><tbody><tr><th>ky</th><td><span class="kana">きゃ</span><br/><small>kya</small></td><td><span class="kana">きゅ</span><br/><small>kyu</small></td><td><span class="kana">きょ</span><br/><small>kyo</small></td></tr><tr><th>sh</th><td><span class="kana">しゃ</span><br/><small>sha</small></td><td><span class="kana">しゅ</span><br/><small>shu</small></td><td><span class="kana">しょ</span><br/><small>sho</small></td></tr><tr><th>ch</th><td><span class="kana">ちゃ</span><br/><small>cha</small></td><td><span class="kana">ちゅ</span><br/><small>chu</small></td><td><span class="kana">ちょ</span><br/><small>cho</small></td></tr><tr><th>ny</th><td><span class="kana">にゃ</span><br/><small>nya</small></td><td><span class="kana">にゅ</span><br/><small>nyu</small></td><td><span class="kana">にょ</span><br/><small>nyo</small></td></tr><tr><th>hy</th><td><span class="kana">ひゃ</span><br/><small>hya</small></td><td><span class="kana">ひゅ</span><br/><small>hyu</small></td><td><span class="kana">ひょ</span><br/><small>hyo</small></td></tr><tr><th>my</th><td><span class="kana">みゃ</span><br/><small>mya</small></td><td><span class="kana">みゅ</span><br/><small>myu</small></td><td><span class="kana">みょ</span><br/><small>myo</small></td></tr><tr><th>ry</th><td><span class="kana">りゃ</span><br/><small>rya</small></td><td><span class="kana">りゅ</span><br/><small>ryu</small></td><td><span class="kana">りょ</span><br/><small>ryo</small></td></tr><tr><th>gy</th><td><span class="kana">ぎゃ</span><br/><small>gya</small></td><td><span class="kana">ぎゅ</span><br/><small>gyu</small></td><td><span class="kana">ぎょ</span><br/><small>gyo</small></td></tr><tr><th>j</th><td><span class="kana">じゃ</span><br/><small>ja</small></td><td><span class="kana">じゅ</span><br/><small>ju</small></td><td><span class="kana">じょ</span><br/><small>jo</small></td></tr><tr><th>by</th><td><span class="kana">びゃ</span><br/><small>bya</small></td><td><span class="kana">びゅ</span><br/><small>byu</small></td><td><span class="kana">びょ</span><br/><small>byo</small></td></tr><tr><th>py</th><td><span class="kana">ぴゃ</span><br/><small>pya</small></td><td><span class="kana">ぴゅ</span><br/><small>pyu</small></td><td><span class="kana">ぴょ</span><br/><small>pyo</small></td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>② カタカナ — Katakana Chart (কাতাকানা)</summary><p class="subnote">বিদেশি শব্দ ও নাম লেখার জন্য কাতাকানা বেশি ব্যবহার হয়।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr></thead><tbody><tr><th>—</th><td><span class="kana">ア</span><br/><small>a</small></td><td><span class="kana">イ</span><br/><small>i</small></td><td><span class="kana">ウ</span><br/><small>u</small></td><td><span class="kana">エ</span><br/><small>e</small></td><td><span class="kana">オ</span><br/><small>o</small></td></tr><tr><th>k</th><td><span class="kana">カ</span><br/><small>ka</small></td><td><span class="kana">キ</span><br/><small>ki</small></td><td><span class="kana">ク</span><br/><small>ku</small></td><td><span class="kana">ケ</span><br/><small>ke</small></td><td><span class="kana">コ</span><br/><small>ko</small></td></tr><tr><th>s</th><td><span class="kana">サ</span><br/><small>sa</small></td><td><span class="kana">シ</span><br/><small>shi</small></td><td><span class="kana">ス</span><br/><small>su</small></td><td><span class="kana">セ</span><br/><small>se</small></td><td><span class="kana">ソ</span><br/><small>so</small></td></tr><tr><th>t</th><td><span class="kana">タ</span><br/><small>ta</small></td><td><span class="kana">チ</span><br/><small>chi</small></td><td><span class="kana">ツ</span><br/><small>tsu</small></td><td><span class="kana">テ</span><br/><small>te</small></td><td><span class="kana">ト</span><br/><small>to</small></td></tr><tr><th>n</th><td><span class="kana">ナ</span><br/><small>na</small></td><td><span class="kana">ニ</span><br/><small>ni</small></td><td><span class="kana">ヌ</span><br/><small>nu</small></td><td><span class="kana">ネ</span><br/><small>ne</small></td><td><span class="kana">ノ</span><br/><small>no</small></td></tr><tr><th>h</th><td><span class="kana">ハ</span><br/><small>ha</small></td><td><span class="kana">ヒ</span><br/><small>hi</small></td><td><span class="kana">フ</span><br/><small>fu</small></td><td><span class="kana">ヘ</span><br/><small>he</small></td><td><span class="kana">ホ</span><br/><small>ho</small></td></tr><tr><th>m</th><td><span class="kana">マ</span><br/><small>ma</small></td><td><span class="kana">ミ</span><br/><small>mi</small></td><td><span class="kana">ム</span><br/><small>mu</small></td><td><span class="kana">メ</span><br/><small>me</small></td><td><span class="kana">モ</span><br/><small>mo</small></td></tr><tr><th>y</th><td><span class="kana">ヤ</span><br/><small>ya</small></td><td>—</td><td><span class="kana">ユ</span><br/><small>yu</small></td><td>—</td><td><span class="kana">ヨ</span><br/><small>yo</small></td></tr><tr><th>r</th><td><span class="kana">ラ</span><br/><small>ra</small></td><td><span class="kana">リ</span><br/><small>ri</small></td><td><span class="kana">ル</span><br/><small>ru</small></td><td><span class="kana">レ</span><br/><small>re</small></td><td><span class="kana">ロ</span><br/><small>ro</small></td></tr><tr><th>w</th><td><span class="kana">ワ</span><br/><small>wa</small></td><td>—</td><td>—</td><td>—</td><td><span class="kana">ヲ</span><br/><small>wo</small></td></tr><tr><th>n</th><td><span class="kana">ン</span><br/><small>n</small></td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th>g</th><td><span class="kana">ガ</span><br/><small>ga</small></td><td><span class="kana">ギ</span><br/><small>gi</small></td><td><span class="kana">グ</span><br/><small>gu</small></td><td><span class="kana">ゲ</span><br/><small>ge</small></td><td><span class="kana">ゴ</span><br/><small>go</small></td></tr><tr><th>z</th><td><span class="kana">ザ</span><br/><small>za</small></td><td><span class="kana">ジ</span><br/><small>ji</small></td><td><span class="kana">ズ</span><br/><small>zu</small></td><td><span class="kana">ゼ</span><br/><small>ze</small></td><td><span class="kana">ゾ</span><br/><small>zo</small></td></tr><tr><th>d</th><td><span class="kana">ダ</span><br/><small>da</small></td><td><span class="kana">ヂ</span><br/><small>ji</small></td><td><span class="kana">ヅ</span><br/><small>zu</small></td><td><span class="kana">デ</span><br/><small>de</small></td><td><span class="kana">ド</span><br/><small>do</small></td></tr><tr><th>b</th><td><span class="kana">バ</span><br/><small>ba</small></td><td><span class="kana">ビ</span><br/><small>bi</small></td><td><span class="kana">ブ</span><br/><small>bu</small></td><td><span class="kana">ベ</span><br/><small>be</small></td><td><span class="kana">ボ</span><br/><small>bo</small></td></tr><tr><th>p</th><td><span class="kana">パ</span><br/><small>pa</small></td><td><span class="kana">ピ</span><br/><small>pi</small></td><td><span class="kana">プ</span><br/><small>pu</small></td><td><span class="kana">ペ</span><br/><small>pe</small></td><td><span class="kana">ポ</span><br/><small>po</small></td></tr></tbody></table></div><h3>যুক্ত অক্ষর (きゃ / キャ ইত্যাদি)</h3><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>ya</th><th>yu</th><th>yo</th></tr></thead><tbody><tr><th>ky</th><td><span class="kana">キャ</span><br/><small>kya</small></td><td><span class="kana">キュ</span><br/><small>kyu</small></td><td><span class="kana">キョ</span><br/><small>kyo</small></td></tr><tr><th>sh</th><td><span class="kana">シャ</span><br/><small>sha</small></td><td><span class="kana">シュ</span><br/><small>shu</small></td><td><span class="kana">ショ</span><br/><small>sho</small></td></tr><tr><th>ch</th><td><span class="kana">チャ</span><br/><small>cha</small></td><td><span class="kana">チュ</span><br/><small>chu</small></td><td><span class="kana">チョ</span><br/><small>cho</small></td></tr><tr><th>ny</th><td><span class="kana">ニャ</span><br/><small>nya</small></td><td><span class="kana">ニュ</span><br/><small>nyu</small></td><td><span class="kana">ニョ</span><br/><small>nyo</small></td></tr><tr><th>hy</th><td><span class="kana">ヒャ</span><br/><small>hya</small></td><td><span class="kana">ヒュ</span><br/><small>hyu</small></td><td><span class="kana">ヒョ</span><br/><small>hyo</small></td></tr><tr><th>my</th><td><span class="kana">ミャ</span><br/><small>mya</small></td><td><span class="kana">ミュ</span><br/><small>myu</small></td><td><span class="kana">ミョ</span><br/><small>myo</small></td></tr><tr><th>ry</th><td><span class="kana">リャ</span><br/><small>rya</small></td><td><span class="kana">リュ</span><br/><small>ryu</small></td><td><span class="kana">リョ</span><br/><small>ryo</small></td></tr><tr><th>gy</th><td><span class="kana">ギャ</span><br/><small>gya</small></td><td><span class="kana">ギュ</span><br/><small>gyu</small></td><td><span class="kana">ギョ</span><br/><small>gyo</small></td></tr><tr><th>j</th><td><span class="kana">ジャ</span><br/><small>ja</small></td><td><span class="kana">ジュ</span><br/><small>ju</small></td><td><span class="kana">ジョ</span><br/><small>jo</small></td></tr><tr><th>by</th><td><span class="kana">ビャ</span><br/><small>bya</small></td><td><span class="kana">ビュ</span><br/><small>byu</small></td><td><span class="kana">ビョ</span><br/><small>byo</small></td></tr><tr><th>py</th><td><span class="kana">ピャ</span><br/><small>pya</small></td><td><span class="kana">ピュ</span><br/><small>pyu</small></td><td><span class="kana">ピョ</span><br/><small>pyo</small></td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>③ Japanese Numbers — জাপানি সংখ্যা</summary><p class="subnote">১১–১৯: じゅう + সংখ্যা, ২০–৯৯: দশকের সংখ্যা + এককের সংখ্যা। ১০,০০০ = いちまん।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সংখ্যা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>1</td><td class="kana">一</td><td>いち</td><td>ichi</td></tr><tr><td>2</td><td class="kana">二</td><td>に</td><td>ni</td></tr><tr><td>3</td><td class="kana">三</td><td>さん</td><td>san</td></tr><tr><td>4</td><td class="kana">四</td><td>よん／し</td><td>yon / shi</td></tr><tr><td>5</td><td class="kana">五</td><td>ご</td><td>go</td></tr><tr><td>6</td><td class="kana">六</td><td>ろく</td><td>roku</td></tr><tr><td>7</td><td class="kana">七</td><td>なな／しち</td><td>nana / shichi</td></tr><tr><td>8</td><td class="kana">八</td><td>はち</td><td>hachi</td></tr><tr><td>9</td><td class="kana">九</td><td>きゅう／く</td><td>kyuu / ku</td></tr><tr><td>10</td><td class="kana">十</td><td>じゅう</td><td>juu</td></tr><tr><td>11</td><td class="kana">十一</td><td>じゅういち</td><td>juuichi</td></tr><tr><td>12</td><td class="kana">十二</td><td>じゅうに</td><td>juuni</td></tr><tr><td>20</td><td class="kana">二十</td><td>にじゅう</td><td>nijuu</td></tr><tr><td>21</td><td class="kana">二十一</td><td>にじゅういち</td><td>nijuuichi</td></tr><tr><td>30</td><td class="kana">三十</td><td>さんじゅう</td><td>sanjuu</td></tr><tr><td>100</td><td class="kana">百</td><td>ひゃく</td><td>hyaku</td></tr><tr><td>300</td><td class="kana">三百</td><td>さんびゃく</td><td>sanbyaku</td></tr><tr><td>600</td><td class="kana">六百</td><td>ろっぴゃく</td><td>roppyaku</td></tr><tr><td>800</td><td class="kana">八百</td><td>はっぴゃく</td><td>happyaku</td></tr><tr><td>1,000</td><td class="kana">千</td><td>せん</td><td>sen</td></tr><tr><td>3,000</td><td class="kana">三千</td><td>さんぜん</td><td>sanzen</td></tr><tr><td>8,000</td><td class="kana">八千</td><td>はっせん</td><td>hassen</td></tr><tr><td>10,000</td><td class="kana">一万</td><td>いちまん</td><td>ichiman</td></tr><tr><td>20,000</td><td class="kana">二万</td><td>にまん</td><td>niman</td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>④ 12 Months — ১২ মাস</summary><div class="table-scroll"><table class="basic-table"><thead><tr><th>বাংলা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>জানুয়ারি</td><td class="kana">一月</td><td>いちがつ</td><td>ichigatsu</td></tr><tr><td>ফেব্রুয়ারি</td><td class="kana">二月</td><td>にがつ</td><td>nigatsu</td></tr><tr><td>মার্চ</td><td class="kana">三月</td><td>さんがつ</td><td>sangatsu</td></tr><tr><td>এপ্রিল</td><td class="kana">四月</td><td>しがつ</td><td>shigatsu</td></tr><tr><td>মে</td><td class="kana">五月</td><td>ごがつ</td><td>gogatsu</td></tr><tr><td>জুন</td><td class="kana">六月</td><td>ろくがつ</td><td>rokugatsu</td></tr><tr><td>জুলাই</td><td class="kana">七月</td><td>しちがつ</td><td>shichigatsu</td></tr><tr><td>আগস্ট</td><td class="kana">八月</td><td>はちがつ</td><td>hachigatsu</td></tr><tr><td>সেপ্টেম্বর</td><td class="kana">九月</td><td>くがつ</td><td>kugatsu</td></tr><tr><td>অক্টোবর</td><td class="kana">十月</td><td>じゅうがつ</td><td>juugatsu</td></tr><tr><td>নভেম্বর</td><td class="kana">十一月</td><td>じゅういちがつ</td><td>juuichigatsu</td></tr><tr><td>ডিসেম্বর</td><td class="kana">十二月</td><td>じゅうにがつ</td><td>juunigatsu</td></tr></tbody></table></div><p class="tip">মনে রাখো: মাস বোঝাতে সাধারণত সংখ্যা + がつ (gatsu) ব্যবহার হয়। ব্যতিক্রম: ৪月 しがつ, ৭月 しちがつ, ৯月 くがつ।</p></details></div><div class="panel"><details class="basics-group" open=""><summary>⑤ 7 Days of the Week — সপ্তাহের ৭ দিন</summary><div class="table-scroll"><table class="basic-table"><thead><tr><th>বাংলা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>সোমবার</td><td class="kana">月曜日</td><td>げつようび</td><td>getsuyoubi</td></tr><tr><td>মঙ্গলবার</td><td class="kana">火曜日</td><td>かようび</td><td>kayoubi</td></tr><tr><td>বুধবার</td><td class="kana">水曜日</td><td>すいようび</td><td>suiyoubi</td></tr><tr><td>বৃহস্পতিবার</td><td class="kana">木曜日</td><td>もくようび</td><td>mokuyoubi</td></tr><tr><td>শুক্রবার</td><td class="kana">金曜日</td><td>きんようび</td><td>kinyoubi</td></tr><tr><td>শনিবার</td><td class="kana">土曜日</td><td>どようび</td><td>doyoubi</td></tr><tr><td>রবিবার</td><td class="kana">日曜日</td><td>にちようび</td><td>nichiyoubi</td></tr></tbody></table></div><p class="tip">曜日 (ようび / youbi) = সপ্তাহের দিন।</p></details></div><div class="panel"><details class="basics-group" open=""><summary>⑥ 自己紹介 — Self Introduction (নিজের পরিচয়)</summary><p class="subnote">নিচের নমুনায় নিজের নাম, দেশ, বয়স ও পেশা বসিয়ে বলবে।</p><div class="intro-example"><div class="jp">はじめまして。</div><div class="rom">Hajimemashite.</div><div class="bn">প্রথম পরিচয়ে: আপনার সঙ্গে পরিচিত হয়ে ভালো লাগছে।</div></div><div class="intro-example"><div class="jp">わたしは リドイです。</div><div class="rom">Watashi wa Ridoi desu.</div><div class="bn">আমি রিদয়। (নিজের নাম বসাও)</div></div><div class="intro-example"><div class="jp">バングラデシュから きました。</div><div class="rom">Banguradeshu kara kimashita.</div><div class="bn">আমি বাংলাদেশ থেকে এসেছি।</div></div><div class="intro-example"><div class="jp">わたしは がくせいです。</div><div class="rom">Watashi wa gakusei desu.</div><div class="bn">আমি ছাত্র।</div></div><div class="intro-example"><div class="jp">わたしは 25さいです。</div><div class="rom">Watashi wa nijuu-go sai desu.</div><div class="bn">আমার বয়স ২৫ বছর। (নিজের বয়স বসাও)</div></div><div class="intro-example"><div class="jp">どうぞ よろしく おねがいします。</div><div class="rom">Douzo yoroshiku onegaishimasu.</div><div class="bn">আপনার সহযোগিতা কামনা করছি / পরিচিত হয়ে ভালো লাগল।</div></div></details></div><div class="panel"><h2>✅ Basic পড়া শেষ?</h2><button class="primary" onclick="showTab('words')">এবার Lesson 1 Vocabulary পড়ি ➜</button></div></section><section class="hidden" id="learn"><div class="panel"><h2>📚 Grammar — Lesson 1 / Lesson 2</h2><p>প্রতিটি Grammar কেন ব্যবহার হয়, অর্থ এবং ৫টি করে Example। Lesson বেছে নিয়ে পড়ো।</p></div><div class="panel"><label>কোন Lesson পড়বে? <select id="grammarLesson" onchange="renderGrammar()"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label></div><div id="grammarList"></div><div class="panel"><button class="primary" onclick="showTab('exam');document.getElementById('examLesson').value=document.getElementById('grammarLesson').value">Grammar পড়া শেষ → Exam দিই ➜</button></div></section><section class="" id="words"><div class="panel" id="lessonQuick"><h2>🎯 কোন Lesson পড়বে?</h2><div class="quick-grid"><button class="quick" onclick="openLesson('words','1')">📗 Lesson 1<br/><small>৪৭টি Vocabulary</small></button><button class="quick" onclick="openLesson('words','2')">📘 Lesson 2<br/><small>৪৬টি Vocabulary</small></button><button class="quick" onclick="openLesson('learn','1')">📚 Lesson 1<br/><small>৬টি Grammar</small></button><button class="quick" onclick="openLesson('learn','2')">📚 Lesson 2<br/><small>৮টি Grammar</small></button><button class="quick" onclick="openLesson('exam','1')">📝 Lesson 1 Exam<br/><small>Random Questions</small></button><button class="quick" onclick="openLesson('exam','2')">📝 Lesson 2 Exam<br/><small>Random Questions</small></button></div></div><div class="panel"><h2>📖 Vocabulary — Lesson 1 / Lesson 2</h2><p>প্রথমে শব্দ মুখস্থ করো। Lesson 1-এর ৪৭টি এবং Lesson 2-এর ৪৬টি শব্দ আলাদা করে পড়তে পারবে।</p><label>কোন Lesson-এর শব্দ? <select id="vocabLesson" onchange="renderWords()"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label><p class="muted" id="wordCount"></p><div class="vocab" id="wordList"></div></div><div class="panel"><button class="primary" onclick="showTab('learn');document.getElementById('grammarLesson').value=document.getElementById('vocabLesson').value;renderGrammar()">শব্দ পড়া শেষ → Grammar পড়ি ➜</button></div></section><section class="hidden" id="exam"><div class="panel" id="setup"><h2>📝 Random Exam</h2><p>Lesson 1 বা Lesson 2 আলাদা পরীক্ষা দাও। চাইলে দুটো Lesson একসঙ্গেও পরীক্ষা দিতে পারবে। প্রতিবার Random প্রশ্ন ও অপশন বদলাবে।</p><div class="settings"><label>বিষয়<br/><select id="mode"><option value="mixed">Grammar + Vocabulary</option><option value="vocab">শুধু Vocabulary</option><option value="grammar">শুধু Grammar</option></select></label><label>Lesson<br/><select id="examLesson"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label><label>প্রশ্ন সংখ্যা<br/><select id="count"><option value="10">১০টি</option><option selected="" value="20">২০টি</option><option value="30">৩০টি</option><option value="47">৪৭টি</option><option value="50">৫০টি</option><option value="100">১০০টি</option><option value="200">২০০টি</option></select></label></div><p class="muted">প্রতিটি প্রশ্নে ৪টি অপশন। ভুল হলে পরীক্ষার শেষে সঠিক উত্তর ও ব্যাখ্যা দেখতে পাবে।</p><button class="primary" onclick="startExam()">🚀 পরীক্ষা শুরু</button></div><div class="panel hidden" id="play"><div class="row"><span class="stat" id="qNum"></span><span class="muted" id="qType"></span></div><div class="progress"><div class="bar" id="bar"></div></div><h2 id="question"></h2> <button type="button" id="quizStudySound" class="study-sound-btn" onclick="speakQuizStudySound()">🔊 প্রশ্নের Japanese শুনুন</button><div class="choices" id="choices"></div><div class="row"><button class="primary" disabled="" id="next" onclick="nextQuestion()">পরের প্রশ্ন ➜</button><button onclick="quitExam()">পরীক্ষা বন্ধ</button></div></div><div class="panel hidden" id="result"><h2>🏆 পরীক্ষার ফলাফল</h2><div class="score" id="score"></div><p id="summary"></p><div class="row"><button class="primary" onclick="startExam()">🔄 আবার নতুন পরীক্ষা</button><button onclick="quitExam()">সেটিংসে ফিরি</button></div><h3>📋 উত্তর ও ব্যাখ্যা</h3><div id="review"></div></div></section><section class="hidden" id="ai"><div class="panel"><h2>🤖 বাংলা AI Teacher — Japanese প্রশ্ন করো</h2><p>জাপানি Grammar, Vocabulary অথবা বাক্য নিয়ে <b>বাংলায় প্রশ্ন</b> করো। AI Japanese বাক্য, বাংলা অর্থ, কেন ব্যবহার হয় এবং উদাহরণ দিয়ে বোঝাবে।</p><p class="ai-note">🤖 বাংলা AI Teacher: প্রশ্ন লিখে Send চাপো। প্রতিটি শব্দ ও বাক্যের পাশে AI বাটন থেকেও সরাসরি প্রশ্ন করা যায়। <span id="aiSetupNote">AI চালু করতে Website মালিককে একবার নিরাপদ AI Server সংযুক্ত করতে হবে।</span></p><div class="ai-chat"><div id="aiContext" class="ai-context" aria-live="polite"></div><div id="aiMessages" class="ai-messages" aria-live="polite"><div class="ai-msg assistant">こんにちは! ❤️ আমি তোমার Japanese AI Teacher। বাংলায় প্রশ্ন করো। যেমন: 「は কেন বসে?」 অথবা 「これ আর この-এর পার্থক্য কী?」</div></div><div class="ai-tools"><button onclick="aiAskExample('は আর も-এর পার্থক্য সহজ বাংলায় ৩টি উদাহরণ দিয়ে বোঝাও')">は vs も</button><button onclick="aiAskExample('これ それ あれ আর この その あの এর পার্থক্য বোঝাও')">Lesson 2</button><button onclick="aiAskExample('わたしは がくせいです। এই বাক্যের প্রতিটি শব্দ কেন বসেছে?')">বাক্য ভেঙে বোঝাও</button><button onclick="aiClear()">🗑️ Chat মুছো</button></div><p id="micStatus" class="voice-status" role="status" aria-live="polite">🎙️ মাইক চাপলে বাংলা বা Japanese বেছে নিয়ে কথা বলতে পারবে।</p>
+</div></header><main class="wrap"><section id="cover" class="sakura-cover-page hidden" aria-label="Japanese Ai Ebook Cover">
+  <div class="illustrated-cover">
+    <div class="cover-artscape"><span class="cover-hello">こんにちは！</span><span class="cover-speak">がんばろう！<small>চলো, চেষ্টা করি!</small></span></div>
+    <div class="illustrated-cover-copy">
+      <h1>Japanese<br><span>Ai Ebook</span></h1>
+      <p>🌸 Japanese শেখা, এখন বইয়ের মতো সহজ! 🌸</p>
+      <div class="cover-feature-grid" aria-label="বইয়ের বিষয়">
+        <button type="button" class="cover-feature-button" onclick="showTab('basics')" aria-label="Basic খুলুন"><span class="round-feature pink">🌸</span><strong>Basic</strong><small>শুরু থেকে শিখো</small></button>
+        <button type="button" class="cover-feature-button" onclick="openBookMenu('words')" aria-label="Vocabulary খুলুন"><span class="round-feature green">📖</span><strong>Vocabulary</strong><small>জাপানি শব্দ</small></button>
+        <button type="button" class="cover-feature-button" onclick="openBookMenu('learn')" aria-label="Grammar খুলুন"><span class="round-feature amber">📚</span><strong>Grammar</strong><small>সহজ ব্যাখ্যা</small></button>
+        <button type="button" class="cover-feature-button" onclick="showTab('ai')" aria-label="AI Chat খুলুন"><span class="round-feature violet">🤖</span><strong>AI Chat</strong><small>প্রশ্নের উত্তর</small></button>
+      </div>
+      <button type="button" class="illustrated-start sakura-start" onclick="showTab('home')">Start Now <span aria-hidden="true">➜</span></button>
+      <div class="cover-support-line"><span>✓ ধাপে ধাপে শেখো</span><span>♡ বাংলায় বুঝো</span><span>✦ অনুশীলন করো</span></div>
+    </div>
+  </div>
+</section>
+<section id="home" class="book-home-page simple-home hidden" aria-label="Japanese Ai Ebook menu">
+  <div class="compact-book-menu-header">
+    <div class="compact-book-brand"><span aria-hidden="true">🌸</span><strong>Japanese <span>Ai Ebook</span></strong><small>তোমার শেখার বই · 学ぼう</small></div>
+    <button class="menu-return-cover" type="button" onclick="showTab('cover')" aria-label="প্রথম পৃষ্ঠায় ফিরে যাও">← প্রথম পৃষ্ঠা</button>
+  </div>
+  <div class="illustrated-menu-title"><h2>🌸 কী শিখবে নির্বাচন করো 🌸</h2><p>ধাপে ধাপে জাপানি ভাষা শেখো, নিজের গতিতে এগিয়ে যাও</p></div>
+  <div class="illustrated-cards" aria-label="বইয়ের অধ্যায়">
+    <button class="illustrated-card basic-card" type="button" onclick="showTab('basics')"><span class="illustrated-icon">🌸</span><span class="illustrated-info"><strong>Basic <small>(基礎)</small></strong><span>Hiragana, Katakana, সংখ্যা, মাস, দিন ও পরিচয়</span></span><b class="card-chevron">›</b></button>
+    <div class="illustrated-card word-card"><button class="illustrated-main-button" type="button" onclick="openBookMenu('words')"><span class="illustrated-icon">📖</span><span class="illustrated-info"><strong>Vocabulary <small>(単語)</small></strong><span>জাপানি শব্দ শিখো ও ব্যবহার করো</span></span><b class="card-chevron">›</b></button><div class="illustrated-lessons"><button type="button" onclick="openLesson('words','1')">Lesson 1 ❯</button><button type="button" onclick="openLesson('words','2')">Lesson 2 ❯</button></div></div>
+    <div class="illustrated-card grammar-card"><button class="illustrated-main-button" type="button" onclick="openBookMenu('learn')"><span class="illustrated-icon">📚</span><span class="illustrated-info"><strong>Grammar <small>(文法)</small></strong><span>সহজভাবে জাপানি ব্যাকরণ শেখো</span></span><b class="card-chevron">›</b></button><div class="illustrated-lessons"><button type="button" onclick="openLesson('learn','1')">Lesson 1 ❯</button><button type="button" onclick="openLesson('learn','2')">Lesson 2 ❯</button></div></div>
+    <button class="illustrated-card reading-card" type="button" onclick="openBookMenu('reading')"><span class="illustrated-icon">📕</span><span class="illustrated-info"><strong>Reading <small>(読解)</small></strong><span>জাপানি ছোট বাক্য পড়ো ও বাংলা অর্থ বোঝো</span></span><b class="card-chevron">›</b></button>
+    <button class="illustrated-card quiz-card" type="button" onclick="openBookMenu('exam')"><span class="illustrated-icon">📝</span><span class="illustrated-info"><strong>Quiz / Test <small>(テスト)</small></strong><span>মজার কুইজ ও পরীক্ষায় নিজের শেখা যাচাই করো</span></span><b class="card-chevron">›</b></button>
+    <button class="illustrated-card ai-card" type="button" onclick="showTab('ai')"><span class="illustrated-icon">🤖</span><span class="illustrated-info"><strong>AI Teacher <small>(AI先生)</small></strong><span>বাংলায় প্রশ্ন করো, সহজ উত্তর পাও</span></span><b class="card-chevron">›</b></button>
+  </div>
+</section><section class="hidden" id="lessonMenu" aria-label="Lesson নির্বাচন">
+ <div class="book-breadcrumb"><button type="button" onclick="showTab('home')">← Book Menu</button><span> / Lesson Selection</span></div>
+ <div class="panel lesson-picker"><span class="menu-eyebrow">SELECT YOUR LESSON</span><h2 id="lessonMenuTitle">📖 Lesson বেছে নাও</h2><p id="lessonMenuHelp">যে Lesson পড়তে চাও সেটি বেছে নাও।</p>
+  <div class="lesson-choice-grid"><button type="button" class="lesson-choice" onclick="chooseBookLesson('1')"><span class="lesson-choice-icon">📗</span><strong>Lesson 1</strong><small id="lessonOneDesc">৪৭টি Vocabulary • ৬টি Grammar</small><span>পড়া শুরু করো →</span></button><button type="button" class="lesson-choice" onclick="chooseBookLesson('2')"><span class="lesson-choice-icon">📘</span><strong>Lesson 2</strong><small id="lessonTwoDesc">৪৬টি Vocabulary • ৮টি Grammar</small><span>পড়া শুরু করো →</span></button></div>
+  <button type="button" class="book-prev" onclick="showTab('home')">← মূল Menu-তে ফিরো</button>
+ </div>
+</section>
+<section class="hidden" id="reading"><div class="ebook-reader-toolbar" aria-label="Reading settings"><span class="ebook-reader-label">☷ &nbsp; Study reading mode</span><div class="ebook-reader-actions"><button type="button" aria-label="লেখা ছোট করো" onclick="adjustBookFont(-1)">A−</button><span id="ebookFontIndicator">100%</span><button type="button" aria-label="লেখা বড় করো" onclick="adjustBookFont(1)">A+</button></div></div>
+ <div class="book-breadcrumb"><button type="button" onclick="openBookMenu('reading')">← Reading Lessons</button><span> / <span id="readingBreadcrumb">Lesson 1</span></span></div>
+ <div class="panel reading-panel"><span class="menu-eyebrow">STEP 04 · READING PRACTICE</span><h2 id="readingTitle">📕 Japanese Reading — Lesson 1</h2><p>প্রথমে Japanese বাক্য পড়ো, তারপর নিচের বাংলা অর্থ দেখে মিলিয়ে নাও। 🔊 চাপলে Japanese শুনতে পারবে।</p><div id="readingCards"></div></div>
+<nav class="book-pager" aria-label="Book page navigation"><button type="button" class="book-prev" onclick="bookBack()">← আগের পৃষ্ঠা</button><button type="button" class="book-next" onclick="bookNext()">পরের পৃষ্ঠা →</button></nav></section>
+<section class="hidden" id="basics"><div class="book-breadcrumb"><button type="button" onclick="showTab('home')">← মূল বইয়ের Menu</button><span> / Japanese Basic</span></div><div class="panel"><h2>🌸 প্রথমে Japanese Basic শিখি</h2><p>Hiragana → Katakana → Numbers → ১২ মাস → সপ্তাহের ৭ দিন → Self Introduction। তারপর Lesson 1 ও Lesson 2 Vocabulary, Grammar ও Exam পড়বে।</p></div><div class="panel"><details class="basics-group" open=""><summary>① ひらがな — Hiragana Chart (হিরাগানা)</summary><p class="subnote">হিরাগানা জাপানি ভাষার মৌলিক অক্ষর। প্রতিদিন ১০টি করে লিখে অনুশীলন করো।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr></thead><tbody><tr><th>—</th><td><span class="kana">あ</span><br/><small>a</small></td><td><span class="kana">い</span><br/><small>i</small></td><td><span class="kana">う</span><br/><small>u</small></td><td><span class="kana">え</span><br/><small>e</small></td><td><span class="kana">お</span><br/><small>o</small></td></tr><tr><th>k</th><td><span class="kana">か</span><br/><small>ka</small></td><td><span class="kana">き</span><br/><small>ki</small></td><td><span class="kana">く</span><br/><small>ku</small></td><td><span class="kana">け</span><br/><small>ke</small></td><td><span class="kana">こ</span><br/><small>ko</small></td></tr><tr><th>s</th><td><span class="kana">さ</span><br/><small>sa</small></td><td><span class="kana">し</span><br/><small>shi</small></td><td><span class="kana">す</span><br/><small>su</small></td><td><span class="kana">せ</span><br/><small>se</small></td><td><span class="kana">そ</span><br/><small>so</small></td></tr><tr><th>t</th><td><span class="kana">た</span><br/><small>ta</small></td><td><span class="kana">ち</span><br/><small>chi</small></td><td><span class="kana">つ</span><br/><small>tsu</small></td><td><span class="kana">て</span><br/><small>te</small></td><td><span class="kana">と</span><br/><small>to</small></td></tr><tr><th>n</th><td><span class="kana">な</span><br/><small>na</small></td><td><span class="kana">に</span><br/><small>ni</small></td><td><span class="kana">ぬ</span><br/><small>nu</small></td><td><span class="kana">ね</span><br/><small>ne</small></td><td><span class="kana">の</span><br/><small>no</small></td></tr><tr><th>h</th><td><span class="kana">は</span><br/><small>ha</small></td><td><span class="kana">ひ</span><br/><small>hi</small></td><td><span class="kana">ふ</span><br/><small>fu</small></td><td><span class="kana">へ</span><br/><small>he</small></td><td><span class="kana">ほ</span><br/><small>ho</small></td></tr><tr><th>m</th><td><span class="kana">ま</span><br/><small>ma</small></td><td><span class="kana">み</span><br/><small>mi</small></td><td><span class="kana">む</span><br/><small>mu</small></td><td><span class="kana">め</span><br/><small>me</small></td><td><span class="kana">も</span><br/><small>mo</small></td></tr><tr><th>y</th><td><span class="kana">や</span><br/><small>ya</small></td><td>—</td><td><span class="kana">ゆ</span><br/><small>yu</small></td><td>—</td><td><span class="kana">よ</span><br/><small>yo</small></td></tr><tr><th>r</th><td><span class="kana">ら</span><br/><small>ra</small></td><td><span class="kana">り</span><br/><small>ri</small></td><td><span class="kana">る</span><br/><small>ru</small></td><td><span class="kana">れ</span><br/><small>re</small></td><td><span class="kana">ろ</span><br/><small>ro</small></td></tr><tr><th>w</th><td><span class="kana">わ</span><br/><small>wa</small></td><td>—</td><td>—</td><td>—</td><td><span class="kana">を</span><br/><small>wo</small></td></tr><tr><th>n</th><td><span class="kana">ん</span><br/><small>n</small></td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th>g</th><td><span class="kana">が</span><br/><small>ga</small></td><td><span class="kana">ぎ</span><br/><small>gi</small></td><td><span class="kana">ぐ</span><br/><small>gu</small></td><td><span class="kana">げ</span><br/><small>ge</small></td><td><span class="kana">ご</span><br/><small>go</small></td></tr><tr><th>z</th><td><span class="kana">ざ</span><br/><small>za</small></td><td><span class="kana">じ</span><br/><small>ji</small></td><td><span class="kana">ず</span><br/><small>zu</small></td><td><span class="kana">ぜ</span><br/><small>ze</small></td><td><span class="kana">ぞ</span><br/><small>zo</small></td></tr><tr><th>d</th><td><span class="kana">だ</span><br/><small>da</small></td><td><span class="kana">ぢ</span><br/><small>ji</small></td><td><span class="kana">づ</span><br/><small>zu</small></td><td><span class="kana">で</span><br/><small>de</small></td><td><span class="kana">ど</span><br/><small>do</small></td></tr><tr><th>b</th><td><span class="kana">ば</span><br/><small>ba</small></td><td><span class="kana">び</span><br/><small>bi</small></td><td><span class="kana">ぶ</span><br/><small>bu</small></td><td><span class="kana">べ</span><br/><small>be</small></td><td><span class="kana">ぼ</span><br/><small>bo</small></td></tr><tr><th>p</th><td><span class="kana">ぱ</span><br/><small>pa</small></td><td><span class="kana">ぴ</span><br/><small>pi</small></td><td><span class="kana">ぷ</span><br/><small>pu</small></td><td><span class="kana">ぺ</span><br/><small>pe</small></td><td><span class="kana">ぽ</span><br/><small>po</small></td></tr></tbody></table></div><h3>যুক্ত অক্ষর (きゃ / キャ ইত্যাদি)</h3><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>ya</th><th>yu</th><th>yo</th></tr></thead><tbody><tr><th>ky</th><td><span class="kana">きゃ</span><br/><small>kya</small></td><td><span class="kana">きゅ</span><br/><small>kyu</small></td><td><span class="kana">きょ</span><br/><small>kyo</small></td></tr><tr><th>sh</th><td><span class="kana">しゃ</span><br/><small>sha</small></td><td><span class="kana">しゅ</span><br/><small>shu</small></td><td><span class="kana">しょ</span><br/><small>sho</small></td></tr><tr><th>ch</th><td><span class="kana">ちゃ</span><br/><small>cha</small></td><td><span class="kana">ちゅ</span><br/><small>chu</small></td><td><span class="kana">ちょ</span><br/><small>cho</small></td></tr><tr><th>ny</th><td><span class="kana">にゃ</span><br/><small>nya</small></td><td><span class="kana">にゅ</span><br/><small>nyu</small></td><td><span class="kana">にょ</span><br/><small>nyo</small></td></tr><tr><th>hy</th><td><span class="kana">ひゃ</span><br/><small>hya</small></td><td><span class="kana">ひゅ</span><br/><small>hyu</small></td><td><span class="kana">ひょ</span><br/><small>hyo</small></td></tr><tr><th>my</th><td><span class="kana">みゃ</span><br/><small>mya</small></td><td><span class="kana">みゅ</span><br/><small>myu</small></td><td><span class="kana">みょ</span><br/><small>myo</small></td></tr><tr><th>ry</th><td><span class="kana">りゃ</span><br/><small>rya</small></td><td><span class="kana">りゅ</span><br/><small>ryu</small></td><td><span class="kana">りょ</span><br/><small>ryo</small></td></tr><tr><th>gy</th><td><span class="kana">ぎゃ</span><br/><small>gya</small></td><td><span class="kana">ぎゅ</span><br/><small>gyu</small></td><td><span class="kana">ぎょ</span><br/><small>gyo</small></td></tr><tr><th>j</th><td><span class="kana">じゃ</span><br/><small>ja</small></td><td><span class="kana">じゅ</span><br/><small>ju</small></td><td><span class="kana">じょ</span><br/><small>jo</small></td></tr><tr><th>by</th><td><span class="kana">びゃ</span><br/><small>bya</small></td><td><span class="kana">びゅ</span><br/><small>byu</small></td><td><span class="kana">びょ</span><br/><small>byo</small></td></tr><tr><th>py</th><td><span class="kana">ぴゃ</span><br/><small>pya</small></td><td><span class="kana">ぴゅ</span><br/><small>pyu</small></td><td><span class="kana">ぴょ</span><br/><small>pyo</small></td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>② カタカナ — Katakana Chart (কাতাকানা)</summary><p class="subnote">বিদেশি শব্দ ও নাম লেখার জন্য কাতাকানা বেশি ব্যবহার হয়।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr></thead><tbody><tr><th>—</th><td><span class="kana">ア</span><br/><small>a</small></td><td><span class="kana">イ</span><br/><small>i</small></td><td><span class="kana">ウ</span><br/><small>u</small></td><td><span class="kana">エ</span><br/><small>e</small></td><td><span class="kana">オ</span><br/><small>o</small></td></tr><tr><th>k</th><td><span class="kana">カ</span><br/><small>ka</small></td><td><span class="kana">キ</span><br/><small>ki</small></td><td><span class="kana">ク</span><br/><small>ku</small></td><td><span class="kana">ケ</span><br/><small>ke</small></td><td><span class="kana">コ</span><br/><small>ko</small></td></tr><tr><th>s</th><td><span class="kana">サ</span><br/><small>sa</small></td><td><span class="kana">シ</span><br/><small>shi</small></td><td><span class="kana">ス</span><br/><small>su</small></td><td><span class="kana">セ</span><br/><small>se</small></td><td><span class="kana">ソ</span><br/><small>so</small></td></tr><tr><th>t</th><td><span class="kana">タ</span><br/><small>ta</small></td><td><span class="kana">チ</span><br/><small>chi</small></td><td><span class="kana">ツ</span><br/><small>tsu</small></td><td><span class="kana">テ</span><br/><small>te</small></td><td><span class="kana">ト</span><br/><small>to</small></td></tr><tr><th>n</th><td><span class="kana">ナ</span><br/><small>na</small></td><td><span class="kana">ニ</span><br/><small>ni</small></td><td><span class="kana">ヌ</span><br/><small>nu</small></td><td><span class="kana">ネ</span><br/><small>ne</small></td><td><span class="kana">ノ</span><br/><small>no</small></td></tr><tr><th>h</th><td><span class="kana">ハ</span><br/><small>ha</small></td><td><span class="kana">ヒ</span><br/><small>hi</small></td><td><span class="kana">フ</span><br/><small>fu</small></td><td><span class="kana">ヘ</span><br/><small>he</small></td><td><span class="kana">ホ</span><br/><small>ho</small></td></tr><tr><th>m</th><td><span class="kana">マ</span><br/><small>ma</small></td><td><span class="kana">ミ</span><br/><small>mi</small></td><td><span class="kana">ム</span><br/><small>mu</small></td><td><span class="kana">メ</span><br/><small>me</small></td><td><span class="kana">モ</span><br/><small>mo</small></td></tr><tr><th>y</th><td><span class="kana">ヤ</span><br/><small>ya</small></td><td>—</td><td><span class="kana">ユ</span><br/><small>yu</small></td><td>—</td><td><span class="kana">ヨ</span><br/><small>yo</small></td></tr><tr><th>r</th><td><span class="kana">ラ</span><br/><small>ra</small></td><td><span class="kana">リ</span><br/><small>ri</small></td><td><span class="kana">ル</span><br/><small>ru</small></td><td><span class="kana">レ</span><br/><small>re</small></td><td><span class="kana">ロ</span><br/><small>ro</small></td></tr><tr><th>w</th><td><span class="kana">ワ</span><br/><small>wa</small></td><td>—</td><td>—</td><td>—</td><td><span class="kana">ヲ</span><br/><small>wo</small></td></tr><tr><th>n</th><td><span class="kana">ン</span><br/><small>n</small></td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th>g</th><td><span class="kana">ガ</span><br/><small>ga</small></td><td><span class="kana">ギ</span><br/><small>gi</small></td><td><span class="kana">グ</span><br/><small>gu</small></td><td><span class="kana">ゲ</span><br/><small>ge</small></td><td><span class="kana">ゴ</span><br/><small>go</small></td></tr><tr><th>z</th><td><span class="kana">ザ</span><br/><small>za</small></td><td><span class="kana">ジ</span><br/><small>ji</small></td><td><span class="kana">ズ</span><br/><small>zu</small></td><td><span class="kana">ゼ</span><br/><small>ze</small></td><td><span class="kana">ゾ</span><br/><small>zo</small></td></tr><tr><th>d</th><td><span class="kana">ダ</span><br/><small>da</small></td><td><span class="kana">ヂ</span><br/><small>ji</small></td><td><span class="kana">ヅ</span><br/><small>zu</small></td><td><span class="kana">デ</span><br/><small>de</small></td><td><span class="kana">ド</span><br/><small>do</small></td></tr><tr><th>b</th><td><span class="kana">バ</span><br/><small>ba</small></td><td><span class="kana">ビ</span><br/><small>bi</small></td><td><span class="kana">ブ</span><br/><small>bu</small></td><td><span class="kana">ベ</span><br/><small>be</small></td><td><span class="kana">ボ</span><br/><small>bo</small></td></tr><tr><th>p</th><td><span class="kana">パ</span><br/><small>pa</small></td><td><span class="kana">ピ</span><br/><small>pi</small></td><td><span class="kana">プ</span><br/><small>pu</small></td><td><span class="kana">ペ</span><br/><small>pe</small></td><td><span class="kana">ポ</span><br/><small>po</small></td></tr></tbody></table></div><h3>যুক্ত অক্ষর (きゃ / キャ ইত্যাদি)</h3><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>ya</th><th>yu</th><th>yo</th></tr></thead><tbody><tr><th>ky</th><td><span class="kana">キャ</span><br/><small>kya</small></td><td><span class="kana">キュ</span><br/><small>kyu</small></td><td><span class="kana">キョ</span><br/><small>kyo</small></td></tr><tr><th>sh</th><td><span class="kana">シャ</span><br/><small>sha</small></td><td><span class="kana">シュ</span><br/><small>shu</small></td><td><span class="kana">ショ</span><br/><small>sho</small></td></tr><tr><th>ch</th><td><span class="kana">チャ</span><br/><small>cha</small></td><td><span class="kana">チュ</span><br/><small>chu</small></td><td><span class="kana">チョ</span><br/><small>cho</small></td></tr><tr><th>ny</th><td><span class="kana">ニャ</span><br/><small>nya</small></td><td><span class="kana">ニュ</span><br/><small>nyu</small></td><td><span class="kana">ニョ</span><br/><small>nyo</small></td></tr><tr><th>hy</th><td><span class="kana">ヒャ</span><br/><small>hya</small></td><td><span class="kana">ヒュ</span><br/><small>hyu</small></td><td><span class="kana">ヒョ</span><br/><small>hyo</small></td></tr><tr><th>my</th><td><span class="kana">ミャ</span><br/><small>mya</small></td><td><span class="kana">ミュ</span><br/><small>myu</small></td><td><span class="kana">ミョ</span><br/><small>myo</small></td></tr><tr><th>ry</th><td><span class="kana">リャ</span><br/><small>rya</small></td><td><span class="kana">リュ</span><br/><small>ryu</small></td><td><span class="kana">リョ</span><br/><small>ryo</small></td></tr><tr><th>gy</th><td><span class="kana">ギャ</span><br/><small>gya</small></td><td><span class="kana">ギュ</span><br/><small>gyu</small></td><td><span class="kana">ギョ</span><br/><small>gyo</small></td></tr><tr><th>j</th><td><span class="kana">ジャ</span><br/><small>ja</small></td><td><span class="kana">ジュ</span><br/><small>ju</small></td><td><span class="kana">ジョ</span><br/><small>jo</small></td></tr><tr><th>by</th><td><span class="kana">ビャ</span><br/><small>bya</small></td><td><span class="kana">ビュ</span><br/><small>byu</small></td><td><span class="kana">ビョ</span><br/><small>byo</small></td></tr><tr><th>py</th><td><span class="kana">ピャ</span><br/><small>pya</small></td><td><span class="kana">ピュ</span><br/><small>pyu</small></td><td><span class="kana">ピョ</span><br/><small>pyo</small></td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>③ Japanese Numbers — জাপানি সংখ্যা</summary><p class="subnote">১১–১৯: じゅう + সংখ্যা, ২০–৯৯: দশকের সংখ্যা + এককের সংখ্যা। ১০,০০০ = いちまん।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সংখ্যা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>1</td><td class="kana">一</td><td>いち</td><td>ichi</td></tr><tr><td>2</td><td class="kana">二</td><td>に</td><td>ni</td></tr><tr><td>3</td><td class="kana">三</td><td>さん</td><td>san</td></tr><tr><td>4</td><td class="kana">四</td><td>よん／し</td><td>yon / shi</td></tr><tr><td>5</td><td class="kana">五</td><td>ご</td><td>go</td></tr><tr><td>6</td><td class="kana">六</td><td>ろく</td><td>roku</td></tr><tr><td>7</td><td class="kana">七</td><td>なな／しち</td><td>nana / shichi</td></tr><tr><td>8</td><td class="kana">八</td><td>はち</td><td>hachi</td></tr><tr><td>9</td><td class="kana">九</td><td>きゅう／く</td><td>kyuu / ku</td></tr><tr><td>10</td><td class="kana">十</td><td>じゅう</td><td>juu</td></tr><tr><td>11</td><td class="kana">十一</td><td>じゅういち</td><td>juuichi</td></tr><tr><td>12</td><td class="kana">十二</td><td>じゅうに</td><td>juuni</td></tr><tr><td>20</td><td class="kana">二十</td><td>にじゅう</td><td>nijuu</td></tr><tr><td>21</td><td class="kana">二十一</td><td>にじゅういち</td><td>nijuuichi</td></tr><tr><td>30</td><td class="kana">三十</td><td>さんじゅう</td><td>sanjuu</td></tr><tr><td>100</td><td class="kana">百</td><td>ひゃく</td><td>hyaku</td></tr><tr><td>300</td><td class="kana">三百</td><td>さんびゃく</td><td>sanbyaku</td></tr><tr><td>600</td><td class="kana">六百</td><td>ろっぴゃく</td><td>roppyaku</td></tr><tr><td>800</td><td class="kana">八百</td><td>はっぴゃく</td><td>happyaku</td></tr><tr><td>1,000</td><td class="kana">千</td><td>せん</td><td>sen</td></tr><tr><td>3,000</td><td class="kana">三千</td><td>さんぜん</td><td>sanzen</td></tr><tr><td>8,000</td><td class="kana">八千</td><td>はっせん</td><td>hassen</td></tr><tr><td>10,000</td><td class="kana">一万</td><td>いちまん</td><td>ichiman</td></tr><tr><td>20,000</td><td class="kana">二万</td><td>にまん</td><td>niman</td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>④ 12 Months — ১২ মাস</summary><div class="table-scroll"><table class="basic-table"><thead><tr><th>বাংলা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>জানুয়ারি</td><td class="kana">一月</td><td>いちがつ</td><td>ichigatsu</td></tr><tr><td>ফেব্রুয়ারি</td><td class="kana">二月</td><td>にがつ</td><td>nigatsu</td></tr><tr><td>মার্চ</td><td class="kana">三月</td><td>さんがつ</td><td>sangatsu</td></tr><tr><td>এপ্রিল</td><td class="kana">四月</td><td>しがつ</td><td>shigatsu</td></tr><tr><td>মে</td><td class="kana">五月</td><td>ごがつ</td><td>gogatsu</td></tr><tr><td>জুন</td><td class="kana">六月</td><td>ろくがつ</td><td>rokugatsu</td></tr><tr><td>জুলাই</td><td class="kana">七月</td><td>しちがつ</td><td>shichigatsu</td></tr><tr><td>আগস্ট</td><td class="kana">八月</td><td>はちがつ</td><td>hachigatsu</td></tr><tr><td>সেপ্টেম্বর</td><td class="kana">九月</td><td>くがつ</td><td>kugatsu</td></tr><tr><td>অক্টোবর</td><td class="kana">十月</td><td>じゅうがつ</td><td>juugatsu</td></tr><tr><td>নভেম্বর</td><td class="kana">十一月</td><td>じゅういちがつ</td><td>juuichigatsu</td></tr><tr><td>ডিসেম্বর</td><td class="kana">十二月</td><td>じゅうにがつ</td><td>juunigatsu</td></tr></tbody></table></div><p class="tip">মনে রাখো: মাস বোঝাতে সাধারণত সংখ্যা + がつ (gatsu) ব্যবহার হয়। ব্যতিক্রম: ৪月 しがつ, ৭月 しちがつ, ৯月 くがつ।</p></details></div><div class="panel"><details class="basics-group" open=""><summary>⑤ 7 Days of the Week — সপ্তাহের ৭ দিন</summary><div class="table-scroll"><table class="basic-table"><thead><tr><th>বাংলা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>সোমবার</td><td class="kana">月曜日</td><td>げつようび</td><td>getsuyoubi</td></tr><tr><td>মঙ্গলবার</td><td class="kana">火曜日</td><td>かようび</td><td>kayoubi</td></tr><tr><td>বুধবার</td><td class="kana">水曜日</td><td>すいようび</td><td>suiyoubi</td></tr><tr><td>বৃহস্পতিবার</td><td class="kana">木曜日</td><td>もくようび</td><td>mokuyoubi</td></tr><tr><td>শুক্রবার</td><td class="kana">金曜日</td><td>きんようび</td><td>kinyoubi</td></tr><tr><td>শনিবার</td><td class="kana">土曜日</td><td>どようび</td><td>doyoubi</td></tr><tr><td>রবিবার</td><td class="kana">日曜日</td><td>にちようび</td><td>nichiyoubi</td></tr></tbody></table></div><p class="tip">曜日 (ようび / youbi) = সপ্তাহের দিন।</p></details></div><div class="panel"><details class="basics-group" open=""><summary>⑥ 自己紹介 — Self Introduction (নিজের পরিচয়)</summary><p class="subnote">নিচের নমুনায় নিজের নাম, দেশ, বয়স ও পেশা বসিয়ে বলবে।</p><div class="intro-example"><div class="jp">はじめまして。</div><div class="rom">Hajimemashite.</div><div class="bn">প্রথম পরিচয়ে: আপনার সঙ্গে পরিচিত হয়ে ভালো লাগছে।</div></div><div class="intro-example"><div class="jp">わたしは ラヒムです。</div><div class="rom">Watashi wa Rahimu desu.</div><div class="bn">আমি রহিম। (নিজের নাম বসাও)</div></div><div class="intro-example"><div class="jp">バングラデシュから きました。</div><div class="rom">Banguradeshu kara kimashita.</div><div class="bn">আমি বাংলাদেশ থেকে এসেছি।</div></div><div class="intro-example"><div class="jp">わたしは がくせいです。</div><div class="rom">Watashi wa gakusei desu.</div><div class="bn">আমি ছাত্র।</div></div><div class="intro-example"><div class="jp">わたしは 25さいです。</div><div class="rom">Watashi wa nijuu-go sai desu.</div><div class="bn">আমার বয়স ২৫ বছর। (নিজের বয়স বসাও)</div></div><div class="intro-example"><div class="jp">どうぞ よろしく おねがいします。</div><div class="rom">Douzo yoroshiku onegaishimasu.</div><div class="bn">আপনার সহযোগিতা কামনা করছি / পরিচিত হয়ে ভালো লাগল।</div></div></details></div><div class="panel"><h2>✅ Basic পড়া শেষ?</h2><button class="primary" onclick="showTab('words')">এবার Lesson 1 Vocabulary পড়ি ➜</button></div><nav class="book-pager" aria-label="Book page navigation"><button type="button" class="book-prev" onclick="bookBack()">← আগের পৃষ্ঠা</button><button type="button" class="book-next" onclick="bookNext()">পরের পৃষ্ঠা →</button></nav></section><section class="hidden" id="learn"><div class="ebook-reader-toolbar" aria-label="Reading settings"><span class="ebook-reader-label">☷ &nbsp; Study reading mode</span><div class="ebook-reader-actions"><button type="button" aria-label="লেখা ছোট করো" onclick="adjustBookFont(-1)">A−</button><span id="ebookFontIndicator">100%</span><button type="button" aria-label="লেখা বড় করো" onclick="adjustBookFont(1)">A+</button></div></div><div class="book-breadcrumb"><button type="button" onclick="showTab('home')">← মূল বইয়ের Menu</button><span> / Grammar</span></div><div class="panel"><h2>📚 Grammar — Lesson 1 / Lesson 2</h2><p>প্রতিটি Grammar কেন ব্যবহার হয়, অর্থ এবং ৫টি করে Example। Lesson বেছে নিয়ে পড়ো।</p></div><div class="panel"><label>কোন Lesson পড়বে? <select id="grammarLesson" onchange="renderGrammar()"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label></div><div id="grammarList"></div><div class="panel"><button class="primary" onclick="showTab('exam');document.getElementById('examLesson').value=document.getElementById('grammarLesson').value">Grammar পড়া শেষ → Exam দিই ➜</button></div><nav class="book-pager" aria-label="Book page navigation"><button type="button" class="book-prev" onclick="bookBack()">← আগের পৃষ্ঠা</button><button type="button" class="book-next" onclick="bookNext()">পরের পৃষ্ঠা →</button></nav></section><section class="" id="words"><div class="ebook-reader-toolbar" aria-label="Reading settings"><span class="ebook-reader-label">☷ &nbsp; Study reading mode</span><div class="ebook-reader-actions"><button type="button" aria-label="লেখা ছোট করো" onclick="adjustBookFont(-1)">A−</button><span id="ebookFontIndicator">100%</span><button type="button" aria-label="লেখা বড় করো" onclick="adjustBookFont(1)">A+</button></div></div><div class="book-breadcrumb"><button type="button" onclick="showTab('home')">← মূল বইয়ের Menu</button><span> / Vocabulary</span></div><div class="panel" id="lessonQuick"><h2>🎯 কোন Lesson পড়বে?</h2><div class="quick-grid"><button class="quick" onclick="openLesson('words','1')">📗 Lesson 1<br/><small>৪৭টি Vocabulary</small></button><button class="quick" onclick="openLesson('words','2')">📘 Lesson 2<br/><small>৪৬টি Vocabulary</small></button><button class="quick" onclick="openLesson('learn','1')">📚 Lesson 1<br/><small>৬টি Grammar</small></button><button class="quick" onclick="openLesson('learn','2')">📚 Lesson 2<br/><small>৮টি Grammar</small></button><button class="quick" onclick="openLesson('exam','1')">📝 Lesson 1 Exam<br/><small>Random Questions</small></button><button class="quick" onclick="openLesson('exam','2')">📝 Lesson 2 Exam<br/><small>Random Questions</small></button></div></div><div class="panel"><h2>📖 Vocabulary — Lesson 1 / Lesson 2</h2><p>প্রথমে শব্দ মুখস্থ করো। Lesson 1-এর ৪৭টি এবং Lesson 2-এর ৪৬টি শব্দ আলাদা করে পড়তে পারবে।</p><label>কোন Lesson-এর শব্দ? <select id="vocabLesson" onchange="renderWords()"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label><p class="muted" id="wordCount"></p><div class="vocab" id="wordList"></div></div><div class="panel"><button class="primary" onclick="showTab('learn');document.getElementById('grammarLesson').value=document.getElementById('vocabLesson').value;renderGrammar()">শব্দ পড়া শেষ → Grammar পড়ি ➜</button></div><nav class="book-pager" aria-label="Book page navigation"><button type="button" class="book-prev" onclick="bookBack()">← আগের পৃষ্ঠা</button><button type="button" class="book-next" onclick="bookNext()">পরের পৃষ্ঠা →</button></nav></section><section class="hidden" id="exam"><div class="book-breadcrumb"><button type="button" onclick="showTab('home')">← মূল বইয়ের Menu</button><span> / Random Exam</span></div><div class="panel" id="setup"><h2>📝 Random Exam</h2><p>Lesson 1 বা Lesson 2 আলাদা পরীক্ষা দাও। চাইলে দুটো Lesson একসঙ্গেও পরীক্ষা দিতে পারবে। প্রতিবার Random প্রশ্ন ও অপশন বদলাবে।</p><div class="settings"><label>বিষয়<br/><select id="mode"><option value="mixed">Grammar + Vocabulary</option><option value="vocab">শুধু Vocabulary</option><option value="grammar">শুধু Grammar</option></select></label><label>Lesson<br/><select id="examLesson"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label><label>প্রশ্ন সংখ্যা<br/><select id="count"><option value="10">১০টি</option><option selected="" value="20">২০টি</option><option value="30">৩০টি</option><option value="47">৪৭টি</option><option value="50">৫০টি</option><option value="100">১০০টি</option><option value="200">২০০টি</option></select></label></div><p class="muted">প্রতিটি প্রশ্নে ৪টি অপশন। ভুল হলে পরীক্ষার শেষে সঠিক উত্তর ও ব্যাখ্যা দেখতে পাবে।</p><button class="primary" onclick="startExam()">🚀 পরীক্ষা শুরু</button></div><div class="panel hidden" id="play"><div class="row"><span class="stat" id="qNum"></span><span class="muted" id="qType"></span></div><div class="progress"><div class="bar" id="bar"></div></div><h2 id="question"></h2> <button type="button" id="quizStudySound" class="study-sound-btn" onclick="speakQuizStudySound()">🔊 প্রশ্নের Japanese শুনুন</button><div class="choices" id="choices"></div><div class="row"><button class="primary" disabled="" id="next" onclick="nextQuestion()">পরের প্রশ্ন ➜</button><button onclick="quitExam()">পরীক্ষা বন্ধ</button></div></div><div class="panel hidden" id="result"><h2>🏆 পরীক্ষার ফলাফল</h2><div class="score" id="score"></div><p id="summary"></p><div class="row"><button class="primary" onclick="startExam()">🔄 আবার নতুন পরীক্ষা</button><button onclick="quitExam()">সেটিংসে ফিরি</button></div><h3>📋 উত্তর ও ব্যাখ্যা</h3><div id="review"></div></div><nav class="book-pager" aria-label="Book page navigation"><button type="button" class="book-prev" onclick="bookBack()">← আগের পৃষ্ঠা</button><button type="button" class="book-next" onclick="bookNext()">পরের পৃষ্ঠা →</button></nav></section><section class="hidden" id="ai"><div class="ai-fullscreen-header"><div><strong>🤖 Japanese AI Teacher</strong><span class="chat-header-sub">🇯🇵 Japanese শেখো • 🇧🇩 বাংলায় বুঝে পড়ো</span><span class="chat-online">● AI CHAT</span></div><button type="button" onclick="closeFullscreenAI()">← Back to Lesson</button></div><div class="book-breadcrumb"><button type="button" onclick="showTab('home')">← মূল বইয়ের Menu</button><span> / বাংলা AI Teacher</span></div><div class="panel"><h2>🤖 বাংলা AI Teacher — Japanese প্রশ্ন করো</h2><p>জাপানি Grammar, Vocabulary অথবা বাক্য নিয়ে <b>বাংলায় প্রশ্ন</b> করো। AI Japanese বাক্য, বাংলা অর্থ, কেন ব্যবহার হয় এবং উদাহরণ দিয়ে বোঝাবে।</p><p class="ai-note">🤖 বাংলা AI Teacher: প্রশ্ন লিখে Send চাপো। প্রতিটি শব্দ ও বাক্যের পাশে AI বাটন থেকেও সরাসরি প্রশ্ন করা যায়। <span id="aiSetupNote">AI চালু করতে Website মালিককে একবার নিরাপদ AI Server সংযুক্ত করতে হবে।</span></p><div class="ai-chat"><div id="aiContext" class="ai-context" aria-live="polite"></div><div id="aiMessages" class="ai-messages" aria-live="polite"><div class="ai-msg assistant">こんにちは! ❤️ আমি তোমার Japanese AI Teacher। বাংলায় প্রশ্ন করো। যেমন: 「は কেন বসে?」 অথবা 「これ আর この-এর পার্থক্য কী?」</div></div><div class="ai-tools"><button onclick="aiAskExample('は আর も-এর পার্থক্য সহজ বাংলায় ৩টি উদাহরণ দিয়ে বোঝাও')">は vs も</button><button onclick="aiAskExample('これ それ あれ আর この その あの এর পার্থক্য বোঝাও')">Lesson 2</button><button onclick="aiAskExample('わたしは がくせいです। এই বাক্যের প্রতিটি শব্দ কেন বসেছে?')">বাক্য ভেঙে বোঝাও</button><button onclick="aiClear()">🗑️ Chat মুছো</button></div><p id="micStatus" class="voice-status" role="status" aria-live="polite">🎙️ মাইক চাপলে বাংলা বা Japanese বেছে নিয়ে কথা বলতে পারবে।</p>
 <form class="ai-input ai-chat-composer" id="aiForm">
   <textarea id="aiQuestion" maxlength="1500" required rows="1" placeholder="মেসেজ লিখুন… / メッセージを入力…" aria-label="বাংলা বা Japanese প্রশ্ন লিখুন"></textarea>
   <div class="ai-compose-actions">
@@ -164,10 +1007,105 @@ footer{padding:24px 16px calc(24px + env(safe-area-inset-bottom))}
     <button type="submit" class="ai-circle-btn ai-send-btn" id="aiSend" aria-label="পাঠাও" title="পাঠাও">➤</button>
   </div>
 </form>
-<p class="ai-note" id="aiStatus">AI চালাতে ইন্টারনেট এবং Server সেটআপ দরকার। AI মাঝে মাঝে ভুল করতে পারে।</p></div></div></section></main><footer>Made for beginner Japanese learners ❤️ • Offline-friendly single HTML file</footer><script>
+<p class="ai-note" id="aiStatus">AI চালাতে ইন্টারনেট এবং Server সেটআপ দরকার। AI মাঝে মাঝে ভুল করতে পারে।</p></div></div></section></main><footer>Made for beginner Japanese learners ❤️ • Offline-friendly single HTML file</footer><nav class="ebook-mobile-dock" aria-label="Mobile book navigation">
+  <button type="button" onclick="showTab('home')" data-book-dock="home"><span>⌂</span><small>Home</small></button>
+  <button type="button" onclick="showTab('basics')" data-book-dock="basics"><span>あ</span><small>Basic</small></button>
+  <button type="button" onclick="openBookMenu('words')" data-book-dock="words"><span>▤</span><small>Words</small></button>
+  <button type="button" onclick="openBookMenu('learn')" data-book-dock="learn"><span>文</span><small>Grammar</small></button>
+  <button type="button" onclick="showTab('ai')" data-book-dock="ai"><span>✧</span><small>AI Chat</small></button>
+</nav><script>
 const V=[["わたし", "watashi", "আমি"], ["わたしたち", "watashitachi", "আমরা"], ["あなた", "anata", "আপনি"], ["あのひと", "ano hito", "ওই ব্যক্তি"], ["あのかた", "ano kata", "ওই ব্যক্তি (সম্মানসূচক)"], ["みなさん", "minasan", "সবাই"], ["さん", "san", "সম্মানসূচক নামের প্রত্যয়"], ["ちゃん", "chan", "আদরের নামের প্রত্যয়"], ["くん", "kun", "ছেলেদের নামের প্রত্যয়"], ["じん", "jin", "জাতীয়তার প্রত্যয়"], ["せんせい", "sensei", "শিক্ষক (সম্মানসূচক)"], ["きょうし", "kyoushi", "শিক্ষক (পেশা)"], ["がくせい", "gakusei", "ছাত্র/ছাত্রী"], ["かいしゃいん", "kaishain", "কোম্পানির কর্মচারী"], ["しゃいん", "shain", "কোম্পানির কর্মী"], ["ぎんこういん", "ginkouin", "ব্যাংক কর্মচারী"], ["いしゃ", "isha", "ডাক্তার"], ["けんきゅうしゃ", "kenkyuusha", "গবেষক"], ["エンジニア", "enjinia", "ইঞ্জিনিয়ার"], ["だいがく", "daigaku", "বিশ্ববিদ্যালয়"], ["びょういん", "byouin", "হাসপাতাল"], ["でんき", "denki", "বিদ্যুৎ/আলো"], ["だれ", "dare", "কে"], ["どなた", "donata", "কে (সম্মানসূচক)"], ["～さい", "~sai", "বছর বয়স"], ["なんさい", "nansai", "কত বয়স"], ["おいくつ", "oikutsu", "কত বয়স (সম্মানসূচক)"], ["はい", "hai", "হ্যাঁ"], ["いいえ", "iie", "না"], ["しつれいですが", "shitsurei desu ga", "মাফ করবেন, কিন্তু..."], ["おなまえは？", "o-namae wa?", "আপনার নাম কী?"], ["はじめまして", "hajimemashite", "প্রথম পরিচয়ে শুভেচ্ছা"], ["どうぞよろしく", "douzo yoroshiku", "পরিচিত হয়ে ভালো লাগল"], ["～からきました", "~kara kimashita", "থেকে এসেছি"], ["アメリカ", "amerika", "আমেরিকা"], ["イギリス", "igirisu", "যুক্তরাজ্য"], ["インド", "indo", "ভারত"], ["インドネシア", "indoneshia", "ইন্দোনেশিয়া"], ["かんこく", "kankoku", "দক্ষিণ কোরিয়া"], ["ちゅうごく", "chuugoku", "চীন"], ["ドイツ", "doitsu", "জার্মানি"], ["フランス", "furansu", "ফ্রান্স"], ["ブラジル", "burajiru", "ব্রাজিল"], ["にほん", "nihon", "জাপান"], ["バングラデシュ", "banguradeshu", "বাংলাদেশ"], ["なまえ", "namae", "নাম"], ["ともだち", "tomodachi", "বন্ধু"]];const G=[{"title": "① N₁ は N₂ です", "meaning": "N₁ হলো N₂।", "why": "পরিচয়, পেশা বা জাতীয়তা ভদ্রভাবে জানাতে। は বিষয় বোঝায়, です ভদ্রভাবে বাক্য শেষ করে।", "tip": "は লেখা ha, কিন্তু particle হলে উচ্চারণ wa।", "ex": [["わたしは がくせいです。", "Watashi wa gakusei desu.", "আমি ছাত্র।"], ["わたしは バングラデシュじんです。", "Watashi wa Banguradeshu-jin desu.", "আমি বাংলাদেশি।"], ["あのひとは いしゃです。", "Ano hito wa isha desu.", "ওই ব্যক্তি ডাক্তার।"], ["ミラーさんは エンジニアです。", "Miraa-san wa enjinia desu.", "মিস্টার মিলার ইঞ্জিনিয়ার।"], ["たなかさんは せんせいです。", "Tanaka-san wa sensei desu.", "তানাকা সাহেব শিক্ষক।"]]}, {"title": "② N₁ は N₂ じゃありません", "meaning": "N₁ হলো N₂ নয়।", "why": "কেউ কী নয়, তা ভদ্রভাবে বলতে। じゃありません = নয় / নই।", "tip": "ではありません আরও আনুষ্ঠানিক রূপ।", "ex": [["わたしは せんせいじゃありません。", "Watashi wa sensei ja arimasen.", "আমি শিক্ষক নই।"], ["わたしは にほんじんじゃありません。", "Watashi wa nihonjin ja arimasen.", "আমি জাপানি নই।"], ["あのひとは がくせいじゃありません。", "Ano hito wa gakusei ja arimasen.", "ওই ব্যক্তি ছাত্র নন।"], ["ミラーさんは いしゃじゃありません。", "Miraa-san wa isha ja arimasen.", "মিস্টার মিলার ডাক্তার নন।"], ["わたしは エンジニアじゃありません。", "Watashi wa enjinia ja arimasen.", "আমি ইঞ্জিনিয়ার নই।"]]}, {"title": "③ N₁ は N₂ ですか", "meaning": "N₁ কি N₂?", "why": "প্রশ্ন করতে। বাক্যের শেষে か যোগ হয়।", "tip": "হ্যাঁ: はい、そうです। না: いいえ、ちがいます।", "ex": [["あなたは がくせいですか。", "Anata wa gakusei desu ka?", "আপনি কি ছাত্র?"], ["あのひとは せんせいですか。", "Ano hito wa sensei desu ka?", "ওই ব্যক্তি কি শিক্ষক?"], ["ミラーさんは アメリカじんですか。", "Miraa-san wa Amerika-jin desu ka?", "মিস্টার মিলার কি আমেরিকান?"], ["あなたは エンジニアですか。", "Anata wa enjinia desu ka?", "আপনি কি ইঞ্জিনিয়ার?"], ["あのかたは どなたですか。", "Ano kata wa donata desu ka?", "ওই ব্যক্তি কে? (সম্মানসূচক)"]]}, {"title": "④ N も", "meaning": "ও / এছাড়াও।", "why": "আগের কথার একই তথ্য আরেকজনের ক্ষেত্রেও সত্য হলে।", "tip": "わたしは = আমি (বিষয়); わたしも = আমিও।", "ex": [["わたしも がくせいです。", "Watashi mo gakusei desu.", "আমিও ছাত্র।"], ["ラヒムさんも がくせいです。", "Rahimu-san mo gakusei desu.", "রহিমও ছাত্র।"], ["わたしも バングラデシュじんです。", "Watashi mo Banguradeshu-jin desu.", "আমিও বাংলাদেশি।"], ["たなかさんも せんせいです。", "Tanaka-san mo sensei desu.", "তানাকাও শিক্ষক।"], ["ミラーさんも エンジニアです。", "Miraa-san mo enjinia desu.", "মিস্টার মিলারও ইঞ্জিনিয়ার।"]]}, {"title": "⑤ N₁ の N₂", "meaning": "N₁-এর N₂।", "why": "দুটি noun-এর মধ্যে সম্পর্ক বা প্রতিষ্ঠানের সঙ্গে যুক্ত থাকা বোঝাতে।", "tip": "だいがくの がくせい = বিশ্ববিদ্যালয়ের ছাত্র।", "ex": [["わたしは だいがくの がくせいです。", "Watashi wa daigaku no gakusei desu.", "আমি বিশ্ববিদ্যালয়ের ছাত্র।"], ["わたしは IMCの しゃいんです。", "Watashi wa IMC no shain desu.", "আমি IMC কোম্পানির কর্মচারী।"], ["ミラーさんは IMCの しゃいんです。", "Miraa-san wa IMC no shain desu.", "মিস্টার মিলার IMC কোম্পানির কর্মচারী।"], ["たなかさんは だいがくの せんせいです。", "Tanaka-san wa daigaku no sensei desu.", "তানাকা সাহেব বিশ্ববিদ্যালয়ের শিক্ষক।"], ["あのひとは びょういんの いしゃです。", "Ano hito wa byouin no isha desu.", "ওই ব্যক্তি হাসপাতালের ডাক্তার।"]]}, {"title": "⑥ ～さん", "meaning": "নামের পরে সম্মানসূচক সম্বোধন।", "why": "অন্য কাউকে সম্মান দিয়ে সম্বোধন করতে।", "tip": "নিজের নামের পরে さん বসবে না।", "ex": [["たなかさんは せんせいです。", "Tanaka-san wa sensei desu.", "তানাকা সাহেব শিক্ষক।"], ["ミラーさんは エンジニアです。", "Miraa-san wa enjinia desu.", "মিস্টার মিলার ইঞ্জিনিয়ার।"], ["ラヒムさんは がくせいです。", "Rahimu-san wa gakusei desu.", "রহিম ছাত্র।"], ["さとうさんは いしゃです。", "Satou-san wa isha desu.", "সাতো সাহেব ডাক্তার।"], ["あのかたは ミラーさんです。", "Ano kata wa Miraa-san desu.", "ওই ব্যক্তি মিস্টার মিলার।"]]}];;const V2=[["これ", "kore", "এটা (বক্তার কাছে)"], ["それ", "sore", "ওটা (শ্রোতার কাছে)"], ["あれ", "are", "ওইটা (দুজনের থেকে দূরে)"], ["この～", "kono", "এই ~"], ["その～", "sono", "ওই ~"], ["あの～", "ano", "সেই / ওই ~"], ["ほん", "hon", "বই"], ["じしょ", "jisho", "অভিধান"], ["ざっし", "zasshi", "ম্যাগাজিন"], ["しんぶん", "shinbun", "সংবাদপত্র"], ["ノート", "nooto", "খাতা"], ["てちょう", "techou", "ছোট ডায়েরি"], ["めいし", "meishi", "ভিজিটিং কার্ড"], ["カード", "kaado", "কার্ড"], ["えんぴつ", "enpitsu", "পেনসিল"], ["ボールペン", "boorupen", "বলপেন"], ["シャープペンシル", "shaapupenshiru", "মেকানিক্যাল পেনসিল"], ["かぎ", "kagi", "চাবি"], ["とけい", "tokei", "ঘড়ি"], ["かさ", "kasa", "ছাতা"], ["かばん", "kaban", "ব্যাগ"], ["CD", "shiidii", "সিডি"], ["テレビ", "terebi", "টেলিভিশন"], ["ラジオ", "rajio", "রেডিও"], ["カメラ", "kamera", "ক্যামেরা"], ["コンピューター", "konpyuutaa", "কম্পিউটার"], ["くるま", "kuruma", "গাড়ি"], ["つくえ", "tsukue", "ডেস্ক / টেবিল"], ["いす", "isu", "চেয়ার"], ["チョコレート", "chokoreeto", "চকলেট"], ["コーヒー", "koohii", "কফি"], ["おみやげ", "omiyage", "ভ্রমণ থেকে আনা উপহার"], ["えいご", "eigo", "ইংরেজি ভাষা"], ["にほんご", "nihongo", "জাপানি ভাষা"], ["～ご", "~go", "~ভাষা"], ["なん", "nan", "কী"], ["そう", "sou", "তাই / ঠিক তাই"], ["あのう", "anou", "শুনুন / উম্"], ["えっ", "e?", "অ্যাঁ! / কী!"], ["どうぞ", "douzo", "এই নিন / অনুগ্রহ করে"], ["［どうも］ありがとう［ございます］", "[doumo] arigatou [gozaimasu]", "ধন্যবাদ / অনেক ধন্যবাদ"], ["そうですか", "sou desu ka", "আচ্ছা, তাই নাকি!"], ["ちがいます", "chigaimasu", "তা নয় / ভুল"], ["あ", "a", "ওহ্!"], ["これから おせわに なります", "kore kara osewa ni narimasu", "এখন থেকে আপনার সহযোগিতা কামনা করছি"], ["こちらこそ どうぞ よろしく", "kochira koso douzo yoroshiku", "আমিও আপনার সঙ্গে ভালো সম্পর্ক আশা করি"]];const G2=[{"title": "① これ・それ・あれ", "meaning": "এটা / ওটা / ওইটা", "why": "কোনো জিনিস দেখিয়ে বলতে। これ নিজের কাছে, それ শ্রোতার কাছে, あれ দুজনের থেকেই দূরে।", "tip": "これ・それ・あれ একাই বসে; পরে আলাদা করে noun লাগে না।", "ex": [["これは ほんです。", "Kore wa hon desu.", "এটা বই।"], ["それは じしょです。", "Sore wa jisho desu.", "ওটা অভিধান।"], ["あれは かばんです。", "Are wa kaban desu.", "ওইটা ব্যাগ।"], ["これは えんぴつです。", "Kore wa enpitsu desu.", "এটা পেনসিল।"], ["それは とけいですか。", "Sore wa tokei desu ka?", "ওটা কি ঘড়ি?"]]}, {"title": "② この・その・あの + Noun", "meaning": "এই / ওই / সেই + জিনিস", "why": "নির্দিষ্ট কোনো জিনিস বা মানুষকে বোঝাতে। এই তিনটির পরে অবশ্যই noun বসবে।", "tip": "これ = এটা; このほん = এই বই।", "ex": [["このほんは わたしのです。", "Kono hon wa watashi no desu.", "এই বইটি আমার।"], ["そのかばんは ラヒムさんのです。", "Sono kaban wa Rahimu-san no desu.", "ওই ব্যাগটি রহিমের।"], ["あのひとは せんせいです。", "Ano hito wa sensei desu.", "ওই ব্যক্তি শিক্ষক।"], ["このとけいは わたしのです。", "Kono tokei wa watashi no desu.", "এই ঘড়িটি আমার।"], ["そのじしょは たなかさんのですか。", "Sono jisho wa Tanaka-san no desu ka?", "ওই অভিধানটি কি তানাকার?"]]}, {"title": "③ そうです / そうじゃありません", "meaning": "ঠিক তাই / তা নয়", "why": "কেউ হ্যাঁ-না প্রশ্ন করলে তার বক্তব্য সঠিক কি না জানাতে।", "tip": "হ্যাঁ: はい、そうです। না: いいえ、ちがいます।", "ex": [["A: これは ほんですか。\nB: はい、そうです。", "A: Kore wa hon desu ka?\nB: Hai, sou desu.", "A: এটা কি বই?\nB: হ্যাঁ, ঠিক তাই।"], ["A: それは じしょですか。\nB: はい、そうです。", "A: Sore wa jisho desu ka?\nB: Hai, sou desu.", "A: ওটা কি অভিধান?\nB: হ্যাঁ, ঠিক তাই।"], ["A: あれは かさですか。\nB: いいえ、そうじゃありません。", "A: Are wa kasa desu ka?\nB: Iie, sou ja arimasen.", "A: ওইটা কি ছাতা?\nB: না, তা নয়।"], ["A: これは ノートですか。\nB: はい、そうです。", "A: Kore wa nooto desu ka?\nB: Hai, sou desu.", "A: এটা কি খাতা?\nB: হ্যাঁ, ঠিক তাই।"], ["A: それは カメラですか。\nB: いいえ、ちがいます。", "A: Sore wa kamera desu ka?\nB: Iie, chigaimasu.", "A: ওটা কি ক্যামেরা?\nB: না, তা নয়।"]]}, {"title": "④ ～か、～か", "meaning": "এটা নাকি ওটা?", "why": "দুটি বিকল্পের মধ্যে কোনটি সঠিক জানতে। উত্তরে একটি বিকল্প বেছে বলা হয়।", "tip": "A ですか、B ですか = A নাকি B?", "ex": [["これは ほんですか、じしょですか。", "Kore wa hon desu ka, jisho desu ka?", "এটা বই নাকি অভিধান?"], ["それは えんぴつですか、ボールペンですか。", "Sore wa enpitsu desu ka, boorupen desu ka?", "ওটা পেনসিল নাকি বলপেন?"], ["あれは テレビですか、コンピューターですか。", "Are wa terebi desu ka, konpyuutaa desu ka?", "ওইটা টিভি নাকি কম্পিউটার?"], ["これは ノートですか、てちょうですか。", "Kore wa nooto desu ka, techou desu ka?", "এটা খাতা নাকি ছোট ডায়েরি?"], ["それは かぎですか、とけいですか。", "Sore wa kagi desu ka, tokei desu ka?", "ওটা চাবি নাকি ঘড়ি?"]]}, {"title": "⑤ N₁ の N₂", "meaning": "N₁-এর N₂", "why": "জিনিসের মালিক কে বা জিনিসটি কী বিষয়ের তা বোঝাতে।", "tip": "わたしの ほん = আমার বই; にほんごの ほん = জাপানি ভাষার বই।", "ex": [["これは わたしの ほんです。", "Kore wa watashi no hon desu.", "এটা আমার বই।"], ["それは たなかさんの かばんです。", "Sore wa Tanaka-san no kaban desu.", "ওটা তানাকার ব্যাগ।"], ["これは にほんごの ほんです。", "Kore wa nihongo no hon desu.", "এটা জাপানি ভাষার বই।"], ["あれは ミラーさんの くるまです。", "Are wa Miraa-san no kuruma desu.", "ওইটা মিস্টার মিলারের গাড়ি।"], ["これは コンピューターの ほんです。", "Kore wa konpyuutaa no hon desu.", "এটা কম্পিউটার বিষয়ক বই।"]]}, {"title": "⑥ N の (Noun বাদ দেওয়া)", "meaning": "কারটা / কার জিনিস", "why": "আগে থেকেই জানা কোনো জিনিসের নাম আবার না বলে の দিয়ে সংক্ষেপে বোঝাতে।", "tip": "わたしの ほん → わたしの (আমারটা)। এই ব্যবহার সাধারণত জিনিসের জন্য।", "ex": [["これは わたしのです。", "Kore wa watashi no desu.", "এটা আমার।"], ["それは たなかさんのです。", "Sore wa Tanaka-san no desu.", "ওটা তানাকার।"], ["あれは ミラーさんのです。", "Are wa Miraa-san no desu.", "ওইটা মিস্টার মিলারের।"], ["このかばんは わたしのです。", "Kono kaban wa watashi no desu.", "এই ব্যাগটি আমার।"], ["そのほんは ラヒムさんのです。", "Sono hon wa Rahimu-san no desu.", "ওই বইটি রহিমের।"]]}, {"title": "⑦ お～", "meaning": "ভদ্রতার উপসর্গ", "why": "কিছু নির্দিষ্ট শব্দের আগে お বসিয়ে ভদ্রতা বা সম্মান দেখাতে।", "tip": "সব শব্দের আগে お বসানো যায় না; শব্দসহ শিখতে হবে।", "ex": [["おなまえは なんですか。", "Onamae wa nan desu ka?", "আপনার নাম কী?"], ["おくには どちらですか。", "Okuni wa dochira desu ka?", "আপনার দেশ কোনটি?"], ["おしごとは なんですか。", "Oshigoto wa nan desu ka?", "আপনার পেশা কী?"], ["これは おみやげです。", "Kore wa omiyage desu.", "এটা ভ্রমণ থেকে আনা উপহার।"], ["これは おちゃです。", "Kore wa ocha desu.", "এটা চা।"]]}, {"title": "⑧ そうですか", "meaning": "আচ্ছা, তাই নাকি! / বুঝলাম", "why": "নতুন তথ্য শুনে সেটি বুঝেছি বা গ্রহণ করেছি বোঝাতে। এটি সবসময় সরাসরি হ্যাঁ-না প্রশ্ন নয়।", "tip": "そうです = ঠিক তাই; そうですか = ও, বুঝলাম।", "ex": [["A: これは わたしの ほんです。\nB: そうですか。", "A: Kore wa watashi no hon desu.\nB: Sou desu ka.", "A: এটা আমার বই।\nB: আচ্ছা, তাই নাকি!"], ["A: それは にほんごの じしょです。\nB: そうですか。", "A: Sore wa nihongo no jisho desu.\nB: Sou desu ka.", "A: ওটা জাপানি ভাষার অভিধান।\nB: ও, বুঝলাম।"], ["A: あれは ミラーさんの くるまです。\nB: そうですか。", "A: Are wa Miraa-san no kuruma desu.\nB: Sou desu ka.", "A: ওইটা মিলারের গাড়ি।\nB: আচ্ছা, তাই নাকি!"], ["A: このかばんは わたしのです。\nB: そうですか。", "A: Kono kaban wa watashi no desu.\nB: Sou desu ka.", "A: এই ব্যাগটি আমার।\nB: ও, বুঝলাম।"], ["A: これは えいごの ほんです。\nB: そうですか。", "A: Kore wa eigo no hon desu.\nB: Sou desu ka.", "A: এটা ইংরেজি ভাষার বই।\nB: আচ্ছা, তাই নাকি!"]]}];const grammarRules2=[["これ・それ・あれ", "কাছাকাছি বা দূরের জিনিস দেখাতে"], ["この・その・あの", "নির্দিষ্ট noun-এর আগে বসাতে"], ["そうです", "হ্যাঁ, ঠিক তাই বলতে"], ["～か、～か", "দুটি বিকল্পের মধ্যে জানতে"], ["N₁ の N₂", "মালিকানা বা বিষয়ের সম্পর্ক বোঝাতে"], ["N の", "আগের noun বাদ দিয়ে কারটা বোঝাতে"], ["お～", "নির্দিষ্ট শব্দে ভদ্রতা দেখাতে"], ["そうですか", "নতুন তথ্য শুনে বুঝেছি জানাতে"]];const grammarRules=[['は～です','পরিচয় বা তথ্য ভদ্রভাবে জানাতে'],['じゃありません','নয় / নই বোঝাতে'],['ですか','প্রশ্ন করতে'],['も','ও / এছাড়াও বোঝাতে'],['の','দুটি noun-এর সম্পর্ক বোঝাতে'],['さん','নামের পরে সম্মান দেখাতে']];
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
-function showTab(t){for(const x of ['basics','learn','words','exam','ai']){document.getElementById(x).classList.toggle('hidden',x!==t);document.getElementById('tab'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t)}window.scrollTo({top:0,behavior:'smooth'})}
+let lastStudyTab='home';
+function showTab(t){
+ const tabs=['cover','home','lessonMenu','basics','learn','words','reading','exam','ai'];
+ if(t!=='ai' && t!=='home')lastStudyTab=t;
+ document.body.classList.toggle('ebook-home-only',t==='home'||t==='cover');
+ document.body.classList.toggle('ebook-cover-only',t==='cover');
+ if(t==='ai')document.body.classList.add('ai-fullscreen');
+ else document.body.classList.remove('ai-fullscreen');
+ for(const x of tabs){
+  document.getElementById(x).classList.toggle('hidden',x!==t);
+  const tab=document.getElementById('tab'+x[0].toUpperCase()+x.slice(1));if(tab)tab.classList.toggle('active',x===t);
+ }
+ window.scrollTo({top:0,behavior:'instant'});
+}
+// Digital-book navigation: home → category → lesson → content.
+let selectedBookCategory='words';
+let selectedReadingLesson='1';
+let bookCurrentSection='home';
+const bookFlow=['basics','words','learn','reading','exam'];
+const bookReading={
+  '1':[
+    ['わたしは がくせいです。','আমি একজন ছাত্র।'],
+    ['わたしは バングラデシュじんです。','আমি বাংলাদেশি।'],
+    ['ミラーさんは エンジニアです。','মিস্টার মিলার একজন ইঞ্জিনিয়ার।'],
+    ['あのひとは せんせいですか。','ওই ব্যক্তি কি শিক্ষক?'],
+    ['はい、そうです。','হ্যাঁ, ঠিক তাই।']
+  ],
+  '2':[
+    ['これは ほんです。','এটি একটি বই।'],
+    ['それは じしょですか。','ওটা কি অভিধান?'],
+    ['このかばんは わたしのです。','এই ব্যাগটি আমার।'],
+    ['あれは たなかさんの くるまです。','ওই গাড়িটি তানাকার।'],
+    ['これは なんですか。','এটা কী?']
+  ]
+};
+function openBookMenu(category){
+  selectedBookCategory=category;
+  bookCurrentSection='lessonMenu';
+  const config={
+    words:['📖 Vocabulary','Lesson 1 বা Lesson 2 বেছে নাও। একটি Lesson-এর সব Vocabulary একসঙ্গে দেখাবে।','সব ৪৭টি শব্দ একসঙ্গে','সব ৪৬টি শব্দ একসঙ্গে'],
+    learn:['📚 Grammar','Lesson বেছে নিয়ে বাংলা ব্যাখ্যা ও সব Grammar উদাহরণ পড়ো।','৬টি Grammar','৮টি Grammar'],
+    reading:['📕 Reading','ছোট Japanese বাক্য পড়ে বাংলা অর্থ অনুশীলন করো।','Lesson 1 Reading','Lesson 2 Reading'],
+    exam:['📝 Quiz / Test','কোন Lesson-এর Quiz বা Test দিতে চাও?','Lesson 1 Quiz','Lesson 2 Quiz']
+  };
+  const c=config[category]||config.words;
+  document.getElementById('lessonMenuTitle').textContent=c[0];
+  document.getElementById('lessonMenuHelp').textContent=c[1];
+  document.getElementById('lessonOneDesc').textContent=c[2];
+  document.getElementById('lessonTwoDesc').textContent=c[3];
+  showTab('lessonMenu');
+}
+function chooseBookLesson(lesson){
+  if(selectedBookCategory==='reading'){
+    selectedReadingLesson=lesson;
+    document.getElementById('readingBreadcrumb').textContent='Lesson '+lesson;
+    document.getElementById('readingTitle').textContent='📕 Japanese Reading — Lesson '+lesson;
+    const card=document.getElementById('readingCards');
+    card.replaceChildren();
+    (bookReading[lesson]||[]).forEach(([jp,bn],i)=>{
+      const item=document.createElement('article');item.className='reading-item';
+      const j=document.createElement('div');j.className='jp';j.textContent=(i+1)+'. '+jp;
+      const t=document.createElement('div');t.className='bn';t.textContent='🇧🇩 '+bn;
+      const sound=document.createElement('button');sound.type='button';sound.className='study-sound-btn';sound.textContent='🔊 Japanese শুনো';sound.addEventListener('click',()=>speakStudyJapanese(jp));
+      item.append(j,t,sound);card.append(item);
+    });
+    showTab('reading');bookCurrentSection='reading';return;
+  }
+  openLesson(selectedBookCategory,lesson);
+  if(selectedBookCategory==='exam'){
+    document.getElementById('count').value='10';
+    document.getElementById('mode').value='mixed';
+  }
+  bookCurrentSection=selectedBookCategory;
+}
+function bookBack(){
+  const active=bookFlow.find(t=>!document.getElementById(t).classList.contains('hidden'));
+  if(!active)return showTab('home');
+  if(active==='basics')return showTab('home');
+  openBookMenu(active);
+}
+function bookNext(){
+  const active=bookFlow.find(t=>!document.getElementById(t).classList.contains('hidden'));
+  const next=bookFlow[bookFlow.indexOf(active)+1];
+  if(!next)return showTab('home');
+  openBookMenu(next);
+}
+function closeFullscreenAI(){showTab(lastStudyTab||'home');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('ai-fullscreen'))closeFullscreenAI();});
+function openDirectFullscreenAI(context,question){openContextAI(context,question);}
+
 function lessonData(which,type){let one=type==='grammar'?G:V,two=type==='grammar'?G2:V2;return which==='1'?one:which==='2'?two:[...one,...two]}
 
 // Free, user-click-only Japanese TTS for study content. AI messages are never spoken.
@@ -227,7 +1165,7 @@ function quitExam(){document.getElementById('play').classList.add('hidden');docu
 
 function openLesson(tab,lesson){showTab(tab);if(tab==='words'){document.getElementById('vocabLesson').value=lesson;renderWords()}else if(tab==='learn'){document.getElementById('grammarLesson').value=lesson;renderGrammar()}else{document.getElementById('examLesson').value=lesson;quitExam()}}
 // Start on the first vocabulary lesson, not the grammar tab.
-document.getElementById('vocabLesson').value='1';renderWords();document.getElementById('grammarLesson').value='1';renderGrammar();showTab('basics');
+document.getElementById('vocabLesson').value='1';renderWords();document.getElementById('grammarLesson').value='1';renderGrammar();showTab('cover');
 
 
 
@@ -376,7 +1314,31 @@ function aiAddMessage(role,text,extraClass=''){
  div.textContent=text;wrap.appendChild(div);wrap.scrollTop=wrap.scrollHeight;return div;
 }
 function aiClear(){stopVoiceInput();aiHistory.length=0;document.getElementById('aiMessages').innerHTML='';aiAddMessage('assistant','নতুন করে শুরু করি! বাংলা ভাষায় তোমার প্রশ্ন লিখো।');}
-function aiAskExample(question){document.getElementById('aiQuestion').value=question;document.getElementById('aiQuestion').focus();}
+// Suggestion chips: open the full-screen chat and send the selected question immediately.
+function aiAskExample(question){
+ showTab('ai');
+ const input=document.getElementById('aiQuestion');
+ const context=document.getElementById('aiContext');
+ if(context){context.classList.remove('visible');context.textContent='';}
+ input.value=question;
+ resizeAIQuestionBox();
+ if(!aiBusy && input.value.trim())document.getElementById('aiForm').requestSubmit();
+ else if(aiBusy)document.getElementById('aiStatus').textContent='আগের উত্তর শেষ হলে Send চাপো।';
+}
+// Laptop: Enter sends; Shift+Enter creates a new line. Do not send while using an IME.
+const aiQuestionBox=document.getElementById('aiQuestion');
+function resizeAIQuestionBox(){
+ aiQuestionBox.style.height='auto';
+ aiQuestionBox.style.height=Math.min(aiQuestionBox.scrollHeight,150)+'px';
+}
+aiQuestionBox.addEventListener('input',resizeAIQuestionBox);
+aiQuestionBox.addEventListener('keydown',function(e){
+ if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing&&e.keyCode!==229){
+  e.preventDefault();
+  if(!aiBusy&&this.value.trim())document.getElementById('aiForm').requestSubmit();
+ }
+});
+resizeAIQuestionBox();
 // Contextual AI: immediately send the selected word or grammar example to the chat.
 function askWordAI(jp,romaji,bangla){
  const question=`জাপানি Vocabulary 「${jp}」 (${romaji}) = ${bangla}। একজন নতুন ছাত্রের জন্য সহজ বাংলায় শব্দটির অর্থ, কখন ব্যবহার হয়, উচ্চারণ এবং ৩টি ছোট Japanese + Romaji + বাংলা উদাহরণ দিয়ে বোঝাও।`;
@@ -465,4 +1427,41 @@ function initializeBasicStudySounds(){
  });
 }
 initializeBasicStudySounds();
+
+/* AI eBook appearance controls: no external API and no changes to lesson logic */
+(function(){
+ const KEY='ridoy-ebook-font-v1';
+ let value=0;
+ try{value=Math.max(-2,Math.min(4,Number(localStorage.getItem(KEY))||0))}catch(_){}
+ window.adjustBookFont=function(step){
+  value=Math.max(-2,Math.min(4,value+step));
+  apply();
+  try{localStorage.setItem(KEY,String(value))}catch(_){}
+ };
+ function apply(){
+  document.documentElement.style.setProperty('--ebook-type-scale',String(1+value*.09));
+  document.querySelectorAll('#ebookFontIndicator').forEach(el=>el.textContent=Math.round((1+value*.09)*100)+'%');
+ }
+ apply();
+ const dock=document.querySelector('.ebook-mobile-dock');
+ if(!dock)return;
+ const sync=()=>{
+  const visible=['home','basics','words','learn','reading','exam','ai','lessonMenu'].find(id=>{
+    const node=document.getElementById(id);
+    return node&&!node.classList.contains('hidden');
+  });
+  dock.querySelectorAll('button').forEach(btn=>{
+    const target=btn.getAttribute('data-book-dock');
+    const current=visible==='lessonMenu'?selectedBookCategory:visible;
+    const active=target===current;
+    btn.classList.toggle('active',active);
+    if(active)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current');
+  });
+ };
+ // Observe the hidden-state changes made by the existing showTab() function.
+ const sections=document.querySelectorAll('main.wrap > section');
+ const observer=new MutationObserver(sync);
+ sections.forEach(section=>observer.observe(section,{attributes:true,attributeFilter:['class']}));
+ sync();
+})();
 </script></body></html>
