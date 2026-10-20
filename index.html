@@ -400,7 +400,7 @@ function addReplyAudioControls(element,text,locale){
 const aiHistory=[];
 // Website owner only: after deploying worker.js, put its public HTTPS URL here ONCE.
 // Never put an OpenAI API key in this file.
-const AI_SERVER_URL = 'https://gakuen-chatbot-ai.ridoy-gakuen-ai.workers.dev/chat';
+const AI_SERVER_URL = 'https://japanese-ai-teacher.ridoy-gakuen-ai.workers.dev/chat';
 function getAIEndpoint(){return AI_SERVER_URL.trim().replace(/\/+$/,'');}
 function isAIConfigured(){return /^https:\/\/[a-z0-9.-]+(?::\d+)?(?:\/.*)?$/i.test(getAIEndpoint()) && !getAIEndpoint().includes('YOUR-WORKER');}
 function aiAddMessage(role,text,extraClass=''){
