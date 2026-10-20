@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="bn"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Lesson 1 + 2 • Japanese Grammar &amp; Quiz</title><style>
+<html lang="bn"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Japanese AI Teacher | বাংলা Online Japanese Book</title><meta name="theme-color" content="#243b9b"/><meta name="description" content="বাংলায় জাপানি শেখার অনলাইন বই: Basic, Vocabulary, Grammar, Quiz এবং AI Teacher।"/><style>
 :root{font-family:system-ui,'Noto Sans Bengali','Noto Sans JP',sans-serif;color:#16233c;background:#eef3ff}*{box-sizing:border-box}body{margin:0}header{background:linear-gradient(120deg,#243b9b,#6e4de2);color:white;padding:28px 16px;text-align:center}h1{margin:0;font-size:clamp(24px,5vw,38px)}header p{opacity:.9}.wrap{max-width:900px;margin:auto;padding:18px}.panel{background:white;border-radius:18px;padding:22px;margin:16px 0;box-shadow:0 8px 26px #23367513}.nav{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}button{cursor:pointer;border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#e7ebff;color:#243b9b}button.primary{background:#4257d9;color:white}button:disabled{opacity:.55;cursor:not-allowed}.nav button{background:#ffffff25;color:white;border:1px solid #ffffff55}.nav button.active{background:white;color:#27399d}.hidden{display:none!important}.grammar{border-left:5px solid #6d5af4}.grammar h3{color:#303eb0}.lesson-heading{padding:10px 6px;color:#303eb0}.ex{background:#f5f7ff;border-radius:12px;padding:12px 14px;margin:9px 0}.jp{font-size:1.22rem;font-weight:750}.rom{color:#56637c}.bn{color:#216248}.tip{background:#fff6dd;padding:12px;border-radius:10px}.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.word{padding:12px;border:1px solid #e1e7fa;border-radius:12px}.muted{color:#586581}.choices{display:grid;gap:10px;margin:20px 0}.choice{text-align:left;background:#f2f5ff;border:2px solid transparent;color:#1d2d57;font-weight:600}.choice.selected{border-color:#5364df;background:#e4e9ff}.choice.correct{background:#d7f7e4;border-color:#25955b}.choice.wrong{background:#ffe2e2;border-color:#df5252}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.progress{height:10px;background:#e5eaff;border-radius:99px;overflow:hidden}.bar{height:100%;background:#5969df;width:0}.stat{font-weight:700;color:#3146af}.score{font-size:2.1rem;color:#3449c1}.settings{display:flex;gap:14px;flex-wrap:wrap;align-items:center}select{font:inherit;border:1px solid #cdd5ed;border-radius:10px;padding:9px;background:white}footer{text-align:center;padding:24px;color:#65708a}@media(max-width:500px){.wrap{padding:10px}.panel{padding:16px}button{width:100%}.nav button{width:auto}.settings select{width:100%}}
 
 .quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}.quick{border:2px solid #cbd5ff;background:#f6f8ff;color:#233a94;padding:18px 10px;border-radius:16px;font-weight:800;font-size:1rem;line-height:1.7;cursor:pointer}.quick small{font-size:.78rem;color:#475569;font-weight:500}.quick:active{background:#dfe6ff}@media(max-width:360px){.quick-grid{gap:8px}.quick{font-size:.9rem;padding:12px 5px}}
 
 .basic-table{width:100%;border-collapse:collapse;font-size:.91rem}.basic-table th,.basic-table td{border:1px solid #d9e2f5;padding:9px 6px;text-align:center}.basic-table th{background:#e6eaff;color:#263b8e}.basic-table td{background:#fff}.basic-table .kana{font-size:1.35rem;font-weight:750;color:#2638a4}.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.basics-group{margin:16px 0}.basics-group summary{cursor:pointer;font-size:1.1rem;font-weight:750;color:#263ca0;padding:8px}.basics-group[open]{padding-bottom:12px}.subnote{font-size:.91rem;color:#536581}.intro-example{padding:12px;border-radius:12px;background:#f4f7ff;margin:9px 0}
-
-/* Japanese speech controls */
-.sound-toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#eaf2ff;border:1px solid #bdceff;border-radius:14px;padding:12px;margin:12px 0;color:#17316c}
-.sound-toolbar label{font-weight:750}.sound-toolbar select{width:auto;min-width:115px;background:white;border:1px solid #b6c5ed;border-radius:8px;padding:8px}
-button.sound-btn{width:auto!important;display:inline-flex;align-items:center;justify-content:center;background:#e0ebff;border:1px solid #91abe6;color:#203d97;border-radius:999px;padding:7px 12px;font-weight:750;cursor:pointer;font-size:.91rem;min-height:38px;margin:4px 0}
-button.sound-btn:active{background:#b9cdfb}.sound-toolbar .sound-btn{background:#2847bd;color:white;border:none}.sound-status{font-size:.84rem;color:#3b5276;flex-basis:100%}
-.word .sound-btn,.ex .sound-btn{margin-left:8px;vertical-align:middle}.basic-table td.sound-cell{cursor:pointer;touch-action:manipulation}.basic-table td.sound-cell:active{background:#c8dbff}
-.sound-inline{font-size:.78rem;color:#6278af}.sound-toolbar select{max-width:180px}@media(max-width:500px){.sound-toolbar button.sound-btn{width:auto!important}.sound-toolbar select{width:auto!important}}
 
 .ai-chat{display:flex;flex-direction:column;gap:12px}.ai-messages{height:min(55vh,500px);min-height:260px;overflow-y:auto;border:1px solid #dae2fb;border-radius:14px;background:#f8faff;padding:12px}.ai-msg{padding:11px 13px;margin:9px 0;border-radius:14px;max-width:95%;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65}.ai-msg.assistant{background:#e9efff;margin-right:20px}.ai-msg.user{background:#dcf9e9;margin-left:20px}.ai-tools{display:flex;gap:8px;flex-wrap:wrap}.ai-tools button{font-size:.88rem;padding:9px}.ai-input{display:flex;gap:8px;align-items:stretch}.ai-input textarea{flex:1;width:100%;resize:vertical;min-height:68px;padding:12px;font:inherit;border:1px solid #cbd5ee;border-radius:12px}.ai-input button{min-width:85px}.ai-settings input{width:100%;max-width:600px;border:1px solid #cdd5ed;border-radius:10px;padding:11px;font:inherit}.ai-note{font-size:.9rem;color:#576780}.ai-msg.pending{opacity:.7}@media(max-width:500px){.ai-input{flex-direction:column}.ai-input button{width:100%}}
 
@@ -22,18 +14,8 @@ button.sound-btn:active{background:#b9cdfb}.sound-toolbar .sound-btn{background:
 .ai-context{display:none;padding:12px;background:#eef9f3;border-left:4px solid #1f9c68;border-radius:10px;color:#174c37;margin-bottom:10px;white-space:pre-wrap;overflow-wrap:anywhere}
 .ai-context.visible{display:block}
 
-/* AI voice controls */
-.voice-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:12px 0 4px}
-.voice-controls button{background:#e9edff;border:1px solid #c8d4fb;color:#203b96}
-.voice-controls button.recording{background:#ffe3e5;color:#a21c30;border-color:#ec8797}
-.voice-controls .autovoice{display:flex;gap:6px;align-items:center;font-size:.88rem;color:#334366;cursor:pointer}
-.voice-controls .autovoice input{width:18px;height:18px;accent-color:#4257d9}
 .voice-status{font-size:.9rem;color:#435475;margin:6px 0 12px;min-height:1.3rem}
-.ai-reply-actions{display:flex;gap:6px;justify-content:flex-end;margin-top:9px}
-.ai-reply-actions button{font-size:.84rem;padding:7px 10px;background:#dbe7ff}
-@media(max-width:500px){.voice-controls button{width:auto;flex:1 1 44%}.ai-reply-actions button{width:auto}}
-
-/* Compact chat composer: microphone, reply sound and send alongside input */
+/* Compact chat composer: microphone input and send, text-only replies */
 .ai-chat-composer{display:flex;flex-direction:row;align-items:center;gap:10px;border:3px solid #bde8f6;background:#fff;border-radius:24px;padding:9px 10px;position:relative;box-shadow:0 2px 8px #bdd9ed33}
 .ai-chat-composer textarea{flex:1;min-width:0;width:auto;min-height:46px;max-height:150px;border:0!important;background:transparent;outline:none;box-shadow:none!important;resize:none;padding:10px 7px;font-size:1.02rem;line-height:1.5}
 .ai-compose-actions{display:flex;flex:0 0 auto;align-items:center;gap:8px}
@@ -49,7 +31,126 @@ button.sound-btn:active{background:#b9cdfb}.sound-toolbar .sound-btn{background:
 .mic-language-menu button:hover{background:#deebff}
 .voice-status{margin-top:12px}
 @media(max-width:500px){.ai-chat-composer{flex-direction:row;gap:4px;padding:6px;border-radius:19px}.ai-chat-composer textarea{font-size:.9rem;padding:10px 4px;min-height:45px}.ai-compose-actions{gap:4px}.ai-chat-composer .ai-circle-btn{width:39px;height:43px;font-size:20px;border-radius:11px}.mic-language-menu{right:-43px;min-width:184px}.mic-language-menu button{width:100%}}
-</style></head><body><header><h1>🇯🇵 Japanese Lessons 1 + 2</h1><p>আগে Vocabulary → তারপর Grammar → শেষে Exam | Lesson 1 ও Lesson 2 আলাদা</p><div class="nav"><button class="active" id="tabBasics" onclick="showTab('basics')">🌸 প্রথমে বেসিক শিখি</button><button class="" id="tabWords" onclick="showTab('words')">📖 Vocabulary আগে পড়ি</button><button class="" id="tabLearn" onclick="showTab('learn')">📚 Grammar পড়ি</button><button class="" id="tabExam" onclick="showTab('exam')">📝 Random Exam</button><button class="" id="tabAi" onclick="showTab('ai')">🤖 বাংলা AI Teacher</button></div><div aria-label="Japanese pronunciation sound" class="sound-toolbar" role="group"><label for="voiceSpeed">🔊 Japanese Sound</label><button class="sound-btn" onclick="speakJapanese('こんにちは。')" type="button">▶ শব্দ পরীক্ষা</button><button class="sound-btn" onclick="stopJapanese()" type="button">⏹ বন্ধ</button><label for="voiceSpeed">গতি:</label><select aria-label="জাপানি উচ্চারণের গতি" id="voiceSpeed"><option value="0.7">ধীরে (শেখার জন্য)</option><option selected="" value="0.88">স্বাভাবিকের একটু ধীরে</option><option value="1">স্বাভাবিক</option></select><div class="sound-status" id="soundStatus">শব্দ বা বাক্যের পাশে 🔊 চাপলে জাপানি উচ্চারণ শুনবে। ফোনের ভলিউম বাড়িয়ে রাখো।</div></div></header><main class="wrap"><section id="basics"><div class="panel"><h2>🌸 প্রথমে Japanese Basic শিখি</h2><p>Hiragana → Katakana → Numbers → ১২ মাস → সপ্তাহের ৭ দিন → Self Introduction। তারপর Lesson 1 ও Lesson 2 Vocabulary, Grammar ও Exam পড়বে।</p></div><div class="panel"><details class="basics-group" open=""><summary>① ひらがな — Hiragana Chart (হিরাগানা)</summary><p class="subnote">হিরাগানা জাপানি ভাষার মৌলিক অক্ষর। প্রতিদিন ১০টি করে লিখে অনুশীলন করো।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr></thead><tbody><tr><th>—</th><td><span class="kana">あ</span><br/><small>a</small></td><td><span class="kana">い</span><br/><small>i</small></td><td><span class="kana">う</span><br/><small>u</small></td><td><span class="kana">え</span><br/><small>e</small></td><td><span class="kana">お</span><br/><small>o</small></td></tr><tr><th>k</th><td><span class="kana">か</span><br/><small>ka</small></td><td><span class="kana">き</span><br/><small>ki</small></td><td><span class="kana">く</span><br/><small>ku</small></td><td><span class="kana">け</span><br/><small>ke</small></td><td><span class="kana">こ</span><br/><small>ko</small></td></tr><tr><th>s</th><td><span class="kana">さ</span><br/><small>sa</small></td><td><span class="kana">し</span><br/><small>shi</small></td><td><span class="kana">す</span><br/><small>su</small></td><td><span class="kana">せ</span><br/><small>se</small></td><td><span class="kana">そ</span><br/><small>so</small></td></tr><tr><th>t</th><td><span class="kana">た</span><br/><small>ta</small></td><td><span class="kana">ち</span><br/><small>chi</small></td><td><span class="kana">つ</span><br/><small>tsu</small></td><td><span class="kana">て</span><br/><small>te</small></td><td><span class="kana">と</span><br/><small>to</small></td></tr><tr><th>n</th><td><span class="kana">な</span><br/><small>na</small></td><td><span class="kana">に</span><br/><small>ni</small></td><td><span class="kana">ぬ</span><br/><small>nu</small></td><td><span class="kana">ね</span><br/><small>ne</small></td><td><span class="kana">の</span><br/><small>no</small></td></tr><tr><th>h</th><td><span class="kana">は</span><br/><small>ha</small></td><td><span class="kana">ひ</span><br/><small>hi</small></td><td><span class="kana">ふ</span><br/><small>fu</small></td><td><span class="kana">へ</span><br/><small>he</small></td><td><span class="kana">ほ</span><br/><small>ho</small></td></tr><tr><th>m</th><td><span class="kana">ま</span><br/><small>ma</small></td><td><span class="kana">み</span><br/><small>mi</small></td><td><span class="kana">む</span><br/><small>mu</small></td><td><span class="kana">め</span><br/><small>me</small></td><td><span class="kana">も</span><br/><small>mo</small></td></tr><tr><th>y</th><td><span class="kana">や</span><br/><small>ya</small></td><td>—</td><td><span class="kana">ゆ</span><br/><small>yu</small></td><td>—</td><td><span class="kana">よ</span><br/><small>yo</small></td></tr><tr><th>r</th><td><span class="kana">ら</span><br/><small>ra</small></td><td><span class="kana">り</span><br/><small>ri</small></td><td><span class="kana">る</span><br/><small>ru</small></td><td><span class="kana">れ</span><br/><small>re</small></td><td><span class="kana">ろ</span><br/><small>ro</small></td></tr><tr><th>w</th><td><span class="kana">わ</span><br/><small>wa</small></td><td>—</td><td>—</td><td>—</td><td><span class="kana">を</span><br/><small>wo</small></td></tr><tr><th>n</th><td><span class="kana">ん</span><br/><small>n</small></td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th>g</th><td><span class="kana">が</span><br/><small>ga</small></td><td><span class="kana">ぎ</span><br/><small>gi</small></td><td><span class="kana">ぐ</span><br/><small>gu</small></td><td><span class="kana">げ</span><br/><small>ge</small></td><td><span class="kana">ご</span><br/><small>go</small></td></tr><tr><th>z</th><td><span class="kana">ざ</span><br/><small>za</small></td><td><span class="kana">じ</span><br/><small>ji</small></td><td><span class="kana">ず</span><br/><small>zu</small></td><td><span class="kana">ぜ</span><br/><small>ze</small></td><td><span class="kana">ぞ</span><br/><small>zo</small></td></tr><tr><th>d</th><td><span class="kana">だ</span><br/><small>da</small></td><td><span class="kana">ぢ</span><br/><small>ji</small></td><td><span class="kana">づ</span><br/><small>zu</small></td><td><span class="kana">で</span><br/><small>de</small></td><td><span class="kana">ど</span><br/><small>do</small></td></tr><tr><th>b</th><td><span class="kana">ば</span><br/><small>ba</small></td><td><span class="kana">び</span><br/><small>bi</small></td><td><span class="kana">ぶ</span><br/><small>bu</small></td><td><span class="kana">べ</span><br/><small>be</small></td><td><span class="kana">ぼ</span><br/><small>bo</small></td></tr><tr><th>p</th><td><span class="kana">ぱ</span><br/><small>pa</small></td><td><span class="kana">ぴ</span><br/><small>pi</small></td><td><span class="kana">ぷ</span><br/><small>pu</small></td><td><span class="kana">ぺ</span><br/><small>pe</small></td><td><span class="kana">ぽ</span><br/><small>po</small></td></tr></tbody></table></div><h3>যুক্ত অক্ষর (きゃ / キャ ইত্যাদি)</h3><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>ya</th><th>yu</th><th>yo</th></tr></thead><tbody><tr><th>ky</th><td><span class="kana">きゃ</span><br/><small>kya</small></td><td><span class="kana">きゅ</span><br/><small>kyu</small></td><td><span class="kana">きょ</span><br/><small>kyo</small></td></tr><tr><th>sh</th><td><span class="kana">しゃ</span><br/><small>sha</small></td><td><span class="kana">しゅ</span><br/><small>shu</small></td><td><span class="kana">しょ</span><br/><small>sho</small></td></tr><tr><th>ch</th><td><span class="kana">ちゃ</span><br/><small>cha</small></td><td><span class="kana">ちゅ</span><br/><small>chu</small></td><td><span class="kana">ちょ</span><br/><small>cho</small></td></tr><tr><th>ny</th><td><span class="kana">にゃ</span><br/><small>nya</small></td><td><span class="kana">にゅ</span><br/><small>nyu</small></td><td><span class="kana">にょ</span><br/><small>nyo</small></td></tr><tr><th>hy</th><td><span class="kana">ひゃ</span><br/><small>hya</small></td><td><span class="kana">ひゅ</span><br/><small>hyu</small></td><td><span class="kana">ひょ</span><br/><small>hyo</small></td></tr><tr><th>my</th><td><span class="kana">みゃ</span><br/><small>mya</small></td><td><span class="kana">みゅ</span><br/><small>myu</small></td><td><span class="kana">みょ</span><br/><small>myo</small></td></tr><tr><th>ry</th><td><span class="kana">りゃ</span><br/><small>rya</small></td><td><span class="kana">りゅ</span><br/><small>ryu</small></td><td><span class="kana">りょ</span><br/><small>ryo</small></td></tr><tr><th>gy</th><td><span class="kana">ぎゃ</span><br/><small>gya</small></td><td><span class="kana">ぎゅ</span><br/><small>gyu</small></td><td><span class="kana">ぎょ</span><br/><small>gyo</small></td></tr><tr><th>j</th><td><span class="kana">じゃ</span><br/><small>ja</small></td><td><span class="kana">じゅ</span><br/><small>ju</small></td><td><span class="kana">じょ</span><br/><small>jo</small></td></tr><tr><th>by</th><td><span class="kana">びゃ</span><br/><small>bya</small></td><td><span class="kana">びゅ</span><br/><small>byu</small></td><td><span class="kana">びょ</span><br/><small>byo</small></td></tr><tr><th>py</th><td><span class="kana">ぴゃ</span><br/><small>pya</small></td><td><span class="kana">ぴゅ</span><br/><small>pyu</small></td><td><span class="kana">ぴょ</span><br/><small>pyo</small></td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>② カタカナ — Katakana Chart (কাতাকানা)</summary><p class="subnote">বিদেশি শব্দ ও নাম লেখার জন্য কাতাকানা বেশি ব্যবহার হয়।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr></thead><tbody><tr><th>—</th><td><span class="kana">ア</span><br/><small>a</small></td><td><span class="kana">イ</span><br/><small>i</small></td><td><span class="kana">ウ</span><br/><small>u</small></td><td><span class="kana">エ</span><br/><small>e</small></td><td><span class="kana">オ</span><br/><small>o</small></td></tr><tr><th>k</th><td><span class="kana">カ</span><br/><small>ka</small></td><td><span class="kana">キ</span><br/><small>ki</small></td><td><span class="kana">ク</span><br/><small>ku</small></td><td><span class="kana">ケ</span><br/><small>ke</small></td><td><span class="kana">コ</span><br/><small>ko</small></td></tr><tr><th>s</th><td><span class="kana">サ</span><br/><small>sa</small></td><td><span class="kana">シ</span><br/><small>shi</small></td><td><span class="kana">ス</span><br/><small>su</small></td><td><span class="kana">セ</span><br/><small>se</small></td><td><span class="kana">ソ</span><br/><small>so</small></td></tr><tr><th>t</th><td><span class="kana">タ</span><br/><small>ta</small></td><td><span class="kana">チ</span><br/><small>chi</small></td><td><span class="kana">ツ</span><br/><small>tsu</small></td><td><span class="kana">テ</span><br/><small>te</small></td><td><span class="kana">ト</span><br/><small>to</small></td></tr><tr><th>n</th><td><span class="kana">ナ</span><br/><small>na</small></td><td><span class="kana">ニ</span><br/><small>ni</small></td><td><span class="kana">ヌ</span><br/><small>nu</small></td><td><span class="kana">ネ</span><br/><small>ne</small></td><td><span class="kana">ノ</span><br/><small>no</small></td></tr><tr><th>h</th><td><span class="kana">ハ</span><br/><small>ha</small></td><td><span class="kana">ヒ</span><br/><small>hi</small></td><td><span class="kana">フ</span><br/><small>fu</small></td><td><span class="kana">ヘ</span><br/><small>he</small></td><td><span class="kana">ホ</span><br/><small>ho</small></td></tr><tr><th>m</th><td><span class="kana">マ</span><br/><small>ma</small></td><td><span class="kana">ミ</span><br/><small>mi</small></td><td><span class="kana">ム</span><br/><small>mu</small></td><td><span class="kana">メ</span><br/><small>me</small></td><td><span class="kana">モ</span><br/><small>mo</small></td></tr><tr><th>y</th><td><span class="kana">ヤ</span><br/><small>ya</small></td><td>—</td><td><span class="kana">ユ</span><br/><small>yu</small></td><td>—</td><td><span class="kana">ヨ</span><br/><small>yo</small></td></tr><tr><th>r</th><td><span class="kana">ラ</span><br/><small>ra</small></td><td><span class="kana">リ</span><br/><small>ri</small></td><td><span class="kana">ル</span><br/><small>ru</small></td><td><span class="kana">レ</span><br/><small>re</small></td><td><span class="kana">ロ</span><br/><small>ro</small></td></tr><tr><th>w</th><td><span class="kana">ワ</span><br/><small>wa</small></td><td>—</td><td>—</td><td>—</td><td><span class="kana">ヲ</span><br/><small>wo</small></td></tr><tr><th>n</th><td><span class="kana">ン</span><br/><small>n</small></td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th>g</th><td><span class="kana">ガ</span><br/><small>ga</small></td><td><span class="kana">ギ</span><br/><small>gi</small></td><td><span class="kana">グ</span><br/><small>gu</small></td><td><span class="kana">ゲ</span><br/><small>ge</small></td><td><span class="kana">ゴ</span><br/><small>go</small></td></tr><tr><th>z</th><td><span class="kana">ザ</span><br/><small>za</small></td><td><span class="kana">ジ</span><br/><small>ji</small></td><td><span class="kana">ズ</span><br/><small>zu</small></td><td><span class="kana">ゼ</span><br/><small>ze</small></td><td><span class="kana">ゾ</span><br/><small>zo</small></td></tr><tr><th>d</th><td><span class="kana">ダ</span><br/><small>da</small></td><td><span class="kana">ヂ</span><br/><small>ji</small></td><td><span class="kana">ヅ</span><br/><small>zu</small></td><td><span class="kana">デ</span><br/><small>de</small></td><td><span class="kana">ド</span><br/><small>do</small></td></tr><tr><th>b</th><td><span class="kana">バ</span><br/><small>ba</small></td><td><span class="kana">ビ</span><br/><small>bi</small></td><td><span class="kana">ブ</span><br/><small>bu</small></td><td><span class="kana">ベ</span><br/><small>be</small></td><td><span class="kana">ボ</span><br/><small>bo</small></td></tr><tr><th>p</th><td><span class="kana">パ</span><br/><small>pa</small></td><td><span class="kana">ピ</span><br/><small>pi</small></td><td><span class="kana">プ</span><br/><small>pu</small></td><td><span class="kana">ペ</span><br/><small>pe</small></td><td><span class="kana">ポ</span><br/><small>po</small></td></tr></tbody></table></div><h3>যুক্ত অক্ষর (きゃ / キャ ইত্যাদি)</h3><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>ya</th><th>yu</th><th>yo</th></tr></thead><tbody><tr><th>ky</th><td><span class="kana">キャ</span><br/><small>kya</small></td><td><span class="kana">キュ</span><br/><small>kyu</small></td><td><span class="kana">キョ</span><br/><small>kyo</small></td></tr><tr><th>sh</th><td><span class="kana">シャ</span><br/><small>sha</small></td><td><span class="kana">シュ</span><br/><small>shu</small></td><td><span class="kana">ショ</span><br/><small>sho</small></td></tr><tr><th>ch</th><td><span class="kana">チャ</span><br/><small>cha</small></td><td><span class="kana">チュ</span><br/><small>chu</small></td><td><span class="kana">チョ</span><br/><small>cho</small></td></tr><tr><th>ny</th><td><span class="kana">ニャ</span><br/><small>nya</small></td><td><span class="kana">ニュ</span><br/><small>nyu</small></td><td><span class="kana">ニョ</span><br/><small>nyo</small></td></tr><tr><th>hy</th><td><span class="kana">ヒャ</span><br/><small>hya</small></td><td><span class="kana">ヒュ</span><br/><small>hyu</small></td><td><span class="kana">ヒョ</span><br/><small>hyo</small></td></tr><tr><th>my</th><td><span class="kana">ミャ</span><br/><small>mya</small></td><td><span class="kana">ミュ</span><br/><small>myu</small></td><td><span class="kana">ミョ</span><br/><small>myo</small></td></tr><tr><th>ry</th><td><span class="kana">リャ</span><br/><small>rya</small></td><td><span class="kana">リュ</span><br/><small>ryu</small></td><td><span class="kana">リョ</span><br/><small>ryo</small></td></tr><tr><th>gy</th><td><span class="kana">ギャ</span><br/><small>gya</small></td><td><span class="kana">ギュ</span><br/><small>gyu</small></td><td><span class="kana">ギョ</span><br/><small>gyo</small></td></tr><tr><th>j</th><td><span class="kana">ジャ</span><br/><small>ja</small></td><td><span class="kana">ジュ</span><br/><small>ju</small></td><td><span class="kana">ジョ</span><br/><small>jo</small></td></tr><tr><th>by</th><td><span class="kana">ビャ</span><br/><small>bya</small></td><td><span class="kana">ビュ</span><br/><small>byu</small></td><td><span class="kana">ビョ</span><br/><small>byo</small></td></tr><tr><th>py</th><td><span class="kana">ピャ</span><br/><small>pya</small></td><td><span class="kana">ピュ</span><br/><small>pyu</small></td><td><span class="kana">ピョ</span><br/><small>pyo</small></td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>③ Japanese Numbers — জাপানি সংখ্যা</summary><p class="subnote">১১–১৯: じゅう + সংখ্যা, ২০–৯৯: দশকের সংখ্যা + এককের সংখ্যা। ১০,০০০ = いちまん।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সংখ্যা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>1</td><td class="kana">一</td><td>いち</td><td>ichi</td></tr><tr><td>2</td><td class="kana">二</td><td>に</td><td>ni</td></tr><tr><td>3</td><td class="kana">三</td><td>さん</td><td>san</td></tr><tr><td>4</td><td class="kana">四</td><td>よん／し</td><td>yon / shi</td></tr><tr><td>5</td><td class="kana">五</td><td>ご</td><td>go</td></tr><tr><td>6</td><td class="kana">六</td><td>ろく</td><td>roku</td></tr><tr><td>7</td><td class="kana">七</td><td>なな／しち</td><td>nana / shichi</td></tr><tr><td>8</td><td class="kana">八</td><td>はち</td><td>hachi</td></tr><tr><td>9</td><td class="kana">九</td><td>きゅう／く</td><td>kyuu / ku</td></tr><tr><td>10</td><td class="kana">十</td><td>じゅう</td><td>juu</td></tr><tr><td>11</td><td class="kana">十一</td><td>じゅういち</td><td>juuichi</td></tr><tr><td>12</td><td class="kana">十二</td><td>じゅうに</td><td>juuni</td></tr><tr><td>20</td><td class="kana">二十</td><td>にじゅう</td><td>nijuu</td></tr><tr><td>21</td><td class="kana">二十一</td><td>にじゅういち</td><td>nijuuichi</td></tr><tr><td>30</td><td class="kana">三十</td><td>さんじゅう</td><td>sanjuu</td></tr><tr><td>100</td><td class="kana">百</td><td>ひゃく</td><td>hyaku</td></tr><tr><td>300</td><td class="kana">三百</td><td>さんびゃく</td><td>sanbyaku</td></tr><tr><td>600</td><td class="kana">六百</td><td>ろっぴゃく</td><td>roppyaku</td></tr><tr><td>800</td><td class="kana">八百</td><td>はっぴゃく</td><td>happyaku</td></tr><tr><td>1,000</td><td class="kana">千</td><td>せん</td><td>sen</td></tr><tr><td>3,000</td><td class="kana">三千</td><td>さんぜん</td><td>sanzen</td></tr><tr><td>8,000</td><td class="kana">八千</td><td>はっせん</td><td>hassen</td></tr><tr><td>10,000</td><td class="kana">一万</td><td>いちまん</td><td>ichiman</td></tr><tr><td>20,000</td><td class="kana">二万</td><td>にまん</td><td>niman</td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>④ 12 Months — ১২ মাস</summary><div class="table-scroll"><table class="basic-table"><thead><tr><th>বাংলা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>জানুয়ারি</td><td class="kana">一月</td><td>いちがつ</td><td>ichigatsu</td></tr><tr><td>ফেব্রুয়ারি</td><td class="kana">二月</td><td>にがつ</td><td>nigatsu</td></tr><tr><td>মার্চ</td><td class="kana">三月</td><td>さんがつ</td><td>sangatsu</td></tr><tr><td>এপ্রিল</td><td class="kana">四月</td><td>しがつ</td><td>shigatsu</td></tr><tr><td>মে</td><td class="kana">五月</td><td>ごがつ</td><td>gogatsu</td></tr><tr><td>জুন</td><td class="kana">六月</td><td>ろくがつ</td><td>rokugatsu</td></tr><tr><td>জুলাই</td><td class="kana">七月</td><td>しちがつ</td><td>shichigatsu</td></tr><tr><td>আগস্ট</td><td class="kana">八月</td><td>はちがつ</td><td>hachigatsu</td></tr><tr><td>সেপ্টেম্বর</td><td class="kana">九月</td><td>くがつ</td><td>kugatsu</td></tr><tr><td>অক্টোবর</td><td class="kana">十月</td><td>じゅうがつ</td><td>juugatsu</td></tr><tr><td>নভেম্বর</td><td class="kana">十一月</td><td>じゅういちがつ</td><td>juuichigatsu</td></tr><tr><td>ডিসেম্বর</td><td class="kana">十二月</td><td>じゅうにがつ</td><td>juunigatsu</td></tr></tbody></table></div><p class="tip">মনে রাখো: মাস বোঝাতে সাধারণত সংখ্যা + がつ (gatsu) ব্যবহার হয়। ব্যতিক্রম: ৪月 しがつ, ৭月 しちがつ, ৯月 くがつ।</p></details></div><div class="panel"><details class="basics-group" open=""><summary>⑤ 7 Days of the Week — সপ্তাহের ৭ দিন</summary><div class="table-scroll"><table class="basic-table"><thead><tr><th>বাংলা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>সোমবার</td><td class="kana">月曜日</td><td>げつようび</td><td>getsuyoubi</td></tr><tr><td>মঙ্গলবার</td><td class="kana">火曜日</td><td>かようび</td><td>kayoubi</td></tr><tr><td>বুধবার</td><td class="kana">水曜日</td><td>すいようび</td><td>suiyoubi</td></tr><tr><td>বৃহস্পতিবার</td><td class="kana">木曜日</td><td>もくようび</td><td>mokuyoubi</td></tr><tr><td>শুক্রবার</td><td class="kana">金曜日</td><td>きんようび</td><td>kinyoubi</td></tr><tr><td>শনিবার</td><td class="kana">土曜日</td><td>どようび</td><td>doyoubi</td></tr><tr><td>রবিবার</td><td class="kana">日曜日</td><td>にちようび</td><td>nichiyoubi</td></tr></tbody></table></div><p class="tip">曜日 (ようび / youbi) = সপ্তাহের দিন।</p></details></div><div class="panel"><details class="basics-group" open=""><summary>⑥ 自己紹介 — Self Introduction (নিজের পরিচয়)</summary><p class="subnote">নিচের নমুনায় নিজের নাম, দেশ, বয়স ও পেশা বসিয়ে বলবে।</p><div class="intro-example"><div class="jp">はじめまして。</div><div class="rom">Hajimemashite.</div><div class="bn">প্রথম পরিচয়ে: আপনার সঙ্গে পরিচিত হয়ে ভালো লাগছে।</div></div><div class="intro-example"><div class="jp">わたしは リドイです。</div><div class="rom">Watashi wa Ridoi desu.</div><div class="bn">আমি রিদয়। (নিজের নাম বসাও)</div></div><div class="intro-example"><div class="jp">バングラデシュから きました。</div><div class="rom">Banguradeshu kara kimashita.</div><div class="bn">আমি বাংলাদেশ থেকে এসেছি।</div></div><div class="intro-example"><div class="jp">わたしは がくせいです。</div><div class="rom">Watashi wa gakusei desu.</div><div class="bn">আমি ছাত্র।</div></div><div class="intro-example"><div class="jp">わたしは 21さいです。</div><div class="rom">Watashi wa nijuu-issai desu.</div><div class="bn">আমার বয়স ২১ বছর। (নিজের বয়স বসাও)</div></div><div class="intro-example"><div class="jp">どうぞ よろしく おねがいします。</div><div class="rom">Douzo yoroshiku onegaishimasu.</div><div class="bn">আপনার সহযোগিতা কামনা করছি / পরিচিত হয়ে ভালো লাগল।</div></div></details></div><div class="panel"><h2>✅ Basic পড়া শেষ?</h2><button class="primary" onclick="showTab('words')">এবার Lesson 1 Vocabulary পড়ি ➜</button></div></section><section class="hidden" id="learn"><div class="panel"><h2>📚 Grammar — Lesson 1 / Lesson 2</h2><p>প্রতিটি Grammar কেন ব্যবহার হয়, অর্থ এবং ৫টি করে Example। Lesson বেছে নিয়ে পড়ো।</p></div><div class="panel"><label>কোন Lesson পড়বে? <select id="grammarLesson" onchange="renderGrammar()"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label></div><div id="grammarList"></div><div class="panel"><button class="primary" onclick="showTab('exam');document.getElementById('examLesson').value=document.getElementById('grammarLesson').value">Grammar পড়া শেষ → Exam দিই ➜</button></div></section><section class="" id="words"><div class="panel" id="lessonQuick"><h2>🎯 কোন Lesson পড়বে?</h2><div class="quick-grid"><button class="quick" onclick="openLesson('words','1')">📗 Lesson 1<br/><small>৪৭টি Vocabulary</small></button><button class="quick" onclick="openLesson('words','2')">📘 Lesson 2<br/><small>৪৬টি Vocabulary</small></button><button class="quick" onclick="openLesson('learn','1')">📚 Lesson 1<br/><small>৬টি Grammar</small></button><button class="quick" onclick="openLesson('learn','2')">📚 Lesson 2<br/><small>৮টি Grammar</small></button><button class="quick" onclick="openLesson('exam','1')">📝 Lesson 1 Exam<br/><small>Random Questions</small></button><button class="quick" onclick="openLesson('exam','2')">📝 Lesson 2 Exam<br/><small>Random Questions</small></button></div></div><div class="panel"><h2>📖 Vocabulary — Lesson 1 / Lesson 2</h2><p>প্রথমে শব্দ মুখস্থ করো। Lesson 1-এর ৪৭টি এবং Lesson 2-এর ৪৬টি শব্দ আলাদা করে পড়তে পারবে।</p><label>কোন Lesson-এর শব্দ? <select id="vocabLesson" onchange="renderWords()"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label><p class="muted" id="wordCount"></p><div class="vocab" id="wordList"></div></div><div class="panel"><button class="primary" onclick="showTab('learn');document.getElementById('grammarLesson').value=document.getElementById('vocabLesson').value;renderGrammar()">শব্দ পড়া শেষ → Grammar পড়ি ➜</button></div></section><section class="hidden" id="exam"><div class="panel" id="setup"><h2>📝 Random Exam</h2><p>Lesson 1 বা Lesson 2 আলাদা পরীক্ষা দাও। চাইলে দুটো Lesson একসঙ্গেও পরীক্ষা দিতে পারবে। প্রতিবার Random প্রশ্ন ও অপশন বদলাবে।</p><div class="settings"><label>বিষয়<br/><select id="mode"><option value="mixed">Grammar + Vocabulary</option><option value="vocab">শুধু Vocabulary</option><option value="grammar">শুধু Grammar</option></select></label><label>Lesson<br/><select id="examLesson"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label><label>প্রশ্ন সংখ্যা<br/><select id="count"><option value="10">১০টি</option><option selected="" value="20">২০টি</option><option value="30">৩০টি</option><option value="47">৪৭টি</option><option value="50">৫০টি</option><option value="100">১০০টি</option><option value="200">২০০টি</option></select></label></div><p class="muted">প্রতিটি প্রশ্নে ৪টি অপশন। ভুল হলে পরীক্ষার শেষে সঠিক উত্তর ও ব্যাখ্যা দেখতে পাবে।</p><button class="primary" onclick="startExam()">🚀 পরীক্ষা শুরু</button></div><div class="panel hidden" id="play"><div class="row"><span class="stat" id="qNum"></span><span class="muted" id="qType"></span></div><div class="progress"><div class="bar" id="bar"></div></div><h2 id="question"></h2><button class="sound-btn" id="quizAudio" onclick="speakQuizQuestion()" type="button">🔊 প্রশ্নের জাপানি শুনুন</button><div class="choices" id="choices"></div><div class="row"><button class="primary" disabled="" id="next" onclick="nextQuestion()">পরের প্রশ্ন ➜</button><button onclick="quitExam()">পরীক্ষা বন্ধ</button></div></div><div class="panel hidden" id="result"><h2>🏆 পরীক্ষার ফলাফল</h2><div class="score" id="score"></div><p id="summary"></p><div class="row"><button class="primary" onclick="startExam()">🔄 আবার নতুন পরীক্ষা</button><button onclick="quitExam()">সেটিংসে ফিরি</button></div><h3>📋 উত্তর ও ব্যাখ্যা</h3><div id="review"></div></div></section><section class="hidden" id="ai"><div class="panel"><h2>🤖 বাংলা AI Teacher — Japanese প্রশ্ন করো</h2><p>জাপানি Grammar, Vocabulary অথবা বাক্য নিয়ে <b>বাংলায় প্রশ্ন</b> করো। AI Japanese বাক্য, বাংলা অর্থ, কেন ব্যবহার হয় এবং উদাহরণ দিয়ে বোঝাবে।</p><p class="ai-note">🤖 বাংলা AI Teacher: প্রশ্ন লিখে Send চাপো। প্রতিটি শব্দ ও বাক্যের পাশে AI বাটন থেকেও সরাসরি প্রশ্ন করা যায়। <span id="aiSetupNote">AI চালু করতে Website মালিককে একবার নিরাপদ AI Server সংযুক্ত করতে হবে।</span></p><div class="ai-chat"><div id="aiContext" class="ai-context" aria-live="polite"></div><div id="aiMessages" class="ai-messages" aria-live="polite"><div class="ai-msg assistant">こんにちは! ❤️ আমি তোমার Japanese AI Teacher। বাংলায় প্রশ্ন করো। যেমন: 「は কেন বসে?」 অথবা 「これ আর この-এর পার্থক্য কী?」</div></div><div class="ai-tools"><button onclick="aiAskExample('は আর も-এর পার্থক্য সহজ বাংলায় ৩টি উদাহরণ দিয়ে বোঝাও')">は vs も</button><button onclick="aiAskExample('これ それ あれ আর この その あの এর পার্থক্য বোঝাও')">Lesson 2</button><button onclick="aiAskExample('わたしは がくせいです। এই বাক্যের প্রতিটি শব্দ কেন বসেছে?')">বাক্য ভেঙে বোঝাও</button><button onclick="aiClear()">🗑️ Chat মুছো</button></div><p id="micStatus" class="voice-status" role="status" aria-live="polite">🎙️ মাইক চাপলে বাংলা বা Japanese বেছে নিয়ে কথা বলতে পারবে।</p>
+
+/* Study sounds: basics, vocabulary, grammar examples, and quiz; AI replies stay silent. */
+.study-sound-settings{max-width:900px;margin:14px auto 0;padding:12px 16px;background:#fff;color:#233860;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.study-sound-settings input[type=range]{width:150px;max-width:35vw;accent-color:#5364df}
+.study-sound-settings button,.study-sound-btn{padding:8px 12px;font-size:.9rem;background:#dfeaff;color:#1c3f89;border:1px solid #c1d3fa;border-radius:11px}
+.study-sound-settings button{width:auto}
+.study-sound-status{width:100%;font-size:.87rem;text-align:center;min-height:1.2em;color:#526680}
+.study-sound-btn{margin-top:8px;margin-right:7px;width:auto!important}
+@media(max-width:500px){.study-sound-settings{margin:12px 10px 0;gap:8px}.study-sound-settings input[type=range]{width:120px}.study-sound-btn{font-size:.85rem}}
+/* Compact individual sound controls in all six Basic Japanese groups. */
+.basic-sound-btn{display:inline-flex;align-items:center;justify-content:center;min-width:30px;min-height:30px;margin:4px 1px 0;padding:4px 7px;background:#e7efff;color:#20417e;border:1px solid #b9d0f8;border-radius:9px;font-size:.83rem;cursor:pointer;vertical-align:middle}
+.basic-sound-btn:focus-visible{outline:2px solid #224ee0;outline-offset:2px}
+.basic-table td .basic-sound-btn{display:block;margin:4px auto 0}
+.intro-example .basic-sound-btn{margin-top:7px}
+@media(max-width:480px){.basic-sound-btn{min-width:34px;min-height:34px}.basic-table td{padding:8px 3px}}
+
+/* Responsive digital textbook: desktop, Chromebook, Android, iPhone and iPad. */
+:root{--book-bg:#f1f5fb;--book-ink:#17243c;--book-blue:#2847ac;--book-ring:#5576e0;scroll-behavior:smooth}
+html{min-width:0;scroll-padding-top:20px;-webkit-text-size-adjust:100%}
+body{min-width:0;overflow-x:hidden;background:var(--book-bg);color:var(--book-ink);line-height:1.65}
+header{position:relative;padding:34px max(16px,env(safe-area-inset-right)) 22px;background:linear-gradient(132deg,#162c74 0%,#3449b4 52%,#6a57c7 100%)}
+header h1{max-width:1020px;margin:0 auto;font-size:clamp(1.65rem,3.6vw,2.75rem);line-height:1.25;letter-spacing:-.025em}
+header>p{font-size:clamp(.88rem,1.6vw,1.03rem);line-height:1.6;margin:12px auto;max-width:800px}
+.wrap{width:min(100%,1180px);max-width:1180px;padding:clamp(12px,2.4vw,30px);margin:auto}
+.panel{padding:clamp(17px,2.5vw,30px);border:1px solid #e3e9f5;border-radius:18px;margin:0 0 18px;box-shadow:0 5px 22px #2336750d}
+.panel h2{font-size:clamp(1.17rem,2.1vw,1.55rem);line-height:1.35;margin:0 0 14px}
+.panel h3{line-height:1.45}
+.nav{width:min(100%,1180px);margin:22px auto 0;display:flex;gap:9px;align-items:center;justify-content:center;flex-wrap:wrap}
+.nav button{flex:0 1 auto;min-height:46px;line-height:1.3;padding:11px 15px;border-radius:12px;white-space:normal;text-align:center;transition:background .15s ease,border-color .15s ease}
+.nav button.active{box-shadow:0 4px 12px #101c6140}
+button{touch-action:manipulation;transition:filter .15s ease,transform .15s ease}
+button:hover:not(:disabled){filter:brightness(.97)}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--book-ring);outline-offset:3px}
+button:active:not(:disabled){transform:translateY(1px)}
+.basic-table{min-width:550px;font-size:.95rem}
+.basic-table td,.basic-table th{white-space:normal;vertical-align:middle}
+.table-scroll{max-width:100%;overflow:auto;overscroll-behavior-x:contain;border-radius:12px;border:1px solid #dae3f6}
+.basic-table .kana{font-size:clamp(1.35rem,2.6vw,1.7rem)}
+.basics-group{border:1px solid #e3e9f5;border-radius:12px;padding:5px 10px;margin:14px 0}
+.basics-group summary{line-height:1.6;min-height:42px;list-style-position:inside}
+.intro-example{border:1px solid #e2eafa;padding:14px 16px}
+.jp{line-height:1.65;overflow-wrap:anywhere}
+.ex{padding:clamp(12px,2vw,18px)}
+.vocab{grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:12px}
+.word{min-width:0;overflow-wrap:anywhere;padding:15px}
+.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.quick{min-height:106px;display:block;padding:16px;font-size:1.02rem}
+.settings{align-items:flex-start}
+select{min-height:42px;max-width:100%}
+.choices .choice{width:100%;min-height:54px;text-align:left;white-space:normal;overflow-wrap:anywhere}
+.study-sound-settings{width:min(100%,1050px);max-width:1050px;padding:13px 16px;box-shadow:0 7px 25px #111d4a30}
+.study-sound-settings input[type=range]{min-width:115px}
+.study-sound-btn,.basic-sound-btn{min-height:42px;min-width:44px}
+.basic-table td .basic-sound-btn{min-width:36px;min-height:36px}
+.ai-messages{height:clamp(310px,52dvh,610px);min-height:310px;overscroll-behavior:contain}
+.ai-msg{max-width:min(92%,760px);line-height:1.75}
+.ai-chat-composer{min-width:0;max-width:100%;border-width:2px;border-radius:20px;align-items:center}
+.ai-chat-composer textarea{font-size:16px;min-width:0;max-width:100%;min-height:48px}
+.ai-chat-composer .ai-circle-btn{flex:0 0 auto;min-width:44px;min-height:44px}
+.ai-tools{align-items:center}
+.ai-tools button{min-height:42px}
+#ai,#words,#learn,#exam,#basics{min-width:0}
+footer{padding:24px 16px calc(24px + env(safe-area-inset-bottom))}
+@media (min-width:900px){
+ .panel{margin-bottom:22px}
+ .quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .nav button{flex:1 1 175px;max-width:235px}
+ .ai-messages{padding:20px}
+}
+@media (min-width:600px) and (max-width:899px){
+ .wrap{padding:22px}
+ .nav button{flex:1 1 28%;max-width:none}
+ .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .study-sound-settings{width:calc(100% - 44px)}
+}
+@media (max-width:599px){
+ header{padding:24px 0 16px}
+ header h1,header>p{padding-left:16px;padding-right:16px}
+ .nav{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overflow-y:hidden;padding:5px 12px 12px;margin:14px 0 0;scroll-snap-type:x proximity;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+ .nav button{width:auto!important;min-width:138px;flex:0 0 auto;scroll-snap-align:start;padding:10px 12px;min-height:46px}
+ .wrap{padding:12px}
+ .panel{padding:17px 14px;border-radius:14px;margin-bottom:12px}
+ .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .quick{min-height:94px;font-size:.92rem;padding:12px 8px}
+ .study-sound-settings{margin:8px 12px 0;width:calc(100% - 24px);gap:8px;padding:11px;border-radius:12px}
+ .study-sound-settings label{font-size:.85rem}
+ .study-sound-settings input[type=range]{width:100px;min-width:85px;max-width:35vw}
+ .study-sound-settings button{min-height:43px;flex:1 1 110px}
+ .basic-table{min-width:480px;font-size:.9rem}
+ .basic-table td,.basic-table th{padding:8px 5px}
+ .table-scroll{margin-left:-2px;margin-right:-2px}
+ .ai-messages{height:min(53dvh,490px);min-height:300px;padding:10px}
+ .ai-msg{max-width:95%;margin:7px 0;line-height:1.65}
+ .ai-chat-composer{flex-direction:row!important;gap:5px;padding:6px}
+ .ai-chat-composer textarea{flex:1 1 0!important;font-size:16px!important;min-height:46px;padding:9px 3px}
+ .ai-compose-actions{flex:0 0 auto;gap:5px}
+ .ai-chat-composer .ai-circle-btn{width:44px!important;height:46px!important;min-height:44px;font-size:20px}
+ .mic-language-menu{right:-44px}
+ .ai-input{flex-direction:row}
+ .ai-input button{width:auto}
+ .row{align-items:center}
+ .row>button{width:auto}
+}
+@media(max-width:370px){
+ .nav button{min-width:126px;font-size:.87rem}
+ .quick-grid{gap:7px}
+ .quick{font-size:.86rem}
+ .ai-chat-composer .ai-circle-btn{width:40px!important;height:44px!important}
+ .ai-chat-composer textarea{padding:7px 1px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+</style></head><body><header><h1>🇯🇵 Japanese Lessons 1 + 2</h1><p>আগে Vocabulary → তারপর Grammar → শেষে Exam | Lesson 1 ও Lesson 2 আলাদা</p><nav class="nav" aria-label="বইয়ের অধ্যায়"><button class="active" id="tabBasics" onclick="showTab('basics')">🌸 প্রথমে বেসিক শিখি</button><button class="" id="tabWords" onclick="showTab('words')">📖 Vocabulary আগে পড়ি</button><button class="" id="tabLearn" onclick="showTab('learn')">📚 Grammar পড়ি</button><button class="" id="tabExam" onclick="showTab('exam')">📝 Random Exam</button><button class="" id="tabAi" onclick="showTab('ai')">🤖 বাংলা AI Teacher</button></nav><div class="study-sound-settings" id="studySoundPanel" aria-label="Japanese study sound controls">
+  <label for="studyVolume">🔊 শব্দের Volume</label>
+  <input id="studyVolume" type="range" min="0" max="100" value="100" step="5" oninput="updateStudyVolume(this.value)" aria-label="শব্দের ভলিউম">
+  <output id="studyVolumeLabel" for="studyVolume">100%</output>
+  <button type="button" onclick="speakStudyJapanese('こんにちは。')">▶ Test Sound</button>
+  <button type="button" onclick="stopStudySound()">⏹ Stop</button>
+  <div class="study-sound-status" id="studySoundStatus" role="status" aria-live="polite">Basic, Word, Grammar ও Quiz-এর 🔊 বাটনে চাপলে Japanese উচ্চারণ শুনবে। AI Chat নীরব থাকবে।</div>
+</div></header><main class="wrap"><section id="basics"><div class="panel"><h2>🌸 প্রথমে Japanese Basic শিখি</h2><p>Hiragana → Katakana → Numbers → ১২ মাস → সপ্তাহের ৭ দিন → Self Introduction। তারপর Lesson 1 ও Lesson 2 Vocabulary, Grammar ও Exam পড়বে।</p></div><div class="panel"><details class="basics-group" open=""><summary>① ひらがな — Hiragana Chart (হিরাগানা)</summary><p class="subnote">হিরাগানা জাপানি ভাষার মৌলিক অক্ষর। প্রতিদিন ১০টি করে লিখে অনুশীলন করো।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr></thead><tbody><tr><th>—</th><td><span class="kana">あ</span><br/><small>a</small></td><td><span class="kana">い</span><br/><small>i</small></td><td><span class="kana">う</span><br/><small>u</small></td><td><span class="kana">え</span><br/><small>e</small></td><td><span class="kana">お</span><br/><small>o</small></td></tr><tr><th>k</th><td><span class="kana">か</span><br/><small>ka</small></td><td><span class="kana">き</span><br/><small>ki</small></td><td><span class="kana">く</span><br/><small>ku</small></td><td><span class="kana">け</span><br/><small>ke</small></td><td><span class="kana">こ</span><br/><small>ko</small></td></tr><tr><th>s</th><td><span class="kana">さ</span><br/><small>sa</small></td><td><span class="kana">し</span><br/><small>shi</small></td><td><span class="kana">す</span><br/><small>su</small></td><td><span class="kana">せ</span><br/><small>se</small></td><td><span class="kana">そ</span><br/><small>so</small></td></tr><tr><th>t</th><td><span class="kana">た</span><br/><small>ta</small></td><td><span class="kana">ち</span><br/><small>chi</small></td><td><span class="kana">つ</span><br/><small>tsu</small></td><td><span class="kana">て</span><br/><small>te</small></td><td><span class="kana">と</span><br/><small>to</small></td></tr><tr><th>n</th><td><span class="kana">な</span><br/><small>na</small></td><td><span class="kana">に</span><br/><small>ni</small></td><td><span class="kana">ぬ</span><br/><small>nu</small></td><td><span class="kana">ね</span><br/><small>ne</small></td><td><span class="kana">の</span><br/><small>no</small></td></tr><tr><th>h</th><td><span class="kana">は</span><br/><small>ha</small></td><td><span class="kana">ひ</span><br/><small>hi</small></td><td><span class="kana">ふ</span><br/><small>fu</small></td><td><span class="kana">へ</span><br/><small>he</small></td><td><span class="kana">ほ</span><br/><small>ho</small></td></tr><tr><th>m</th><td><span class="kana">ま</span><br/><small>ma</small></td><td><span class="kana">み</span><br/><small>mi</small></td><td><span class="kana">む</span><br/><small>mu</small></td><td><span class="kana">め</span><br/><small>me</small></td><td><span class="kana">も</span><br/><small>mo</small></td></tr><tr><th>y</th><td><span class="kana">や</span><br/><small>ya</small></td><td>—</td><td><span class="kana">ゆ</span><br/><small>yu</small></td><td>—</td><td><span class="kana">よ</span><br/><small>yo</small></td></tr><tr><th>r</th><td><span class="kana">ら</span><br/><small>ra</small></td><td><span class="kana">り</span><br/><small>ri</small></td><td><span class="kana">る</span><br/><small>ru</small></td><td><span class="kana">れ</span><br/><small>re</small></td><td><span class="kana">ろ</span><br/><small>ro</small></td></tr><tr><th>w</th><td><span class="kana">わ</span><br/><small>wa</small></td><td>—</td><td>—</td><td>—</td><td><span class="kana">を</span><br/><small>wo</small></td></tr><tr><th>n</th><td><span class="kana">ん</span><br/><small>n</small></td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th>g</th><td><span class="kana">が</span><br/><small>ga</small></td><td><span class="kana">ぎ</span><br/><small>gi</small></td><td><span class="kana">ぐ</span><br/><small>gu</small></td><td><span class="kana">げ</span><br/><small>ge</small></td><td><span class="kana">ご</span><br/><small>go</small></td></tr><tr><th>z</th><td><span class="kana">ざ</span><br/><small>za</small></td><td><span class="kana">じ</span><br/><small>ji</small></td><td><span class="kana">ず</span><br/><small>zu</small></td><td><span class="kana">ぜ</span><br/><small>ze</small></td><td><span class="kana">ぞ</span><br/><small>zo</small></td></tr><tr><th>d</th><td><span class="kana">だ</span><br/><small>da</small></td><td><span class="kana">ぢ</span><br/><small>ji</small></td><td><span class="kana">づ</span><br/><small>zu</small></td><td><span class="kana">で</span><br/><small>de</small></td><td><span class="kana">ど</span><br/><small>do</small></td></tr><tr><th>b</th><td><span class="kana">ば</span><br/><small>ba</small></td><td><span class="kana">び</span><br/><small>bi</small></td><td><span class="kana">ぶ</span><br/><small>bu</small></td><td><span class="kana">べ</span><br/><small>be</small></td><td><span class="kana">ぼ</span><br/><small>bo</small></td></tr><tr><th>p</th><td><span class="kana">ぱ</span><br/><small>pa</small></td><td><span class="kana">ぴ</span><br/><small>pi</small></td><td><span class="kana">ぷ</span><br/><small>pu</small></td><td><span class="kana">ぺ</span><br/><small>pe</small></td><td><span class="kana">ぽ</span><br/><small>po</small></td></tr></tbody></table></div><h3>যুক্ত অক্ষর (きゃ / キャ ইত্যাদি)</h3><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>ya</th><th>yu</th><th>yo</th></tr></thead><tbody><tr><th>ky</th><td><span class="kana">きゃ</span><br/><small>kya</small></td><td><span class="kana">きゅ</span><br/><small>kyu</small></td><td><span class="kana">きょ</span><br/><small>kyo</small></td></tr><tr><th>sh</th><td><span class="kana">しゃ</span><br/><small>sha</small></td><td><span class="kana">しゅ</span><br/><small>shu</small></td><td><span class="kana">しょ</span><br/><small>sho</small></td></tr><tr><th>ch</th><td><span class="kana">ちゃ</span><br/><small>cha</small></td><td><span class="kana">ちゅ</span><br/><small>chu</small></td><td><span class="kana">ちょ</span><br/><small>cho</small></td></tr><tr><th>ny</th><td><span class="kana">にゃ</span><br/><small>nya</small></td><td><span class="kana">にゅ</span><br/><small>nyu</small></td><td><span class="kana">にょ</span><br/><small>nyo</small></td></tr><tr><th>hy</th><td><span class="kana">ひゃ</span><br/><small>hya</small></td><td><span class="kana">ひゅ</span><br/><small>hyu</small></td><td><span class="kana">ひょ</span><br/><small>hyo</small></td></tr><tr><th>my</th><td><span class="kana">みゃ</span><br/><small>mya</small></td><td><span class="kana">みゅ</span><br/><small>myu</small></td><td><span class="kana">みょ</span><br/><small>myo</small></td></tr><tr><th>ry</th><td><span class="kana">りゃ</span><br/><small>rya</small></td><td><span class="kana">りゅ</span><br/><small>ryu</small></td><td><span class="kana">りょ</span><br/><small>ryo</small></td></tr><tr><th>gy</th><td><span class="kana">ぎゃ</span><br/><small>gya</small></td><td><span class="kana">ぎゅ</span><br/><small>gyu</small></td><td><span class="kana">ぎょ</span><br/><small>gyo</small></td></tr><tr><th>j</th><td><span class="kana">じゃ</span><br/><small>ja</small></td><td><span class="kana">じゅ</span><br/><small>ju</small></td><td><span class="kana">じょ</span><br/><small>jo</small></td></tr><tr><th>by</th><td><span class="kana">びゃ</span><br/><small>bya</small></td><td><span class="kana">びゅ</span><br/><small>byu</small></td><td><span class="kana">びょ</span><br/><small>byo</small></td></tr><tr><th>py</th><td><span class="kana">ぴゃ</span><br/><small>pya</small></td><td><span class="kana">ぴゅ</span><br/><small>pyu</small></td><td><span class="kana">ぴょ</span><br/><small>pyo</small></td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>② カタカナ — Katakana Chart (কাতাকানা)</summary><p class="subnote">বিদেশি শব্দ ও নাম লেখার জন্য কাতাকানা বেশি ব্যবহার হয়।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>a</th><th>i</th><th>u</th><th>e</th><th>o</th></tr></thead><tbody><tr><th>—</th><td><span class="kana">ア</span><br/><small>a</small></td><td><span class="kana">イ</span><br/><small>i</small></td><td><span class="kana">ウ</span><br/><small>u</small></td><td><span class="kana">エ</span><br/><small>e</small></td><td><span class="kana">オ</span><br/><small>o</small></td></tr><tr><th>k</th><td><span class="kana">カ</span><br/><small>ka</small></td><td><span class="kana">キ</span><br/><small>ki</small></td><td><span class="kana">ク</span><br/><small>ku</small></td><td><span class="kana">ケ</span><br/><small>ke</small></td><td><span class="kana">コ</span><br/><small>ko</small></td></tr><tr><th>s</th><td><span class="kana">サ</span><br/><small>sa</small></td><td><span class="kana">シ</span><br/><small>shi</small></td><td><span class="kana">ス</span><br/><small>su</small></td><td><span class="kana">セ</span><br/><small>se</small></td><td><span class="kana">ソ</span><br/><small>so</small></td></tr><tr><th>t</th><td><span class="kana">タ</span><br/><small>ta</small></td><td><span class="kana">チ</span><br/><small>chi</small></td><td><span class="kana">ツ</span><br/><small>tsu</small></td><td><span class="kana">テ</span><br/><small>te</small></td><td><span class="kana">ト</span><br/><small>to</small></td></tr><tr><th>n</th><td><span class="kana">ナ</span><br/><small>na</small></td><td><span class="kana">ニ</span><br/><small>ni</small></td><td><span class="kana">ヌ</span><br/><small>nu</small></td><td><span class="kana">ネ</span><br/><small>ne</small></td><td><span class="kana">ノ</span><br/><small>no</small></td></tr><tr><th>h</th><td><span class="kana">ハ</span><br/><small>ha</small></td><td><span class="kana">ヒ</span><br/><small>hi</small></td><td><span class="kana">フ</span><br/><small>fu</small></td><td><span class="kana">ヘ</span><br/><small>he</small></td><td><span class="kana">ホ</span><br/><small>ho</small></td></tr><tr><th>m</th><td><span class="kana">マ</span><br/><small>ma</small></td><td><span class="kana">ミ</span><br/><small>mi</small></td><td><span class="kana">ム</span><br/><small>mu</small></td><td><span class="kana">メ</span><br/><small>me</small></td><td><span class="kana">モ</span><br/><small>mo</small></td></tr><tr><th>y</th><td><span class="kana">ヤ</span><br/><small>ya</small></td><td>—</td><td><span class="kana">ユ</span><br/><small>yu</small></td><td>—</td><td><span class="kana">ヨ</span><br/><small>yo</small></td></tr><tr><th>r</th><td><span class="kana">ラ</span><br/><small>ra</small></td><td><span class="kana">リ</span><br/><small>ri</small></td><td><span class="kana">ル</span><br/><small>ru</small></td><td><span class="kana">レ</span><br/><small>re</small></td><td><span class="kana">ロ</span><br/><small>ro</small></td></tr><tr><th>w</th><td><span class="kana">ワ</span><br/><small>wa</small></td><td>—</td><td>—</td><td>—</td><td><span class="kana">ヲ</span><br/><small>wo</small></td></tr><tr><th>n</th><td><span class="kana">ン</span><br/><small>n</small></td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><th>g</th><td><span class="kana">ガ</span><br/><small>ga</small></td><td><span class="kana">ギ</span><br/><small>gi</small></td><td><span class="kana">グ</span><br/><small>gu</small></td><td><span class="kana">ゲ</span><br/><small>ge</small></td><td><span class="kana">ゴ</span><br/><small>go</small></td></tr><tr><th>z</th><td><span class="kana">ザ</span><br/><small>za</small></td><td><span class="kana">ジ</span><br/><small>ji</small></td><td><span class="kana">ズ</span><br/><small>zu</small></td><td><span class="kana">ゼ</span><br/><small>ze</small></td><td><span class="kana">ゾ</span><br/><small>zo</small></td></tr><tr><th>d</th><td><span class="kana">ダ</span><br/><small>da</small></td><td><span class="kana">ヂ</span><br/><small>ji</small></td><td><span class="kana">ヅ</span><br/><small>zu</small></td><td><span class="kana">デ</span><br/><small>de</small></td><td><span class="kana">ド</span><br/><small>do</small></td></tr><tr><th>b</th><td><span class="kana">バ</span><br/><small>ba</small></td><td><span class="kana">ビ</span><br/><small>bi</small></td><td><span class="kana">ブ</span><br/><small>bu</small></td><td><span class="kana">ベ</span><br/><small>be</small></td><td><span class="kana">ボ</span><br/><small>bo</small></td></tr><tr><th>p</th><td><span class="kana">パ</span><br/><small>pa</small></td><td><span class="kana">ピ</span><br/><small>pi</small></td><td><span class="kana">プ</span><br/><small>pu</small></td><td><span class="kana">ペ</span><br/><small>pe</small></td><td><span class="kana">ポ</span><br/><small>po</small></td></tr></tbody></table></div><h3>যুক্ত অক্ষর (きゃ / キャ ইত্যাদি)</h3><div class="table-scroll"><table class="basic-table"><thead><tr><th>সারি</th><th>ya</th><th>yu</th><th>yo</th></tr></thead><tbody><tr><th>ky</th><td><span class="kana">キャ</span><br/><small>kya</small></td><td><span class="kana">キュ</span><br/><small>kyu</small></td><td><span class="kana">キョ</span><br/><small>kyo</small></td></tr><tr><th>sh</th><td><span class="kana">シャ</span><br/><small>sha</small></td><td><span class="kana">シュ</span><br/><small>shu</small></td><td><span class="kana">ショ</span><br/><small>sho</small></td></tr><tr><th>ch</th><td><span class="kana">チャ</span><br/><small>cha</small></td><td><span class="kana">チュ</span><br/><small>chu</small></td><td><span class="kana">チョ</span><br/><small>cho</small></td></tr><tr><th>ny</th><td><span class="kana">ニャ</span><br/><small>nya</small></td><td><span class="kana">ニュ</span><br/><small>nyu</small></td><td><span class="kana">ニョ</span><br/><small>nyo</small></td></tr><tr><th>hy</th><td><span class="kana">ヒャ</span><br/><small>hya</small></td><td><span class="kana">ヒュ</span><br/><small>hyu</small></td><td><span class="kana">ヒョ</span><br/><small>hyo</small></td></tr><tr><th>my</th><td><span class="kana">ミャ</span><br/><small>mya</small></td><td><span class="kana">ミュ</span><br/><small>myu</small></td><td><span class="kana">ミョ</span><br/><small>myo</small></td></tr><tr><th>ry</th><td><span class="kana">リャ</span><br/><small>rya</small></td><td><span class="kana">リュ</span><br/><small>ryu</small></td><td><span class="kana">リョ</span><br/><small>ryo</small></td></tr><tr><th>gy</th><td><span class="kana">ギャ</span><br/><small>gya</small></td><td><span class="kana">ギュ</span><br/><small>gyu</small></td><td><span class="kana">ギョ</span><br/><small>gyo</small></td></tr><tr><th>j</th><td><span class="kana">ジャ</span><br/><small>ja</small></td><td><span class="kana">ジュ</span><br/><small>ju</small></td><td><span class="kana">ジョ</span><br/><small>jo</small></td></tr><tr><th>by</th><td><span class="kana">ビャ</span><br/><small>bya</small></td><td><span class="kana">ビュ</span><br/><small>byu</small></td><td><span class="kana">ビョ</span><br/><small>byo</small></td></tr><tr><th>py</th><td><span class="kana">ピャ</span><br/><small>pya</small></td><td><span class="kana">ピュ</span><br/><small>pyu</small></td><td><span class="kana">ピョ</span><br/><small>pyo</small></td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>③ Japanese Numbers — জাপানি সংখ্যা</summary><p class="subnote">১১–১৯: じゅう + সংখ্যা, ২০–৯৯: দশকের সংখ্যা + এককের সংখ্যা। ১০,০০০ = いちまん।</p><div class="table-scroll"><table class="basic-table"><thead><tr><th>সংখ্যা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>1</td><td class="kana">一</td><td>いち</td><td>ichi</td></tr><tr><td>2</td><td class="kana">二</td><td>に</td><td>ni</td></tr><tr><td>3</td><td class="kana">三</td><td>さん</td><td>san</td></tr><tr><td>4</td><td class="kana">四</td><td>よん／し</td><td>yon / shi</td></tr><tr><td>5</td><td class="kana">五</td><td>ご</td><td>go</td></tr><tr><td>6</td><td class="kana">六</td><td>ろく</td><td>roku</td></tr><tr><td>7</td><td class="kana">七</td><td>なな／しち</td><td>nana / shichi</td></tr><tr><td>8</td><td class="kana">八</td><td>はち</td><td>hachi</td></tr><tr><td>9</td><td class="kana">九</td><td>きゅう／く</td><td>kyuu / ku</td></tr><tr><td>10</td><td class="kana">十</td><td>じゅう</td><td>juu</td></tr><tr><td>11</td><td class="kana">十一</td><td>じゅういち</td><td>juuichi</td></tr><tr><td>12</td><td class="kana">十二</td><td>じゅうに</td><td>juuni</td></tr><tr><td>20</td><td class="kana">二十</td><td>にじゅう</td><td>nijuu</td></tr><tr><td>21</td><td class="kana">二十一</td><td>にじゅういち</td><td>nijuuichi</td></tr><tr><td>30</td><td class="kana">三十</td><td>さんじゅう</td><td>sanjuu</td></tr><tr><td>100</td><td class="kana">百</td><td>ひゃく</td><td>hyaku</td></tr><tr><td>300</td><td class="kana">三百</td><td>さんびゃく</td><td>sanbyaku</td></tr><tr><td>600</td><td class="kana">六百</td><td>ろっぴゃく</td><td>roppyaku</td></tr><tr><td>800</td><td class="kana">八百</td><td>はっぴゃく</td><td>happyaku</td></tr><tr><td>1,000</td><td class="kana">千</td><td>せん</td><td>sen</td></tr><tr><td>3,000</td><td class="kana">三千</td><td>さんぜん</td><td>sanzen</td></tr><tr><td>8,000</td><td class="kana">八千</td><td>はっせん</td><td>hassen</td></tr><tr><td>10,000</td><td class="kana">一万</td><td>いちまん</td><td>ichiman</td></tr><tr><td>20,000</td><td class="kana">二万</td><td>にまん</td><td>niman</td></tr></tbody></table></div></details></div><div class="panel"><details class="basics-group" open=""><summary>④ 12 Months — ১২ মাস</summary><div class="table-scroll"><table class="basic-table"><thead><tr><th>বাংলা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>জানুয়ারি</td><td class="kana">一月</td><td>いちがつ</td><td>ichigatsu</td></tr><tr><td>ফেব্রুয়ারি</td><td class="kana">二月</td><td>にがつ</td><td>nigatsu</td></tr><tr><td>মার্চ</td><td class="kana">三月</td><td>さんがつ</td><td>sangatsu</td></tr><tr><td>এপ্রিল</td><td class="kana">四月</td><td>しがつ</td><td>shigatsu</td></tr><tr><td>মে</td><td class="kana">五月</td><td>ごがつ</td><td>gogatsu</td></tr><tr><td>জুন</td><td class="kana">六月</td><td>ろくがつ</td><td>rokugatsu</td></tr><tr><td>জুলাই</td><td class="kana">七月</td><td>しちがつ</td><td>shichigatsu</td></tr><tr><td>আগস্ট</td><td class="kana">八月</td><td>はちがつ</td><td>hachigatsu</td></tr><tr><td>সেপ্টেম্বর</td><td class="kana">九月</td><td>くがつ</td><td>kugatsu</td></tr><tr><td>অক্টোবর</td><td class="kana">十月</td><td>じゅうがつ</td><td>juugatsu</td></tr><tr><td>নভেম্বর</td><td class="kana">十一月</td><td>じゅういちがつ</td><td>juuichigatsu</td></tr><tr><td>ডিসেম্বর</td><td class="kana">十二月</td><td>じゅうにがつ</td><td>juunigatsu</td></tr></tbody></table></div><p class="tip">মনে রাখো: মাস বোঝাতে সাধারণত সংখ্যা + がつ (gatsu) ব্যবহার হয়। ব্যতিক্রম: ৪月 しがつ, ৭月 しちがつ, ৯月 くがつ।</p></details></div><div class="panel"><details class="basics-group" open=""><summary>⑤ 7 Days of the Week — সপ্তাহের ৭ দিন</summary><div class="table-scroll"><table class="basic-table"><thead><tr><th>বাংলা</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th></tr></thead><tbody><tr><td>সোমবার</td><td class="kana">月曜日</td><td>げつようび</td><td>getsuyoubi</td></tr><tr><td>মঙ্গলবার</td><td class="kana">火曜日</td><td>かようび</td><td>kayoubi</td></tr><tr><td>বুধবার</td><td class="kana">水曜日</td><td>すいようび</td><td>suiyoubi</td></tr><tr><td>বৃহস্পতিবার</td><td class="kana">木曜日</td><td>もくようび</td><td>mokuyoubi</td></tr><tr><td>শুক্রবার</td><td class="kana">金曜日</td><td>きんようび</td><td>kinyoubi</td></tr><tr><td>শনিবার</td><td class="kana">土曜日</td><td>どようび</td><td>doyoubi</td></tr><tr><td>রবিবার</td><td class="kana">日曜日</td><td>にちようび</td><td>nichiyoubi</td></tr></tbody></table></div><p class="tip">曜日 (ようび / youbi) = সপ্তাহের দিন।</p></details></div><div class="panel"><details class="basics-group" open=""><summary>⑥ 自己紹介 — Self Introduction (নিজের পরিচয়)</summary><p class="subnote">নিচের নমুনায় নিজের নাম, দেশ, বয়স ও পেশা বসিয়ে বলবে।</p><div class="intro-example"><div class="jp">はじめまして。</div><div class="rom">Hajimemashite.</div><div class="bn">প্রথম পরিচয়ে: আপনার সঙ্গে পরিচিত হয়ে ভালো লাগছে।</div></div><div class="intro-example"><div class="jp">わたしは リドイです。</div><div class="rom">Watashi wa Ridoi desu.</div><div class="bn">আমি রিদয়। (নিজের নাম বসাও)</div></div><div class="intro-example"><div class="jp">バングラデシュから きました。</div><div class="rom">Banguradeshu kara kimashita.</div><div class="bn">আমি বাংলাদেশ থেকে এসেছি।</div></div><div class="intro-example"><div class="jp">わたしは がくせいです。</div><div class="rom">Watashi wa gakusei desu.</div><div class="bn">আমি ছাত্র।</div></div><div class="intro-example"><div class="jp">わたしは 25さいです。</div><div class="rom">Watashi wa nijuu-go sai desu.</div><div class="bn">আমার বয়স ২৫ বছর। (নিজের বয়স বসাও)</div></div><div class="intro-example"><div class="jp">どうぞ よろしく おねがいします。</div><div class="rom">Douzo yoroshiku onegaishimasu.</div><div class="bn">আপনার সহযোগিতা কামনা করছি / পরিচিত হয়ে ভালো লাগল।</div></div></details></div><div class="panel"><h2>✅ Basic পড়া শেষ?</h2><button class="primary" onclick="showTab('words')">এবার Lesson 1 Vocabulary পড়ি ➜</button></div></section><section class="hidden" id="learn"><div class="panel"><h2>📚 Grammar — Lesson 1 / Lesson 2</h2><p>প্রতিটি Grammar কেন ব্যবহার হয়, অর্থ এবং ৫টি করে Example। Lesson বেছে নিয়ে পড়ো।</p></div><div class="panel"><label>কোন Lesson পড়বে? <select id="grammarLesson" onchange="renderGrammar()"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label></div><div id="grammarList"></div><div class="panel"><button class="primary" onclick="showTab('exam');document.getElementById('examLesson').value=document.getElementById('grammarLesson').value">Grammar পড়া শেষ → Exam দিই ➜</button></div></section><section class="" id="words"><div class="panel" id="lessonQuick"><h2>🎯 কোন Lesson পড়বে?</h2><div class="quick-grid"><button class="quick" onclick="openLesson('words','1')">📗 Lesson 1<br/><small>৪৭টি Vocabulary</small></button><button class="quick" onclick="openLesson('words','2')">📘 Lesson 2<br/><small>৪৬টি Vocabulary</small></button><button class="quick" onclick="openLesson('learn','1')">📚 Lesson 1<br/><small>৬টি Grammar</small></button><button class="quick" onclick="openLesson('learn','2')">📚 Lesson 2<br/><small>৮টি Grammar</small></button><button class="quick" onclick="openLesson('exam','1')">📝 Lesson 1 Exam<br/><small>Random Questions</small></button><button class="quick" onclick="openLesson('exam','2')">📝 Lesson 2 Exam<br/><small>Random Questions</small></button></div></div><div class="panel"><h2>📖 Vocabulary — Lesson 1 / Lesson 2</h2><p>প্রথমে শব্দ মুখস্থ করো। Lesson 1-এর ৪৭টি এবং Lesson 2-এর ৪৬টি শব্দ আলাদা করে পড়তে পারবে।</p><label>কোন Lesson-এর শব্দ? <select id="vocabLesson" onchange="renderWords()"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label><p class="muted" id="wordCount"></p><div class="vocab" id="wordList"></div></div><div class="panel"><button class="primary" onclick="showTab('learn');document.getElementById('grammarLesson').value=document.getElementById('vocabLesson').value;renderGrammar()">শব্দ পড়া শেষ → Grammar পড়ি ➜</button></div></section><section class="hidden" id="exam"><div class="panel" id="setup"><h2>📝 Random Exam</h2><p>Lesson 1 বা Lesson 2 আলাদা পরীক্ষা দাও। চাইলে দুটো Lesson একসঙ্গেও পরীক্ষা দিতে পারবে। প্রতিবার Random প্রশ্ন ও অপশন বদলাবে।</p><div class="settings"><label>বিষয়<br/><select id="mode"><option value="mixed">Grammar + Vocabulary</option><option value="vocab">শুধু Vocabulary</option><option value="grammar">শুধু Grammar</option></select></label><label>Lesson<br/><select id="examLesson"><option value="all">Lesson 1 + 2</option><option selected="selected" value="1">Lesson 1</option><option value="2">Lesson 2</option></select></label><label>প্রশ্ন সংখ্যা<br/><select id="count"><option value="10">১০টি</option><option selected="" value="20">২০টি</option><option value="30">৩০টি</option><option value="47">৪৭টি</option><option value="50">৫০টি</option><option value="100">১০০টি</option><option value="200">২০০টি</option></select></label></div><p class="muted">প্রতিটি প্রশ্নে ৪টি অপশন। ভুল হলে পরীক্ষার শেষে সঠিক উত্তর ও ব্যাখ্যা দেখতে পাবে।</p><button class="primary" onclick="startExam()">🚀 পরীক্ষা শুরু</button></div><div class="panel hidden" id="play"><div class="row"><span class="stat" id="qNum"></span><span class="muted" id="qType"></span></div><div class="progress"><div class="bar" id="bar"></div></div><h2 id="question"></h2> <button type="button" id="quizStudySound" class="study-sound-btn" onclick="speakQuizStudySound()">🔊 প্রশ্নের Japanese শুনুন</button><div class="choices" id="choices"></div><div class="row"><button class="primary" disabled="" id="next" onclick="nextQuestion()">পরের প্রশ্ন ➜</button><button onclick="quitExam()">পরীক্ষা বন্ধ</button></div></div><div class="panel hidden" id="result"><h2>🏆 পরীক্ষার ফলাফল</h2><div class="score" id="score"></div><p id="summary"></p><div class="row"><button class="primary" onclick="startExam()">🔄 আবার নতুন পরীক্ষা</button><button onclick="quitExam()">সেটিংসে ফিরি</button></div><h3>📋 উত্তর ও ব্যাখ্যা</h3><div id="review"></div></div></section><section class="hidden" id="ai"><div class="panel"><h2>🤖 বাংলা AI Teacher — Japanese প্রশ্ন করো</h2><p>জাপানি Grammar, Vocabulary অথবা বাক্য নিয়ে <b>বাংলায় প্রশ্ন</b> করো। AI Japanese বাক্য, বাংলা অর্থ, কেন ব্যবহার হয় এবং উদাহরণ দিয়ে বোঝাবে।</p><p class="ai-note">🤖 বাংলা AI Teacher: প্রশ্ন লিখে Send চাপো। প্রতিটি শব্দ ও বাক্যের পাশে AI বাটন থেকেও সরাসরি প্রশ্ন করা যায়। <span id="aiSetupNote">AI চালু করতে Website মালিককে একবার নিরাপদ AI Server সংযুক্ত করতে হবে।</span></p><div class="ai-chat"><div id="aiContext" class="ai-context" aria-live="polite"></div><div id="aiMessages" class="ai-messages" aria-live="polite"><div class="ai-msg assistant">こんにちは! ❤️ আমি তোমার Japanese AI Teacher। বাংলায় প্রশ্ন করো। যেমন: 「は কেন বসে?」 অথবা 「これ আর この-এর পার্থক্য কী?」</div></div><div class="ai-tools"><button onclick="aiAskExample('は আর も-এর পার্থক্য সহজ বাংলায় ৩টি উদাহরণ দিয়ে বোঝাও')">は vs も</button><button onclick="aiAskExample('これ それ あれ আর この その あの এর পার্থক্য বোঝাও')">Lesson 2</button><button onclick="aiAskExample('わたしは がくせいです। এই বাক্যের প্রতিটি শব্দ কেন বসেছে?')">বাক্য ভেঙে বোঝাও</button><button onclick="aiClear()">🗑️ Chat মুছো</button></div><p id="micStatus" class="voice-status" role="status" aria-live="polite">🎙️ মাইক চাপলে বাংলা বা Japanese বেছে নিয়ে কথা বলতে পারবে।</p>
 <form class="ai-input ai-chat-composer" id="aiForm">
   <textarea id="aiQuestion" maxlength="1500" required rows="1" placeholder="মেসেজ লিখুন… / メッセージを入力…" aria-label="বাংলা বা Japanese প্রশ্ন লিখুন"></textarea>
   <div class="ai-compose-actions">
@@ -60,8 +161,6 @@ button.sound-btn:active{background:#b9cdfb}.sound-toolbar .sound-btn{background:
         <button type="button" id="micJapanese" onclick="chooseMicLanguage('ja-JP')">🇯🇵 日本語で話す</button>
       </div>
     </div>
-    <input id="autoReplyVoice" type="checkbox" hidden>
-    <button type="button" class="ai-circle-btn" id="voiceSpeaker" onclick="toggleReplySound()" aria-label="উত্তর স্বয়ংক্রিয়ভাবে পড়া চালু বা বন্ধ করুন" aria-pressed="false" title="স্বয়ংক্রিয় Sound বন্ধ; উত্তরের নিচে 🔊 উত্তর শুনুন চাপুন">🔇</button>
     <button type="submit" class="ai-circle-btn ai-send-btn" id="aiSend" aria-label="পাঠাও" title="পাঠাও">➤</button>
   </div>
 </form>
@@ -70,15 +169,58 @@ const V=[["わたし", "watashi", "আমি"], ["わたしたち", "watashitach
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
 function showTab(t){for(const x of ['basics','learn','words','exam','ai']){document.getElementById(x).classList.toggle('hidden',x!==t);document.getElementById('tab'+x[0].toUpperCase()+x.slice(1)).classList.toggle('active',x===t)}window.scrollTo({top:0,behavior:'smooth'})}
 function lessonData(which,type){let one=type==='grammar'?G:V,two=type==='grammar'?G2:V2;return which==='1'?one:which==='2'?two:[...one,...two]}
-function renderGrammar(){let which=document.getElementById('grammarLesson').value;let groups=which==='all'?[['Lesson 1',G],['Lesson 2',G2]]:[[which==='1'?'Lesson 1':'Lesson 2',lessonData(which,'grammar')]];document.getElementById('grammarList').innerHTML=groups.map(([label,arr])=>`<h2 class="lesson-heading">📚 ${label} — ${arr.length}টি Grammar</h2>`+arr.map(g=>`<article class="panel grammar"><h3>${escapeHtml(g.title)}</h3><p><b>অর্থ:</b> ${escapeHtml(g.meaning)}</p><p><b>কেন ব্যবহার হয়?</b> ${escapeHtml(g.why)}</p><h4>✏️ ৫টি Example</h4>${g.ex.map((e,i)=>`<div class="ex"><b>${i+1}.</b> <span class="jp" lang="ja">${escapeHtml(e[0]).replace(/\n/g,'<br>')}</span><br><span class="rom">🔤 ${escapeHtml(e[1]).replace(/\n/g,'<br>')}</span><br><span class="bn">🇧🇩 ${escapeHtml(e[2]).replace(/\n/g,'<br>')}</span><br><button type="button" class="sound-btn" onclick="speakJapanese(decodeURIComponent('${encodeURIComponent(e[0])}'))">🔊 বাক্য শুনুন</button> <button type="button" class="ask-ai-btn" onclick="askGrammarAI(decodeURIComponent('${encodeURIComponent(g.title)}'),decodeURIComponent('${encodeURIComponent(e[0])}'),decodeURIComponent('${encodeURIComponent(e[1])}'),decodeURIComponent('${encodeURIComponent(e[2])}'))">🤖 AI-কে জিজ্ঞেস করো</button></div>`).join('')}<div class="tip">🧠 ${escapeHtml(g.tip)}</div></article>`).join('')).join('')}
-function renderWords(){let which=document.getElementById('vocabLesson').value,words=lessonData(which,'vocab');document.getElementById('wordCount').textContent=`মোট ${words.length}টি শব্দ`;document.getElementById('wordList').innerHTML=words.map((v,i)=>`<div class="word"><b>${i+1}. <span lang="ja">${escapeHtml(v[0])}</span></b><div class="rom">${escapeHtml(v[1])}</div><div class="bn">${escapeHtml(v[2])}</div><button type="button" class="sound-btn" aria-label="জাপানি শব্দ শুনুন" onclick="speakJapanese(decodeURIComponent('${encodeURIComponent(v[0])}'))">🔊 শুনুন</button> <button type="button" class="ask-ai-btn" onclick="askWordAI(decodeURIComponent('${encodeURIComponent(v[0])}'),decodeURIComponent('${encodeURIComponent(v[1])}'),decodeURIComponent('${encodeURIComponent(v[2])}'))">🤖 AI-কে জিজ্ঞেস করো</button></div>`).join('')}
+
+// Free, user-click-only Japanese TTS for study content. AI messages are never spoken.
+let studySpeechToken=0;
+function studyStatus(message){const el=document.getElementById('studySoundStatus');if(el)el.textContent=message;}
+function updateStudyVolume(value){
+ const n=Math.max(0,Math.min(100,Number(value)||0));
+ document.getElementById('studyVolumeLabel').textContent=n+'%';
+ try{localStorage.setItem('japanese-study-volume',String(n));}catch(e){}
+ if(n===0)stopStudySound();
+}
+function stopStudySound(){studySpeechToken++;if('speechSynthesis' in window)window.speechSynthesis.cancel();studyStatus('⏹ উচ্চারণ বন্ধ।');}
+function findJapaneseVoice(){
+ const voices=window.speechSynthesis.getVoices();
+ return voices.find(v=>v.lang.toLowerCase()==='ja-jp'&&v.localService) ||
+   voices.find(v=>v.lang.toLowerCase()==='ja-jp') ||
+   voices.find(v=>v.lang.toLowerCase().startsWith('ja')) || null;
+}
+function speakStudyJapanese(text){
+ if(!('speechSynthesis' in window)){studyStatus('⚠️ এই Browser-এ Speech Sound নেই। Chrome বা Edge ব্যবহার করো।');return;}
+ const clean=String(text||'').replace(/\n/g,' ').trim();
+ if(!clean)return;
+ const volume=Number(document.getElementById('studyVolume').value)/100;
+ if(volume===0){studyStatus('🔇 Volume 0%; Slider বাড়াও।');return;}
+ const token=++studySpeechToken;
+ window.speechSynthesis.cancel();
+ const u=new SpeechSynthesisUtterance(clean);
+ u.lang='ja-JP';u.volume=volume;u.rate=0.85;u.pitch=1;
+ const v=findJapaneseVoice();if(v)u.voice=v;
+ u.onstart=()=>{if(token===studySpeechToken)studyStatus('🔊 Japanese উচ্চারণ চলছে… Volume '+Math.round(volume*100)+'%');};
+ u.onend=()=>{if(token===studySpeechToken)studyStatus('✅ Japanese শব্দ পড়া শেষ।');};
+ u.onerror=e=>{if(token===studySpeechToken&&e.error!=='interrupted'&&e.error!=='canceled')studyStatus('⚠️ Sound চালু হয়নি ('+e.error+'). Browser Japanese Voice পরীক্ষা করো।');};
+ if(!v)studyStatus('ℹ️ Japanese Voice তালিকায় নেই; Browser-এর Default Japanese উচ্চারণ চেষ্টা করছি।');
+ window.speechSynthesis.speak(u);
+}
+function extractQuizJapanese(stem){
+ const source=String(stem||'');
+ const quoted=source.match(/「([^」]+)」/);
+ const jp=quoted?quoted[1]:(source.match(/[ぁ-ゟァ-ヿ一-龯ー々〆ヶ□]+(?:[\s　]*[ぁ-ゟァ-ヿ一-龯ー々〆ヶ□。、？！]*)*/)||[])[0];
+ return jp?jp.trim().replace(/□/g,'   '):'';
+}
+function speakQuizStudySound(){const q=questions[idx];if(q)speakStudyJapanese(extractQuizJapanese(q.stem));}
+try{const saved=localStorage.getItem('japanese-study-volume');if(saved!==null&&Number.isFinite(Number(saved))){document.getElementById('studyVolume').value=Math.max(0,Math.min(100,Number(saved)));updateStudyVolume(document.getElementById('studyVolume').value);}}catch(e){}
+
+function renderGrammar(){let which=document.getElementById('grammarLesson').value;let groups=which==='all'?[['Lesson 1',G],['Lesson 2',G2]]:[[which==='1'?'Lesson 1':'Lesson 2',lessonData(which,'grammar')]];document.getElementById('grammarList').innerHTML=groups.map(([label,arr])=>`<h2 class="lesson-heading">📚 ${label} — ${arr.length}টি Grammar</h2>`+arr.map(g=>`<article class="panel grammar"><h3>${escapeHtml(g.title)}</h3><p><b>অর্থ:</b> ${escapeHtml(g.meaning)}</p><p><b>কেন ব্যবহার হয়?</b> ${escapeHtml(g.why)}</p><h4>✏️ ৫টি Example</h4>${g.ex.map((e,i)=>`<div class="ex"><b>${i+1}.</b> <span class="jp" lang="ja">${escapeHtml(e[0]).replace(/\n/g,'<br>')}</span><br><span class="rom">🔤 ${escapeHtml(e[1]).replace(/\n/g,'<br>')}</span><br><span class="bn">🇧🇩 ${escapeHtml(e[2]).replace(/\n/g,'<br>')}</span><br><button type="button" class="study-sound-btn" onclick="speakStudyJapanese(decodeURIComponent('${encodeURIComponent(e[0])}'))" aria-label="Japanese grammar example শুনুন">🔊 বাক্য শুনুন</button> <button type="button" class="ask-ai-btn" onclick="askGrammarAI(decodeURIComponent('${encodeURIComponent(g.title)}'),decodeURIComponent('${encodeURIComponent(e[0])}'),decodeURIComponent('${encodeURIComponent(e[1])}'),decodeURIComponent('${encodeURIComponent(e[2])}'))">🤖 AI-কে জিজ্ঞেস করো</button></div>`).join('')}<div class="tip">🧠 ${escapeHtml(g.tip)}</div></article>`).join('')).join('')}
+function renderWords(){let which=document.getElementById('vocabLesson').value,words=lessonData(which,'vocab');document.getElementById('wordCount').textContent=`মোট ${words.length}টি শব্দ`;document.getElementById('wordList').innerHTML=words.map((v,i)=>`<div class="word"><b>${i+1}. <span lang="ja">${escapeHtml(v[0])}</span></b><div class="rom">${escapeHtml(v[1])}</div><div class="bn">${escapeHtml(v[2])}</div><button type="button" class="study-sound-btn" onclick="speakStudyJapanese(decodeURIComponent('${encodeURIComponent(v[0])}'))" aria-label="Japanese শব্দ শুনুন">🔊 শব্দ শুনুন</button> <button type="button" class="ask-ai-btn" onclick="askWordAI(decodeURIComponent('${encodeURIComponent(v[0])}'),decodeURIComponent('${encodeURIComponent(v[1])}'),decodeURIComponent('${encodeURIComponent(v[2])}'))">🤖 AI-কে জিজ্ঞেস করো</button></div>`).join('')}
 renderGrammar();renderWords();
 let questions=[],answers=[],idx=0,chosen=null;
 function makeQ(stem,correct,wrong,purpose,explain){const opts=shuffle([correct,...shuffle(wrong.filter(x=>x!==correct)).slice(0,3)]);return {stem,opts,correct,purpose,explain}}
 function vocabPool(words){let qs=[];words.forEach((v,i)=>{const others=words.filter((_,j)=>j!==i);qs.push(makeQ(`🇯🇵 「${v[0]}」 এর বাংলা অর্থ কী?`,v[2],others.map(x=>x[2]).filter(x=>x!==v[2]),'Vocabulary',`${v[0]} (${v[1]}) = ${v[2]}`));qs.push(makeQ(`🇧🇩 「${v[2]}」 জাপানিতে কী?`,v[0],others.map(x=>x[0]),'Vocabulary',`${v[2]} = ${v[0]} (${v[1]})`));qs.push(makeQ(`🔤 「${v[0]}」 এর Romaji কোনটি?`,v[1],others.map(x=>x[1]),'Vocabulary',`${v[0]} = ${v[1]} = ${v[2]}`))});return qs}
 function grammarPool(gs,rules){let qs=[];rules.forEach((r,i)=>{qs.push(makeQ(`📘 「${r[0]}」 কেন ব্যবহার হয়?`,r[1],rules.filter((_,j)=>j!==i).map(x=>x[1]),'Grammar',`${r[0]} — ${r[1]}`));qs.push(makeQ(`📘 ${r[1]} কোন Grammar ব্যবহার করবে?`,r[0],rules.filter((_,j)=>j!==i).map(x=>x[0]),'Grammar',`${r[0]} — ${r[1]}`))});let examples=gs.flatMap((g,i)=>g.ex.map(e=>({g:i,e})));for(const {g,e} of examples){let other=examples.filter(x=>x.g!==g).map(x=>x.e[2]);qs.push(makeQ(`🇯🇵 「${e[0]}」 এর বাংলা অর্থ কী?`,e[2],other,'Grammar',`${e[0]} — ${e[2]}`))}let fills=[['わたし □ がくせいです。','は',['も','の','か'],'আমি ছাত্র।'],['わたし □ がくせいです。 (আমিও ছাত্র)','も',['は','の','か'],'আমিও ছাত্র।'],['あなたは がくせいです □。','か',['の','も','さん'],'আপনি কি ছাত্র?'],['わたしは だいがく □ がくせいです。','の',['は','も','か'],'আমি বিশ্ববিদ্যালয়ের ছাত্র।'],['わたしは いしゃ □。 (আমি ডাক্তার নই)','じゃありません',['です','ですか','さん'],'আমি ডাক্তার নই।'],['たなか □ は せんせいです。','さん',['も','の','か'],'তানাকা সাহেব শিক্ষক।']];if(gs.includes(G[0]))for(const [s,c,w,exp] of fills)qs.push(makeQ(`✏️ শূন্যস্থান পূরণ করো: ${s}`,c,w,'Grammar',`${s.replace('□',c)} — ${exp}`));return qs}
 function startExam(){let mode=document.getElementById('mode').value,n=+document.getElementById('count').value;let lesson=document.getElementById('examLesson').value;let gs=lessonData(lesson,'grammar'),rules=lesson==='1'?grammarRules:lesson==='2'?grammarRules2:[...grammarRules,...grammarRules2];let vp=shuffle(vocabPool(lessonData(lesson,'vocab'))),gp=shuffle(grammarPool(gs,rules));if(mode==='mixed'){let gn=Math.min(gp.length,Math.max(3,Math.round(n*.35)));questions=shuffle([...gp.slice(0,gn),...vp.slice(0,n-gn)]);if(questions.length<n)questions.push(...shuffle([...gp.slice(gn),...vp.slice(n-gn)]).slice(0,n-questions.length))}else questions=shuffle(mode==='grammar'?gp:vp).slice(0,n);answers=[];idx=0;chosen=null;document.getElementById('setup').classList.add('hidden');document.getElementById('result').classList.add('hidden');document.getElementById('play').classList.remove('hidden');showQuestion();window.scrollTo(0,0)}
-function showQuestion(){let q=questions[idx];chosen=null;document.getElementById('next').disabled=true;document.getElementById('next').textContent=idx===questions.length-1?'ফলাফল দেখো 🏆':'পরের প্রশ্ন ➜';document.getElementById('qNum').textContent=`প্রশ্ন ${idx+1} / ${questions.length}`;document.getElementById('qType').textContent=q.purpose;document.getElementById('bar').style.width=(idx/questions.length*100)+'%';document.getElementById('question').textContent=q.stem;document.getElementById('quizAudio').hidden=!/[ぁ-ゟァ-ヿ一-龯]/.test(q.stem);document.getElementById('choices').innerHTML='';q.opts.forEach((opt,i)=>{let b=document.createElement('button');b.className='choice';b.textContent=`${'ABCD'[i]}. ${opt}`;b.onclick=()=>{chosen=opt;document.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');document.getElementById('next').disabled=false};document.getElementById('choices').appendChild(b)})}
+function showQuestion(){let q=questions[idx];chosen=null;document.getElementById('next').disabled=true;document.getElementById('next').textContent=idx===questions.length-1?'ফলাফল দেখো 🏆':'পরের প্রশ্ন ➜';document.getElementById('qNum').textContent=`প্রশ্ন ${idx+1} / ${questions.length}`;document.getElementById('qType').textContent=q.purpose;document.getElementById('bar').style.width=(idx/questions.length*100)+'%';document.getElementById('question').textContent=q.stem;document.getElementById('quizStudySound').disabled=!extractQuizJapanese(q.stem);document.getElementById('choices').innerHTML='';q.opts.forEach((opt,i)=>{let b=document.createElement('button');b.className='choice';b.textContent=`${'ABCD'[i]}. ${opt}`;b.onclick=()=>{chosen=opt;document.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');document.getElementById('next').disabled=false};document.getElementById('choices').appendChild(b)})}
 function nextQuestion(){if(chosen===null)return;answers.push(chosen);idx++;if(idx>=questions.length){finishExam()}else showQuestion()}
 function finishExam(){document.getElementById('play').classList.add('hidden');document.getElementById('result').classList.remove('hidden');let score=questions.filter((q,i)=>q.correct===answers[i]).length;document.getElementById('score').textContent=`${score} / ${questions.length} নম্বর`;document.getElementById('summary').textContent=`সঠিক: ${score}টি • ভুল: ${questions.length-score}টি • সফলতা: ${Math.round(score/questions.length*100)}%`;document.getElementById('review').innerHTML=questions.map((q,i)=>`<div class="ex"><b>${i+1}. ${q.correct===answers[i]?'✅':'❌'} ${escapeHtml(q.stem)}</b><br>তোমার উত্তর: ${escapeHtml(answers[i])}<br><span class="bn">সঠিক উত্তর: ${escapeHtml(q.correct)}</span><br><span class="muted">${escapeHtml(q.explain)}</span></div>`).join('');window.scrollTo(0,0)}
 function quitExam(){document.getElementById('play').classList.add('hidden');document.getElementById('result').classList.add('hidden');document.getElementById('setup').classList.remove('hidden');window.scrollTo(0,0)}
@@ -88,98 +230,6 @@ function openLesson(tab,lesson){showTab(tab);if(tab==='words'){document.getEleme
 document.getElementById('vocabLesson').value='1';renderWords();document.getElementById('grammarLesson').value='1';renderGrammar();showTab('basics');
 
 
-// Android/Chrome-friendly speech synthesis with status and recoverable errors.
-let jaVoices=[];
-let currentUtterance=null;
-let speechRetryTimer=null;
-let speechSeq=0;
-function refreshJapaneseVoices(){
-  if(!('speechSynthesis' in window))return;
-  jaVoices=window.speechSynthesis.getVoices().filter(v=>/^ja([_-]|$)/i.test(v.lang));
-}
-if('speechSynthesis' in window){
-  refreshJapaneseVoices();
-  window.speechSynthesis.addEventListener?.('voiceschanged',refreshJapaneseVoices);
-}
-function soundMessage(message){
-  const el=document.getElementById('soundStatus');
-  if(el)el.textContent=message;
-}
-function stopJapanese(){
-  speechSeq++;
-  clearTimeout(speechRetryTimer);
-  if('speechSynthesis' in window)window.speechSynthesis.cancel();
-  currentUtterance=null;
-  soundMessage('⏹ শব্দ বন্ধ করা হয়েছে।');
-}
-function speakJapanese(text){
-  const clean=String(text||'').replace(/[～~]/g,'').trim();
-  if(!clean)return;
-  if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){
-    soundMessage('⚠️ এই Browser-এ Japanese Sound সমর্থিত নয়। Google Chrome-এ খুলে দেখো।');return;
-  }
-  const seq=++speechSeq;
-  clearTimeout(speechRetryTimer);
-  const synth=window.speechSynthesis;
-  try{synth.cancel()}catch(e){}
-  refreshJapaneseVoices();
-  const utterance=new SpeechSynthesisUtterance(clean);
-  currentUtterance=utterance; // Keep alive on Android Chrome.
-  utterance.lang='ja-JP';
-  utterance.rate=Number(document.getElementById('voiceSpeed')?.value||0.88);
-  utterance.pitch=1;
-  utterance.volume=1;
-  const voice=jaVoices.find(v=>/google.*日本語|google.*japanese|japanese|日本語/i.test(v.name))||jaVoices[0];
-  if(voice)utterance.voice=voice;
-  let started=false;
-  utterance.onstart=()=>{if(seq!==speechSeq)return;started=true;soundMessage('🔊 জাপানি উচ্চারণ চলছে…')};
-  utterance.onend=()=>{if(seq!==speechSeq)return;currentUtterance=null;soundMessage('✅ আবার শুনতে 🔊 চাপো।')};
-  utterance.onerror=e=>{
-    if(seq!==speechSeq)return;
-    currentUtterance=null;
-    if(e.error==='interrupted'||e.error==='canceled')return;
-    soundMessage('⚠️ Sound Error: '+(e.error||'অজানা')+'। Chrome এবং Japanese TTS Voice পরীক্ষা করো।');
-  };
-  soundMessage('⏳ Sound চালু হচ্ছে…');
-  // Call speak() synchronously from the button click. Android Chrome can
-  // discard the user-gesture permission when speech starts in setTimeout().
-  try {
-    synth.resume();
-    synth.speak(utterance);
-  } catch(e) {
-    soundMessage('⚠️ Sound চালু হয়নি: '+e.message);
-    return;
-  }
-  speechRetryTimer=setTimeout(()=>{
-    if(seq===speechSeq&&!started&&!synth.speaking){
-      soundMessage('⚠️ Sound শুরু হচ্ছে না। Chrome-এ Japanese TTS voice পরীক্ষা করো।');
-    }
-  },3000);
-}
-function speakQuizQuestion(){const q=questions[idx];if(!q)return;const x=q.stem.match(/「([^」]+)」/);if(x){speakJapanese(x[1]);return}const m=q.stem.match(/[ぁ-ゟァ-ヿ一-龯][ぁ-ゟァ-ヿ一-龯ー\s、。？！]*/);if(m)speakJapanese(m[0]);}
-// Basic charts: tap any Japanese kana to hear it. Numbers, days and phrases get a speaker button.
-function initializeBasicSound(){
- document.querySelectorAll('#basics .basic-table .kana').forEach(el=>{
-   const td=el.closest('td');if(!td)return;td.classList.add('sound-cell');td.setAttribute('title','🔊 উচ্চারণ শুনতে চাপো');
-   td.addEventListener('click',()=>speakJapanese(el.textContent.trim()));
- });
- document.querySelectorAll('#basics .basic-table tbody tr').forEach(row=>{
-   if(row.querySelector('.kana'))return;
-   const cells=[...row.querySelectorAll('td')];
-   const j=cells.find(c=>/[ぁ-ゟァ-ヿ]/.test(c.textContent));if(!j)return;
-   const match=j.textContent.match(/[ぁ-ゟァ-ヿー]+/);
-   if(!match)return;
-   const btn=document.createElement('button');btn.type='button';btn.className='sound-btn';btn.textContent='🔊';btn.setAttribute('aria-label','জাপানি উচ্চারণ শুনুন');
-   btn.onclick=()=>speakJapanese(match[0]);j.append(' ',btn);
- });
- document.querySelectorAll('#basics .intro-example').forEach(el=>{
-   let j=el.querySelector('[lang="ja"]');const raw=j?.textContent||el.textContent;
-   const match=raw.match(/[ぁ-ゟァ-ヿ一-龯][ぁ-ゟァ-ヿ一-龯ー\s、。？！]*/);
-   if(!match)return;
-   const btn=document.createElement('button');btn.type='button';btn.className='sound-btn';btn.textContent='🔊 শুনুন';btn.onclick=()=>speakJapanese(match[0]);el.append(' ',btn);
- });
-}
-initializeBasicSound();
 
 // Bengali AI teacher: backend URL only; never store an API secret in client HTML.
 
@@ -206,7 +256,6 @@ function micButtons(active){
  document.getElementById('micJapanese').disabled=active;
  // Voice automatically ends after speech. No Stop button is needed.
 }
-let lastAIReply='',lastAIReplyLocale='bn-BD';
 function toggleMicChooser(){
  if(voiceMode)return;
  const menu=document.getElementById('micLanguageMenu');
@@ -217,17 +266,6 @@ function chooseMicLanguage(lang){
  document.getElementById('micLanguageMenu').hidden=true;
  document.getElementById('micToggle').setAttribute('aria-expanded','false');
  startVoiceInput(lang);
-}
-function toggleReplySound(){
- const check=document.getElementById('autoReplyVoice');
- check.checked=!check.checked;
- const button=document.getElementById('voiceSpeaker');
- button.classList.toggle('is-off',!check.checked);
- button.textContent=check.checked?'🔊':'🔇';
- button.setAttribute('aria-pressed',String(check.checked));
- button.title=check.checked?'সর্বশেষ উত্তর শুনতে চালু':'স্বয়ংক্রিয় Sound বন্ধ; উত্তরের নিচে 🔊 উত্তর শুনুন চাপুন';
- if(!check.checked)stopAIReplySpeech();
- else if(check.checked&&lastAIReply)speakAIAnswer(lastAIReply,lastAIReplyLocale);
 }
 document.addEventListener('click',e=>{
  const container=document.querySelector('.mic-selector');
@@ -326,107 +364,6 @@ async function startVoiceInput(lang){
   voiceTimeout=setTimeout(()=>stopVoiceInput(),18000);
  }catch(err){micUpdate('⚠️ Microphone permission দরকার। Chrome-এ Allow দাও।');cleanupVoice();}
 }
-// Bilingual reply speech. Playback is user-initiated for browser reliability.
-// Bengali speech requires a Bengali-capable voice installed/exposed by the browser.
-let replySpeechQueue=[], replySpeechIndex=0, replySpeechToken=0, replySpeechWatchdog=null;
-function voiceSegments(text){
- const jp=/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶ]/;
- const bn=/[\u0980-\u09ff]/;
- const segments=[];
- for(let line of String(text||'').split(/\r?\n/)){
-  if(/^\s*(?:[-*•\d.()]+\s*)?(?:🔤\s*)?(?:romaji|romanji|romanization|রোমাজি)\s*[:：-]/i.test(line))continue;
-  line=line.replace(/https?:\/\/\S+/g,' ')
-   .replace(/\[([^\]]+)\]\([^)]*\)/g,'$1')
-   .replace(/[*#_`|>~]/g,' ')
-   .replace(/[🇯🇵🇧🇩🔤📖✅❌👉•]/gu,' ')
-   .replace(/[A-Za-z]+(?:[\s'’\-]+[A-Za-z]+)*/g,' ');
-  const parts=line.match(/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶー]+|[\u0980-\u09ff]+|[^\u3040-\u30ff\u3400-\u9fff々〆ヵヶー\u0980-\u09ff]+/g)||[];
-  let locale='',buf='';
-  function flush(){
-   const s=buf.trim();
-   if(locale&&s)segments.push({text:s,locale});
-   buf='';
-  }
-  for(const part of parts){
-   const next=bn.test(part)?'bn-BD':jp.test(part)?'ja-JP':'';
-   if(next&&locale&&next!==locale)flush();
-   if(next)locale=next;
-   buf+=part;
-  }
-  flush();
- }
- const result=[];
- for(const segment of segments){
-  // Split on spaces/punctuation where possible, so speech engines don't stall on long text.
-  const text=segment.text;
-  let rest=text;
-  while(rest.length){
-   if(rest.length<=110){result.push({text:rest.trim(),locale:segment.locale});break;}
-   let breakAt=Math.max(rest.lastIndexOf(' ',110),rest.lastIndexOf('।',110)+1,rest.lastIndexOf('。',110)+1);
-   if(breakAt<35)breakAt=110;
-   result.push({text:rest.slice(0,breakAt).trim(),locale:segment.locale});
-   rest=rest.slice(breakAt).trim();
-  }
- }
- return result.filter(s=>s.text).slice(0,140);
-}
-function stopAIReplySpeech(){
- replySpeechToken++;replySpeechQueue=[];replySpeechIndex=0;
- clearTimeout(replySpeechWatchdog);
- if('speechSynthesis' in window)window.speechSynthesis.cancel();
- window.currentAIUtterance=null;
-}
-function speakAIAnswer(text){
- if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){
-  micUpdate('⚠️ Browser-এ Text-to-Speech নেই।');return;
- }
- stopAIReplySpeech();
- const synth=window.speechSynthesis;
- replySpeechQueue=voiceSegments(text);
- if(!replySpeechQueue.length){micUpdate('⚠️ পড়ার মতো Japanese বা বাংলা নেই।');return;}
- const available=synth.getVoices();
- const bnVoice=available.find(v=>/^bn([_-]|$)/i.test(v.lang));
- const hasBengali=replySpeechQueue.some(s=>s.locale==='bn-BD');
- if(hasBengali&&!bnVoice){
-  micUpdate('⚠️ এই Browser-এ বাংলা Voice পাওয়া যায়নি। Japanese শোনা যেতে পারে, কিন্তু বাংলা পড়ার জন্য Windows/Browser-এ Bengali TTS voice দরকার।');
- }
- const token=replySpeechToken;
- function speakNext(){
-  if(token!==replySpeechToken)return;
-  clearTimeout(replySpeechWatchdog);
-  if(replySpeechIndex>=replySpeechQueue.length){window.currentAIUtterance=null;return;}
-  const segment=replySpeechQueue[replySpeechIndex++];
-  // Don't send Bengali text to a Japanese-only voice: report the missing voice instead.
-  if(segment.locale==='bn-BD'&&!bnVoice){speakNext();return;}
-  const utterance=new SpeechSynthesisUtterance(segment.text);
-  utterance.lang=segment.locale;utterance.rate=segment.locale==='ja-JP'?0.86:0.9;
-  utterance.volume=1;utterance.pitch=1;
-  const voices=synth.getVoices();
-  utterance.voice=segment.locale==='bn-BD'?bnVoice:(voices.find(v=>/^ja([_-]|$)/i.test(v.lang))||null);
-  window.currentAIUtterance=utterance;
-  let finished=false;
-  const done=()=>{if(finished||token!==replySpeechToken)return;finished=true;clearTimeout(replySpeechWatchdog);speakNext();};
-  utterance.onend=done;
-  utterance.onerror=e=>{
-   if(token!==replySpeechToken)return;
-   if(e.error!=='canceled'&&e.error!=='interrupted')micUpdate('⚠️ '+(segment.locale==='bn-BD'?'বাংলা':'Japanese')+' Voice সমস্যা: '+e.error);
-   done();
-  };
-  try{synth.resume();synth.speak(utterance)}catch(e){micUpdate('⚠️ Voice শুরু হয়নি: '+e.message);done();return;}
-  // Some browsers never emit onend/onerror. Don't block the whole queue forever.
-  replySpeechWatchdog=setTimeout(()=>{if(token!==replySpeechToken||finished)return;try{synth.cancel()}catch(e){};done();},18000);
- }
- speakNext();
-}
-function addReplyAudioControls(element,text,locale){
- const bar=document.createElement('div');bar.className='ai-reply-actions';
- const listen=document.createElement('button');listen.type='button';listen.textContent='🔊 '+(locale==='ja-JP'?'音声を聞く':'উত্তর শুনুন');
- listen.addEventListener('click',()=>speakAIAnswer(text,locale));
- const stop=document.createElement('button');stop.type='button';stop.textContent='⏹ বন্ধ';
- stop.addEventListener('click',stopAIReplySpeech);
- bar.append(listen,stop);element.appendChild(bar);
-}
-
 const aiHistory=[];
 // Website owner only: after deploying worker.js, put its public HTTPS URL here ONCE.
 // Never put an OpenAI API key in this file.
@@ -438,7 +375,7 @@ function aiAddMessage(role,text,extraClass=''){
  const div=document.createElement('div');div.className='ai-msg '+role+(extraClass?' '+extraClass:'');
  div.textContent=text;wrap.appendChild(div);wrap.scrollTop=wrap.scrollHeight;return div;
 }
-function aiClear(){stopVoiceInput();stopJapanese();aiHistory.length=0;document.getElementById('aiMessages').innerHTML='';aiAddMessage('assistant','নতুন করে শুরু করি! বাংলা ভাষায় তোমার প্রশ্ন লিখো।');}
+function aiClear(){stopVoiceInput();aiHistory.length=0;document.getElementById('aiMessages').innerHTML='';aiAddMessage('assistant','নতুন করে শুরু করি! বাংলা ভাষায় তোমার প্রশ্ন লিখো।');}
 function aiAskExample(question){document.getElementById('aiQuestion').value=question;document.getElementById('aiQuestion').focus();}
 // Contextual AI: immediately send the selected word or grammar example to the chat.
 function askWordAI(jp,romaji,bangla){
@@ -470,7 +407,6 @@ document.getElementById('aiForm').addEventListener('submit',async(e)=>{
    document.getElementById('aiStatus').textContent='⚠️ AI Server সংযুক্ত নেই। Website মালিককে প্রথমে worker.js deploy করতে হবে।';return;
  }
 
- const responseLocale=detectChatLocale(question);
  // Always request beginner-friendly bilingual explanation, even for Japanese voice input.
  const teacherQuestion=question.slice(0,700)+'\n\nশিক্ষকের নির্দেশ: একজন নতুন ছাত্রকে উত্তর দাও। প্রাসঙ্গিক Japanese বাক্য/শব্দ জাপানি অক্ষরে লেখো, তার বাংলা অর্থ দাও, প্রতিটি particle বা grammar কেন ব্যবহার হয়েছে সহজ বাংলায় বুঝিয়ে বলো এবং ২–৩টি Japanese + বাংলা উদাহরণ দাও। Romaji লেখার দরকার নেই। Japanese ও বাংলা দুটো ভাষা ব্যবহার করো।';
  aiBusy=true;document.getElementById('aiSend').disabled=true;
@@ -484,13 +420,49 @@ document.getElementById('aiForm').addEventListener('submit',async(e)=>{
   const answer=typeof payload.reply==='string'?payload.reply:payload.answer;
   if(!answer||typeof answer!=='string')throw new Error('AI কোনো উত্তর দেয়নি।');
   pending.textContent=answer;pending.classList.remove('pending');
-  addReplyAudioControls(pending,answer,responseLocale);
-  lastAIReply=answer;lastAIReplyLocale=responseLocale;
   aiHistory.push({role:'user',content:question},{role:'assistant',content:answer});
   while(aiHistory.length>8)aiHistory.shift();status.textContent='✅ উত্তর এসেছে। আরও প্রশ্ন করতে পারো।';
-  // Don't autoplay after an asynchronous API call; use the explicit reply Listen button.
-  if(document.getElementById('autoReplyVoice')?.checked) micUpdate('🔊 উত্তর শুনতে নিচের উত্তর শুনুন বাটনে চাপো।');
  }catch(err){pending.textContent='⚠️ AI-এর সঙ্গে যোগাযোগ হয়নি। '+err.message+' URL এবং Worker সেটিংস পরীক্ষা করো।';pending.classList.remove('pending');status.textContent='সংযোগে সমস্যা হয়েছে।';}
  finally{aiBusy=false;document.getElementById('aiSend').disabled=false;document.getElementById('aiMessages').scrollTop=document.getElementById('aiMessages').scrollHeight;}
 });
+
+// Basic sounds: use the existing Japanese speech engine and shared volume control.
+// Never read Bengali translations or romanized labels aloud.
+function initializeBasicStudySounds(){
+ const groups=document.querySelectorAll('#basics details.basics-group');
+ if(groups.length<6)return;
+ function attach(container,japanese){
+   const value=String(japanese||'').trim();
+   if(!value || value==='—' || container.querySelector('.basic-sound-btn'))return;
+   const b=document.createElement('button');
+   b.type='button';
+   b.className='basic-sound-btn';
+   b.textContent='🔊';
+   b.title='Japanese উচ্চারণ শুনুন: '+value;
+   b.setAttribute('aria-label','Japanese উচ্চারণ শুনুন: '+value);
+   b.addEventListener('click',()=>speakStudyJapanese(value));
+   container.appendChild(b);
+ }
+ // Hiragana and Katakana: each individual kana and compound kana.
+ [groups[0],groups[1]].forEach(group=>{
+   group.querySelectorAll('table.basic-table td').forEach(td=>{
+     const kana=td.querySelector('.kana');
+     if(kana)attach(td,kana.textContent);
+   });
+ });
+ // Numbers, months and weekdays: one pronunciation button per row.
+ // Read the Hiragana cell, not the numeral, kanji+translation or Romaji.
+ [groups[2],groups[3],groups[4]].forEach(group=>{
+   group.querySelectorAll('table.basic-table tr').forEach(tr=>{
+     const cells=tr.querySelectorAll('td');
+     if(cells.length>=4)attach(cells[2],cells[2].textContent);
+   });
+ });
+ // Self introduction: every Japanese example sentence.
+ groups[5].querySelectorAll('.intro-example').forEach(example=>{
+   const jp=example.querySelector('.jp');
+   if(jp)attach(example,jp.textContent);
+ });
+}
+initializeBasicStudySounds();
 </script></body></html>
