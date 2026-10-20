@@ -60,7 +60,6 @@ button.sound-btn:active{background:#b9cdfb}.sound-toolbar .sound-btn{background:
         <button type="button" id="micJapanese" onclick="chooseMicLanguage('ja-JP')">🇯🇵 日本語で話す</button>
       </div>
     </div>
-    <button type="button" id="micStop" class="ai-circle-btn" onclick="stopVoiceInput()" hidden aria-label="রেকর্ড বন্ধ করুন">⏹</button>
     <input id="autoReplyVoice" type="checkbox" checked hidden>
     <button type="button" class="ai-circle-btn" id="voiceSpeaker" onclick="toggleReplySound()" aria-label="উত্তর পড়ে শোনানো চালু বা বন্ধ করুন" aria-pressed="true" title="উত্তর নিজে থেকে শোনাও">🔊</button>
     <button type="submit" class="ai-circle-btn ai-send-btn" id="aiSend" aria-label="পাঠাও" title="পাঠাও">➤</button>
@@ -190,6 +189,7 @@ initializeBasicSound();
 let preferredChatLocale='bn-BD';
 let voiceRecognizer=null, voiceRecorder=null, voiceStream=null, voiceChunks=[];
 let voiceMode='',voiceFinalized=false,voiceTimeout=null;
+let voiceAudioContext=null,voiceAudioFrame=0;
 function detectChatLocale(text){
   const q=String(text||'');
   if(/[\u0980-\u09FF]/.test(q))return 'bn-BD';
@@ -200,16 +200,15 @@ function micUpdate(message){document.getElementById('micStatus').textContent=mes
 function micButtons(active){
  const toggle=document.getElementById('micToggle');
  toggle.classList.toggle('recording',active);
- toggle.textContent=active?'⏹':'🎙️';
- toggle.setAttribute('aria-label',active?'ভয়েস রেকর্ড বন্ধ করো':'ভয়েস ইনপুট ভাষা বেছে নাও');
+ toggle.textContent='🎙️';
+ toggle.setAttribute('aria-label',active?'তোমার কথা শুনছি':'ভয়েস ইনপুট ভাষা বেছে নাও');
  document.getElementById('micBangla').disabled=active;
  document.getElementById('micJapanese').disabled=active;
- // The main microphone itself acts as Stop while recording.
- document.getElementById('micStop').disabled=!active;
+ // Voice automatically ends after speech. No Stop button is needed.
 }
 let lastAIReply='',lastAIReplyLocale='bn-BD';
 function toggleMicChooser(){
- if(voiceMode){stopVoiceInput();return;}
+ if(voiceMode)return;
  const menu=document.getElementById('micLanguageMenu');
  menu.hidden=!menu.hidden;
  document.getElementById('micToggle').setAttribute('aria-expanded',String(!menu.hidden));
@@ -241,10 +240,13 @@ function insertVoiceText(text,lang){
  const input=document.getElementById('aiQuestion');
  input.value=(input.value.trim()?input.value.trim()+' ':'')+String(text||'').trim();
  input.focus();preferredChatLocale=lang;
- micUpdate('✅ কথা লেখা হয়েছে। পরীক্ষা করে পাঠাও ➤ চাপো।');
+ micUpdate('✅ কথা লেখা হয়েছে। AI-কে পাঠানো হচ্ছে…');
+ if(!aiBusy && input.value.trim())document.getElementById('aiForm').requestSubmit();
 }
 function cleanupVoice(){
  clearTimeout(voiceTimeout);
+ if(voiceAudioFrame)cancelAnimationFrame(voiceAudioFrame);voiceAudioFrame=0;
+ if(voiceAudioContext){voiceAudioContext.close().catch(()=>{});voiceAudioContext=null;}
  if(voiceStream){voiceStream.getTracks().forEach(track=>track.stop());voiceStream=null;}
  voiceRecorder=null;voiceRecognizer=null;voiceChunks=[];voiceMode='';micButtons(false);
 }
@@ -282,7 +284,8 @@ async function startVoiceInput(lang){
   voiceChunks=[];
   voiceRecorder.ondataavailable=e=>{if(e.data.size)voiceChunks.push(e.data)};
   voiceRecorder.onstop=async()=>{
-   const blob=new Blob(voiceChunks,{type:voiceRecorder?.mimeType||type||'audio/webm'});
+   const recordingType=voiceRecorder?.mimeType||type||'audio/webm';
+   const blob=new Blob(voiceChunks,{type:recordingType});
    cleanupVoice();
    if(blob.size<100){micUpdate('কথা রেকর্ড হয়নি। আবার চেষ্টা করো।');return;}
    if(blob.size>2050000){micUpdate('রেকর্ডিং অনেক বড় হয়েছে। ছোট করে বলো।');return;}
@@ -298,7 +301,28 @@ async function startVoiceInput(lang){
    }catch(err){micUpdate('⚠️ Voice typing চালু হয়নি: '+err.message);}
   };
   voiceRecorder.start();
-  micUpdate(lang==='bn-BD'?'🔴 রেকর্ড হচ্ছে… বাংলায় বলো। শেষে ⏹ থামাও।':'🔴 録音中… 日本語で話して、停止を押してください。');
+  micUpdate(lang==='bn-BD'?'🔴 বাংলায় বলো। কথা শেষ হলে নিজেই পাঠাবে।':'🔴 日本語で話してください。話し終えると自動送信します。');
+  // If browser speech recognition is unavailable, detect a pause in the microphone audio.
+  // Stop the recorder after speech + 1.5s silence, with an 18s safety maximum.
+  try{
+   const AudioCtx=window.AudioContext||window.webkitAudioContext;
+   if(AudioCtx){
+    voiceAudioContext=new AudioCtx();
+    const analyser=voiceAudioContext.createAnalyser();analyser.fftSize=1024;
+    voiceAudioContext.createMediaStreamSource(voiceStream).connect(analyser);
+    const samples=new Uint8Array(analyser.fftSize);
+    const began=performance.now();let heardSpeech=false,lastLoud=began;
+    const watch=()=>{
+     if(!voiceRecorder||voiceRecorder.state!=='recording')return;
+     analyser.getByteTimeDomainData(samples);
+     let energy=0;for(const sample of samples){const x=(sample-128)/128;energy+=x*x;}
+     const rms=Math.sqrt(energy/samples.length),now=performance.now();
+     if(rms>0.025){heardSpeech=true;lastLoud=now;}
+     if((heardSpeech&&now-lastLoud>1500&&now-began>1200)||(!heardSpeech&&now-began>7500)){stopVoiceInput();return;}
+     voiceAudioFrame=requestAnimationFrame(watch);
+    };voiceAudioFrame=requestAnimationFrame(watch);
+   }
+  }catch(err){/* The recording still auto-stops at the maximum duration below. */}
   voiceTimeout=setTimeout(()=>stopVoiceInput(),18000);
  }catch(err){micUpdate('⚠️ Microphone permission দরকার। Chrome-এ Allow দাও।');cleanupVoice();}
 }
