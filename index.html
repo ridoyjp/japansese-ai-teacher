@@ -958,6 +958,31 @@ body.ebook-home-only #home .menu-return-cover{margin-left:auto!important;flex:0 
 #ai .ai-row-robot .ai-msg{background:#fff!important;border:1px solid #d8e9f5;border-bottom-left-radius:5px;box-shadow:0 6px 22px #26608013}
 #ai .ai-row-user .ai-msg{background:#d6f8e5!important;color:#143a2c;border-bottom-right-radius:5px;box-shadow:0 4px 12px #16845a0c}
 @media(max-width:650px){#ai .ai-message-row{gap:7px;margin:11px 0}#ai .ai-robot-avatar,#ai .ai-human-avatar{width:34px;height:34px}#ai .ai-human-avatar{font-size:18px}#ai .ai-message-row .ai-msg{max-width:calc(100% - 48px)!important;padding:11px 13px;font-size:.95rem}}
+
+/* Cover tagline: always one readable line rather than a split row. */
+body.ebook-cover-only .illustrated-cover-copy .ebook-cover-tagline{
+ display:block!important;
+ width:max-content!important;
+ max-width:none!important;
+ white-space:nowrap!important;
+ overflow:visible!important;
+ overflow-wrap:normal!important;
+ word-break:keep-all!important;
+ line-height:1.45!important;
+ margin:0 auto!important;
+ align-self:center!important;
+ font-size:clamp(10px,2.7vw,20px)!important;
+ font-weight:750!important;
+ letter-spacing:-.012em!important;
+ color:#fff!important;
+ text-align:center!important;
+}
+@media(max-width:390px){
+ body.ebook-cover-only .illustrated-cover-copy .ebook-cover-tagline{
+  font-size:clamp(9px,2.55vw,11px)!important;
+ }
+}
+
 </style></head><body><header class="ebook-site-header"><div class="book-brand"><span>🌸 Japanese Ai Ebook</span><button class="book-home-link" type="button" onclick="showTab('home')">⌂ Book Menu</button></div><div class="header-description"><span class="header-eyebrow">✦ JAPANESE LEARNING • DIGITAL EDITION</span><h1>জাপানি শেখা, এখন বইয়ের মতো সহজ।</h1><p>🇯🇵 Japanese শেখো • 🇧🇩 বাংলায় বুঝো • এক অধ্যায় থেকে পরের অধ্যায়ে এগিয়ে চলো</p></div><nav class="nav" aria-label="বইয়ের অধ্যায়"><button class="active" id="tabHome" onclick="showTab('home')">🏠 Book Menu</button><button class="active" id="tabBasics" onclick="showTab('basics')">🌸 প্রথমে বেসিক শিখি</button><button class="" id="tabWords" onclick="openBookMenu('words')">📖 Vocabulary আগে পড়ি</button><button class="" id="tabLearn" onclick="openBookMenu('learn')">📚 Grammar পড়ি</button><button class="" id="tabExam" onclick="openBookMenu('exam')">📝 Random Exam</button><button class="" id="tabAi" onclick="showTab('ai')">🤖 বাংলা AI Teacher</button></nav><div class="study-sound-settings" id="studySoundPanel" aria-label="Japanese study sound controls">
   <label for="studyVolume">🔊 শব্দের Volume</label>
   <input id="studyVolume" type="range" min="0" max="100" value="100" step="5" oninput="updateStudyVolume(this.value)" aria-label="শব্দের ভলিউম">
@@ -970,7 +995,7 @@ body.ebook-home-only #home .menu-return-cover{margin-left:auto!important;flex:0 
     <div class="cover-artscape"><span class="cover-hello">こんにちは！</span><span class="cover-speak">がんばろう！<small>চলো, চেষ্টা করি!</small></span></div>
     <div class="illustrated-cover-copy">
       <h1>Japanese<br><span>Ai Ebook</span></h1>
-      <p>🌸 Japanese শেখা, এখন বইয়ের মতো সহজ! 🌸</p>
+      <p class="ebook-cover-tagline">🌸 Japanese শেখা, এখন বইয়ের মতো সহজ! 🌸</p>
       <div class="cover-feature-grid" aria-label="বইয়ের বিষয়">
         <button type="button" class="cover-feature-button" onclick="showTab('basics')" aria-label="Basic খুলুন"><span class="round-feature pink">🌸</span><strong>Basic</strong><small>শুরু থেকে শিখো</small></button>
         <button type="button" class="cover-feature-button" onclick="openBookMenu('words')" aria-label="Vocabulary খুলুন"><span class="round-feature green">📖</span><strong>Vocabulary</strong><small>জাপানি শব্দ</small></button>
@@ -1350,7 +1375,14 @@ function aiAddMessage(role,text,extraClass=''){
  wrap.scrollTop=wrap.scrollHeight;
  return bubble;
 }
-function aiClear(){stopVoiceInput();aiHistory.length=0;document.getElementById('aiMessages').innerHTML='';}
+const AI_WELCOME_MESSAGE = `আসসালামু আলাইকুম! 🌸
+Japanese শেখা বা যেকোনো প্রশ্ন করো।`;
+function aiShowWelcome(){
+ const messages=document.getElementById('aiMessages');
+ if(messages && !messages.querySelector('.ai-message-row')) aiAddMessage('assistant',AI_WELCOME_MESSAGE,'welcome');
+}
+function aiClear(){stopVoiceInput();aiHistory.length=0;document.getElementById('aiMessages').innerHTML='';aiShowWelcome();}
+aiShowWelcome();
 // Suggestion chips: open the full-screen chat and send the selected question immediately.
 function aiAskExample(question){
  showTab('ai');
@@ -1406,8 +1438,8 @@ document.getElementById('aiForm').addEventListener('submit',async(e)=>{
    document.getElementById('aiStatus').textContent='⚠️ AI Server সংযুক্ত নেই। Website মালিককে প্রথমে worker.js deploy করতে হবে।';return;
  }
 
- // Always request beginner-friendly bilingual explanation, even for Japanese voice input.
- const teacherQuestion=question.slice(0,700)+'\n\nশিক্ষকের নির্দেশ: একজন নতুন ছাত্রকে উত্তর দাও। প্রাসঙ্গিক Japanese বাক্য/শব্দ জাপানি অক্ষরে লেখো, তার বাংলা অর্থ দাও, প্রতিটি particle বা grammar কেন ব্যবহার হয়েছে সহজ বাংলায় বুঝিয়ে বলো এবং ২–৩টি Japanese + বাংলা উদাহরণ দাও। Romaji লেখার দরকার নেই। Japanese ও বাংলা দুটো ভাষা ব্যবহার করো।';
+ // Send the user's actual question. The Worker decides whether it is Japanese study or a general question.
+ const teacherQuestion=question.slice(0,1200);
  aiBusy=true;document.getElementById('aiSend').disabled=true;
  aiAddMessage('user',question);document.getElementById('aiQuestion').value='';
  const pending=aiAddMessage('assistant','⏳ উত্তর তৈরি হচ্ছে…','pending');
