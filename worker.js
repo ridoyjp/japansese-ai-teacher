@@ -53,7 +53,7 @@ export default {
     if (url.pathname === '/' && request.method === 'GET') {
       return json({ status: 'Japanese AI Teacher is running', endpoint: '/chat' }, 200, origin);
     }
-    if (url.pathname !== '/chat') return json({ error: 'Not found' }, 404, origin);
+    if (url.pathname !== '/chat' && url.pathname !== '/transcribe') return json({ error: 'Not found' }, 404, origin);
 
     // Browser requests from both authorized websites can pass the CORS preflight.
     if (!ORIGINS.has(origin)) return json({ error: 'Origin not allowed' }, 403, origin);
@@ -71,6 +71,41 @@ export default {
     } catch {
       return json({ error: 'Invalid JSON request' }, 400, origin);
     }
+    if (url.pathname === '/transcribe') {
+      const audio = data?.audio;
+      const mimeType = data?.mimeType;
+      const supported = new Set(['audio/webm', 'audio/mp4', 'audio/ogg', 'audio/wav', 'audio/mpeg', 'audio/aac', 'audio/x-m4a', 'audio/mp3']);
+      if (typeof audio !== 'string' || !/^[A-Za-z0-9+/]+={0,2}$/.test(audio) || audio.length < 150 || audio.length > 2900000 || !supported.has(mimeType)) {
+        return json({ error: 'Invalid audio format or recording is too long (max 2MB).' }, 400, origin);
+      }
+      const audioMime = mimeType === 'audio/x-m4a' ? 'audio/mp4' : mimeType === 'audio/mp3' ? 'audio/mpeg' : mimeType;
+      const model = String(env.GEMINI_MODEL || DEFAULT_MODEL).trim();
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 38000);
+      try {
+        const upstream = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+          body: JSON.stringify({
+            contents: [{ role: 'user', parts: [
+              { text: 'Transcribe the spoken audio precisely as it was spoken. Bengali speech in Bengali script, Japanese speech in Japanese script. Return ONLY transcription, no translations, commentary, or punctuation added unnecessarily. If unintelligible return empty text.' },
+              { inline_data: { mime_type: audioMime, data: audio } }
+            ] }],
+            generationConfig: { temperature: 0, maxOutputTokens: 450 }
+          }), signal: controller.signal
+        });
+        const body = await upstream.json().catch(() => ({}));
+        if (!upstream.ok) {
+          console.error('Voice Gemini error', { status: upstream.status, code: body?.error?.status, model });
+          return json({ error: upstream.status === 404 ? 'Audio transcription model unavailable. Check GEMINI_MODEL.' : upstream.status === 429 ? 'AI limit reached. Try later.' : 'Audio transcription error (' + upstream.status + ').' }, 502, origin);
+        }
+        const transcript = (body?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').trim();
+        return json({ transcript: transcript.slice(0, 1500) }, 200, origin);
+      } catch (err) {
+        return json({ error: err?.name === 'AbortError' ? 'Voice transcription timed out.' : 'Voice transcription network error.' }, 504, origin);
+      } finally { clearTimeout(timer); }
+    }
+
     const message = String(data?.message ?? data?.question ?? '').trim();
     if (!message || message.length > MAX_MESSAGE) {
       return json({ error: 'Question length must be 1-1200 characters' }, 400, origin);

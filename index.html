@@ -946,7 +946,10 @@ body.ebook-home-only #home .compact-book-brand{flex:1 1 auto!important;min-width
 body.ebook-home-only #home .menu-return-cover{margin-left:auto!important;flex:0 0 auto!important}
 
 /* Minimal Japanese AI messenger — no welcome/context/suggestion/status chrome. */
-#ai #aiContext,#ai .ai-tools,#ai #micStatus,#ai #aiStatus{display:none!important}
+#ai #aiContext,#ai .ai-tools,#ai #aiStatus{display:none!important}
+#ai #micStatus{display:none!important}
+#ai #micStatus.mic-visible{display:block!important;position:relative!important;margin:3px 14px 8px!important;padding:8px 12px!important;border-radius:11px!important;background:#e7f7ff!important;color:#134661!important;font-size:13px!important;line-height:1.5!important;white-space:normal!important}
+#ai #micToggle.recording{background:#db315e!important;box-shadow:0 0 0 4px #ffc5d9!important}
 #ai .ai-messages{background:linear-gradient(145deg,#edfaff,#f7fbff 70%,#eef1ff)!important}
 #ai .ai-message-row{display:flex;align-items:flex-end;gap:10px;margin:15px 0;max-width:100%;}
 #ai .ai-row-robot{justify-content:flex-start}
@@ -1328,18 +1331,19 @@ function detectChatLocale(text){
   if(/[\u3040-\u30FF\u3400-\u9FFF]/.test(q))return 'ja-JP';
   return preferredChatLocale;
 }
-function micUpdate(message){document.getElementById('micStatus').textContent=message;}
+function micUpdate(message){const el=document.getElementById('micStatus');el.textContent=message;el.classList.add('mic-visible');}
 function micButtons(active){
  const toggle=document.getElementById('micToggle');
  toggle.classList.toggle('recording',active);
- toggle.textContent='🎙️';
+ toggle.textContent=active?'■':'🎙️';
+ toggle.title=active?'রেকর্ড বন্ধ করে লেখা তৈরি করো':'বাংলা / 日本語 ভয়েস ইনপুট';
  toggle.setAttribute('aria-label',active?'তোমার কথা শুনছি':'ভয়েস ইনপুট ভাষা বেছে নাও');
  document.getElementById('micBangla').disabled=active;
  document.getElementById('micJapanese').disabled=active;
  // Voice automatically ends after speech. No Stop button is needed.
 }
 function toggleMicChooser(){
- if(voiceMode)return;
+ if(voiceMode){stopVoiceInput();return;}
  const menu=document.getElementById('micLanguageMenu');
  menu.hidden=!menu.hidden;
  document.getElementById('micToggle').setAttribute('aria-expanded',String(!menu.hidden));
@@ -1380,7 +1384,8 @@ async function startVoiceInput(lang){
  if(voiceMode)return;
  preferredChatLocale=lang;voiceMode=lang;voiceFinalized=false;micButtons(true);
  // Preferred browser path. Requires microphone permission and online recognition service.
- const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+ const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ const SpeechRecognition=isIOS?null:(window.SpeechRecognition||window.webkitSpeechRecognition);
  if(SpeechRecognition){
   try{
    const rec=new SpeechRecognition();voiceRecognizer=rec;rec.lang=lang;
@@ -1394,7 +1399,7 @@ async function startVoiceInput(lang){
   }catch(err){voiceRecognizer=null;}
  }
  // Fallback uses existing Cloudflare Worker /transcribe endpoint with Gemini.
- if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){micUpdate('⚠️ এই Browser-এ Voice Typing নেই। Chrome ব্যবহার করো অথবা Keyboard Microphone চাপো।');cleanupVoice();return;}
+ if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){cleanupVoice();micUpdate('⚠️ Browser-এ Recording সমর্থিত নয়। iPhone Keyboard-এর 🎙️ Dictation ব্যবহার করো।');return;}
  try{
   voiceStream=await navigator.mediaDevices.getUserMedia({audio:true});
   if(!voiceMode){voiceStream.getTracks().forEach(t=>t.stop());voiceStream=null;return;}
@@ -1416,17 +1421,17 @@ async function startVoiceInput(lang){
     const endpoint=getAIEndpoint().replace(/\/chat\/?$/,'/transcribe');
     const res=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({audio:btoa(bin),mimeType:blob.type.split(';')[0]})});
     const data=await res.json().catch(()=>({}));
-    if(!res.ok)throw new Error(data.error||'Voice transcription failed');
-    if(data.transcript)insertVoiceText(data.transcript,lang);else micUpdate('কথা বোঝা যায়নি। আবার বলো।');
+    if(!res.ok)throw new Error(data.error||'Voice transcription failed ('+res.status+')');
+    if(data.transcript)insertVoiceText(data.transcript,lang);else micUpdate('⚠️ কথা বোঝা যায়নি। আবার বলো।');
    }catch(err){micUpdate('⚠️ Voice typing চালু হয়নি: '+err.message);}
   };
   voiceRecorder.start();
-  micUpdate(lang==='bn-BD'?'🔴 বাংলায় বলো। কথা শেষ হলে নিজেই পাঠাবে।':'🔴 日本語で話してください。話し終えると自動送信します。');
-  // If browser speech recognition is unavailable, detect a pause in the microphone audio.
-  // Stop the recorder after speech + 1.5s silence, with an 18s safety maximum.
+  micUpdate(lang==='bn-BD'?'🔴 বাংলায় বলো। শেষ হলে লাল ■ বাটন চাপো।':'🔴 日本語で話してから赤い ■ ボタンを押してください。');
+  // iPhone recording: manual stop button is preferred; auto-stop only after 18 sec.
+  // Other browsers can stop after a silence pause.
   try{
    const AudioCtx=window.AudioContext||window.webkitAudioContext;
-   if(AudioCtx){
+   if(AudioCtx&&!isIOS){
     voiceAudioContext=new AudioCtx();
     const analyser=voiceAudioContext.createAnalyser();analyser.fftSize=1024;
     voiceAudioContext.createMediaStreamSource(voiceStream).connect(analyser);
@@ -1444,7 +1449,7 @@ async function startVoiceInput(lang){
    }
   }catch(err){/* The recording still auto-stops at the maximum duration below. */}
   voiceTimeout=setTimeout(()=>stopVoiceInput(),18000);
- }catch(err){micUpdate('⚠️ Microphone permission দরকার। Chrome-এ Allow দাও।');cleanupVoice();}
+ }catch(err){cleanupVoice();micUpdate('⚠️ Microphone চালু হয়নি: '+(err?.name==='NotAllowedError'?'iPhone Settings → Safari → Microphone → Allow করো।':String(err?.message||err)));}
 }
 const aiHistory=[];
 // Website owner only: after deploying worker.js, put its public HTTPS URL here ONCE.
