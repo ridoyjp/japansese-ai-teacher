@@ -141,7 +141,7 @@ initializeBasicSound();
 const aiHistory=[];
 // Website owner only: after deploying worker.js, put its public HTTPS URL here ONCE.
 // Never put an OpenAI API key in this file.
-const AI_SERVER_URL = 'https://YOUR-WORKER.YOUR-SUBDOMAIN.workers.dev';
+const AI_SERVER_URL = 'https://gakuen-chatbot-ai.ridoy-gakuen-ai.workers.dev/chat';
 function getAIEndpoint(){return AI_SERVER_URL.trim().replace(/\/+$/,'');}
 function isAIConfigured(){return /^https:\/\/[a-z0-9.-]+(?::\d+)?(?:\/.*)?$/i.test(getAIEndpoint()) && !getAIEndpoint().includes('YOUR-WORKER');}
 function aiAddMessage(role,text,extraClass=''){
@@ -186,12 +186,13 @@ document.getElementById('aiForm').addEventListener('submit',async(e)=>{
  const pending=aiAddMessage('assistant','⏳ উত্তর তৈরি হচ্ছে…','pending');
  const status=document.getElementById('aiStatus');status.textContent='AI-এর সঙ্গে যোগাযোগ হচ্ছে…';
  try{
-  const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question,history:aiHistory.slice(-8)})});
+  const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:question,history:aiHistory.slice(-8).map(item=>({role:item.role==='assistant'?'model':'user',text:item.content})),responseLanguage:'bn-BD'})});
   const payload=await response.json().catch(()=>({}));
   if(!response.ok)throw new Error(payload.error||'Server error '+response.status);
-  if(!payload.answer||typeof payload.answer!=='string')throw new Error('AI কোনো উত্তর দেয়নি।');
-  pending.textContent=payload.answer;pending.classList.remove('pending');
-  aiHistory.push({role:'user',content:question},{role:'assistant',content:payload.answer});
+  const answer=typeof payload.reply==='string'?payload.reply:payload.answer;
+  if(!answer||typeof answer!=='string')throw new Error('AI কোনো উত্তর দেয়নি।');
+  pending.textContent=answer;pending.classList.remove('pending');
+  aiHistory.push({role:'user',content:question},{role:'assistant',content:answer});
   while(aiHistory.length>8)aiHistory.shift();status.textContent='✅ উত্তর এসেছে। আরও প্রশ্ন করতে পারো।';
  }catch(err){pending.textContent='⚠️ AI-এর সঙ্গে যোগাযোগ হয়নি। '+err.message+' URL এবং Worker সেটিংস পরীক্ষা করো।';pending.classList.remove('pending');status.textContent='সংযোগে সমস্যা হয়েছে।';}
  finally{aiBusy=false;document.getElementById('aiSend').disabled=false;document.getElementById('aiMessages').scrollTop=document.getElementById('aiMessages').scrollHeight;}
