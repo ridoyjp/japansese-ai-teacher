@@ -60,8 +60,8 @@ button.sound-btn:active{background:#b9cdfb}.sound-toolbar .sound-btn{background:
         <button type="button" id="micJapanese" onclick="chooseMicLanguage('ja-JP')">🇯🇵 日本語で話す</button>
       </div>
     </div>
-    <input id="autoReplyVoice" type="checkbox" checked hidden>
-    <button type="button" class="ai-circle-btn" id="voiceSpeaker" onclick="toggleReplySound()" aria-label="উত্তর পড়ে শোনানো চালু বা বন্ধ করুন" aria-pressed="true" title="উত্তর নিজে থেকে শোনাও">🔊</button>
+    <input id="autoReplyVoice" type="checkbox" hidden>
+    <button type="button" class="ai-circle-btn" id="voiceSpeaker" onclick="toggleReplySound()" aria-label="উত্তর স্বয়ংক্রিয়ভাবে পড়া চালু বা বন্ধ করুন" aria-pressed="false" title="স্বয়ংক্রিয় Sound বন্ধ; উত্তরের নিচে 🔊 উত্তর শুনুন চাপুন">🔇</button>
     <button type="submit" class="ai-circle-btn ai-send-btn" id="aiSend" aria-label="পাঠাও" title="পাঠাও">➤</button>
   </div>
 </form>
@@ -225,7 +225,7 @@ function toggleReplySound(){
  button.classList.toggle('is-off',!check.checked);
  button.textContent=check.checked?'🔊':'🔇';
  button.setAttribute('aria-pressed',String(check.checked));
- button.title=check.checked?'উত্তর নিজে থেকে শোনাও: চালু':'উত্তর নিজে থেকে শোনাও: বন্ধ';
+ button.title=check.checked?'সর্বশেষ উত্তর শুনতে চালু':'স্বয়ংক্রিয় Sound বন্ধ; উত্তরের নিচে 🔊 উত্তর শুনুন চাপুন';
  if(!check.checked)stopAIReplySpeech();
  else if(check.checked&&lastAIReply)speakAIAnswer(lastAIReply,lastAIReplyLocale);
 }
@@ -326,85 +326,97 @@ async function startVoiceInput(lang){
   voiceTimeout=setTimeout(()=>stopVoiceInput(),18000);
  }catch(err){micUpdate('⚠️ Microphone permission দরকার। Chrome-এ Allow দাও।');cleanupVoice();}
 }
-// Reply audio: pronounce only Japanese with Japanese voice and Bengali with Bengali voice.
-// Romaji/English and Markdown formatting are removed from audio, but remain visible in chat.
-let replySpeechQueue=[], replySpeechIndex=0, replySpeechToken=0;
+// Bilingual reply speech. Playback is user-initiated for browser reliability.
+// Bengali speech requires a Bengali-capable voice installed/exposed by the browser.
+let replySpeechQueue=[], replySpeechIndex=0, replySpeechToken=0, replySpeechWatchdog=null;
 function voiceSegments(text){
- // Read Japanese in Japanese and Bengali explanations in Bengali.
- // Ignore Romaji/English prose, but retain punctuation and numeric examples.
- const output=[];
  const jp=/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶ]/;
  const bn=/[\u0980-\u09ff]/;
- const blocks=String(text||'').split(/\r?\n/);
- for(let line of blocks){
+ const segments=[];
+ for(let line of String(text||'').split(/\r?\n/)){
   if(/^\s*(?:[-*•\d.()]+\s*)?(?:🔤\s*)?(?:romaji|romanji|romanization|রোমাজি)\s*[:：-]/i.test(line))continue;
   line=line.replace(/https?:\/\/\S+/g,' ')
-    .replace(/\[([^\]]+)\]\([^)]*\)/g,'$1')
-    .replace(/[*#_`|>~]/g,' ')
-    .replace(/[🇯🇵🇧🇩🔤📖✅❌👉•]/gu,' ')
-    .replace(/[A-Za-z]+(?:[\s'’\-]+[A-Za-z]+)*/g,' ');
-  // Preserve the original order when alternating Japanese and Bengali scripts.
-  // Spaces/digits/punctuation attach to their neighboring language run.
-  const tokens=line.match(/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶー]+|[\u0980-\u09ff]+|[^\u3040-\u30ff\u3400-\u9fff々〆ヵヶー\u0980-\u09ff]+/g)||[];
-  let locale=null,buf='';
-  const flush=()=>{
-    let chunk=buf.replace(/^[\s:：。、।,.!?「」『』（）()\-]+|[\s:：。、।,.!?「」『』（）()\-]+$/g,'').trim();
-    if(chunk&&locale) output.push({text:chunk,locale});
-    buf='';
-  };
-  for(const token of tokens){
-    const next=bn.test(token)?'bn-BD':jp.test(token)?'ja-JP':null;
-    if(!next){buf+=token;continue;}
-    if(locale&&locale!==next)flush();
-    locale=next;buf+=token;
+   .replace(/\[([^\]]+)\]\([^)]*\)/g,'$1')
+   .replace(/[*#_`|>~]/g,' ')
+   .replace(/[🇯🇵🇧🇩🔤📖✅❌👉•]/gu,' ')
+   .replace(/[A-Za-z]+(?:[\s'’\-]+[A-Za-z]+)*/g,' ');
+  const parts=line.match(/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶー]+|[\u0980-\u09ff]+|[^\u3040-\u30ff\u3400-\u9fff々〆ヵヶー\u0980-\u09ff]+/g)||[];
+  let locale='',buf='';
+  function flush(){
+   const s=buf.trim();
+   if(locale&&s)segments.push({text:s,locale});
+   buf='';
+  }
+  for(const part of parts){
+   const next=bn.test(part)?'bn-BD':jp.test(part)?'ja-JP':'';
+   if(next&&locale&&next!==locale)flush();
+   if(next)locale=next;
+   buf+=part;
   }
   flush();
  }
- // Keep utterances short enough for mobile Safari/Chrome.
- const speech=[];
- for(const item of output){
-  const pieces=item.text.match(/.{1,125}(?:[।。！？!?]|$)|.{1,125}/gu)||[item.text];
-  for(const piece of pieces){if(piece.trim())speech.push({text:piece.trim(),locale:item.locale});}
+ const result=[];
+ for(const segment of segments){
+  // Split on spaces/punctuation where possible, so speech engines don't stall on long text.
+  const text=segment.text;
+  let rest=text;
+  while(rest.length){
+   if(rest.length<=110){result.push({text:rest.trim(),locale:segment.locale});break;}
+   let breakAt=Math.max(rest.lastIndexOf(' ',110),rest.lastIndexOf('।',110)+1,rest.lastIndexOf('。',110)+1);
+   if(breakAt<35)breakAt=110;
+   result.push({text:rest.slice(0,breakAt).trim(),locale:segment.locale});
+   rest=rest.slice(breakAt).trim();
+  }
  }
- return speech.slice(0,100);
+ return result.filter(s=>s.text).slice(0,140);
 }
 function stopAIReplySpeech(){
  replySpeechToken++;replySpeechQueue=[];replySpeechIndex=0;
+ clearTimeout(replySpeechWatchdog);
  if('speechSynthesis' in window)window.speechSynthesis.cancel();
  window.currentAIUtterance=null;
 }
-function speakAIAnswer(text,lang){
- if(!('speechSynthesis' in window)){micUpdate('⚠️ Browser-এ Reply Sound নেই।');return;}
+function speakAIAnswer(text){
+ if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){
+  micUpdate('⚠️ Browser-এ Text-to-Speech নেই।');return;
+ }
  stopAIReplySpeech();
+ const synth=window.speechSynthesis;
  replySpeechQueue=voiceSegments(text);
- if(!replySpeechQueue.length){micUpdate('⚠️ পড়ার মতো বাংলা বা Japanese লেখা পাওয়া যায়নি।');return;}
- const token=replySpeechToken,synth=window.speechSynthesis;
- const speakNext=()=>{
+ if(!replySpeechQueue.length){micUpdate('⚠️ পড়ার মতো Japanese বা বাংলা নেই।');return;}
+ const available=synth.getVoices();
+ const bnVoice=available.find(v=>/^bn([_-]|$)/i.test(v.lang));
+ const hasBengali=replySpeechQueue.some(s=>s.locale==='bn-BD');
+ if(hasBengali&&!bnVoice){
+  micUpdate('⚠️ এই Browser-এ বাংলা Voice পাওয়া যায়নি। Japanese শোনা যেতে পারে, কিন্তু বাংলা পড়ার জন্য Windows/Browser-এ Bengali TTS voice দরকার।');
+ }
+ const token=replySpeechToken;
+ function speakNext(){
   if(token!==replySpeechToken)return;
+  clearTimeout(replySpeechWatchdog);
   if(replySpeechIndex>=replySpeechQueue.length){window.currentAIUtterance=null;return;}
   const segment=replySpeechQueue[replySpeechIndex++];
+  // Don't send Bengali text to a Japanese-only voice: report the missing voice instead.
+  if(segment.locale==='bn-BD'&&!bnVoice){speakNext();return;}
   const utterance=new SpeechSynthesisUtterance(segment.text);
-  utterance.lang=segment.locale;utterance.rate=segment.locale==='ja-JP'?0.86:0.92;utterance.volume=1;
-  const locale=segment.locale.toLowerCase();
+  utterance.lang=segment.locale;utterance.rate=segment.locale==='ja-JP'?0.86:0.9;
+  utterance.volume=1;utterance.pitch=1;
   const voices=synth.getVoices();
-  const voice=voices.find(v=>v.lang.toLowerCase()===locale)||voices.find(v=>v.lang.toLowerCase().startsWith(locale.slice(0,2)));
-  if(voice)utterance.voice=voice;
-  // A missing bn voice is an OS/browser limitation, not a Gemini error.
-  if(segment.locale==='bn-BD'&&!voice&&!window.bengaliVoiceWarned){
-    window.bengaliVoiceWarned=true;
-    micUpdate('ℹ️ বাংলা Voice না থাকলে ফোনের Text-to-Speech সেটিংসে বাংলা Voice চালু করো।');
-  }
+  utterance.voice=segment.locale==='bn-BD'?bnVoice:(voices.find(v=>/^ja([_-]|$)/i.test(v.lang))||null);
   window.currentAIUtterance=utterance;
-  utterance.onend=speakNext;
+  let finished=false;
+  const done=()=>{if(finished||token!==replySpeechToken)return;finished=true;clearTimeout(replySpeechWatchdog);speakNext();};
+  utterance.onend=done;
   utterance.onerror=e=>{
    if(token!==replySpeechToken)return;
-   if(e.error==='canceled'||e.error==='interrupted')return;
-   micUpdate('⚠️ '+(segment.locale==='bn-BD'?'বাংলা':'Japanese')+' Voice ফোনে নেই বা চালু হয়নি।');
-   speakNext();
+   if(e.error!=='canceled'&&e.error!=='interrupted')micUpdate('⚠️ '+(segment.locale==='bn-BD'?'বাংলা':'Japanese')+' Voice সমস্যা: '+e.error);
+   done();
   };
-  try{synth.speak(utterance)}catch(e){micUpdate('⚠️ Sound চালু করা যায়নি।');}
- };
- try{synth.resume();speakNext()}catch(e){micUpdate('⚠️ Sound চালু করা যায়নি।');}
+  try{synth.resume();synth.speak(utterance)}catch(e){micUpdate('⚠️ Voice শুরু হয়নি: '+e.message);done();return;}
+  // Some browsers never emit onend/onerror. Don't block the whole queue forever.
+  replySpeechWatchdog=setTimeout(()=>{if(token!==replySpeechToken||finished)return;try{synth.cancel()}catch(e){};done();},18000);
+ }
+ speakNext();
 }
 function addReplyAudioControls(element,text,locale){
  const bar=document.createElement('div');bar.className='ai-reply-actions';
@@ -476,7 +488,8 @@ document.getElementById('aiForm').addEventListener('submit',async(e)=>{
   lastAIReply=answer;lastAIReplyLocale=responseLocale;
   aiHistory.push({role:'user',content:question},{role:'assistant',content:answer});
   while(aiHistory.length>8)aiHistory.shift();status.textContent='✅ উত্তর এসেছে। আরও প্রশ্ন করতে পারো।';
-  if(document.getElementById('autoReplyVoice')?.checked) speakAIAnswer(answer,responseLocale);
+  // Don't autoplay after an asynchronous API call; use the explicit reply Listen button.
+  if(document.getElementById('autoReplyVoice')?.checked) micUpdate('🔊 উত্তর শুনতে নিচের উত্তর শুনুন বাটনে চাপো।');
  }catch(err){pending.textContent='⚠️ AI-এর সঙ্গে যোগাযোগ হয়নি। '+err.message+' URL এবং Worker সেটিংস পরীক্ষা করো।';pending.classList.remove('pending');status.textContent='সংযোগে সমস্যা হয়েছে।';}
  finally{aiBusy=false;document.getElementById('aiSend').disabled=false;document.getElementById('aiMessages').scrollTop=document.getElementById('aiMessages').scrollHeight;}
 });
