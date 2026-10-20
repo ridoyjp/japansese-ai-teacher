@@ -53,7 +53,7 @@ export default {
     if (url.pathname === '/' && request.method === 'GET') {
       return json({ status: 'Japanese AI Teacher is running', endpoint: '/chat' }, 200, origin);
     }
-    if (url.pathname !== '/chat' && url.pathname !== '/transcribe') return json({ error: 'Not found' }, 404, origin);
+    if (url.pathname !== '/chat' && url.pathname !== '/transcribe' && url.pathname !== '/speak') return json({ error: 'Not found' }, 404, origin);
 
     // Browser requests from both authorized websites can pass the CORS preflight.
     if (!ORIGINS.has(origin)) return json({ error: 'Origin not allowed' }, 403, origin);
@@ -70,6 +70,44 @@ export default {
       data = await request.json();
     } catch {
       return json({ error: 'Invalid JSON request' }, 400, origin);
+    }
+    if (url.pathname === '/speak') {
+      // Gemini text-to-speech produces raw signed 16-bit 24kHz PCM audio.
+      // Use a separate TTS model: the chat model usually has no audio output.
+      const rawText = typeof data?.text === 'string' ? data.text.trim() : '';
+      if (!rawText || rawText.length > 900) return json({ error: 'Speak text must be 1–900 characters.' }, 400, origin);
+      const language = data?.language === 'ja-JP' ? 'ja-JP' : 'bn-BD';
+      const model = String(env.GEMINI_TTS_MODEL || 'gemini-2.5-flash-preview-tts').trim();
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 45000);
+      try {
+        const prompt = language === 'ja-JP'
+          ? 'Read the following text naturally in Japanese. Do not change the words or add any other text: '
+          : 'Read the following text naturally in Bangla (Bengali). Do not change the words or add any other text: ';
+        const upstream = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt + rawText }] }],
+            generationConfig: {
+              responseModalities: ['AUDIO'],
+              speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Kore' } } }
+            }
+          }), signal: controller.signal
+        });
+        const body = await upstream.json().catch(() => ({}));
+        if (!upstream.ok) {
+          console.error('Gemini TTS failed', {status:upstream.status, code:body?.error?.status, model});
+          return json({ error: upstream.status === 404 ? 'TTS model not available. Check GEMINI_TTS_MODEL.' : upstream.status === 429 ? 'Voice API quota reached.' : `AI voice service error (${upstream.status}).` }, 502, origin);
+        }
+        const parts = body?.candidates?.[0]?.content?.parts || [];
+        const part = parts.find(p => p.inlineData?.data || p.inline_data?.data);
+        const inline = part?.inlineData || part?.inline_data;
+        if (!inline?.data) return json({error:'TTS did not return audio. Check Gemini TTS support and quota.'},502,origin);
+        return json({ audio:inline.data, mimeType:inline.mimeType || inline.mime_type || 'audio/L16;codec=pcm;rate=24000', language },200,origin);
+      } catch(err) {
+        return json({error:err?.name==='AbortError'?'TTS timed out.':'TTS connection failed.'},504,origin);
+      } finally { clearTimeout(timer); }
     }
     if (url.pathname === '/transcribe') {
       const audio = data?.audio;

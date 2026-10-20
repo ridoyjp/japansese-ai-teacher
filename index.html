@@ -1096,6 +1096,9 @@ body.ai-fullscreen #ai .ai-header-back{
 #ai #micToggle.recording{animation:mic-pulse 1.1s ease-in-out infinite alternate;box-shadow:0 0 0 5px #ffbadb88!important}
 
 /* Optional hands-free, turn-based live voice conversation. */
+#liveVoiceScreen #liveTestSound{background:#233f6e;border:1px solid #7ba9ec}
+#liveVoiceScreen .live-voice-actions{gap:14px}
+
 #ai .live-voice-open{border:0;border-radius:13px;padding:10px 14px;color:white;background:linear-gradient(135deg,#633ee7,#1296c9);font-weight:750;cursor:pointer;white-space:nowrap}
 #liveVoiceScreen{position:fixed;inset:0;z-index:2147483000;background:#050812;color:#fff;display:none;flex-direction:column;align-items:center;justify-content:space-between;padding:max(24px,env(safe-area-inset-top)) 16px max(28px,env(safe-area-inset-bottom));font-family:system-ui,sans-serif}
 #liveVoiceScreen.is-open{display:flex}
@@ -1183,7 +1186,7 @@ body.ai-fullscreen #ai .ai-header-back{
 </nav><div id="liveVoiceScreen" role="dialog" aria-modal="true" aria-label="Live AI Voice Chat" data-state="idle">
  <div class="live-voice-top"><h2>🎙️ Japanese AI · Live Voice</h2><button type="button" class="live-voice-exit" onclick="closeLiveVoice()">← Chat</button></div>
  <div class="live-voice-center"><div class="live-voice-orb" aria-hidden="true"></div><div id="liveVoiceStatus" class="live-voice-status" aria-live="polite">মাইক্রোফোন চালু হচ্ছে…</div><div class="live-voice-caption">বাংলা বা Japanese বলো। কথা শেষে নিজে প্রশ্ন পাঠাবে, AI উত্তর শোনাবে।</div></div>
- <div class="live-voice-actions"><button type="button" id="liveMute" class="live-voice-action" onclick="toggleLiveMute()" aria-label="Microphone বন্ধ বা চালু">🎙️</button><button type="button" class="live-voice-action exit" onclick="closeLiveVoice()" aria-label="Live Voice বন্ধ করো">✕</button></div>
+ <div class="live-voice-actions"><button type="button" id="liveTestSound" class="live-voice-action" onclick="testLiveSound()" title="ফোনের Sound পরীক্ষা করো" aria-label="Test AI voice sound">🔊</button><button type="button" id="liveMute" class="live-voice-action" onclick="toggleLiveMute()" aria-label="Microphone বন্ধ বা চালু">🎙️</button><button type="button" class="live-voice-action exit" onclick="closeLiveVoice()" aria-label="Live Voice বন্ধ করো">✕</button></div>
 </div><script>
 const V=[["わたし", "watashi", "আমি"], ["わたしたち", "watashitachi", "আমরা"], ["あなた", "anata", "আপনি"], ["あのひと", "ano hito", "ওই ব্যক্তি"], ["あのかた", "ano kata", "ওই ব্যক্তি (সম্মানসূচক)"], ["みなさん", "minasan", "সবাই"], ["さん", "san", "সম্মানসূচক নামের প্রত্যয়"], ["ちゃん", "chan", "আদরের নামের প্রত্যয়"], ["くん", "kun", "ছেলেদের নামের প্রত্যয়"], ["じん", "jin", "জাতীয়তার প্রত্যয়"], ["せんせい", "sensei", "শিক্ষক (সম্মানসূচক)"], ["きょうし", "kyoushi", "শিক্ষক (পেশা)"], ["がくせい", "gakusei", "ছাত্র/ছাত্রী"], ["かいしゃいん", "kaishain", "কোম্পানির কর্মচারী"], ["しゃいん", "shain", "কোম্পানির কর্মী"], ["ぎんこういん", "ginkouin", "ব্যাংক কর্মচারী"], ["いしゃ", "isha", "ডাক্তার"], ["けんきゅうしゃ", "kenkyuusha", "গবেষক"], ["エンジニア", "enjinia", "ইঞ্জিনিয়ার"], ["だいがく", "daigaku", "বিশ্ববিদ্যালয়"], ["びょういん", "byouin", "হাসপাতাল"], ["でんき", "denki", "বিদ্যুৎ/আলো"], ["だれ", "dare", "কে"], ["どなた", "donata", "কে (সম্মানসূচক)"], ["～さい", "~sai", "বছর বয়স"], ["なんさい", "nansai", "কত বয়স"], ["おいくつ", "oikutsu", "কত বয়স (সম্মানসূচক)"], ["はい", "hai", "হ্যাঁ"], ["いいえ", "iie", "না"], ["しつれいですが", "shitsurei desu ga", "মাফ করবেন, কিন্তু..."], ["おなまえは？", "o-namae wa?", "আপনার নাম কী?"], ["はじめまして", "hajimemashite", "প্রথম পরিচয়ে শুভেচ্ছা"], ["どうぞよろしく", "douzo yoroshiku", "পরিচিত হয়ে ভালো লাগল"], ["～からきました", "~kara kimashita", "থেকে এসেছি"], ["アメリカ", "amerika", "আমেরিকা"], ["イギリス", "igirisu", "যুক্তরাজ্য"], ["インド", "indo", "ভারত"], ["インドネシア", "indoneshia", "ইন্দোনেশিয়া"], ["かんこく", "kankoku", "দক্ষিণ কোরিয়া"], ["ちゅうごく", "chuugoku", "চীন"], ["ドイツ", "doitsu", "জার্মানি"], ["フランス", "furansu", "ফ্রান্স"], ["ブラジル", "burajiru", "ব্রাজিল"], ["にほん", "nihon", "জাপান"], ["バングラデシュ", "banguradeshu", "বাংলাদেশ"], ["なまえ", "namae", "নাম"], ["ともだち", "tomodachi", "বন্ধু"]];const G=[{"title": "① N₁ は N₂ です", "meaning": "N₁ হলো N₂।", "why": "পরিচয়, পেশা বা জাতীয়তা ভদ্রভাবে জানাতে। は বিষয় বোঝায়, です ভদ্রভাবে বাক্য শেষ করে।", "tip": "は লেখা ha, কিন্তু particle হলে উচ্চারণ wa।", "ex": [["わたしは がくせいです。", "Watashi wa gakusei desu.", "আমি ছাত্র।"], ["わたしは バングラデシュじんです。", "Watashi wa Banguradeshu-jin desu.", "আমি বাংলাদেশি।"], ["あのひとは いしゃです。", "Ano hito wa isha desu.", "ওই ব্যক্তি ডাক্তার।"], ["ミラーさんは エンジニアです。", "Miraa-san wa enjinia desu.", "মিস্টার মিলার ইঞ্জিনিয়ার।"], ["たなかさんは せんせいです。", "Tanaka-san wa sensei desu.", "তানাকা সাহেব শিক্ষক।"]]}, {"title": "② N₁ は N₂ じゃありません", "meaning": "N₁ হলো N₂ নয়।", "why": "কেউ কী নয়, তা ভদ্রভাবে বলতে। じゃありません = নয় / নই।", "tip": "ではありません আরও আনুষ্ঠানিক রূপ।", "ex": [["わたしは せんせいじゃありません。", "Watashi wa sensei ja arimasen.", "আমি শিক্ষক নই।"], ["わたしは にほんじんじゃありません。", "Watashi wa nihonjin ja arimasen.", "আমি জাপানি নই।"], ["あのひとは がくせいじゃありません。", "Ano hito wa gakusei ja arimasen.", "ওই ব্যক্তি ছাত্র নন।"], ["ミラーさんは いしゃじゃありません。", "Miraa-san wa isha ja arimasen.", "মিস্টার মিলার ডাক্তার নন।"], ["わたしは エンジニアじゃありません。", "Watashi wa enjinia ja arimasen.", "আমি ইঞ্জিনিয়ার নই।"]]}, {"title": "③ N₁ は N₂ ですか", "meaning": "N₁ কি N₂?", "why": "প্রশ্ন করতে। বাক্যের শেষে か যোগ হয়।", "tip": "হ্যাঁ: はい、そうです। না: いいえ、ちがいます।", "ex": [["あなたは がくせいですか。", "Anata wa gakusei desu ka?", "আপনি কি ছাত্র?"], ["あのひとは せんせいですか。", "Ano hito wa sensei desu ka?", "ওই ব্যক্তি কি শিক্ষক?"], ["ミラーさんは アメリカじんですか。", "Miraa-san wa Amerika-jin desu ka?", "মিস্টার মিলার কি আমেরিকান?"], ["あなたは エンジニアですか。", "Anata wa enjinia desu ka?", "আপনি কি ইঞ্জিনিয়ার?"], ["あのかたは どなたですか。", "Ano kata wa donata desu ka?", "ওই ব্যক্তি কে? (সম্মানসূচক)"]]}, {"title": "④ N も", "meaning": "ও / এছাড়াও।", "why": "আগের কথার একই তথ্য আরেকজনের ক্ষেত্রেও সত্য হলে।", "tip": "わたしは = আমি (বিষয়); わたしも = আমিও।", "ex": [["わたしも がくせいです。", "Watashi mo gakusei desu.", "আমিও ছাত্র।"], ["リドイさんも がくせいです。", "Ridoi-san mo gakusei desu.", "রিদয়ও ছাত্র।"], ["わたしも バングラデシュじんです。", "Watashi mo Banguradeshu-jin desu.", "আমিও বাংলাদেশি।"], ["たなかさんも せんせいです。", "Tanaka-san mo sensei desu.", "তানাকাও শিক্ষক।"], ["ミラーさんも エンジニアです。", "Miraa-san mo enjinia desu.", "মিস্টার মিলারও ইঞ্জিনিয়ার।"]]}, {"title": "⑤ N₁ の N₂", "meaning": "N₁-এর N₂।", "why": "দুটি noun-এর মধ্যে সম্পর্ক বা প্রতিষ্ঠানের সঙ্গে যুক্ত থাকা বোঝাতে।", "tip": "だいがくの がくせい = বিশ্ববিদ্যালয়ের ছাত্র।", "ex": [["わたしは だいがくの がくせいです。", "Watashi wa daigaku no gakusei desu.", "আমি বিশ্ববিদ্যালয়ের ছাত্র।"], ["わたしは IMCの しゃいんです。", "Watashi wa IMC no shain desu.", "আমি IMC কোম্পানির কর্মচারী।"], ["ミラーさんは IMCの しゃいんです。", "Miraa-san wa IMC no shain desu.", "মিস্টার মিলার IMC কোম্পানির কর্মচারী।"], ["たなかさんは だいがくの せんせいです。", "Tanaka-san wa daigaku no sensei desu.", "তানাকা সাহেব বিশ্ববিদ্যালয়ের শিক্ষক।"], ["あのひとは びょういんの いしゃです。", "Ano hito wa byouin no isha desu.", "ওই ব্যক্তি হাসপাতালের ডাক্তার।"]]}, {"title": "⑥ ～さん", "meaning": "নামের পরে সম্মানসূচক সম্বোধন।", "why": "অন্য কাউকে সম্মান দিয়ে সম্বোধন করতে।", "tip": "নিজের নামের পরে さん বসবে না।", "ex": [["たなかさんは せんせいです。", "Tanaka-san wa sensei desu.", "তানাকা সাহেব শিক্ষক।"], ["ミラーさんは エンジニアです。", "Miraa-san wa enjinia desu.", "মিস্টার মিলার ইঞ্জিনিয়ার।"], ["リドイさんは がくせいです。", "Ridoi-san wa gakusei desu.", "রিদয় ছাত্র।"], ["さとうさんは いしゃです。", "Satou-san wa isha desu.", "সাতো সাহেব ডাক্তার।"], ["あのかたは ミラーさんです。", "Ano kata wa Miraa-san desu.", "ওই ব্যক্তি মিস্টার মিলার।"]]}];;const V2=[["これ", "kore", "এটা (বক্তার কাছে)"], ["それ", "sore", "ওটা (শ্রোতার কাছে)"], ["あれ", "are", "ওইটা (দুজনের থেকে দূরে)"], ["この～", "kono", "এই ~"], ["その～", "sono", "ওই ~"], ["あの～", "ano", "সেই / ওই ~"], ["ほん", "hon", "বই"], ["じしょ", "jisho", "অভিধান"], ["ざっし", "zasshi", "ম্যাগাজিন"], ["しんぶん", "shinbun", "সংবাদপত্র"], ["ノート", "nooto", "খাতা"], ["てちょう", "techou", "ছোট ডায়েরি"], ["めいし", "meishi", "ভিজিটিং কার্ড"], ["カード", "kaado", "কার্ড"], ["えんぴつ", "enpitsu", "পেনসিল"], ["ボールペン", "boorupen", "বলপেন"], ["シャープペンシル", "shaapupenshiru", "মেকানিক্যাল পেনসিল"], ["かぎ", "kagi", "চাবি"], ["とけい", "tokei", "ঘড়ি"], ["かさ", "kasa", "ছাতা"], ["かばん", "kaban", "ব্যাগ"], ["CD", "shiidii", "সিডি"], ["テレビ", "terebi", "টেলিভিশন"], ["ラジオ", "rajio", "রেডিও"], ["カメラ", "kamera", "ক্যামেরা"], ["コンピューター", "konpyuutaa", "কম্পিউটার"], ["くるま", "kuruma", "গাড়ি"], ["つくえ", "tsukue", "ডেস্ক / টেবিল"], ["いす", "isu", "চেয়ার"], ["チョコレート", "chokoreeto", "চকলেট"], ["コーヒー", "koohii", "কফি"], ["おみやげ", "omiyage", "ভ্রমণ থেকে আনা উপহার"], ["えいご", "eigo", "ইংরেজি ভাষা"], ["にほんご", "nihongo", "জাপানি ভাষা"], ["～ご", "~go", "~ভাষা"], ["なん", "nan", "কী"], ["そう", "sou", "তাই / ঠিক তাই"], ["あのう", "anou", "শুনুন / উম্"], ["えっ", "e?", "অ্যাঁ! / কী!"], ["どうぞ", "douzo", "এই নিন / অনুগ্রহ করে"], ["［どうも］ありがとう［ございます］", "[doumo] arigatou [gozaimasu]", "ধন্যবাদ / অনেক ধন্যবাদ"], ["そうですか", "sou desu ka", "আচ্ছা, তাই নাকি!"], ["ちがいます", "chigaimasu", "তা নয় / ভুল"], ["あ", "a", "ওহ্!"], ["これから おせわに なります", "kore kara osewa ni narimasu", "এখন থেকে আপনার সহযোগিতা কামনা করছি"], ["こちらこそ どうぞ よろしく", "kochira koso douzo yoroshiku", "আমিও আপনার সঙ্গে ভালো সম্পর্ক আশা করি"]];const G2=[{"title": "① これ・それ・あれ", "meaning": "এটা / ওটা / ওইটা", "why": "কোনো জিনিস দেখিয়ে বলতে। これ নিজের কাছে, それ শ্রোতার কাছে, あれ দুজনের থেকেই দূরে।", "tip": "これ・それ・あれ একাই বসে; পরে আলাদা করে noun লাগে না।", "ex": [["これは ほんです。", "Kore wa hon desu.", "এটা বই।"], ["それは じしょです。", "Sore wa jisho desu.", "ওটা অভিধান।"], ["あれは かばんです。", "Are wa kaban desu.", "ওইটা ব্যাগ।"], ["これは えんぴつです。", "Kore wa enpitsu desu.", "এটা পেনসিল।"], ["それは とけいですか。", "Sore wa tokei desu ka?", "ওটা কি ঘড়ি?"]]}, {"title": "② この・その・あの + Noun", "meaning": "এই / ওই / সেই + জিনিস", "why": "নির্দিষ্ট কোনো জিনিস বা মানুষকে বোঝাতে। এই তিনটির পরে অবশ্যই noun বসবে।", "tip": "これ = এটা; このほん = এই বই।", "ex": [["このほんは わたしのです。", "Kono hon wa watashi no desu.", "এই বইটি আমার।"], ["そのかばんは リドイさんのです。", "Sono kaban wa Ridoi-san no desu.", "ওই ব্যাগটি রিদয়ের।"], ["あのひとは せんせいです。", "Ano hito wa sensei desu.", "ওই ব্যক্তি শিক্ষক।"], ["このとけいは わたしのです。", "Kono tokei wa watashi no desu.", "এই ঘড়িটি আমার।"], ["そのじしょは たなかさんのですか。", "Sono jisho wa Tanaka-san no desu ka?", "ওই অভিধানটি কি তানাকার?"]]}, {"title": "③ そうです / そうじゃありません", "meaning": "ঠিক তাই / তা নয়", "why": "কেউ হ্যাঁ-না প্রশ্ন করলে তার বক্তব্য সঠিক কি না জানাতে।", "tip": "হ্যাঁ: はい、そうです। না: いいえ、ちがいます।", "ex": [["A: これは ほんですか。\nB: はい、そうです。", "A: Kore wa hon desu ka?\nB: Hai, sou desu.", "A: এটা কি বই?\nB: হ্যাঁ, ঠিক তাই।"], ["A: それは じしょですか。\nB: はい、そうです。", "A: Sore wa jisho desu ka?\nB: Hai, sou desu.", "A: ওটা কি অভিধান?\nB: হ্যাঁ, ঠিক তাই।"], ["A: あれは かさですか。\nB: いいえ、そうじゃありません。", "A: Are wa kasa desu ka?\nB: Iie, sou ja arimasen.", "A: ওইটা কি ছাতা?\nB: না, তা নয়।"], ["A: これは ノートですか。\nB: はい、そうです。", "A: Kore wa nooto desu ka?\nB: Hai, sou desu.", "A: এটা কি খাতা?\nB: হ্যাঁ, ঠিক তাই।"], ["A: それは カメラですか。\nB: いいえ、ちがいます。", "A: Sore wa kamera desu ka?\nB: Iie, chigaimasu.", "A: ওটা কি ক্যামেরা?\nB: না, তা নয়।"]]}, {"title": "④ ～か、～か", "meaning": "এটা নাকি ওটা?", "why": "দুটি বিকল্পের মধ্যে কোনটি সঠিক জানতে। উত্তরে একটি বিকল্প বেছে বলা হয়।", "tip": "A ですか、B ですか = A নাকি B?", "ex": [["これは ほんですか、じしょですか。", "Kore wa hon desu ka, jisho desu ka?", "এটা বই নাকি অভিধান?"], ["それは えんぴつですか、ボールペンですか。", "Sore wa enpitsu desu ka, boorupen desu ka?", "ওটা পেনসিল নাকি বলপেন?"], ["あれは テレビですか、コンピューターですか。", "Are wa terebi desu ka, konpyuutaa desu ka?", "ওইটা টিভি নাকি কম্পিউটার?"], ["これは ノートですか、てちょうですか。", "Kore wa nooto desu ka, techou desu ka?", "এটা খাতা নাকি ছোট ডায়েরি?"], ["それは かぎですか、とけいですか。", "Sore wa kagi desu ka, tokei desu ka?", "ওটা চাবি নাকি ঘড়ি?"]]}, {"title": "⑤ N₁ の N₂", "meaning": "N₁-এর N₂", "why": "জিনিসের মালিক কে বা জিনিসটি কী বিষয়ের তা বোঝাতে।", "tip": "わたしの ほん = আমার বই; にほんごの ほん = জাপানি ভাষার বই।", "ex": [["これは わたしの ほんです。", "Kore wa watashi no hon desu.", "এটা আমার বই।"], ["それは たなかさんの かばんです。", "Sore wa Tanaka-san no kaban desu.", "ওটা তানাকার ব্যাগ।"], ["これは にほんごの ほんです。", "Kore wa nihongo no hon desu.", "এটা জাপানি ভাষার বই।"], ["あれは ミラーさんの くるまです。", "Are wa Miraa-san no kuruma desu.", "ওইটা মিস্টার মিলারের গাড়ি।"], ["これは コンピューターの ほんです。", "Kore wa konpyuutaa no hon desu.", "এটা কম্পিউটার বিষয়ক বই।"]]}, {"title": "⑥ N の (Noun বাদ দেওয়া)", "meaning": "কারটা / কার জিনিস", "why": "আগে থেকেই জানা কোনো জিনিসের নাম আবার না বলে の দিয়ে সংক্ষেপে বোঝাতে।", "tip": "わたしの ほん → わたしの (আমারটা)। এই ব্যবহার সাধারণত জিনিসের জন্য।", "ex": [["これは わたしのです。", "Kore wa watashi no desu.", "এটা আমার।"], ["それは たなかさんのです。", "Sore wa Tanaka-san no desu.", "ওটা তানাকার।"], ["あれは ミラーさんのです。", "Are wa Miraa-san no desu.", "ওইটা মিস্টার মিলারের।"], ["このかばんは わたしのです。", "Kono kaban wa watashi no desu.", "এই ব্যাগটি আমার।"], ["そのほんは リドイさんのです。", "Sono hon wa Ridoi-san no desu.", "ওই বইটি রিদয়ের।"]]}, {"title": "⑦ お～", "meaning": "ভদ্রতার উপসর্গ", "why": "কিছু নির্দিষ্ট শব্দের আগে お বসিয়ে ভদ্রতা বা সম্মান দেখাতে।", "tip": "সব শব্দের আগে お বসানো যায় না; শব্দসহ শিখতে হবে।", "ex": [["おなまえは なんですか。", "Onamae wa nan desu ka?", "আপনার নাম কী?"], ["おくには どちらですか。", "Okuni wa dochira desu ka?", "আপনার দেশ কোনটি?"], ["おしごとは なんですか。", "Oshigoto wa nan desu ka?", "আপনার পেশা কী?"], ["これは おみやげです。", "Kore wa omiyage desu.", "এটা ভ্রমণ থেকে আনা উপহার।"], ["これは おちゃです。", "Kore wa ocha desu.", "এটা চা।"]]}, {"title": "⑧ そうですか", "meaning": "আচ্ছা, তাই নাকি! / বুঝলাম", "why": "নতুন তথ্য শুনে সেটি বুঝেছি বা গ্রহণ করেছি বোঝাতে। এটি সবসময় সরাসরি হ্যাঁ-না প্রশ্ন নয়।", "tip": "そうです = ঠিক তাই; そうですか = ও, বুঝলাম।", "ex": [["A: これは わたしの ほんです。\nB: そうですか。", "A: Kore wa watashi no hon desu.\nB: Sou desu ka.", "A: এটা আমার বই।\nB: আচ্ছা, তাই নাকি!"], ["A: それは にほんごの じしょです。\nB: そうですか。", "A: Sore wa nihongo no jisho desu.\nB: Sou desu ka.", "A: ওটা জাপানি ভাষার অভিধান।\nB: ও, বুঝলাম।"], ["A: あれは ミラーさんの くるまです。\nB: そうですか。", "A: Are wa Miraa-san no kuruma desu.\nB: Sou desu ka.", "A: ওইটা মিলারের গাড়ি।\nB: আচ্ছা, তাই নাকি!"], ["A: このかばんは わたしのです。\nB: そうですか。", "A: Kono kaban wa watashi no desu.\nB: Sou desu ka.", "A: এই ব্যাগটি আমার।\nB: ও, বুঝলাম।"], ["A: これは えいごの ほんです。\nB: そうですか。", "A: Kore wa eigo no hon desu.\nB: Sou desu ka.", "A: এটা ইংরেজি ভাষার বই।\nB: আচ্ছা, তাই নাকি!"]]}];const grammarRules2=[["これ・それ・あれ", "কাছাকাছি বা দূরের জিনিস দেখাতে"], ["この・その・あの", "নির্দিষ্ট noun-এর আগে বসাতে"], ["そうです", "হ্যাঁ, ঠিক তাই বলতে"], ["～か、～か", "দুটি বিকল্পের মধ্যে জানতে"], ["N₁ の N₂", "মালিকানা বা বিষয়ের সম্পর্ক বোঝাতে"], ["N の", "আগের noun বাদ দিয়ে কারটা বোঝাতে"], ["お～", "নির্দিষ্ট শব্দে ভদ্রতা দেখাতে"], ["そうですか", "নতুন তথ্য শুনে বুঝেছি জানাতে"]];const grammarRules=[['は～です','পরিচয় বা তথ্য ভদ্রভাবে জানাতে'],['じゃありません','নয় / নই বোঝাতে'],['ですか','প্রশ্ন করতে'],['も','ও / এছাড়াও বোঝাতে'],['の','দুটি noun-এর সম্পর্ক বোঝাতে'],['さん','নামের পরে সম্মান দেখাতে']];
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function shuffle(a){let b=[...a];for(let i=b.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
@@ -1557,13 +1560,34 @@ function openContextAI(context,question){
 // Hands-free voice mode uses existing /transcribe and /chat APIs, plus device TTS.
 // It is sequential voice turns (not a low-latency streaming voice API).
 let liveVoiceActive=false,liveVoiceMuted=false,liveVoiceSpeaking=false;
+let liveAudioContext=null, liveAudioSource=null, livePlaybackId=0, liveLastAnswer='',liveLastQuestion='';
 function liveSetStatus(msg,state='idle'){
  const screen=document.getElementById('liveVoiceScreen');
  screen.dataset.state=state;document.getElementById('liveVoiceStatus').textContent=msg;
 }
+function liveGetAudioContext(){
+ const AudioCtx=window.AudioContext||window.webkitAudioContext;
+ if(!AudioCtx)throw new Error('এই ফোনে Web Audio নেই।');
+ if(!liveAudioContext||liveAudioContext.state==='closed')liveAudioContext=new AudioCtx();
+ return liveAudioContext;
+}
+function liveUnlockSound(){
+ // Run on a user tap. iOS blocks Web Audio started only after an asynchronous request.
+ try{
+  const ctx=liveGetAudioContext();
+  if(ctx.state==='suspended')ctx.resume().catch(()=>{});
+  const buffer=ctx.createBuffer(1,1,ctx.sampleRate),src=ctx.createBufferSource();
+  src.buffer=buffer;src.connect(ctx.destination);src.start(0);
+ }catch(err){liveSetStatus('⚠️ '+err.message);}
+}
+function liveStopSound(){
+ livePlaybackId++;
+ if(liveAudioSource){try{liveAudioSource.onended=null;liveAudioSource.stop(0);}catch(e){}liveAudioSource=null;}
+ if('speechSynthesis' in window)window.speechSynthesis.cancel();
+}
 function openLiveVoice(){
  if(liveVoiceActive)return;
- if(!('speechSynthesis' in window)){alert('এই Browser-এ voice playback নেই।');return;}
+ liveUnlockSound();
  showTab('ai');liveVoiceActive=true;liveVoiceMuted=false;
  document.getElementById('liveMute').textContent='🎙️';
  document.getElementById('liveVoiceScreen').classList.add('is-open');
@@ -1585,25 +1609,96 @@ function toggleLiveMute(){
 function closeLiveVoice(){
  liveVoiceActive=false;liveVoiceMuted=true;liveVoiceSpeaking=false;
  document.getElementById('liveVoiceScreen').classList.remove('is-open');
- if(window.speechSynthesis)window.speechSynthesis.cancel();
+ liveStopSound();
  stopVoiceInput();
 }
-function liveVoiceReply(answer,question){
+function liveCleanSpeakText(text){
+ return String(text||'').replace(/[*#`_]/g,'').replace(/https?:\/\/\S+/g,'').replace(/[\u{1F300}-\u{1FAFF}]/gu,'').trim().slice(0,850);
+}
+function liveStartAudioPcm(base64,mimeType,id,done){
+ const ctx=liveGetAudioContext();
+ const raw=atob(base64),len=raw.length;
+ const binary=new Uint8Array(len);
+ for(let i=0;i<len;i++)binary[i]=raw.charCodeAt(i);
+ const mime=String(mimeType||'');
+ const rateMatch=mime.match(/rate=(\d+)/i),rate=rateMatch?Number(rateMatch[1]):24000;
+ // Gemini TTS returns mono PCM16 little endian, normally 24 kHz.
+ if(!Number.isFinite(rate)||rate<8000||rate>96000||binary.length<100)throw new Error('Audio data invalid');
+ const samples=Math.floor(binary.length/2);
+ const audio=ctx.createBuffer(1,samples,rate),channel=audio.getChannelData(0);
+ const view=new DataView(binary.buffer);
+ for(let i=0;i<samples;i++)channel[i]=view.getInt16(i*2,true)/32768;
+ const src=ctx.createBufferSource();src.buffer=audio;src.connect(ctx.destination);
+ liveAudioSource=src;
+ src.onended=()=>{if(id===livePlaybackId){liveAudioSource=null;done();}};
+ src.start(0);
+}
+function liveBrowserSpeech(text,lang,id,done){
+ if(!('speechSynthesis' in window))return false;
+ const synth=window.speechSynthesis;
+ const voices=synth.getVoices();
+ const matching=voices.find(v=>v.lang.toLowerCase().startsWith(lang==='ja-JP'?'ja':'bn'));
+ if(!matching)return false; // Avoid an unrelated English voice misreading Bengali.
+ const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.voice=matching;u.volume=1;u.rate=.94;
+ u.onend=()=>{if(id===livePlaybackId)done()};
+ u.onerror=()=>{if(id===livePlaybackId){liveSetStatus('⚠️ ফোনের Voice কাজ করেনি। 🔊 চাপো।');done()}};
+ synth.cancel();synth.speak(u);
+ return true;
+}
+async function liveVoiceReply(answer,question){
  if(!liveVoiceActive)return;
+ liveLastAnswer=answer;liveLastQuestion=question;
  if(liveVoiceMuted){liveSetStatus('উত্তর এসেছে — মাইক্রোফোন বন্ধ আছে');return;}
- liveVoiceSpeaking=true;liveSetStatus('AI কথা বলছে… 🤖','speaking');
- const lang=detectChatLocale(question);
- const utterance=new SpeechSynthesisUtterance(String(answer||'').replace(/[*#`]/g,''));
- utterance.lang=lang==='ja-JP'?'ja-JP':'bn-BD';
- utterance.rate=0.96;utterance.pitch=1;utterance.volume=1;
- const voice=speechSynthesis.getVoices().find(v=>v.lang.toLowerCase().startsWith(lang==='ja-JP'?'ja':'bn'));
- if(voice)utterance.voice=voice;
- let ended=false;
- const finish=()=>{if(ended)return;ended=true;liveVoiceSpeaking=false;if(liveVoiceActive&&!liveVoiceMuted){liveSetStatus('আবার বলো… 🎙️','listening');setTimeout(liveVoiceListen,500);}};
- utterance.onend=finish;utterance.onerror=()=>{liveSetStatus('ফোনে Bengali/Japanese voice পাওয়া যায়নি। আবার প্রশ্ন করতে পারো।');finish();};
- speechSynthesis.cancel();speechSynthesis.speak(utterance);
- // Prevent a missing onend from blocking the next turn forever.
- setTimeout(finish,Math.min(90000,Math.max(7000,String(answer).length*145)));
+ liveStopSound();
+ const id=livePlaybackId;
+ liveVoiceSpeaking=true;
+ stopVoiceInput();
+ const lang=detectChatLocale(question)==='ja-JP'?'ja-JP':'bn-BD';
+ const text=liveCleanSpeakText(answer);
+ const done=()=>{
+  if(id!==livePlaybackId)return;
+  liveVoiceSpeaking=false;
+  if(liveVoiceActive&&!liveVoiceMuted){liveSetStatus('আবার বলো… 🎙️','listening');setTimeout(liveVoiceListen,750);}
+ };
+ if(!text){liveSetStatus('⚠️ পড়ার মতো উত্তর নেই।');done();return;}
+ liveSetStatus('AI-এর কণ্ঠ তৈরি হচ্ছে… 🔊','thinking');
+ try{
+  const url=getAIEndpoint().replace(/\/chat\/?$/,'/speak');
+  const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,language:lang})});
+  const payload=await res.json().catch(()=>({}));
+  if(id!==livePlaybackId||!liveVoiceActive)return;
+  if(!res.ok||!payload.audio)throw new Error(payload.error||'AI Audio আসেনি');
+  const ctx=liveGetAudioContext();
+  if(ctx.state==='suspended')await ctx.resume();
+  if(ctx.state!=='running')throw new Error('iPhone audio blocked. 🔊 Test Sound চাপো।');
+  liveSetStatus('🤖 AI কথা বলছে…','speaking');
+  liveStartAudioPcm(payload.audio,payload.mimeType,id,done);
+ }catch(err){
+  if(id!==livePlaybackId||!liveVoiceActive)return;
+  const fallback=liveBrowserSpeech(text,lang,id,done);
+  if(fallback)liveSetStatus('🤖 ফোনের Voice দিয়ে উত্তর পড়ছে…','speaking');
+  else{
+   liveVoiceSpeaking=false;
+   liveSetStatus('⚠️ AI Voice: '+err.message+' 🔊 Test Sound চাপো।');
+   // Do not auto-listen on playback failure; let the user read the error.
+  }
+ }
+}
+function testLiveSound(){
+ liveUnlockSound();
+ liveStopSound();
+ try{
+  const ctx=liveGetAudioContext();
+  const oscillator=ctx.createOscillator(),gain=ctx.createGain();
+  oscillator.type='sine';oscillator.frequency.value=660;
+  gain.gain.value=.18;
+  oscillator.connect(gain);gain.connect(ctx.destination);
+  oscillator.start();oscillator.stop(ctx.currentTime+.28);
+  if(liveLastAnswer&&liveVoiceActive){
+   liveSetStatus('🔊 আগের AI উত্তর আবার শোনাচ্ছি…');
+   liveVoiceReply(liveLastAnswer,liveLastQuestion);
+  }else liveSetStatus('🔊 ছোট শব্দ শুনতে পেলে ফোনের Audio চালু আছে।');
+ }catch(err){liveSetStatus('⚠️ Sound test failed: '+err.message);}
 }
 
 let aiBusy=false;
