@@ -330,26 +330,30 @@ async function startVoiceInput(lang){
 // Romaji/English and Markdown formatting are removed from audio, but remain visible in chat.
 let replySpeechQueue=[], replySpeechIndex=0, replySpeechToken=0;
 function voiceSegments(text){
- const lines=String(text||'').split(/\r?\n/);
+ // Read ONLY Japanese script and Bengali script. English/Romaji never becomes audio.
  const result=[];
- for(let line of lines){
-  if(/^\s*(?:[-*•\d.()]+\s*)?(?:🔤\s*)?(?:romaji|romanji|romanization|উচ্চারণ\s*\(\s*romaji\s*\))\s*[:：-]/i.test(line))continue;
-  // Remove markdown formatting, links and inline English; never read romanized Japanese aloud.
+ const containsJa=/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶ]/;
+ const containsBn=/[\u0980-\u09ff]/;
+ for(let line of String(text||'').split(/\r?\n/)){
+  // Ignore whole Romaji lines, even if a Japanese example is mentioned in a heading.
+  if(/^\s*(?:[-*•\d.()]+\s*)?(?:🔤\s*)?(?:romaji|romanji|romanization|রোমাজি|উচ্চারণ\s*\(\s*romaji\s*\))\s*[:：-]/i.test(line))continue;
   line=line.replace(/https?:\/\/\S+/g,' ').replace(/\[([^\]]+)\]\([^)]*\)/g,'$1')
-    .replace(/[*#_`|>~]/g,' ').replace(/(?:\b[A-Za-z][A-Za-z\s'’-]*\b)/g,' ')
-    .replace(/[🇯🇵🇧🇩🔤📖✅❌👉•]/gu,' ').replace(/\s+/g,' ').trim();
-  const runs=line.match(/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶー\s。、！？「」『』（）]+|[\u0980-\u09ff\s।?!,:;()০-৯0-9]+/g)||[];
-  for(const run of runs){
-   const part=run.trim().replace(/^[\s:：。、।,.!?「」『』（）()]+|[\s:：。、।,.!?「」『』（）()]+$/g,'').trim();
-   if(!part)continue;
-   const locale=/[\u0980-\u09ff]/.test(part)?'bn-BD':/[\u3040-\u30ff\u3400-\u9fff]/.test(part)?'ja-JP':null;
+    .replace(/[*#_`|>~]/g,' ').replace(/[🇯🇵🇧🇩🔤📖✅❌👉•]/gu,' ');
+  // Strip Latin letters, including transliterated example text and English headings.
+  line=line.replace(/[A-Za-z]+(?:[\s'’\-]+[A-Za-z]+)*/g,' ');
+  // Recognize alternating Bengali/Japanese runs; never pronounce Latin text or digits alone.
+  const pieces=line.match(/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶー\s。、！？「」『』（）]+|[\u0980-\u09ff\s।?!,:;()০-৯0-9]+/g)||[];
+  for(let piece of pieces){
+   piece=piece.trim().replace(/^[\s:：。、।,.!?「」『』（）()]+|[\s:：。、।,.!?「」『』（）()]+$/g,'').trim();
+   const locale=containsBn.test(piece)?'bn-BD':containsJa.test(piece)?'ja-JP':null;
    if(!locale)continue;
-   const prev=result[result.length-1];
-   if(prev&&prev.locale===locale&&prev.text.length+part.length<400)prev.text+='। '+part;
-   else result.push({text:part,locale});
+   const last=result[result.length-1];
+   if(last&&last.locale===locale&&last.text.length+piece.length<280){
+    last.text+=(locale==='ja-JP'?'。 ':'। ')+piece;
+   }else result.push({text:piece,locale});
   }
  }
- return result.slice(0,32);
+ return result.slice(0,48);
 }
 function stopAIReplySpeech(){
  replySpeechToken++;replySpeechQueue=[];replySpeechIndex=0;
