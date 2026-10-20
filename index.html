@@ -330,30 +330,43 @@ async function startVoiceInput(lang){
 // Romaji/English and Markdown formatting are removed from audio, but remain visible in chat.
 let replySpeechQueue=[], replySpeechIndex=0, replySpeechToken=0;
 function voiceSegments(text){
- // Read ONLY Japanese script and Bengali script. English/Romaji never becomes audio.
- const result=[];
- const containsJa=/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶ]/;
- const containsBn=/[\u0980-\u09ff]/;
- for(let line of String(text||'').split(/\r?\n/)){
-  // Ignore whole Romaji lines, even if a Japanese example is mentioned in a heading.
-  if(/^\s*(?:[-*•\d.()]+\s*)?(?:🔤\s*)?(?:romaji|romanji|romanization|রোমাজি|উচ্চারণ\s*\(\s*romaji\s*\))\s*[:：-]/i.test(line))continue;
-  line=line.replace(/https?:\/\/\S+/g,' ').replace(/\[([^\]]+)\]\([^)]*\)/g,'$1')
-    .replace(/[*#_`|>~]/g,' ').replace(/[🇯🇵🇧🇩🔤📖✅❌👉•]/gu,' ');
-  // Strip Latin letters, including transliterated example text and English headings.
-  line=line.replace(/[A-Za-z]+(?:[\s'’\-]+[A-Za-z]+)*/g,' ');
-  // Recognize alternating Bengali/Japanese runs; never pronounce Latin text or digits alone.
-  const pieces=line.match(/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶー\s。、！？「」『』（）]+|[\u0980-\u09ff\s।?!,:;()০-৯0-9]+/g)||[];
-  for(let piece of pieces){
-   piece=piece.trim().replace(/^[\s:：。、।,.!?「」『』（）()]+|[\s:：。、।,.!?「」『』（）()]+$/g,'').trim();
-   const locale=containsBn.test(piece)?'bn-BD':containsJa.test(piece)?'ja-JP':null;
-   if(!locale)continue;
-   const last=result[result.length-1];
-   if(last&&last.locale===locale&&last.text.length+piece.length<280){
-    last.text+=(locale==='ja-JP'?'。 ':'। ')+piece;
-   }else result.push({text:piece,locale});
+ // Read Japanese in Japanese and Bengali explanations in Bengali.
+ // Ignore Romaji/English prose, but retain punctuation and numeric examples.
+ const output=[];
+ const jp=/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶ]/;
+ const bn=/[\u0980-\u09ff]/;
+ const blocks=String(text||'').split(/\r?\n/);
+ for(let line of blocks){
+  if(/^\s*(?:[-*•\d.()]+\s*)?(?:🔤\s*)?(?:romaji|romanji|romanization|রোমাজি)\s*[:：-]/i.test(line))continue;
+  line=line.replace(/https?:\/\/\S+/g,' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g,'$1')
+    .replace(/[*#_`|>~]/g,' ')
+    .replace(/[🇯🇵🇧🇩🔤📖✅❌👉•]/gu,' ')
+    .replace(/[A-Za-z]+(?:[\s'’\-]+[A-Za-z]+)*/g,' ');
+  // Preserve the original order when alternating Japanese and Bengali scripts.
+  // Spaces/digits/punctuation attach to their neighboring language run.
+  const tokens=line.match(/[\u3040-\u30ff\u3400-\u9fff々〆ヵヶー]+|[\u0980-\u09ff]+|[^\u3040-\u30ff\u3400-\u9fff々〆ヵヶー\u0980-\u09ff]+/g)||[];
+  let locale=null,buf='';
+  const flush=()=>{
+    let chunk=buf.replace(/^[\s:：。、।,.!?「」『』（）()\-]+|[\s:：。、।,.!?「」『』（）()\-]+$/g,'').trim();
+    if(chunk&&locale) output.push({text:chunk,locale});
+    buf='';
+  };
+  for(const token of tokens){
+    const next=bn.test(token)?'bn-BD':jp.test(token)?'ja-JP':null;
+    if(!next){buf+=token;continue;}
+    if(locale&&locale!==next)flush();
+    locale=next;buf+=token;
   }
+  flush();
  }
- return result.slice(0,48);
+ // Keep utterances short enough for mobile Safari/Chrome.
+ const speech=[];
+ for(const item of output){
+  const pieces=item.text.match(/.{1,125}(?:[।。！？!?]|$)|.{1,125}/gu)||[item.text];
+  for(const piece of pieces){if(piece.trim())speech.push({text:piece.trim(),locale:item.locale});}
+ }
+ return speech.slice(0,100);
 }
 function stopAIReplySpeech(){
  replySpeechToken++;replySpeechQueue=[];replySpeechIndex=0;
@@ -376,6 +389,11 @@ function speakAIAnswer(text,lang){
   const voices=synth.getVoices();
   const voice=voices.find(v=>v.lang.toLowerCase()===locale)||voices.find(v=>v.lang.toLowerCase().startsWith(locale.slice(0,2)));
   if(voice)utterance.voice=voice;
+  // A missing bn voice is an OS/browser limitation, not a Gemini error.
+  if(segment.locale==='bn-BD'&&!voice&&!window.bengaliVoiceWarned){
+    window.bengaliVoiceWarned=true;
+    micUpdate('ℹ️ বাংলা Voice না থাকলে ফোনের Text-to-Speech সেটিংসে বাংলা Voice চালু করো।');
+  }
   window.currentAIUtterance=utterance;
   utterance.onend=speakNext;
   utterance.onerror=e=>{
