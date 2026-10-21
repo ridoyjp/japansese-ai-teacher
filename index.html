@@ -1861,6 +1861,55 @@ html.ebook-cover-scroll-locked body.ebook-cover-only .cover-feature-grid {
  html:has(#cover:not(.hidden)) #home{display:none!important;visibility:hidden!important;}
  body.ebook-cover-only #cover{top:0!important;margin-top:0!important;}
 }
+
+/* Final approved Phone / iPad / Laptop cover: full-bleed artwork with accessible live hit targets */
+body.ebook-cover-only #cover.three-device-cover{
+ position:fixed!important;inset:0!important;z-index:9999!important;
+ width:100vw!important;height:100dvh!important;min-height:0!important;
+ margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+ overflow:hidden!important;display:block!important;background:#073b83!important;
+}
+body.ebook-cover-only #cover.three-device-cover .device-cover-picture,
+body.ebook-cover-only #cover.three-device-cover .device-cover-art{
+ display:block!important;width:100%!important;height:100%!important;max-width:none!important;
+ margin:0!important;padding:0!important;object-fit:fill!important;position:absolute!important;inset:0!important;
+}
+body.ebook-cover-only #cover.three-device-cover .device-cover-actions{position:absolute!important;inset:0!important;z-index:2!important;pointer-events:none!important}
+body.ebook-cover-only #cover.three-device-cover .device-hit{
+ display:block!important;position:absolute!important;pointer-events:auto!important;cursor:pointer!important;
+ border:0!important;padding:0!important;margin:0!important;background:transparent!important;
+ appearance:none!important;-webkit-appearance:none!important;opacity:1!important;min-height:30px!important;
+}
+body.ebook-cover-only #cover.three-device-cover .device-hit:focus-visible{outline:3px solid #fff!important;outline-offset:2px!important;border-radius:24px!important;box-shadow:0 0 0 6px #ff3d98!important}
+body.ebook-cover-only #cover.three-device-cover .hit-menu{left:77%;top:1%;width:19%;height:10%}
+body.ebook-cover-only #cover.three-device-cover .hit-basic{left:10%;top:46%;width:9%;height:20%}
+body.ebook-cover-only #cover.three-device-cover .hit-words{left:19%;top:46%;width:9%;height:20%}
+body.ebook-cover-only #cover.three-device-cover .hit-grammar{left:28%;top:46%;width:9%;height:20%}
+body.ebook-cover-only #cover.three-device-cover .hit-ai{left:37%;top:46%;width:9%;height:20%}
+body.ebook-cover-only #cover.three-device-cover .hit-start{left:15%;top:64%;width:24%;height:15%}
+@media(min-width:650px) and (max-width:1199px){
+ body.ebook-cover-only #cover.three-device-cover .hit-menu{
+  left:auto!important;right:2%!important;top:2%!important;width:21%!important;height:7%!important;
+  background:linear-gradient(110deg,#ff597a,#ef26b4)!important;color:#fff!important;
+  border:2px solid #ffd4f3!important;border-radius:100px!important;
+  box-shadow:0 4px 20px #d234a060!important;
+ }
+ body.ebook-cover-only #cover.three-device-cover .hit-menu::after{content:'📖 Book Menu';font-size:clamp(12px,2vw,22px);font-weight:800;white-space:nowrap}
+ body.ebook-cover-only #cover.three-device-cover .hit-basic{left:4%;top:37%;width:13%;height:17%}
+ body.ebook-cover-only #cover.three-device-cover .hit-words{left:16%;top:37%;width:13%;height:17%}
+ body.ebook-cover-only #cover.three-device-cover .hit-grammar{left:28%;top:37%;width:13%;height:17%}
+ body.ebook-cover-only #cover.three-device-cover .hit-ai{left:40%;top:37%;width:13%;height:17%}
+ body.ebook-cover-only #cover.three-device-cover .hit-start{left:10%;top:54%;width:39%;height:11%}
+}
+@media(max-width:649px){
+ body.ebook-cover-only #cover.three-device-cover .hit-menu{left:68%;top:1%;width:30%;height:8%}
+ body.ebook-cover-only #cover.three-device-cover .hit-basic{left:7%;top:71%;width:20%;height:14%}
+ body.ebook-cover-only #cover.three-device-cover .hit-words{left:28%;top:71%;width:20%;height:14%}
+ body.ebook-cover-only #cover.three-device-cover .hit-grammar{left:51%;top:71%;width:20%;height:14%}
+ body.ebook-cover-only #cover.three-device-cover .hit-ai{left:74%;top:71%;width:20%;height:14%}
+ body.ebook-cover-only #cover.three-device-cover .hit-start{left:16%;top:86%;width:68%;height:10%}
+}
+
 </style></head><body><header class="ebook-site-header"><div class="book-brand"><span>🌸 Japanese Ai Ebook</span><button class="book-home-link" type="button" onclick="showTab('home')" aria-label="Book Menu">🏠 Book Menu</button></div><div class="header-description"><span class="header-eyebrow">✦ JAPANESE LEARNING • DIGITAL EDITION</span><h1>জাপানি শেখা, এখন বইয়ের মতো সহজ।</h1><p>🇯🇵 Japanese শেখো • 🇧🇩 বাংলায় বুঝো • এক অধ্যায় থেকে পরের অধ্যায়ে এগিয়ে চলো</p></div><nav class="nav jlpt-n5-topnav" aria-label="JLPT N5 navigation">
 <button type="button" id="tabBasics" onclick="showTab('basics')">🌸 Basic</button>
 <button type="button" id="tabWords" onclick="showTab('vocabKanjiChoice')">📖 Vocabulary &amp; Kanji</button>
@@ -1875,21 +1924,19 @@ html.ebook-cover-scroll-locked body.ebook-cover-only .cover-feature-grid {
   <button type="button" onclick="speakStudyJapanese('こんにちは。')">▶ Test Sound</button>
   <button type="button" onclick="stopStudySound()">⏹ Stop</button>
   <div class="study-sound-status" id="studySoundStatus" role="status" aria-live="polite">Basic, Word, Grammar ও Quiz-এর 🔊 বাটনে চাপলে Japanese উচ্চারণ শুনবে। AI Chat নীরব থাকবে।</div>
-</div></header><main class="wrap"><section id="cover" class="sakura-cover-page hidden" aria-label="Japanese Ai Ebook Cover">
-  <div class="illustrated-cover">
-    <div class="cover-artscape"><span class="cover-hello">こんにちは！</span><span class="cover-speak">がんばろう！<small>চলো, চেষ্টা করি!</small></span></div>
-    <div class="illustrated-cover-copy">
-      <h1>Japanese<br><span>Ai Ebook</span></h1>
-      <p class="ebook-cover-tagline">🌸 Japanese শেখা, এখন বইয়ের মতো সহজ! 🌸</p>
-      <div class="cover-feature-grid" aria-label="বইয়ের বিষয়">
-        <button type="button" class="cover-feature-button" onclick="showTab('basics')" aria-label="Basic খুলুন"><span class="round-feature pink">🌸</span><strong>Basic</strong><small>শুরু থেকে শিখো</small></button>
-        <button type="button" class="cover-feature-button" onclick="showTab('vocabKanjiChoice')" aria-label="Vocabulary খুলুন"><span class="round-feature green">📖</span><strong>Vocabulary</strong><small>জাপানি শব্দ</small></button>
-        <button type="button" class="cover-feature-button" onclick="showTab('grammarReadingChoice')" aria-label="Grammar খুলুন"><span class="round-feature amber">📚</span><strong>Grammar</strong><small>সহজ ব্যাখ্যা</small></button>
-        <button type="button" class="cover-feature-button" onclick="showTab('ai')" aria-label="AI Chat খুলুন"><span class="round-feature violet">🤖</span><strong>AI Chat</strong><small>প্রশ্নের উত্তর</small></button>
-      </div>
-      <button type="button" class="illustrated-start sakura-start" onclick="showTab('home')">Start Now <span aria-hidden="true">➜</span></button>
-      <div class="cover-support-line"><span>✓ ধাপে ধাপে শেখো</span><span>♡ বাংলায় বুঝো</span><span>✦ অনুশীলন করো</span></div>
-    </div>
+</div></header><main class="wrap"><section id="cover" class="sakura-cover-page hidden three-device-cover" aria-label="Japanese Ai Ebook প্রথম পৃষ্ঠা">
+  <picture class="device-cover-picture" aria-hidden="true">
+    <source media="(max-width: 649px)" srcset="assets/cover-phone.webp">
+    <source media="(max-width: 1199px)" srcset="assets/cover-ipad.webp">
+    <img class="device-cover-art" src="assets/cover-laptop.webp" alt="" decoding="async" fetchpriority="high">
+  </picture>
+  <div class="device-cover-actions" aria-label="প্রথম পৃষ্ঠার কার্যকর বাটন">
+    <button class="device-hit hit-menu" type="button" onclick="showTab('home')" aria-label="Book Menu খুলুন"></button>
+    <button class="device-hit hit-basic" type="button" onclick="showTab('basics')" aria-label="Basic পড়ুন"></button>
+    <button class="device-hit hit-words" type="button" onclick="showTab('vocabKanjiChoice')" aria-label="Vocabulary এবং Kanji পড়ুন"></button>
+    <button class="device-hit hit-grammar" type="button" onclick="showTab('grammarReadingChoice')" aria-label="Grammar এবং Reading পড়ুন"></button>
+    <button class="device-hit hit-ai" type="button" onclick="showTab('ai')" aria-label="AI Chat খুলুন"></button>
+    <button class="device-hit hit-start" type="button" onclick="showTab('home')" aria-label="Start Now — Book Menu খুলুন"></button>
   </div>
 </section>
 <section id="home" class="book-home-page simple-home hidden" aria-label="Japanese Ai Ebook menu">
@@ -2421,7 +2468,7 @@ function jlptStopTimer(){if(jlptTimer){clearInterval(jlptTimer);jlptTimer=null;}
 function jlptDisplay(which){['jlptLanding','jlptActive','jlptDone'].forEach(k=>document.getElementById(k).classList.toggle('hidden',k!==which));}
 function jlptHome(){jlptStopTimer();jlptRunning=false;showTab('jlptExam');jlptDisplay('jlptLanding');document.getElementById('n5ExamLessonChooser').classList.add('hidden');}
 function jlptQuit(){jlptStopTimer();jlptRunning=false;smartBack();}
-function jlptStart(mode){jlptStopTimer();jlptMode=mode;jlptResponses=[];jlptSegment=0;jlptSegments=mode==='full'?['vocab','grammar','listening']:[mode];jlptBeginSegment();showTab('jlptExam');}
+function jlptStart(mode){mode=String(mode||'').replace(/^(practice-(?:vocabulary|kanji|grammar|reading|listening))-all$/, '$1-0');jlptStopTimer();jlptMode=mode;jlptResponses=[];jlptSegment=0;jlptSegments=mode==='full'?['vocab','grammar','listening']:[mode];jlptBeginSegment();showTab('jlptExam');}
 function jlptBeginSegment(){const mode=jlptSegments[jlptSegment];const match=/^practice-(vocabulary|kanji|grammar|reading|listening)-([012])$/.exec(mode);const lesson=match?Number(match[2]):0;const subject=match?match[1]:null;jlptItems=match?n5PracticeQuestions(subject,lesson):jlptPool(mode);if(!jlptItems.length){jlptHome();alert('এই Lesson-এর পরীক্ষার প্রশ্ন পাওয়া যায়নি।');return;}jlptIndex=0;jlptSeconds=match?(subject==='reading'?12*60:subject==='listening'?15*60:10*60):JLPT_SECTIONS[mode].seconds;jlptRunning=true;jlptDisplay('jlptActive');document.getElementById('jlptExamTitle').textContent=match?(N5_TOPIC_LABELS[subject]+' · '+(lesson?'Lesson '+lesson:'Lessons 1 + 2')):JLPT_SECTIONS[mode].name;document.getElementById('jlptType').textContent=`JLPT N5 · Section ${jlptSegment+1} / ${jlptSegments.length}`;jlptTick();jlptTimer=setInterval(()=>{jlptSeconds--;jlptTick();if(jlptSeconds<=0)jlptEndSegment();},1000);jlptRender();}
 function jlptTick(){const el=document.getElementById('jlptClock');el.textContent=String(Math.max(0,Math.floor(jlptSeconds/60))).padStart(2,'0')+':'+String(Math.max(0,jlptSeconds%60)).padStart(2,'0');el.classList.toggle('warning',jlptSeconds<60);}
 function jlptRender(){const q=jlptItems[jlptIndex];jlptSelected=null;document.getElementById('jlptCounter').textContent=`問 ${jlptIndex+1} / ${jlptItems.length}`;document.getElementById('jlptProgressBar').style.width=(jlptIndex/jlptItems.length*100)+'%';document.getElementById('jlptKind').textContent=q.kind;document.getElementById('jlptQuestion').textContent=q.stem;const passage=document.getElementById('jlptPassage');passage.classList.toggle('hidden',!q.passage);passage.textContent=q.passage||'';document.getElementById('jlptListenBox').classList.toggle('hidden',!q.audio);const btn=document.getElementById('jlptNextBtn');btn.disabled=true;btn.textContent=jlptIndex===jlptItems.length-1?'Section শেষ →':'পরের প্রশ্ন →';const box=document.getElementById('jlptChoices');box.innerHTML='';q.opts.forEach((answer,i)=>{const b=document.createElement('button');b.type='button';b.className='jlpt-choice';const marker=document.createElement('span');marker.className='jlpt-letter';marker.textContent=i+1;const value=document.createElement('span');value.textContent=answer;b.append(marker,value);b.onclick=()=>{jlptSelected=answer;for(const c of box.children)c.classList.remove('chosen');b.classList.add('chosen');btn.disabled=false;};box.append(b);});}
