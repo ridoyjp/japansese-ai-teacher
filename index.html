@@ -2001,8 +2001,7 @@ function openListeningLesson(lesson){
    <button type="button" class="listening-audio-play" onclick="playListeningStudy(${globalIndex})">🔊 Japanese শুনো</button>
    <p class="listening-study-question">❓ ${escapeHtml(item[1])}</p>
    <div class="listening-answer-grid" role="group" aria-label="Audio ${index+1}: চারটি উত্তরের মধ্যে একটি বেছে নাও">${buttons}</div>
-   <div class="listening-answer-result" id="listening-result-${globalIndex}" hidden aria-live="polite"></div>
-   <details><summary>🇯🇵 Japanese লেখা দেখো</summary><p class="listening-jp-transcript">${escapeHtml(item[0])}</p></details></article>`;
+   <div class="listening-answer-result" id="listening-result-${globalIndex}" hidden aria-live="polite"></div></article>`;
  }).join('');
  showTab('listeningStudy');
 }
@@ -2025,11 +2024,10 @@ function chooseListeningAnswer(globalIndex,optionIndex){
  result.hidden=false;
  result.classList.toggle('failed',!passed);
  result.innerHTML=`<strong>${passed?'✅ সঠিক উত্তর!':'❌ ভুল উত্তর।'}</strong>
-  <p>❓ প্রশ্ন: <b>${escapeHtml(question[1])}</b></p>
-  <p>🇧🇩 প্রশ্নের বাংলা অর্থ: ${escapeHtml(LISTENING_QUESTION_BN[globalIndex]||'')}</p>
-  <p>✅ সঠিক উত্তর: <b>${escapeHtml(correct)}</b></p>
-  <p>🇧🇩 উত্তরের বাংলা অর্থ: ${escapeHtml(question[4])}</p>
-  <button type="button" class="listening-ai-ask" onclick="askListeningExplanation(${globalIndex})">🤖 AI Chat-এ ব্যাখ্যা চাই</button>`;
+  <p>❓ <b>প্রশ্নের বাংলা:</b> ${escapeHtml(LISTENING_QUESTION_BN[globalIndex]||'')}</p>
+  <p>✅ <b>সঠিক উত্তর:</b> ${escapeHtml(correct)}</p>
+  <p>🇧🇩 <b>উত্তরের অর্থ:</b> ${escapeHtml(question[4])}</p>
+  <p>🇯🇵 <b>শোনা Japanese:</b> ${escapeHtml(question[0])}</p>`;
 }
 function askListeningExplanation(index){
  const q=JLPT_LISTENINGS[index];
