@@ -1717,7 +1717,7 @@ body.ebook-home-only #home .easy-learning-guide button{
 <section id="home" class="book-home-page simple-home hidden" aria-label="Japanese Ai Ebook menu">
   <div class="compact-book-menu-header">
     <div class="compact-book-brand"><strong>🌸 Japanese <span>Ai Ebook</span></strong><small>তোমার শেখার বই · 学ぼう</small></div>
-    <button class="menu-return-cover" type="button" onclick="showTab('cover')" aria-label="প্রথম পৃষ্ঠায় ফিরে যাও">← প্রথম পৃষ্ঠা</button>
+    <button class="menu-return-cover" type="button" onclick="openCoverFromMenu()" aria-label="প্রথম পৃষ্ঠায় ফিরে যাও">← প্রথম পৃষ্ঠা</button>
   </div>
   <div class="illustrated-menu-title"><h2>🌸 কী শিখবে নির্বাচন করো 🌸</h2><p>নিচের যেকোনো বিষয় চাপলেই পড়া শুরু করতে পারবে।</p></div>
   <div class="easy-learning-guide" aria-label="সহজে ব্যবহার করার নিয়ম">
@@ -1896,6 +1896,14 @@ function showTab(t){
   if(active)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');
  });
  window.scrollTo({top:0,behavior:'instant'});
+}
+// The menu's first-page button is a destination link, not a History Back action.
+function openCoverFromMenu(){
+ showTab('cover');
+ // Reset the document even when the user was far down the scrollable menu.
+ document.documentElement.scrollTop=0;
+ document.body.scrollTop=0;
+ window.scrollTo({top:0,left:0,behavior:'instant'});
 }
 // Digital-book navigation: home → category → lesson → content.
 let selectedBookCategory='words';
@@ -2744,7 +2752,7 @@ renderN5Kanji();renderN5Reading();
  function isBackButton(button){
   if(button.classList.contains('ai-header-back')||button.classList.contains('book-prev'))return true;
   if(button.closest('.book-breadcrumb')&&/^(?:←|↩)/.test(button.textContent.trim()))return true;
-  if(button.classList.contains('menu-return-cover'))return true;
+  if(button.classList.contains('menu-return-cover'))return false; // Always open Cover, never history.back().
   const label=(button.textContent||'').trim();
   return /^(?:←|↩)\s*(?:আগের|ফির|Back|Book Menu|মূল|N5|Vocabulary|Grammar|Kanji|Listening|Reading)/i.test(label);
  }
