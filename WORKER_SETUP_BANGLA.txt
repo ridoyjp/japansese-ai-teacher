@@ -1,0 +1,18 @@
+Japanese AI Teacher - Worker update
+
+1. Cloudflare Dashboard > Workers & Pages > japanese-ai-teacher > Edit code.
+2. Replace everything in worker.js with the content of the included worker.js and click Deploy.
+3. Settings > Variables and Secrets > Production:
+   GEMINI_API_KEY = your own Google Gemini API key (type: Secret).
+   GEMINI_MODEL = gemini-3.5-flash-lite (optional plain text; remove any outdated model override).
+4. Open https://japanese-ai-teacher.ridoy-gakuen-ai.workers.dev/
+   Expected: {"status":"Japanese AI Teacher is running","endpoint":"/chat"}
+5. Your GitHub site index.html is ALREADY pointed at:
+   https://japanese-ai-teacher.ridoy-gakuen-ai.workers.dev/chat
+   Therefore do not need to change index.html just for this update.
+6. Test your website by asking: は কেন ব্যবহার হয়?
+7. If AI fails: Cloudflare > japanese-ai-teacher > Observability > Logs.
+   A 403 usually indicates key restrictions; 404 model; 429 quota.
+
+IMPORTANT: Never share or commit GEMINI_API_KEY to GitHub.
+This worker supports /chat only, not /transcribe. Built-in browser voice recognition may still work.

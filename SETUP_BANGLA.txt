@@ -1,0 +1,38 @@
+JAPANESE AI TEACHER - GOOGLE CLOUD TTS UPDATE (বাংলা + Japanese)
+
+FILES:
+ index.html: latest reviewed original site + Cloud TTS AI reply playback
+ worker.js: existing Gemini chat/CORS + secure POST /tts
+ wrangler.jsonc: same deployment configuration
+
+SETUP - GOOGLE CLOUD:
+ 1. Google Cloud Console https://console.cloud.google.com/
+ 2. Create/select YOUR Google Cloud PROJECT and enable BILLING (may incur charges).
+ 3. APIs & Services > Library > search Cloud Text-to-Speech API > Enable.
+ 4. APIs & Services > Credentials > Create Credentials > API key.
+ 5. Restrict this NEW key to Cloud Text-to-Speech API (server usage; avoid HTTP referrer restriction for Worker).
+ 6. Don't reuse GEMINI_API_KEY unless that key is explicitly authorized for Cloud TTS.
+
+WINDOWS CMD:
+ cd /d "C:\Git\Japanese Ai Teacher"
+ npx wrangler secret put GOOGLE_TTS_API_KEY --name japanese-ai-teacher
+ (paste Google Cloud TTS key when prompted; hidden input)
+ npx wrangler deploy --config wrangler.jsonc
+ git add index.html worker.js wrangler.jsonc
+ git commit -m "Add Google Cloud Bengali and Japanese voice"
+ git push origin main
+
+GITHUB PAGES + VERCEL: Both origins are allowed by this worker.js.
+ If Vercel isn't set to auto-deploy from GitHub, redeploy it from Vercel dashboard.
+
+TEST:
+ Website -> AI Chat -> ask これは何ですか。 -> 🔊 উত্তর শুনুন
+ Japanese segments use ja-JP-Standard-A; Bengali segments use bn-IN-Standard-A.
+ API key never stored in HTML or repo.
+
+NOTES:
+ Google Cloud charges based on characters; enable budget alerts & restrict API key.
+ Public /tts endpoint can be invoked from allowed origin by any website visitor; CORS is not authentication.
+ For production with many users, add true server-side rate limiting/abuse prevention (Cloudflare WAF rate limits / Turnstile).
+ Works without browser Bengali voice; Cloud TTS still needs network and browser audio permission.
+ No live paid API calls were made during this build.

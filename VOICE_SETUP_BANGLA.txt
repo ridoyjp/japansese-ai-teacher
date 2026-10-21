@@ -1,0 +1,19 @@
+Japanese AI Teacher — Bangla + Japanese Voice
+
+1. index.html ফাইলটি C:\Git\Japanese Ai Teacher\ ফোল্ডারে কপি করে পুরোনোটি Replace করো।
+2. CMD:
+   cd /d "C:\Git\Japanese Ai Teacher"
+   git add index.html
+   git commit -m "Add Bangla and Japanese voice chat"
+   git push origin main
+3. Website: https://ridoyjp.github.io/japansese-ai-teacher/
+4. Chrome দিয়ে Website খোলো। Microphone Allow করো।
+5. 🎤 বাংলায় বলো = বাংলা ভাষায় প্রশ্ন লিখবে, উত্তর বাংলা ভাষায়।
+   🎤 日本語で話す = Japanese Voice Input, উত্তর Japanese ভাষায়।
+6. পাঠাও ➤ চাপলে AI উত্তর দেবে। উত্তর শোনার জন্য 🔊 উত্তর শুনুন / 音声を聞く চাপো।
+   'উত্তর নিজে থেকে শোনাও' চেক থাকলে স্বয়ংক্রিয়ভাবে শোনানোর চেষ্টা করবে।
+7. Browser voice recognition না থাকলে বিদ্যমান Worker-এর /transcribe ব্যবহারের চেষ্টা করবে;
+   তাই Gemini API Secret, Worker /transcribe endpoint এবং HTTPS দরকার।
+8. Android-এ Chrome ব্যবহার করো। বাংলা বা Japanese voice না থাকলে Settings > Text-to-speech থেকে voice data ইনস্টল করো।
+9. API key কখনো HTML / GitHub-এ রেখো না। Existing Worker URL HTML-এ সংযুক্ত আছে।
+10. Worker responseLanguage field bn-BD/ja-JP মেনে ভাষা বদলায়; একই Worker অন্য স্কুলের bot হলেও ভাষা নিয়ন্ত্রণ করা হবে।
